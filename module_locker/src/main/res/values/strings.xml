@@ -1,0 +1,39 @@
+<resources xmlns:tools="http://schemas.android.com/tools"  translatable="false">
+
+    <string name="locker_app_name">locker</string>
+
+    <string name="locker_login">立即登陆</string>
+    <string name="locker_login_tip">登陆隐私储物柜</string>
+    <string name="locker_login_tip_2">手机电脑多端同步,管理您的隐私信息</string>
+
+    <string name="locker_request_permission">为保证应用正常运行, 请打开相关权限</string>
+    <string name="locker_function_not_completed">此功能暂时无实现</string>
+    <string name="locker_op_failed">操作失败</string>
+    <string name="locker_check_network">当前网络不可用，请检查你的网络设置</string>
+    <string name="locker_agree_rule">请点击同意《用户协议》和《隐私政策》《儿童隐私政策》</string>
+    <string name="locker_exit_app_toast">"再按一次退出程序"</string>
+
+    <!-- 登录相关-->
+    <string name="locker_input_correct_phone_number">"请输入十一位数字的手机号"</string>
+    <string name="locker_capture_code_success">"验证码发送成功，请注意查收"</string>
+    <string name="locker_input_password">"请输入密码"</string>
+    <string name="locker_phone_login">"手机号登录"</string>
+    <string name="locker_re_obtain_code">"重新获取"</string>
+    <string name="locker_forget_password">"忘记密码"</string>
+    <string name="locker_password_tip">"请设置登录密码,8–20位字符,至少字母/数字/符号两种组合"</string>
+
+
+
+
+
+    <string name="locker_about_content" translatable="false"><![CDATA[
+            <h2>应用简介</h2>
+            <p>\t\tlocker是一款简单的私密信息管理工具。应用实现个人银行账户及密码、邮件地址及密码、好友联系信息、web应用系统账户及密码等个人隐私信息的加密保存。</p>
+            <p>\t\t当然这只是我们目前的功能，未来我们将提供更多更加便捷的功能…</p>
+            <p>\t\t如果您有任何好的建议：</p>
+                <br/>\t\t\t\t关于页面排版
+                <br/>\t\t\t\t未来你希望增加的功能等
+            <p>\t\t可以添加开发者QQ：<b>591683946</b> 进行反馈</p>
+]]></string>
+
+</resources>

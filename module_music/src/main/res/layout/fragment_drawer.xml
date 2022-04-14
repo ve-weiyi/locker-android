@@ -1,0 +1,457 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+        xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <data>
+
+    </data>
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:background="@color/white">
+
+        <RelativeLayout
+                android:id="@+id/left_drawer_layout_base"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_gravity="start"
+                android:layout_marginEnd="25dp"
+                android:background="@color/white">
+
+            <ScrollView
+                    android:id="@+id/login_scrollview"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_above="@id/divider"
+                    android:scrollbars="none">
+
+                <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:orientation="vertical">
+
+                    <RelativeLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content">
+
+                        <RelativeLayout
+                                android:id="@+id/rl_main_avatar"
+                                android:layout_width="match_parent"
+                                android:layout_height="180dp"
+                                android:background="@color/app_background"
+
+                                >
+
+                            <ImageView
+                                    android:id="@+id/avatar_view"
+                                    android:layout_width="60dp"
+                                    android:layout_height="60dp"
+                                    android:layout_alignParentLeft="true"
+                                    android:layout_marginLeft="10dp"
+
+                                    android:layout_marginTop="50dp" />
+
+                            <TextView
+                                    android:id="@+id/avatar_name"
+                                    android:layout_width="90dp"
+                                    android:layout_height="wrap_content"
+                                    android:layout_alignLeft="@+id/avatar_view"
+                                    android:layout_alignTop="@+id/avatar_check"
+                                    android:layout_alignBottom="@+id/avatar_check"
+                                    android:ellipsize="end"
+                                    android:gravity="center_vertical"
+                                    android:maxLines="1"
+
+                                    android:textColor="@color/black"
+                                    android:textSize="15sp" />
+
+                            <ImageView
+                                    android:id="@+id/iv_avatar_vip"
+                                    android:layout_width="30dp"
+                                    android:layout_height="wrap_content"
+                                    android:layout_alignTop="@+id/avatar_name"
+                                    android:layout_alignBottom="@+id/avatar_name"
+                                    android:layout_marginLeft="10dp"
+                                    android:layout_toRightOf="@+id/avatar_name"
+                                    android:src="@drawable/ic_vip"
+                                    android:visibility="gone" />
+
+                            <TextView
+                                    android:id="@+id/tv_user_level"
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:layout_alignTop="@+id/avatar_name"
+                                    android:layout_alignBottom="@+id/avatar_name"
+                                    android:layout_marginLeft="10dp"
+                                    android:layout_toRightOf="@+id/iv_avatar_vip"
+                                    android:gravity="center"
+                                    android:paddingLeft="3dp"
+                                    android:paddingRight="3dp"
+                                    android:textColor="@color/gray"
+                                    android:textSize="11sp"
+                                    android:textStyle="bold|italic" />
+
+                            <TextView
+                                    android:id="@+id/avatar_check"
+                                    android:layout_width="60dp"
+                                    android:layout_height="wrap_content"
+                                    android:layout_below="@+id/avatar_view"
+                                    android:layout_alignParentRight="true"
+                                    android:layout_marginTop="10dp"
+                                    android:layout_marginRight="20dp"
+                                    android:background="@drawable/bg_round_red"
+                                    android:gravity="center_horizontal"
+                                    android:paddingTop="5dp"
+                                    android:paddingBottom="5dp"
+                                    android:text="签到"
+                                    android:textColor="@color/white"
+                                    android:textSize="11sp" />
+                        </RelativeLayout>
+
+                        <LinearLayout
+                                android:id="@+id/unloggin_layout"
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:orientation="vertical"
+
+                                >
+
+                            <TextView
+                                    android:layout_width="match_parent"
+                                    android:layout_height="wrap_content"
+                                    android:layout_marginTop="20dp"
+                                    android:gravity="center"
+                                    android:text="@string/home_login_tip"
+                                    android:textColor="@color/colorPrimary"
+                                    android:textSize="13sp" />
+
+                            <TextView
+                                    android:layout_width="match_parent"
+                                    android:layout_height="wrap_content"
+                                    android:layout_marginTop="2dp"
+                                    android:gravity="center"
+                                    android:text="@string/home_login_tip_2"
+                                    android:textColor="@color/colorPrimary"
+                                    android:textSize="13sp" />
+
+                            <TextView
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:layout_gravity="center_horizontal"
+                                    android:layout_marginTop="20dp"
+                                    android:background="@drawable/bg_home_login"
+                                    android:paddingStart="40dp"
+                                    android:paddingTop="5dp"
+                                    android:paddingEnd="40dp"
+                                    android:paddingBottom="5dp"
+
+                                    android:text="@string/home_login"
+                                    android:textColor="@color/colorPrimary"
+                                    android:textSize="15sp" />
+                        </LinearLayout>
+                    </RelativeLayout>
+
+                    <LinearLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_marginTop="35dp"
+                            android:orientation="horizontal"
+                            android:paddingLeft="15dp"
+                            android:paddingRight="15dp">
+
+                        <com.ve.lib_common_ui.VerticalItemView
+                                android:id="@+id/icon_notification_msg"
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:layout_weight="1"
+                                app:icon="@drawable/ic_message_red"
+                                app:iconHeight="23dp"
+                                app:iconWidth="23dp"
+                                app:infoText="我的消息"
+                                app:infoTextColor="@color/colorPrimary"
+                                app:infoTextMarginTop="5dp"
+                                app:infoTextSize="11sp"
+                                app:tipBg="@drawable/bg_circle_red"
+                                app:tipPaddingRight="2dp"
+                                app:tipPaddingTop="2dp"
+                                app:tipText="1"
+
+                                app:tipTextColor="@color/white"
+                                app:tipTextSize="7sp" />
+
+                        <com.ve.lib_common_ui.VerticalItemView
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:layout_weight="1"
+                                app:icon="@drawable/ic_notification_friend"
+                                app:iconHeight="23dp"
+                                app:iconWidth="23dp"
+                                app:infoText="我的好友"
+                                app:infoTextColor="@color/colorPrimary"
+                                app:infoTextMarginTop="5dp"
+                                app:infoTextSize="11sp"
+                                app:tipBg="@drawable/bg_circle_red"
+                                app:tipPaddingRight="2dp"
+                                app:tipPaddingTop="2dp"
+                                app:tipText="1"
+                                app:tipTextColor="@color/white"
+                                app:tipTextSize="7sp" />
+
+                        <com.ve.lib_common_ui.VerticalItemView
+                                android:id="@+id/icon_notification_listen"
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:layout_weight="1"
+                                app:icon="@drawable/ic_listen_regeconize"
+                                app:iconHeight="23dp"
+                                app:iconWidth="23dp"
+                                app:infoText="听歌识曲"
+                                app:infoTextColor="@color/colorPrimary"
+                                app:infoTextMarginTop="5dp"
+                                app:infoTextSize="11sp"
+                                app:tipBg="@drawable/bg_circle_red"
+                                app:tipPaddingRight="2dp"
+                                app:tipPaddingTop="2dp"
+                                app:tipText="1"
+                                app:tipTextColor="@color/white"
+                                app:tipTextSize="7sp" />
+
+                        <com.ve.lib_common_ui.VerticalItemView
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:layout_weight="1"
+                                app:icon="@drawable/ic_change_skin"
+                                app:iconHeight="23dp"
+                                app:iconWidth="23dp"
+                                app:infoText="个性换肤"
+                                app:infoTextColor="@color/colorPrimary"
+                                app:infoTextMarginTop="5dp"
+                                app:infoTextSize="11sp"
+                                app:tipBg="@drawable/bg_circle_red"
+                                app:tipPaddingRight="2dp"
+                                app:tipPaddingTop="2dp"
+                                app:tipText="1"
+                                app:tipTextColor="@color/white"
+                                app:tipTextSize="7sp" />
+
+                    </LinearLayout>
+
+                    <View
+                            android:layout_width="match_parent"
+                            android:layout_height="0.5dp"
+                            android:layout_margin="20dp"
+                            android:background="#dddddd" />
+
+                    <com.ve.lib_common_ui.HornizeItemView
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            app:hIcon="@drawable/ic_perform"
+                            app:hTipVisiblity="false"
+                            app:paddingLeft="20dp"
+                            app:paddingRight="30dp"
+                            app:rightText="周杰伦青岛"
+                            app:tileText="演出" />
+
+                    <com.ve.lib_common_ui.HornizeItemView
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            app:hIcon="@drawable/ic_shop"
+                            app:hTipVisiblity="false"
+                            app:paddingLeft="20dp"
+                            app:paddingRight="30dp"
+                            app:rightText="Freelace耳机728元"
+                            app:tileText="商城" />
+
+                    <com.ve.lib_common_ui.HornizeItemView
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            app:hIcon="@drawable/ic_position"
+                            app:hTipVisiblity="false"
+                            app:paddingLeft="20dp"
+                            app:paddingRight="30dp"
+                            app:tileText="附近的人" />
+
+                    <com.ve.lib_common_ui.HornizeItemView
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            app:hIcon="@drawable/ic_lingsheng"
+                            app:hTipVisiblity="false"
+                            app:paddingLeft="20dp"
+                            app:paddingRight="30dp"
+                            app:tileText="口袋铃声" />
+
+                    <View
+                            android:layout_width="match_parent"
+                            android:layout_height="0.5dp"
+                            android:layout_margin="20dp"
+                            android:background="#dddddd" />
+
+                    <com.ve.lib_common_ui.HornizeItemView
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            app:hIcon="@drawable/ic_timer"
+                            app:hTipVisiblity="false"
+                            app:paddingLeft="20dp"
+                            app:paddingRight="30dp"
+                            app:tileText="定时停止播放"
+
+                            />
+
+                    <com.ve.lib_common_ui.HornizeItemView
+                            android:id="@+id/home_qrcode"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            app:hIcon="@drawable/ic_scan"
+                            app:hTipVisiblity="false"
+                            app:paddingLeft="20dp"
+                            app:paddingRight="30dp"
+                            app:tileText="扫一扫" />
+
+                    <com.ve.lib_common_ui.HornizeItemView
+                            android:id="@+id/home_music"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            app:hIcon="@drawable/ic_alarm"
+                            app:hTipVisiblity="false"
+                            app:paddingLeft="20dp"
+                            app:paddingRight="30dp"
+                            app:tileText="音乐闹钟" />
+
+                    <com.ve.lib_common_ui.HornizeItemView
+                            android:id="@+id/online_music_view"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            app:hIcon="@drawable/ic_free_flow"
+                            app:hTipVisiblity="false"
+                            app:paddingLeft="20dp"
+                            app:paddingRight="30dp"
+                            app:tileText="在线听歌免流量" />
+
+                    <com.ve.lib_common_ui.HornizeItemView
+                            android:id="@+id/icon_cloud_music"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            app:hIcon="@drawable/ic_cloud"
+                            app:hTipVisiblity="false"
+                            app:paddingLeft="20dp"
+                            app:paddingRight="30dp"
+
+                            app:tileText="音乐云盘" />
+
+                    <com.ve.lib_common_ui.HornizeItemView
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            app:hIcon="@drawable/ic_discount"
+                            app:hTipVisiblity="false"
+                            app:paddingLeft="20dp"
+                            app:paddingRight="30dp"
+                            app:tileText="优惠卷" />
+
+                    <com.ve.lib_common_ui.HornizeItemView
+                            android:id="@+id/check_update_view"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            app:hIcon="@drawable/ic_sun"
+                            app:hTipVisiblity="false"
+                            app:paddingLeft="20dp"
+                            app:paddingRight="30dp"
+                            app:tileText="检查更新" />
+                </LinearLayout>
+
+            </ScrollView>
+
+            <View
+                    android:id="@+id/divider"
+                    android:layout_width="match_parent"
+                    android:layout_height="0.5dp"
+                    android:layout_alignTop="@id/operator_view"
+                    android:background="#dddddd" />
+
+            <LinearLayout
+                    android:id="@+id/operator_view"
+                    android:layout_width="match_parent"
+                    android:layout_height="52dp"
+                    android:layout_alignParentBottom="true"
+                    android:orientation="horizontal">
+
+                <LinearLayout
+                        android:layout_width="0dp"
+                        android:layout_height="match_parent"
+                        android:layout_weight="3"
+                        android:gravity="center"
+                        android:orientation="horizontal">
+
+                    <ImageView
+                            android:layout_width="20dp"
+                            android:layout_height="20dp"
+                            android:src="@mipmap/ic_night" />
+
+                    <View
+                            android:layout_width="6dp"
+                            android:layout_height="match_parent" />
+
+                    <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="夜间模式"
+                            android:textColor="@color/colorPrimary"
+                            android:textSize="15sp" />
+                </LinearLayout>
+
+                <LinearLayout
+                        android:layout_width="0dp"
+                        android:layout_height="match_parent"
+                        android:layout_weight="2"
+                        android:gravity="center"
+                        android:orientation="horizontal">
+
+                    <ImageView
+                            android:layout_width="20dp"
+                            android:layout_height="20dp"
+                            android:src="@mipmap/ic_setting" />
+
+                    <View
+                            android:layout_width="6dp"
+                            android:layout_height="match_parent" />
+
+                    <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="设置"
+                            android:textColor="@color/colorPrimary"
+                            android:textSize="15sp" />
+                </LinearLayout>
+
+                <LinearLayout
+                        android:id="@+id/exit_layout"
+                        android:layout_width="0dp"
+                        android:layout_height="match_parent"
+                        android:layout_weight="2"
+                        android:gravity="center"
+
+                        android:orientation="horizontal">
+
+                    <ImageView
+                            android:layout_width="20dp"
+                            android:layout_height="20dp"
+                            android:src="@mipmap/ic_shutdown" />
+
+                    <View
+                            android:layout_width="6dp"
+                            android:layout_height="match_parent" />
+
+                    <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="退出"
+                            android:textColor="@color/colorPrimary"
+                            android:textSize="15sp" />
+                </LinearLayout>
+
+            </LinearLayout>
+
+        </RelativeLayout>
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</layout>

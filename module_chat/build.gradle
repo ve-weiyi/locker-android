@@ -1,0 +1,53 @@
+apply from: "../library.build.gradle"
+
+android {
+    defaultConfig {
+        if (isModule.toBoolean()) {
+            //applicationId rootProject.ext.android.applicationId
+        }
+        //设置了resourcePrefix值后，所有的资源名必须以指定的字符串做前缀，否则会报错。
+        //但是resourcePrefix这个值只能限定xml里面的资源，并不能限定图片资源，所有图片资源仍然需要手动去修改资源名。
+        //resourcePrefix "android_"
+        //阿里路由框架配置
+        javaCompileOptions {
+            annotationProcessorOptions {
+                arguments += [
+                        "AROUTER_MODULE_NAME"  : project.getName(),
+                        "room.schemaLocation"  : "$projectDir/schemas".toString(),
+                        "room.incremental"     : "true",
+                        "room.expandProjection": "true"]
+            }
+        }
+        manifestPlaceholders = [
+                JPUSH_PKGNAME : rootProject.ext.android.applicationId,
+                JPUSH_APPKEY : "d96241a0ef6d2eadfeb97e13", //JPush上注册的包名对应的appkey.
+                JPUSH_CHANNEL : "c97486ab4b7b3664da3a905e", //暂时填写默认值即可.
+        ]
+        multiDexEnabled true
+        ndk {
+            abiFilters "armeabi", "x86"
+        }
+        signingConfig signingConfigs.debug
+    }
+
+    buildTypes {
+        debug {
+            minifyEnabled false
+            signingConfig signingConfigs.debug
+            proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
+        }
+    }
+
+    packagingOptions {
+        exclude 'META-INF/proguard/androidx-annotations.pro'
+    }
+
+}
+
+dependencies {
+    implementation fileTree(dir: "libs", include: ["*.jar"])
+    //    依赖公用模块
+    api project(':lib_common')
+    kapt rootProject.ext.libARouterCompiler
+
+}

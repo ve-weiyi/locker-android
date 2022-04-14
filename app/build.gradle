@@ -1,0 +1,7 @@
+apply from: "../application.build.gradle"
+dependencies {
+    implementation fileTree(dir: 'libs', include: ['*.jar'])
+
+    implementation project(':lib_application')
+    implementation project(':main')
+}

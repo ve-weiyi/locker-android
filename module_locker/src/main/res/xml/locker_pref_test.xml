@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="utf-8"?>
+<PreferenceScreen xmlns:tools="http://schemas.android.com/tools"
+        xmlns:android="http://schemas.android.com/apk/res/android"
+        xmlns:app="http://schemas.android.com/apk/res-auto">
+
+
+    <com.ve.lib.view.widget.preference.MyPreference
+            android:key="a"
+            app:title="我是第一个设置"
+            app:summary="啦啦啦啦过年啦"
+            android:contentDescription="@string/locker_app_name"
+            tools:ignore="SpeakableTextPresentCheck" />
+
+    <Preference
+            android:key="c"
+            app:title="24352354"
+            app:summary="啦啦啦啦过年啦"
+            />
+
+    <SwitchPreference
+            android:key="d"
+            app:title="我是第一个设置"
+            app:summary="啦啦啦啦过年啦"
+            />
+
+</PreferenceScreen>
