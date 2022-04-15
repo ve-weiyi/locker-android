@@ -1,7 +1,7 @@
 package com.ve.module.chat.ui.page.friends
 
 import android.os.Bundle
-import com.ve.lib.common.base.view.vmview.BaseActivity
+import com.ve.lib.common.base.view.vm.BaseActivity
 import com.ve.module.chat.databinding.ActivityUserImdetailBinding
 
 /**

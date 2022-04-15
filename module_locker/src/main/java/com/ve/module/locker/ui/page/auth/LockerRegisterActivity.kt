@@ -1,7 +1,7 @@
 package com.ve.module.locker.ui.page.auth
 
 import android.os.Bundle
-import com.ve.lib.common.base.view.vmview.BaseVmActivity
+import com.ve.lib.common.base.view.vm.BaseVmActivity
 import com.ve.module.locker.databinding.LockerActivityRegisterBinding
 import com.ve.module.locker.ui.state.LockerRegisterViewModel
 

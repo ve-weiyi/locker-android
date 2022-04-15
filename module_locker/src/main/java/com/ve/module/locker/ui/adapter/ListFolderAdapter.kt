@@ -2,10 +2,9 @@ package com.ve.module.locker.ui.adapter
 
 import com.ve.lib.common.base.adapter.BaseSlideBindingAdapter
 import com.ve.lib.common.base.adapter.VBViewHolder
-import com.ve.lib.vutils.LogUtil
 import com.ve.module.locker.R
 import com.ve.module.locker.databinding.LockerItemSimpleListBinding
-import com.ve.module.locker.logic.http.model.PrivacyFolder
+import com.ve.module.locker.logic.database.entity.PrivacyFolder
 
 
 /**

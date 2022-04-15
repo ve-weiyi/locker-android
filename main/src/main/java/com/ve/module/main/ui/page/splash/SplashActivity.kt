@@ -4,7 +4,7 @@ import android.content.Intent
 import android.os.Bundle
 import android.view.animation.AlphaAnimation
 import android.view.animation.Animation
-import com.ve.lib.common.base.view.vmview.BaseActivity
+import com.ve.lib.common.base.view.vm.BaseActivity
 import com.ve.module.main.MainActivity
 import com.ve.module.main.databinding.ActivitySplashBinding
 

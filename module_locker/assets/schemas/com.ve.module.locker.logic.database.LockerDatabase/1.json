@@ -1,0 +1,98 @@
+{
+  "formatVersion": 1,
+  "database": {
+    "version": 1,
+    "identityHash": "a8ff26c6afd1f9981e5366d1e25e4357",
+    "entities": [
+      {
+        "tableName": "PrivacyTag",
+        "createSql": "CREATE TABLE IF NOT EXISTS `${TABLE_NAME}` (`id` INTEGER, `tagName` TEXT, `tagCover` TEXT, `tagDesc` TEXT, `ownerId` INTEGER, `baseObjId` INTEGER NOT NULL, `associatedModelsMapWithFK` TEXT, `associatedModelsMapWithoutFK` TEXT, `associatedModelsMapForJoinTable` TEXT, `listToClearSelfFK` TEXT, `listToClearAssociatedFK` TEXT, `fieldsToSetToDefault` TEXT)",
+        "fields": [
+          {
+            "fieldPath": "id",
+            "columnName": "id",
+            "affinity": "INTEGER",
+            "notNull": false
+          },
+          {
+            "fieldPath": "tagName",
+            "columnName": "tagName",
+            "affinity": "TEXT",
+            "notNull": false
+          },
+          {
+            "fieldPath": "tagCover",
+            "columnName": "tagCover",
+            "affinity": "TEXT",
+            "notNull": false
+          },
+          {
+            "fieldPath": "tagDesc",
+            "columnName": "tagDesc",
+            "affinity": "TEXT",
+            "notNull": false
+          },
+          {
+            "fieldPath": "ownerId",
+            "columnName": "ownerId",
+            "affinity": "INTEGER",
+            "notNull": false
+          },
+          {
+            "fieldPath": "baseObjId",
+            "columnName": "baseObjId",
+            "affinity": "INTEGER",
+            "notNull": true
+          },
+          {
+            "fieldPath": "associatedModelsMapWithFK",
+            "columnName": "associatedModelsMapWithFK",
+            "affinity": "TEXT",
+            "notNull": false
+          },
+          {
+            "fieldPath": "associatedModelsMapWithoutFK",
+            "columnName": "associatedModelsMapWithoutFK",
+            "affinity": "TEXT",
+            "notNull": false
+          },
+          {
+            "fieldPath": "associatedModelsMapForJoinTable",
+            "columnName": "associatedModelsMapForJoinTable",
+            "affinity": "TEXT",
+            "notNull": false
+          },
+          {
+            "fieldPath": "listToClearSelfFK",
+            "columnName": "listToClearSelfFK",
+            "affinity": "TEXT",
+            "notNull": false
+          },
+          {
+            "fieldPath": "listToClearAssociatedFK",
+            "columnName": "listToClearAssociatedFK",
+            "affinity": "TEXT",
+            "notNull": false
+          },
+          {
+            "fieldPath": "fieldsToSetToDefault",
+            "columnName": "fieldsToSetToDefault",
+            "affinity": "TEXT",
+            "notNull": false
+          }
+        ],
+        "primaryKey": {
+          "columnNames": [],
+          "autoGenerate": false
+        },
+        "indices": [],
+        "foreignKeys": []
+      }
+    ],
+    "views": [],
+    "setupQueries": [
+      "CREATE TABLE IF NOT EXISTS room_master_table (id INTEGER PRIMARY KEY,identity_hash TEXT)",
+      "INSERT OR REPLACE INTO room_master_table (id,identity_hash) VALUES(42, 'a8ff26c6afd1f9981e5366d1e25e4357')"
+    ]
+  }
+}

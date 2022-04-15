@@ -6,7 +6,7 @@ import com.ve.module.android.databinding.ActivityRankBinding
 import com.ve.module.android.repository.model.CoinInfo
 import com.ve.module.android.ui.adapter.RankAdapter
 import com.ve.module.android.ui.viewmodel.RankViewModel
-import com.ve.lib.common.base.view.listview.BaseVmListActivity
+import com.ve.lib.common.base.view.list.BaseVmListActivity
 
 /**
  * @Description hello word!
@@ -32,7 +32,7 @@ class RankActivity: BaseVmListActivity<ActivityRankBinding, RankViewModel, CoinI
     }
 
     override fun initWebData() {
-        showLoading("加载数据中...")
+        showLoading()
         mPageSize=30
         mViewModel.getUserScore(mCurrentPage)
     }

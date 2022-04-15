@@ -41,6 +41,7 @@ open class BaseViewModel :  ViewModel(), LifecycleObserver {
     val needLogin = MutableLiveData<Boolean>().apply { value = false }
 
     /**
+     * 在viewModel层处理bean
      * 创建并执行协程 Coroutines
      * @param block 协程中执行
      * @param error 错误时执行
@@ -56,6 +57,7 @@ open class BaseViewModel :  ViewModel(), LifecycleObserver {
      */
     protected fun launch(
         block: suspend CoroutineScope.() -> Unit,
+        local: (suspend CoroutineScope.() -> Unit)?=null,
         error: (suspend (Exception) -> Unit)? =null,
         cancel: (suspend (Exception) -> Unit)? =null,
         showErrorToast: Boolean = true
@@ -63,7 +65,8 @@ open class BaseViewModel :  ViewModel(), LifecycleObserver {
         return viewModelScope.launch {
             try {
                 //apiCall,返回BaseResponse
-                block.invoke(this)
+                //block.invoke(this)
+                local?.invoke(this)
             } catch (e: Exception) {
                 //处理错误
                 when (e) {
@@ -79,7 +82,8 @@ open class BaseViewModel :  ViewModel(), LifecycleObserver {
         }
     }
     /**
-     * 运行在主线程，主要进行数据库操作
+     * 运行在主线程，主要进行ui操作
+     * Room 不允许在主线程进行数据库存在
      * */
     protected fun launchMain(
         block: suspend CoroutineScope.() -> Unit,
@@ -170,87 +174,4 @@ open class BaseViewModel :  ViewModel(), LifecycleObserver {
         return Gson().toJson(params).toRequestBody("application/json".toMediaTypeOrNull())
     }
     /**********************************/
-    /*
-    private val mException: MutableLiveData<Exception> = MutableLiveData()
-
-    val showLoading = MutableLiveData<Boolean>()
-
-    fun scopeLaunch(
-        block: suspend CoroutineScope.() -> Unit,
-        onException: ((Throwable) -> Unit)? = null
-    ) {
-        val handler = CoroutineExceptionHandler { _, throwable ->
-            ToastUtil.show("ApiException", throwable.message ?: "scopeLaunch")
-            showLoading.postValue(false)
-            when (throwable) {
-                is ApiException -> {
-                    ToastUtil.show(throwable.errorMsg)
-                }
-            }
-            onException?.invoke(throwable)
-        }
-        viewModelScope.launch(handler) {
-            block()
-        }
-    }
-
-    private fun launchOnUI(block: suspend CoroutineScope.() -> Unit) {
-        MainScope().launch { block() }
-    }
-
-    suspend fun <T> launchIO(block: suspend CoroutineScope.() -> T) {
-        withContext(Dispatchers.IO) {
-            block
-        }
-    }
-
-    fun launch(tryBlock: suspend CoroutineScope.() -> Unit) {
-        launchOnUI {
-            tryCatch(tryBlock, {}, {}, true)
-        }
-    }
-
-    fun launchOnUITryCatch(
-        tryBlock: suspend CoroutineScope.() -> Unit,
-        catchBlock: suspend CoroutineScope.(Throwable) -> Unit,
-        finallyBlock: suspend CoroutineScope.() -> Unit,
-        handleCancellationExceptionManually: Boolean
-    ) {
-        launchOnUI {
-            tryCatch(tryBlock, catchBlock, finallyBlock, handleCancellationExceptionManually)
-        }
-    }
-
-    fun launchOnUITryCatch(
-        tryBlock: suspend CoroutineScope.() -> Unit,
-        handleCancellationExceptionManually: Boolean = false
-    ) {
-        launchOnUI {
-            tryCatch(tryBlock, {}, {}, handleCancellationExceptionManually)
-        }
-    }
-
-    private suspend fun tryCatch(
-        tryBlock: suspend CoroutineScope.() -> Unit,
-        catchBlock: suspend CoroutineScope.(Throwable) -> Unit,
-        finallyBlock: suspend CoroutineScope.() -> Unit,
-        handleCancellationExceptionManually: Boolean = false
-    ) {
-        coroutineScope {
-            try {
-                tryBlock()
-            } catch (e: Exception) {
-                if (e !is CancellationException || handleCancellationExceptionManually) {
-                    mException.value = e
-                    catchBlock(e)
-                } else {
-                    throw e
-                }
-            } finally {
-                finallyBlock()
-            }
-        }
-    }
-
-    */
 }

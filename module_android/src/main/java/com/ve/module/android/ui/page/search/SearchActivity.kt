@@ -21,7 +21,7 @@ import com.ve.module.android.repository.model.Hotkey
 import com.ve.module.android.ui.adapter.SearchHistoryAdapter
 import com.ve.module.android.ui.page.activity.CommonActivity
 import com.ve.module.android.ui.viewmodel.SearchViewModel
-import com.ve.lib.common.base.view.listview.BaseVmListActivity
+import com.ve.lib.common.base.view.list.BaseVmListActivity
 import com.ve.lib.utils.CommonUtil
 import com.ve.lib.utils.DisplayManager
 import com.ve.lib.vutils.LogUtil

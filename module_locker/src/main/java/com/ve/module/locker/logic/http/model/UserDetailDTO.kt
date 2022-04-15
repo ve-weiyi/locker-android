@@ -6,8 +6,8 @@ import java.io.Serializable
 /**
  * 用户信息
  *
- * @author yezhiqiu
- * @date 2021/08/10
+ * @author weiyi
+ * @date 2022/04/10
  */
 
 data class UserDetailDTO(

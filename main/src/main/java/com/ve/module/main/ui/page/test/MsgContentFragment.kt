@@ -1,7 +1,7 @@
 package com.ve.module.main.ui.page.test
 
 import android.os.Bundle
-import com.ve.lib.common.base.view.vmview.BaseFragment
+import com.ve.lib.common.base.view.vm.BaseFragment
 import com.ve.module.main.databinding.FragmentDrawerBinding
 
 

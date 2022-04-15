@@ -2,13 +2,13 @@ package com.ve.module.locker
 
 import androidx.appcompat.app.AppCompatDelegate
 import com.alibaba.android.arouter.launcher.ARouter
-import com.tencent.mmkv.MMKV
 import com.ve.lib.application.BaseApplication
 import com.ve.lib.application.BuildConfig
-import com.ve.lib.utils.DisplayManager
 import com.ve.lib.utils.SettingUtil
 import com.ve.lib.vutils.AppContextUtils
 import com.ve.lib.vutils.LogUtil
+import com.ve.module.locker.logic.database.AppDataBase
+import org.litepal.LitePal
 import java.util.*
 
 /**
@@ -25,9 +25,13 @@ class LockerApplication:BaseApplication() {
             ARouter.openDebug();   // 开启调试模式(如果在InstantRun模式下运行，必须开启调试模式！线上版本需要关闭,否则有安全风险)
         }
         ARouter.init(this); // 尽可能早，推荐在Application中初始化
+
+        LitePal.initialize(this);
+
         AppContextUtils.init(this)
         initTheme()
         LogUtil.e("Application init ")
+        AppDataBase.initDataBase()
     }
 
 

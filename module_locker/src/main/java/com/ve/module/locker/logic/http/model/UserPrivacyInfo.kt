@@ -4,8 +4,8 @@ package com.ve.module.locker.logic.http.model
 /**
  * 角色
  * vo 后端返回给前端的数据类型
- * @author yezhiqiu
- * @date 2021/08/03
+ * @author weiyi
+ * @date 2022/04/03
  */
 data class UserPrivacyInfo(
     //(value = "id", position = 1)

@@ -4,7 +4,7 @@ import android.os.Bundle
 import androidx.fragment.app.Fragment
 import androidx.viewpager2.widget.ViewPager2
 import com.google.android.material.tabs.TabLayout
-import com.ve.lib.common.base.view.vmview.BaseVmFragment
+import com.ve.lib.common.base.view.vm.BaseVmFragment
 import com.ve.lib.common.base.adapter.ViewPager2Adapter
 import com.ve.music.databinding.FragmentMainBinding
 import com.ve.music.ui.page.discover.DiscoverFragment

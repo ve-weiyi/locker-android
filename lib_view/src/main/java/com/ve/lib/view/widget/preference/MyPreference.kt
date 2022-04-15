@@ -3,14 +3,8 @@ package com.ve.lib.view.widget.preference
 import android.animation.ValueAnimator
 import android.content.Context
 import android.util.AttributeSet
-import com.ve.lib.utils.SettingUtil.getColor
-import android.view.ViewGroup
-import android.view.LayoutInflater
-import android.view.View
 import androidx.preference.Preference
 import androidx.preference.PreferenceViewHolder
-import com.afollestad.materialdialogs.color.CircleView
-import com.ve.lib.utils.SettingUtil
 import com.ve.lib.view.R
 
 /**

@@ -35,6 +35,7 @@ class StyleSettingFragment :  BaseSettingFragment(){
         findPreference<Preference>(SettingConstant.SP_KEY_THEME_COLOR)?.onPreferenceClickListener = this
         findPreference<Preference>(SettingConstant.SP_KEY_NAV_COLOR)?.onPreferenceClickListener = this
 
+        setDefaultText()
     }
 
     override fun onSharedPreferenceChanged(sharedPreferences: SharedPreferences?, key: String?) {
@@ -43,11 +44,7 @@ class StyleSettingFragment :  BaseSettingFragment(){
                 colorPreview.setView()
             }
             else -> {
-                AlertDialog.Builder(mContext)
-                    .setTitle(key)
-                    .setMessage("功能未实现")
-                    .setCancelable(true)
-                    .show()
+                showMsg("功能未实现. key=$key  ")
             }
         }
     }
@@ -58,7 +55,7 @@ class StyleSettingFragment :  BaseSettingFragment(){
              * 其他设置
              */
             SettingConstant.SP_KEY_THEME_COLOR -> {
-                ColorChooserDialog.Builder(mContext as LockerSettingActivity, com.ve.lib.application.R.string.choose_theme_color)
+                ColorChooserDialog.Builder(mSettingActivity as LockerSettingActivity, com.ve.lib.application.R.string.choose_theme_color)
                     .backButton(com.ve.lib.application.R.string.back)
                     .cancelButton(com.ve.lib.application.R.string.cancel)
                     .doneButton(com.ve.lib.application.R.string.done)
@@ -72,11 +69,7 @@ class StyleSettingFragment :  BaseSettingFragment(){
                 LockerSettingActivity.start(mContext,AutoNightModeFragment::class.java.name)
             }
             else->{
-                AlertDialog.Builder(mContext)
-                    .setTitle(preference?.title)
-                    .setMessage("${preference?.summary} 功能未实现")
-                    .setCancelable(true)
-                    .show()
+                showMsg("${preference?.title} 功能未实现.key=${preference?.key}")
             }
         }
         return false

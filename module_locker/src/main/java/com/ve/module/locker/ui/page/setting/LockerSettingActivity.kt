@@ -5,8 +5,8 @@ import android.content.Intent
 import android.os.Bundle
 import androidx.fragment.app.Fragment
 import com.afollestad.materialdialogs.color.ColorChooserDialog
-import com.ve.lib.common.base.view.containerview.BaseContainerActivity
-import com.ve.lib.common.base.view.vmview.BaseActivity
+import com.ve.lib.common.base.view.container.BaseContainerActivity
+import com.ve.lib.common.base.view.vm.BaseActivity
 import com.ve.lib.common.event.ColorEvent
 import com.ve.lib.utils.SettingUtil
 import com.ve.lib.vutils.LogUtil
@@ -42,7 +42,7 @@ class LockerSettingActivity: BaseActivity<LockerActivitySettingBinding>(),
                 putExtra(FRAGMENT_CLASS_NAME_KEY, fragmentClassName)
                 putExtra(FRAGMENT_ARGUMENTS_KEY,fragmentBundle)
                 //启动模式
-                flags=Intent.FLAG_ACTIVITY_SINGLE_TOP
+//                flags=Intent.FLAG_ACTIVITY_SINGLE_TOP
                 context.startActivity(this, fragmentBundle)
             }
         }

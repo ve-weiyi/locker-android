@@ -1,7 +1,7 @@
 package com.ve.module.main.ui.page.drawer
 
 import android.os.Bundle
-import com.ve.lib.common.base.view.vmview.BaseVmFragment
+import com.ve.lib.common.base.view.vm.BaseVmFragment
 import com.ve.module.main.databinding.FragmentDrawerHeaderBinding
 import com.ve.module.main.ui.state.DrawerViewModel
 

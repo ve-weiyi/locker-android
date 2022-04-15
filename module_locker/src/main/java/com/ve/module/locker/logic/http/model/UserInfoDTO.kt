@@ -5,7 +5,7 @@ import java.time.LocalDateTime
 /**
  * 用户信息
  *
- * @author yezhiqiu
+ * @author weiyi
  * @date 2021/07/27
  */
 data class UserInfoDTO (

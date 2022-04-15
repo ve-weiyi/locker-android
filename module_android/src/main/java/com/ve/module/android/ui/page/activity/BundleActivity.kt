@@ -13,7 +13,7 @@ import com.ve.module.android.ui.page.setting.QrCodeFragment
 import com.ve.module.android.ui.page.setting.SettingsFragment
 import com.ve.module.android.ui.page.fragment.AboutFragment
 import com.ve.module.android.ui.page.todo.AddTodoFragment
-import com.ve.lib.common.base.view.vmview.BaseActivity
+import com.ve.lib.common.base.view.vm.BaseActivity
 
 class BundleActivity : BaseActivity<ActivityCommonBinding>() {
 

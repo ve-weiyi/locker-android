@@ -8,7 +8,7 @@ import androidx.fragment.app.Fragment
 import com.ve.module.android.R
 import com.ve.module.android.config.Constant
 import com.ve.module.android.databinding.ActivityCommonBinding
-import com.ve.lib.common.base.view.vmview.BaseActivity
+import com.ve.lib.common.base.view.vm.BaseActivity
 
 /**
  * @Description 通过bundle 和 FragmentName 切换页面

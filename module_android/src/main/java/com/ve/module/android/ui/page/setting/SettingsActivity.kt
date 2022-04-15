@@ -6,7 +6,7 @@ import androidx.fragment.app.Fragment
 import com.afollestad.materialdialogs.color.ColorChooserDialog
 import com.ve.module.android.R
 import com.ve.module.android.databinding.ActivitySettingsBinding
-import com.ve.lib.common.base.view.vmview.BaseActivity
+import com.ve.lib.common.base.view.vm.BaseActivity
 import com.ve.lib.common.event.ColorEvent
 import com.ve.lib.utils.SettingUtil
 import org.greenrobot.eventbus.EventBus
@@ -27,7 +27,7 @@ class SettingsActivity : BaseActivity<ActivitySettingsBinding>(), ColorChooserDi
         val initFragment: String = intent.getStringExtra(EXTRA_SHOW_FRAGMENT) ?: ""
         val initArguments: Bundle = intent.getBundleExtra(EXTRA_SHOW_FRAGMENT_ARGUMENTS) ?: Bundle()
         val initTitle: String = intent.getStringExtra(EXTRA_SHOW_FRAGMENT_TITLE)
-            ?: resources.getString(R.string.setting)
+            ?: "设置"
 
 //        if (savedInstanceState == null) {
 //            supportFragmentManager

@@ -10,7 +10,7 @@ import android.text.method.LinkMovementMethod
 import android.text.style.ClickableSpan
 import android.text.style.ForegroundColorSpan
 import android.view.View
-import com.ve.lib.common.base.view.vmview.BaseVmActivity
+import com.ve.lib.common.base.view.vm.BaseVmActivity
 import com.ve.lib.view.ext.setOnclickNoRepeat
 import com.ve.lib.utils.DialogUtil
 import com.ve.lib.utils.PreferenceUtil
@@ -71,7 +71,7 @@ class LockerLoginActivity: BaseVmActivity<LockerActivityLoginBinding, LockerLogi
         DialogUtil.getWaitDialog(this, "正在登录...")
     }
 
-    override fun showLoading(msg: String) {
+    override fun showLoading() {
         // mDialog.show()
     }
 
@@ -82,7 +82,6 @@ class LockerLoginActivity: BaseVmActivity<LockerActivityLoginBinding, LockerLogi
     override fun initObserver() {
         mViewModel.loginState.observe(this) {
             LockerLifecycle.loginState.value=it
-            showLoading("")
             if (it) {
                 showMsg("登录成功")
             } else {

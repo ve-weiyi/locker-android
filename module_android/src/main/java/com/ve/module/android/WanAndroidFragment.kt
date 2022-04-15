@@ -14,7 +14,7 @@ import com.ve.module.android.ui.page.fragment.ShareArticleFragment
 import com.ve.module.android.ui.page.search.SearchActivity
 import com.ve.module.android.ui.page.main.*
 import com.ve.module.android.ui.viewmodel.WanAndroidViewModel
-import com.ve.lib.common.base.view.pagerview.BaseVmPager2Fragment
+import com.ve.lib.common.base.view.pager.BaseVmPager2Fragment
 import com.ve.lib.common.event.DrawerOpenEvent
 import com.ve.lib.vutils.DisplayUtil
 import com.youth.banner.indicator.CircleIndicator

@@ -6,7 +6,7 @@ import android.text.Html
 import android.text.method.LinkMovementMethod
 import com.ve.module.android.R
 import com.ve.module.android.databinding.FragmentAboutBinding
-import com.ve.lib.common.base.view.vmview.BaseFragment
+import com.ve.lib.common.base.view.vm.BaseFragment
 import com.ve.lib.utils.SettingUtil
 
 /**

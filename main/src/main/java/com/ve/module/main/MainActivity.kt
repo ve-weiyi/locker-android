@@ -4,11 +4,11 @@ import android.os.Bundle
 import android.view.Gravity
 import androidx.fragment.app.FragmentTransaction
 import com.google.android.material.navigation.NavigationBarView
-import com.ve.lib.common.base.view.vmview.BaseVmActivity
+import com.ve.lib.common.base.view.vm.BaseVmActivity
 import com.ve.lib.common.event.DrawerOpenEvent
 import com.ve.lib.common.model.FragmentPage
 import com.ve.module.android.WanAndroidFragment
-import com.ve.module.android.event.AppRecreateEvent
+import com.ve.lib.common.event.AppRecreateEvent
 import com.ve.module.android.ui.page.user.UserFragment
 import com.ve.module.android.ui.viewmodel.WanAndroidViewModel
 import com.ve.module.games.GamesFragment

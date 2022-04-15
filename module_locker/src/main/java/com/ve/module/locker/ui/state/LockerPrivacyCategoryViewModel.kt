@@ -1,13 +1,11 @@
 package com.ve.module.locker.ui.state
 
-import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
-import com.ve.module.locker.logic.http.respository.PrivacyFolderRepository
-import com.ve.module.locker.logic.http.respository.PrivacyTagRepository
-import com.ve.module.locker.logic.http.respository.PrivacyTypeRepository
-import com.ve.module.locker.logic.http.model.PrivacyFolder
-import com.ve.module.locker.logic.http.model.PrivacyTag
-import com.ve.module.locker.logic.http.model.PrivacyType
+import com.ve.module.locker.logic.respository.PrivacyFolderRepository
+import com.ve.module.locker.logic.respository.PrivacyTagRepository
+import com.ve.module.locker.logic.database.entity.PrivacyFolder
+import com.ve.module.locker.logic.database.entity.PrivacyTag
+import org.litepal.LitePal
 
 /**
  * @Description hello word!
@@ -17,33 +15,40 @@ import com.ve.module.locker.logic.http.model.PrivacyType
 class LockerPrivacyCategoryViewModel : LockerViewModel() {
 
 
-
-    /**
-     * 网络获取数据，不允许其他途径改变
-     */
-    private val _tagList = MutableLiveData<MutableList<PrivacyTag>>()
-
-    /**
-     * 页面可观察到的数据，只能通过网络改变
-     */
+//    val localTagList= MutableLiveData<MutableList<PrivacyTag>>()
+//
 
     private val privacyTagRepository = PrivacyTagRepository
-    val tagList: LiveData<MutableList<PrivacyTag>> = _tagList
+    val tagList = MutableLiveData<MutableList<PrivacyTag>>()
 
-    fun tagList() {
+    fun getTagList() {
         launch(
             block = {
-                _tagList.value=privacyTagRepository.tagQueryList().data()
+                val result = privacyTagRepository.tagQueryList().data()
+                //没有网络被阻塞了
+                LitePal.saveAll(result)
+                tagList.value = result
+            },
+            local = {
+                tagList.value = LitePal.findAll(PrivacyTag::class.java)
             }
         )
     }
 
     val tagAddMsg = MutableLiveData<String>()
-    fun tagAdd(privacyTag: PrivacyTag) {
+    fun saveTag(privacyTag: PrivacyTag) {
         launch(
             block = {
-                val result=privacyTagRepository.tagAdd(privacyTag)
-                tagAddMsg.value=result.message
+                val result = privacyTagRepository.tagAdd(privacyTag)
+                tagAddMsg.value = result.message
+            },
+            local = {
+                val result=privacyTag.save()
+                if(result){
+                    tagAddMsg.value="保存成功！"
+                }else{
+                    tagAddMsg.value="保存失败！"
+                }
             }
         )
     }
@@ -52,8 +57,16 @@ class LockerPrivacyCategoryViewModel : LockerViewModel() {
     fun tagDelete(privacyTagId: Int) {
         launch(
             block = {
-                val result=privacyTagRepository.tagDelete(privacyTagId)
-                tagDeleteMsg.value=result.message
+                val result = privacyTagRepository.tagDelete(privacyTagId)
+                tagDeleteMsg.value = result.message
+            },
+            local = {
+                val result=LitePal.delete(PrivacyTag::class.java,privacyTagId.toLong())
+                if(result>0){
+                    tagDeleteMsg.value="删除成功！"+result
+                }else{
+                    tagDeleteMsg.value="删除失败！"+result
+                }
             }
         )
     }
@@ -62,69 +75,37 @@ class LockerPrivacyCategoryViewModel : LockerViewModel() {
     fun tagUpdate(privacyTag: PrivacyTag) {
         launch(
             block = {
-                val result=privacyTagRepository.tagUpdate(privacyTag)
-                tagUpdateMsg.value=result.message
+                val result = privacyTagRepository.tagUpdate(privacyTag)
+                tagUpdateMsg.value = result.message
+            },
+            local = {
+                val result=privacyTag.update(privacyTag.id.toLong())
+                if(result>0){
+                    tagUpdateMsg.value="保存成功！"+result
+                }else{
+                    tagUpdateMsg.value="保存失败！"+result
+                }
             }
         )
     }
-
-
-
-    /******************************* type *******************************/
-
-    private val privacyTypeRepository = PrivacyTypeRepository
-
-    val typeList: MutableLiveData<MutableList<PrivacyType>> = MutableLiveData<MutableList<PrivacyType>>()
-    fun typeList() {
-        launch(
-            block = {
-                val result=privacyTypeRepository.typeQueryList()
-                typeList.value=result.data()
-            }
-        )
-    }
-
-    val typeAddMsg = MutableLiveData<String>()
-    fun typeAdd(privacyType: PrivacyType) {
-        launch(
-            block = {
-                val result=privacyTypeRepository.typeAdd(privacyType)
-                typeAddMsg.value=result.message
-            }
-        )
-    }
-
-    val typeDeleteMsg = MutableLiveData<String>()
-    fun typeDelete(privacyTypeId: Int) {
-        launch(
-            block = {
-                val result=privacyTypeRepository.typeDelete(privacyTypeId)
-                typeDeleteMsg.value=result.message
-            }
-        )
-    }
-
-    val typeUpdateMsg = MutableLiveData<String>()
-    fun typeUpdate(privacyType: PrivacyType) {
-        launch(
-            block = {
-                val result=privacyTypeRepository.typeUpdate(privacyType)
-                typeUpdateMsg.value=result.message
-            }
-        )
-    }
-
 
     /******************************* folder *******************************/
 
     private val privacyFolderRepository = PrivacyFolderRepository
 
-    val folderList: MutableLiveData<MutableList<PrivacyFolder>> = MutableLiveData<MutableList<PrivacyFolder>>()
+    val folderList: MutableLiveData<MutableList<PrivacyFolder>> =
+        MutableLiveData<MutableList<PrivacyFolder>>()
+
     fun folderList() {
         launch(
             block = {
-                val result=privacyFolderRepository.folderQueryList()
-                folderList.value=result.data()
+                val result = privacyFolderRepository.folderQueryList()
+                LitePal.saveAll(result.data())
+                folderList.value = result.data()
+
+            },
+            local = {
+                folderList.value = LitePal.findAll(PrivacyFolder::class.java)
             }
         )
     }
@@ -133,8 +114,16 @@ class LockerPrivacyCategoryViewModel : LockerViewModel() {
     fun folderAdd(privacyFolder: PrivacyFolder) {
         launch(
             block = {
-                val result=privacyFolderRepository.folderAdd(privacyFolder)
-                folderAddMsg.value=result.message
+                val result = privacyFolderRepository.folderAdd(privacyFolder)
+                folderAddMsg.value = result.message
+            },
+            local = {
+                val result=privacyFolder.delete()
+                if(result>0){
+                    folderAddMsg.value="操作成功！"+result
+                }else{
+                    folderAddMsg.value="操作失败！"+result
+                }
             }
         )
     }
@@ -143,8 +132,16 @@ class LockerPrivacyCategoryViewModel : LockerViewModel() {
     fun folderDelete(privacyFolderId: Int) {
         launch(
             block = {
-                val result=privacyFolderRepository.folderDelete(privacyFolderId)
-                folderDeleteMsg.value=result.message
+                val result = privacyFolderRepository.folderDelete(privacyFolderId)
+                folderDeleteMsg.value = result.message
+            },
+            local = {
+                val result=LitePal.delete(PrivacyFolder::class.java,privacyFolderId.toLong())
+                if(result>0){
+                    folderDeleteMsg.value="操作成功！"+result
+                }else{
+                    folderDeleteMsg.value="操作失败！"+result
+                }
             }
         )
     }
@@ -153,8 +150,16 @@ class LockerPrivacyCategoryViewModel : LockerViewModel() {
     fun folderUpdate(privacyFolder: PrivacyFolder) {
         launch(
             block = {
-                val result=privacyFolderRepository.folderUpdate(privacyFolder)
-                folderUpdateMsg.value=result.message
+                val result = privacyFolderRepository.folderUpdate(privacyFolder)
+                folderUpdateMsg.value = result.message
+            },
+            local = {
+                val result=privacyFolder.update(privacyFolder.id.toLong())
+                if(result>0){
+                    folderUpdateMsg.value="操作成功！"+result
+                }else{
+                    folderUpdateMsg.value="操作失败！"+result
+                }
             }
         )
     }

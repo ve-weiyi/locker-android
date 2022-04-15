@@ -3,8 +3,8 @@ package com.ve.module.locker.common.enums;
 /**
  * 聊天类型枚举
  *
- * @author yezhiqiu
- * @date 2021/08/06
+ * @author weiyi
+ * @date 2022/04/06
  */
 
 public enum ChatTypeEnum {

@@ -6,7 +6,7 @@ import com.ve.module.android.repository.model.BannerBean
 import com.ve.module.android.ui.page.activity.ArticleDetailActivity
 import com.ve.module.android.ui.page.main.child.ProjectListFragment
 import com.ve.module.android.ui.viewmodel.HomeViewModel
-import com.ve.lib.common.base.view.pagerview.BaseVmPager2Fragment
+import com.ve.lib.common.base.view.pager.BaseVmPager2Fragment
 import com.ve.lib.vutils.DisplayUtil
 import com.youth.banner.indicator.CircleIndicator
 import com.youth.banner.listener.OnBannerListener

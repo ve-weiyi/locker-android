@@ -2,7 +2,6 @@ package com.ve.lib.network.http.interceptor
 
 import com.ve.lib.network.http.constant.HttpConstant
 import com.ve.lib.utils.PreferenceUtil
-import com.ve.lib.vutils.LogUtil
 import okhttp3.Interceptor
 import okhttp3.Response
 
@@ -16,7 +15,7 @@ class HeaderInterceptor : Interceptor {
     /**
      * token
      */
-    private var token: String by PreferenceUtil(HttpConstant.TOKEN_KEY, "")
+    private var token: String by com.ve.lib.utils.PreferenceUtil(HttpConstant.TOKEN_KEY, "")
 
     override fun intercept(chain: Interceptor.Chain): Response {
 
@@ -31,7 +30,7 @@ class HeaderInterceptor : Interceptor {
         val url = request.url.toString()
 
         if (domain.isNotEmpty()) {
-            val spDomain: String by PreferenceUtil(domain, "")
+            val spDomain: String by com.ve.lib.utils.PreferenceUtil(domain, "")
             val cookie: String = if (spDomain.isNotEmpty()) spDomain else ""
             if (cookie.isNotEmpty()) {
                 // 将 Cookie 添加到请求头

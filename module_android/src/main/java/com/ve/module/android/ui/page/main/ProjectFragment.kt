@@ -3,7 +3,7 @@ package com.ve.module.android.ui.page.main
 import com.ve.module.android.databinding.FragmentProjectBinding
 import com.ve.module.android.ui.page.main.child.ProjectListFragment
 import com.ve.module.android.ui.viewmodel.ProjectViewModel
-import com.ve.lib.common.base.view.pagerview.BaseVmPager2Fragment
+import com.ve.lib.common.base.view.pager.BaseVmPager2Fragment
 
 /**
  * @Description 7.项目

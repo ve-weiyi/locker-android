@@ -7,11 +7,15 @@ import com.ve.lib.network.http.exception.ApiException
 import com.ve.lib.vutils.LogUtil
 import com.ve.lib.vutils.ToastUtil
 import com.ve.module.locker.common.config.LockerConstant
-import com.ve.module.locker.logic.http.respository.AuthRepository
-import com.ve.module.locker.logic.http.respository.PrivacyTagRepository
+import com.ve.module.locker.logic.database.AppDataBase
+import com.ve.module.locker.logic.database.entity.PrivacyFolder
+import com.ve.module.locker.logic.database.entity.PrivacyInfoCard
+import com.ve.module.locker.logic.database.entity.PrivacyInfoPass
+import com.ve.module.locker.logic.respository.AuthRepository
+import com.ve.module.locker.logic.respository.PrivacyTagRepository
 import com.ve.module.locker.logic.http.model.ConditionVO
-import com.ve.module.locker.logic.http.model.PrivacyTag
-import com.ve.module.locker.api.LockerApiService
+import com.ve.module.locker.logic.database.entity.PrivacyTag
+import com.ve.module.locker.logic.http.api.LockerApiService
 import com.ve.module.locker.utils.AESUtil
 import com.ve.module.locker.utils.RSAUtils
 import kotlinx.coroutines.*
@@ -20,6 +24,7 @@ import org.junit.Test
 import org.junit.runner.RunWith
 
 import org.junit.Assert.*
+import org.litepal.LitePal
 import java.net.ConnectException
 import java.net.SocketTimeoutException
 import java.net.UnknownHostException
@@ -35,7 +40,8 @@ import java.net.UnknownHostException
 @RunWith(AndroidJUnit4::class)
 class ExampleInstrumentedTest {
 
-    val apiService = LockerApiService().getApiService()
+    private val apiService = LockerApiService().getApiService()
+    private val liteDataBase = LitePal.getDatabase()
 
     @Test
     fun useAppContext() {
@@ -45,7 +51,22 @@ class ExampleInstrumentedTest {
     }
 
     @Test
-    fun netData() {
+    fun appDataBaseTest() {
+        LogUtil.e(" androidTest是整合测试。可以运行在设备或虛拟设备上.需要编译打包为APK在设备上运行，可以实时杏看细节.\n")
+
+        runBlocking {
+
+            AppDataBase.initDataBase()
+            LogUtil.msg(LitePal.findAll(PrivacyTag::class.java).toString())
+            LogUtil.msg(LitePal.findAll(PrivacyFolder::class.java).toString())
+            LogUtil.msg(LitePal.findAll(PrivacyInfoCard::class.java).toString())
+            LogUtil.msg(LitePal.findAll(PrivacyInfoPass::class.java).toString())
+        }
+    }
+
+
+    @Test
+    fun apiServiceTest() {
         LogUtil.e(" androidTest是整合测试。可以运行在设备或虛拟设备上.需要编译打包为APK在设备上运行，可以实时杏看细节.\n")
         runBlocking {
             //val result=apiService.tagDelete(0)
@@ -61,7 +82,7 @@ class ExampleInstrumentedTest {
             LogUtil.e(result.toString())
 
             //改
-            tag.tagName="测试标签修改"
+            tag.tagName = "测试标签修改"
             result = apiService.tagUpdate(tag)
             LogUtil.e(result.toString())
 
@@ -70,7 +91,7 @@ class ExampleInstrumentedTest {
             LogUtil.e(result.toString())
 
             //条件查
-            var result1 = apiService.tagQueryList(conditionVO = ConditionVO(id=15))
+            var result1 = apiService.tagQueryList(conditionVO = ConditionVO(id = 15))
             LogUtil.e(result1.toString())
         }
     }

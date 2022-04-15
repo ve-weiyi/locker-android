@@ -3,7 +3,7 @@ package com.ve.module.android.ui.page.main
 import com.ve.module.android.databinding.FragmentWechatBinding
 import com.ve.module.android.ui.page.main.child.KnowledgeFragment
 import com.ve.module.android.ui.viewmodel.WeChatViewModel
-import com.ve.lib.common.base.view.pagerview.BaseVmPager2Fragment
+import com.ve.lib.common.base.view.pager.BaseVmPager2Fragment
 
 /**
  * @Description 8.公众号

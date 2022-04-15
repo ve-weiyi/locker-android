@@ -4,15 +4,18 @@ import android.os.Bundle
 import android.view.Gravity
 import androidx.fragment.app.FragmentTransaction
 import com.google.android.material.navigation.NavigationBarView
-import com.ve.lib.common.base.view.vmview.BaseVmActivity
+import com.ve.lib.common.base.view.vm.BaseVmActivity
+import com.ve.lib.common.event.AppRecreateEvent
 import com.ve.lib.common.event.DrawerOpenEvent
 import com.ve.lib.common.model.FragmentPage
 import com.ve.module.locker.databinding.LockerActivityMainBinding
-import com.ve.module.locker.ui.page.category.list.LockerListTagFragment
-import com.ve.module.locker.ui.page.category.LockerCategoryFragment
+import com.ve.module.locker.databinding.LockerFragmentCardEditBinding
+import com.ve.module.locker.ui.page.privacy.list.LockerCategoryFragment
 import com.ve.module.locker.ui.page.drawer.LockerDrawerFragment
-import com.ve.module.locker.ui.page.privacy.account.LockerPrivacyAccountFragment
-import com.ve.module.locker.ui.page.privacy.card.LockerPrivacyCardFragment
+import com.ve.module.locker.ui.page.privacy.details.LockerDetailsCardEditFragment
+import com.ve.module.locker.ui.page.privacy.list.LockerListPassFragment
+import com.ve.module.locker.ui.page.privacy.list.LockerListCardFragment
+
 import com.ve.module.locker.ui.state.LockerViewModel
 
 import org.greenrobot.eventbus.Subscribe
@@ -21,18 +24,16 @@ import org.greenrobot.eventbus.ThreadMode
 class LockerMainActivity : BaseVmActivity<LockerActivityMainBinding, LockerViewModel>() {
 
 
-
     private var mIndex = 0
     private lateinit var mFragmentPageList :MutableList<FragmentPage>
-
 
     private fun initFragment() {
         var pageCount=0
         mFragmentPageList= mutableListOf(
-            FragmentPage(pageCount++,"消息", LockerListTagFragment::class.java),
-            FragmentPage(pageCount++,"密码",LockerPrivacyAccountFragment::class.java),
-            FragmentPage(pageCount++,"卡片",LockerPrivacyCardFragment::class.java),
-            FragmentPage(pageCount++,"分类",LockerCategoryFragment::class.java),
+            FragmentPage(pageCount++,"消息", LockerListCardFragment::class.java),
+            FragmentPage(pageCount++,"密码", LockerListPassFragment::class.java),
+            FragmentPage(pageCount++,"卡片",LockerListCardFragment::class.java),
+            FragmentPage(pageCount++,"分类", LockerCategoryFragment::class.java),
             FragmentPage(pageCount++,"设置",LockerDrawerFragment::class.java),
         )
     }
@@ -144,6 +145,11 @@ class LockerMainActivity : BaseVmActivity<LockerActivityMainBinding, LockerViewM
     override fun initColor() {
         super.initColor()
        // mBinding.drawerNavView.getHeaderView(0).setBackgroundColor(mThemeColor)
+    }
+
+    @Subscribe(threadMode = ThreadMode.MAIN)
+    fun appRecreateEvent(event: AppRecreateEvent) {
+        recreate()
     }
 
     @Subscribe(threadMode = ThreadMode.MAIN)

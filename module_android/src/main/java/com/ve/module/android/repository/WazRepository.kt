@@ -6,6 +6,7 @@ import com.ve.module.android.repository.database.dao.HistoryDao
 import com.ve.module.android.repository.database.entity.SearchHistory
 import com.ve.lib.application.BaseApplication
 import com.ve.lib.common.base.repository.BaseRepository
+
 import com.ve.lib.vutils.LogUtil
 import com.ve.lib.vutils.TimeUtil
 

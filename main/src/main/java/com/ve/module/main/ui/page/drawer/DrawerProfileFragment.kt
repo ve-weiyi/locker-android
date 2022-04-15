@@ -3,7 +3,7 @@ package com.ve.module.main.ui.page.drawer
 import android.content.Intent
 import android.location.*
 import android.os.Bundle
-import com.ve.lib.common.base.view.vmview.BaseVmFragment
+import com.ve.lib.common.base.view.vm.BaseVmFragment
 import com.ve.lib.utils.LocationUtil
 import com.ve.lib.vutils.LogUtil
 import com.ve.module.main.databinding.FragmentDrawerProfileBinding

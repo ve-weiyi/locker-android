@@ -10,6 +10,7 @@ import androidx.core.content.ContextCompat
 import com.ve.lib.utils.ColorUtil
 import com.ve.lib.utils.SettingUtil
 
+
 /**
  * @author chenxz
  * @date 2019/11/24

@@ -46,11 +46,7 @@ class CacheSettingFragment :  BaseSettingFragment(){
                 }, 100)
             }
             else -> {
-                AlertDialog.Builder(mContext)
-                    .setTitle(key)
-                    .setMessage("功能未实现")
-                    .setCancelable(true)
-                    .show()
+                showMsg("功能未实现. key=$key  ")
             }
         }
     }
@@ -59,15 +55,11 @@ class CacheSettingFragment :  BaseSettingFragment(){
         when (preference?.key) {
             SettingConstant.SP_KEY_CLEAR_CACHE -> {
                 CacheDataUtil.clearAllCache(mContext)
-                mContext.showSnackMsg(getString(com.ve.lib.application.R.string.clear_cache_successfully))
+                showMsg(getString(com.ve.lib.application.R.string.clear_cache_successfully))
                 setDefaultText()
             }
             else->{
-                AlertDialog.Builder(mContext)
-                    .setTitle(preference?.title)
-                    .setMessage("${preference?.summary} 功能未实现")
-                    .setCancelable(true)
-                    .show()
+                showMsg("${preference?.title} 功能未实现.key=${preference?.key}")
             }
         }
         return false

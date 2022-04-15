@@ -7,7 +7,7 @@ import com.ve.module.android.databinding.ActivityShareBinding
 import com.ve.module.android.repository.model.Article
 import com.ve.module.android.ui.adapter.ShareAdapter
 import com.ve.module.android.ui.viewmodel.ShareViewModel
-import com.ve.lib.common.base.view.listview.BaseVmListActivity
+import com.ve.lib.common.base.view.list.BaseVmListActivity
 
 class ShareActivity : BaseVmListActivity<ActivityShareBinding, ShareViewModel, Article>(){
 

@@ -51,18 +51,6 @@
                 android:orientation="vertical"
                 android:background="@drawable/shape_round_white">
 
-
-            <com.ve.lib.view.widget.view.HorizontalItemView
-                    android:id="@+id/action_tag"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    app:hIcon="@drawable/ic_night_24dp"
-                    app:hTipVisiblity="false"
-                    app:rightIcon="@color/colorPrimary"
-                    app:paddingLeft="20dp"
-                    app:paddingRight="30dp"
-                    app:tileText="标签管理" />
-
             <com.ve.lib.view.widget.view.HorizontalItemView
                     android:id="@+id/action_folder"
                     android:layout_width="match_parent"
@@ -75,7 +63,7 @@
                     app:tileText="文件夹管理" />
 
             <com.ve.lib.view.widget.view.HorizontalItemView
-                    android:id="@+id/action_type"
+                    android:id="@+id/action_tag"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     app:hIcon="@drawable/ic_night_24dp"
@@ -83,7 +71,8 @@
                     app:rightIcon="@color/colorPrimary"
                     app:paddingLeft="20dp"
                     app:paddingRight="30dp"
-                    app:tileText="类型管理" />
+                    app:tileText="标签管理" />
+
         </LinearLayout>
 
         <LinearLayout

@@ -8,7 +8,7 @@ import com.ve.module.android.databinding.ActivityScoreBinding
 import com.ve.module.android.repository.model.UserScore
 import com.ve.module.android.ui.adapter.ScoreAdapter
 import com.ve.module.android.ui.viewmodel.ScoreViewModel
-import com.ve.lib.common.base.view.listview.BaseVmListActivity
+import com.ve.lib.common.base.view.list.BaseVmListActivity
 
 class ScoreActivity : BaseVmListActivity<ActivityScoreBinding, ScoreViewModel, UserScore>(){
 
@@ -46,7 +46,7 @@ class ScoreActivity : BaseVmListActivity<ActivityScoreBinding, ScoreViewModel, U
 
     }
     override fun initWebData() {
-        showLoading("加载数据中...")
+        showLoading()
         mViewModel.getUserScore(mCurrentPage)
     }
 

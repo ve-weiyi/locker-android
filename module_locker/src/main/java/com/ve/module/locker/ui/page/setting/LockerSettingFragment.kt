@@ -62,11 +62,7 @@ class LockerSettingFragment : BaseSettingFragment() {
                 }, 100)
             }
             else -> {
-                AlertDialog.Builder(mContext)
-                    .setTitle(key)
-                    .setMessage("功能未实现")
-                    .setCancelable(true)
-                    .show()
+                showMsg("功能未实现. key=$key  ")
             }
         }
     }
@@ -88,11 +84,7 @@ class LockerSettingFragment : BaseSettingFragment() {
                 LockerSettingActivity.start(mContext, AboutSettingFragment::class.java.name, "关于")
             }
             else -> {
-                AlertDialog.Builder(mContext)
-                    .setTitle(preference?.title)
-                    .setMessage("功能未实现")
-                    .setCancelable(true)
-                    .show()
+                showMsg("${preference?.title} 功能未实现.key=${preference?.key}")
             }
         }
         return false

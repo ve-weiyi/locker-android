@@ -6,10 +6,10 @@ import android.view.View
 import androidx.appcompat.widget.Toolbar
 import com.ve.module.android.R
 import com.ve.module.android.databinding.ActivityRegisterBinding
-import com.ve.module.android.event.LoginEvent
+import com.ve.lib.common.event.LoginEvent
 import com.ve.module.android.repository.model.LoginData
 import com.ve.module.android.ui.viewmodel.RegisterViewModel
-import com.ve.lib.common.base.view.vmview.BaseVmActivity
+import com.ve.lib.common.base.view.vm.BaseVmActivity
 import com.ve.module.android.config.Constant
 import com.ve.lib.utils.DialogUtil
 import com.ve.lib.utils.PreferenceUtil

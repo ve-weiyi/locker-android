@@ -1,13 +1,16 @@
 package com.ve.module.locker.logic.http.model
 
+import androidx.room.ColumnInfo
+import androidx.room.PrimaryKey
+import org.litepal.crud.LitePalSupport
 import java.io.Serializable
 
 /**
  * @author weiyi
  * @since 2022-04-10
  */
-class PrivacyDetailsCard : Serializable {
-    //(value = "id")
+class PrivacyDetailsCard : LitePalSupport(),Serializable {
+
      val id: Int? = null
 
     //(value = "拥有人")

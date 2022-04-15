@@ -1,20 +1,10 @@
 package com.ve.lib.common.base.adapter
 
-import android.content.Context
-import android.graphics.Canvas
-import android.view.View
-import androidx.recyclerview.widget.RecyclerView
 import androidx.viewbinding.ViewBinding
-import com.chad.library.adapter.base.BaseQuickAdapter
-import com.chad.library.adapter.base.listener.OnItemDragListener
-import com.chad.library.adapter.base.listener.OnItemSwipeListener
-import com.chad.library.adapter.base.listener.OnLoadMoreListener
 import com.chad.library.adapter.base.module.DraggableModule
 import com.chad.library.adapter.base.module.LoadMoreModule
 import com.chad.library.adapter.base.module.UpFetchModule
-import com.ve.lib.common.base.view.listview.ListViewManager
 import com.ve.lib.view.R
-import com.ve.lib.vutils.ToastUtil
 
 abstract class BaseSlideBindingAdapter<T, VB : ViewBinding>(data: MutableList<T>? = null) :
     BaseBindingAdapter<T, VB>(data) , LoadMoreModule, DraggableModule ,UpFetchModule{

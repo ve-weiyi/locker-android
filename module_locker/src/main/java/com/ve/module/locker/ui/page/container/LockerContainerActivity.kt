@@ -4,7 +4,7 @@ import android.content.Context
 import android.content.Intent
 import android.os.Bundle
 import androidx.fragment.app.Fragment
-import com.ve.lib.common.base.view.vmview.BaseActivity
+import com.ve.lib.common.base.view.vm.BaseActivity
 import com.ve.lib.vutils.LogUtil
 import com.ve.module.locker.R
 import com.ve.module.locker.databinding.LockerActivityContainerBinding
@@ -32,10 +32,11 @@ class LockerContainerActivity :BaseActivity<LockerActivityContainerBinding>(){
          * className 请使用Fragment::class.java.name，不要使用 Fragment.javaClass.name
          * ContainerActivity.start(this,title,Fragment::class.java.name, bundle)
          */
+//        @Deprecated("这个方法已废弃，请使用start(this,Fragment,title, bundle)")
         fun start(context: Context, fragmentClassName: String, title: String? = null, fragmentBundle: Bundle? = null) {
             Intent(context, LockerContainerActivity::class.java).run {
                 //启动模式
-                flags=Intent.FLAG_ACTIVITY_SINGLE_TOP
+//                flags=Intent.FLAG_ACTIVITY_SINGLE_TOP
                 putExtra(FRAGMENT_TITLE_KEY, title)
                 putExtra(FRAGMENT_CLASS_NAME_KEY, fragmentClassName)
                 putExtra(FRAGMENT_ARGUMENTS_KEY,fragmentBundle)
@@ -43,11 +44,12 @@ class LockerContainerActivity :BaseActivity<LockerActivityContainerBinding>(){
 //                if (fragmentBundle != null) {
 //                    putExtras(fragmentBundle)
 //                }
+                LogUtil.msg("start to "+fragmentClassName)
                 context.startActivity(this, fragmentBundle)
             }
         }
-        fun <T>start(context: Context, fragmentClass:T, title: String? = null, fragmentBundle: Bundle? = null) {
-            val fragmentClassName=fragmentClass!!::class.java
+        fun start(context: Context, fragmentClass:Class<*>, title: String? = null, fragmentBundle: Bundle? = null) {
+            val fragmentClassName=fragmentClass.name
             Intent(context, LockerContainerActivity::class.java).run {
                 putExtra(FRAGMENT_TITLE_KEY, title)
                 putExtra(FRAGMENT_CLASS_NAME_KEY, fragmentClassName)
@@ -56,6 +58,8 @@ class LockerContainerActivity :BaseActivity<LockerActivityContainerBinding>(){
             }
         }
     }
+
+
 
     lateinit var fragmentTitle: String
     lateinit var fragmentClassName: String

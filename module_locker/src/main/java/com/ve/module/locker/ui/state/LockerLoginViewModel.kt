@@ -3,7 +3,7 @@ package com.ve.module.locker.ui.state
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import com.ve.lib.network.http.exception.ApiException
-import com.ve.module.locker.logic.http.respository.AuthRepository
+import com.ve.module.locker.logic.respository.AuthRepository
 import com.ve.module.locker.logic.http.model.LoginVO
 
 /**
@@ -45,7 +45,7 @@ class LockerLoginViewModel:LockerViewModel() {
             cancel = {
 
             },
-            false
+            showErrorToast = false
         )
 
         //取消操作 即返回的launch对象

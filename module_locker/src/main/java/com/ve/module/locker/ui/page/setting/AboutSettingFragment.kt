@@ -21,7 +21,7 @@ class AboutSettingFragment :  BaseSettingFragment(){
     }
 
     override fun initPreferenceView() {
-
+setDefaultText()
         findPreference<Preference>(SettingConstant.SP_KEY_SCAN_QR_CODE)?.onPreferenceClickListener = this
 
         findPreference<Preference>(SettingConstant.SP_KEY_APP_VERSION)?.onPreferenceClickListener = this
@@ -34,7 +34,7 @@ class AboutSettingFragment :  BaseSettingFragment(){
     }
 
     override fun onSharedPreferenceChanged(sharedPreferences: SharedPreferences?, key: String?) {
-
+        showMsg("功能未实现. key=$key  ")
     }
 
     override fun onPreferenceClick(preference: Preference?): Boolean {
@@ -52,21 +52,13 @@ class AboutSettingFragment :  BaseSettingFragment(){
 
             }
             SettingConstant.SP_KEY_COPYRIGHT -> {
-                AlertDialog.Builder(mContext)
-                    .setTitle(com.ve.lib.application.R.string.copyright)
-                    .setMessage(com.ve.lib.application.R.string.copyright_content)
-                    .setCancelable(true)
-                    .show()
+                showAlertDialog(preference.title, preference.key)
             }
             SettingConstant.SP_KEY_ABOUT_US -> {
                 startActivity(mContext, LockerAboutActivity::class.java)
             }
             else->{
-                AlertDialog.Builder(mContext)
-                    .setTitle(preference?.title)
-                    .setMessage("${preference?.summary} 功能未实现")
-                    .setCancelable(true)
-                    .show()
+                showAlertDialog(preference?.title,preference?.key)
             }
         }
         return false

@@ -2,7 +2,7 @@ package com.ve.module.android.ui.page.setting
 
 import android.os.Bundle
 import com.ve.module.android.databinding.FragmentQrCodeBinding
-import com.ve.lib.common.base.view.vmview.BaseFragment
+import com.ve.lib.common.base.view.vm.BaseFragment
 
 /**
  * @Description hello word!

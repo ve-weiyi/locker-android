@@ -2,7 +2,6 @@ package com.ve.lib.view.widget.preference
 
 
 import android.content.Context
-import android.graphics.Color
 import android.util.AttributeSet
 import androidx.preference.Preference
 import androidx.preference.PreferenceViewHolder
@@ -10,7 +9,6 @@ import androidx.preference.PreferenceViewHolder
 import com.ve.lib.view.R
 import com.ve.lib.utils.SettingUtil
 import com.ve.lib.view.widget.view.CircleView
-import com.ve.lib.vutils.LogUtil
 
 /**
  * @Description hello word!
@@ -32,13 +30,13 @@ class IconPreference(
         super.onBindViewHolder(holder)
         circleImageView = holder.findViewById(R.id.iv_preview) as CircleView
 
-        val color = SettingUtil.getColor()
+        val color = com.ve.lib.utils.SettingUtil.getColor()
         setColor(color)
 
     }
 
     fun setView() {
-        val color = SettingUtil.getColor()
+        val color = com.ve.lib.utils.SettingUtil.getColor()
         setColor(color)
     }
 

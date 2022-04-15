@@ -1,7 +1,7 @@
 package com.ve.music.ui.page.discover
 
 import android.os.Bundle
-import com.ve.lib.common.base.view.vmview.BaseVmFragment
+import com.ve.lib.common.base.view.vm.BaseVmFragment
 import com.ve.music.databinding.DelegateDiscoverBinding
 
 

@@ -2,7 +2,7 @@ package com.ve.module.locker.ui.page.drawer
 
 import android.os.Bundle
 import android.view.View
-import com.ve.lib.common.base.view.vmview.BaseVmFragment
+import com.ve.lib.common.base.view.vm.BaseVmFragment
 import com.ve.module.locker.R
 import com.ve.module.locker.common.config.LockerLifecycle
 import com.ve.module.locker.ui.state.LockerViewModel

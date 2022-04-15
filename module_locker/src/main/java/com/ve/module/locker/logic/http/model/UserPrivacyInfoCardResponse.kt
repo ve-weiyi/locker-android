@@ -1,12 +1,13 @@
 package com.ve.module.locker.logic.http.model
 
+import com.ve.module.locker.logic.database.entity.PrivacyFolder
 import java.io.Serializable
 
 /**
  * 角色
  * vo 后端返回给前端的数据类型
- * @author yezhiqiu
- * @date 2021/08/03
+ * @author weiyi
+ * @date 2022/04/03
  */
 data class UserPrivacyInfoCardResponse(
     //(value = "id", position = 1)
@@ -46,7 +47,7 @@ data class UserPrivacyInfoCardResponse(
 
 
     //(value = "隐私类型")
-    public val privacyType: PrivacyType? = null,
+    public val privacyType: Type? = null,
 
     //(value = "隐私文件夹")
     public val privacyFolder: PrivacyFolder? = null,

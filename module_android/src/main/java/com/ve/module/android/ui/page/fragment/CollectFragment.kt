@@ -8,7 +8,7 @@ import com.ve.module.android.repository.model.Collect
 import com.ve.module.android.ui.adapter.CollectAdapter
 import com.ve.module.android.ui.page.todo.AddTodoFragment
 import com.ve.module.android.ui.viewmodel.WanAndroidViewModel
-import com.ve.lib.common.base.view.listview.BaseVmListFragment
+import com.ve.lib.common.base.view.list.BaseVmListFragment
 import com.ve.lib.vutils.ToastUtil
 import com.ve.module.android.ui.page.activity.ArticleDetailActivity
 

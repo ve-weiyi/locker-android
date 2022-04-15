@@ -4,9 +4,12 @@ import android.content.Context
 import android.content.Intent
 import android.content.SharedPreferences
 import android.os.Bundle
+import androidx.appcompat.app.AlertDialog
 import androidx.preference.Preference
 import androidx.preference.PreferenceFragmentCompat
+import com.ve.lib.utils.DialogUtil
 import com.ve.lib.view.widget.preference.IconPreference
+import com.ve.lib.vutils.ToastUtil
 
 /**
  * @Author  weiyi
@@ -16,16 +19,17 @@ import com.ve.lib.view.widget.preference.IconPreference
 abstract class BaseSettingFragment : PreferenceFragmentCompat(),
     SharedPreferences.OnSharedPreferenceChangeListener, Preference.OnPreferenceClickListener {
 
-    lateinit var mContext: LockerSettingActivity
+    lateinit var mContext: Context
+    lateinit var mSettingActivity: LockerSettingActivity
 
-
-    abstract fun attachPreferenceResource():Int
+    abstract fun attachPreferenceResource(): Int
     abstract fun initPreferenceView()
 
     override fun onCreatePreferences(savedInstanceState: Bundle?, rootKey: String?) {
         setPreferencesFromResource(attachPreferenceResource(), rootKey)
         setHasOptionsMenu(true)
-        mContext=activity as LockerSettingActivity
+        mContext = requireContext()
+        mSettingActivity = activity as LockerSettingActivity
 
         initPreferenceView()
     }
@@ -40,8 +44,37 @@ abstract class BaseSettingFragment : PreferenceFragmentCompat(),
         preferenceScreen.sharedPreferences.unregisterOnSharedPreferenceChangeListener(this)
     }
 
-    fun startActivity(context: Context,activityClass: Class<*>){
-        val intent = Intent(context,activityClass)
+
+    /**
+     * 显示加载
+     */
+    fun showAlertDialog(title: CharSequence?, content: String?) {
+        AlertDialog.Builder(mContext)
+            .setTitle(title)
+            .setMessage(content)
+            .setCancelable(true)
+            .show()
+    }
+
+    /**
+     * 显示信息
+     */
+    fun showMsg(msg: String) {
+        ToastUtil.show(msg)
+    }
+
+    /**
+     * 显示错误信息
+     */
+    fun showError(errorMsg: String) {
+        ToastUtil.show(errorMsg)
+    }
+
+    fun startActivity(context: Context, activityClass: Class<*>, bundle: Bundle? = null) {
+        val intent = Intent(context, activityClass)
+        if (bundle != null) {
+            intent.putExtras(bundle)
+        }
         context.startActivity(intent)
     }
 }

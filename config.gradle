@@ -31,7 +31,7 @@ ext {
             "recyclerview"     : "androidx.recyclerview:recyclerview:1.2.1",
             "preference"       : "androidx.preference:preference-ktx:1.1.1",
             "swiperefreshlayou": "androidx.swiperefreshlayout:swiperefreshlayout:1.1.0",
-
+            //google 原生数据库
             "roomRuntime"      : "androidx.room:room-runtime:${versions.room}",
             // optional - Kotlin Extensions and Coroutines support for Room
             "roomTesting"      : "androidx.room:room-ktx:${versions.room}",
@@ -92,6 +92,8 @@ ext {
             "VerticalTabLayout": "q.rorbin:VerticalTabLayout:1.2.7",
             "MagicIndicator"   : "com.github.hackware1993:MagicIndicator:1.7.0",// for androidx
 
+            //guolin 写的数据库
+            "LitePal"          : 'org.litepal.guolindev:core:3.2.3',
             //沉浸状态栏基础依赖包，必须要依赖
             "immersionbar"     : "com.gyf.immersionbar:immersionbar:3.0.0",
             //图片选择框架

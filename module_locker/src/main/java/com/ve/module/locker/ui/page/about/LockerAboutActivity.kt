@@ -4,7 +4,7 @@ import android.graphics.drawable.GradientDrawable
 import android.os.Bundle
 import android.text.Html
 import android.text.method.LinkMovementMethod
-import com.ve.lib.common.base.view.vmview.BaseActivity
+import com.ve.lib.common.base.view.vm.BaseActivity
 import com.ve.lib.utils.SettingUtil
 import com.ve.module.locker.R
 import com.ve.module.locker.databinding.LockerActivityAboutBinding

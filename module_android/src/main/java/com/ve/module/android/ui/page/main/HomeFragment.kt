@@ -10,7 +10,7 @@ import com.ve.module.android.ui.adapter.ArticleAdapter
 import com.ve.module.android.ui.adapter.BannerImageTitleNumAdapter
 import com.ve.module.android.ui.page.activity.ArticleDetailActivity
 import com.ve.module.android.ui.viewmodel.HomeViewModel
-import com.ve.lib.common.base.view.listview.BaseVmListFragment
+import com.ve.lib.common.base.view.list.BaseVmListFragment
 import com.ve.lib.vutils.DisplayUtil
 import com.ve.lib.vutils.ToastUtil
 import com.youth.banner.indicator.CircleIndicator

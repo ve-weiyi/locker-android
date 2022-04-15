@@ -1,0 +1,374 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+        xmlns:app="http://schemas.android.com/apk/res-auto"
+        xmlns:tools="http://schemas.android.com/tools">
+
+    <androidx.core.widget.NestedScrollView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content">
+
+        <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:background="@color/grey_background"
+                android:orientation="vertical">
+
+            <RelativeLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="120dp"
+                    android:layout_margin="@dimen/dp_10"
+                    android:background="@drawable/shape_round_white"
+                    android:orientation="horizontal">
+
+                <TextView
+                        android:id="@+id/tv_privacy_name"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="@dimen/dp_30"
+                        android:layout_centerHorizontal="true"
+                        android:text="我的QQ账号" />
+
+                <TextView
+                        android:id="@+id/tv_privacy_desc"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="描述：床前明月光"
+                        android:layout_centerHorizontal="true"
+                        android:layout_below="@id/tv_privacy_name" />
+
+
+                <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:orientation="horizontal"
+                        android:layout_below="@id/tv_privacy_desc"
+                        android:layout_centerHorizontal="true"
+                        android:padding="@dimen/dp_5">
+
+                    <TextView
+                            android:layout_weight="1"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_gravity="start"
+                            android:gravity="center"
+                            android:text="创建时间:" />
+
+                    <TextView
+                            android:layout_weight="1"
+                            android:id="@+id/iv_privacy_create_time"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_gravity="start"
+                            android:gravity="center"
+                            android:text="2022-4-12" />
+
+                    <TextView
+                            android:layout_weight="1"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:gravity="center"
+                            android:text="更新时间:" />
+
+                    <TextView
+                            android:layout_weight="1"
+                            android:id="@+id/iv_privacy_update_time"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_gravity="start"
+                            android:gravity="center"
+                            android:text="2022-4-12" />
+
+                </LinearLayout>
+            </RelativeLayout>
+
+            <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_margin="@dimen/dp_10"
+                    android:background="@drawable/shape_round_white"
+                    android:orientation="vertical">
+
+                <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="20dp"
+                        android:layout_marginStart="@dimen/dp_10"
+                        android:text="基本信息"
+                        android:textColor="@color/black"
+                        android:textSize="17sp"
+                        android:textStyle="bold" />
+
+                <TextView
+                        android:id="@+id/tv_privacy_type"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center"
+                        android:text="类型" />
+
+                <TextView
+                        android:id="@+id/tv_privacy_folder"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center"
+                        android:text="文件夹" />
+
+
+                <TextView
+                        android:id="@+id/tv_privacy_tag"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center"
+                        android:text="标签" />
+
+            </LinearLayout>
+
+            <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_margin="@dimen/dp_10"
+                    android:background="@drawable/shape_round_white"
+                    android:orientation="vertical">
+
+                <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="20dp"
+                        android:layout_marginStart="@dimen/dp_10"
+                        android:text="详细信息"
+                        android:textColor="@color/black"
+                        android:textSize="17sp"
+                        android:textStyle="bold" />
+                
+                <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:padding="@dimen/dp_10"
+                        android:orientation="vertical">
+
+                    <RelativeLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content">
+
+                        <TextView
+                                android:id="@+id/tv_item_account"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:textSize="20sp"
+                                android:textStyle="bold"
+                                android:textColor="@color/blue"
+                                android:text="账号" />
+
+                        <LinearLayout
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:layout_below="@id/tv_item_account"
+                                android:gravity="end"
+
+                                >
+
+                            <EditText
+                                    android:background="@drawable/shape_round_grey"
+                                    android:layout_weight="1"
+                                    android:id="@+id/et_detail_account"
+                                    android:layout_width="0dp"
+                                    android:layout_height="wrap_content"
+                                    android:padding="@dimen/dp_10"
+                                    android:layout_gravity="center_vertical"
+                                    android:text="791422171"
+                                    />
+
+                            <ImageView
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:layout_marginHorizontal="@dimen/dp_10"
+                                    android:layout_gravity="center_vertical"
+                                    android:src="@drawable/ic_baseline_eye_24" />
+
+                            <TextView
+                                    android:id="@+id/item_account"
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:layout_gravity="center_vertical"
+                                    android:textSize="20sp"
+                                    android:textStyle="bold"
+                                    android:textColor="@color/blue"
+                                    android:text="复制" />
+                        </LinearLayout>
+                    </RelativeLayout>
+
+
+                    <RelativeLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content">
+
+                        <TextView
+                                android:id="@+id/tv_item_account1"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:textSize="20sp"
+                                android:textStyle="bold"
+                                android:textColor="@color/blue"
+                                android:text="密码" />
+
+                        <LinearLayout
+                                android:id="@+id/password_layout"
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:layout_below="@id/tv_item_account1"
+                                android:gravity="end"
+
+                                >
+
+                            <EditText
+                                    android:background="@drawable/shape_round_grey"
+                                    android:layout_weight="1"
+                                    android:id="@+id/et_detail_password"
+                                    android:layout_width="0dp"
+                                    android:layout_height="wrap_content"
+                                    android:padding="@dimen/dp_10"
+                                    android:layout_gravity="center_vertical"
+                                    android:text="791422171" />
+
+                            <ImageView
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:layout_marginHorizontal="@dimen/dp_10"
+                                    android:layout_gravity="center_vertical"
+                                    android:src="@drawable/ic_baseline_eye_24" />
+
+                            <TextView
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:layout_gravity="center_vertical"
+                                    android:textSize="20sp"
+                                    android:textStyle="bold"
+                                    android:textColor="@color/blue"
+                                    android:text="复制" />
+                        </LinearLayout>
+
+                    </RelativeLayout>
+
+                    <LinearLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:orientation="vertical"
+                            >
+
+                        <TextView
+                                android:id="@+id/tv_item_url"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:textSize="20sp"
+                                android:textStyle="bold"
+                                android:textColor="@color/blue"
+                                android:text="密码" />
+
+                        <LinearLayout
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:layout_below="@id/tv_item_account1"
+                                android:gravity="end"
+
+                                >
+
+                            <EditText
+                                    android:background="@drawable/shape_round_grey"
+                                    android:layout_weight="1"
+                                    android:layout_width="0dp"
+                                    android:layout_height="wrap_content"
+                                    android:padding="@dimen/dp_10"
+                                    android:layout_gravity="center_vertical"
+                                    android:text="791422171" />
+
+                            <ImageView
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:layout_marginHorizontal="@dimen/dp_10"
+                                    android:layout_gravity="center_vertical"
+                                    android:src="@drawable/ic_baseline_eye_24" />
+
+                            <TextView
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:layout_gravity="center_vertical"
+                                    android:textSize="20sp"
+                                    android:textStyle="bold"
+                                    android:textColor="@color/blue"
+                                    android:text="复制" />
+                        </LinearLayout>
+
+                    </LinearLayout>
+
+                    <LinearLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:orientation="vertical"
+                            android:paddingTop="@dimen/dp_20">
+
+                        <TextView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:textSize="@dimen/dp_20"
+                                android:textStyle="bold"
+                                android:textColor="@color/blue"
+                                android:text="电话" />
+
+                        <EditText
+                                android:id="@+id/et_detail_phone"
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:paddingVertical="@dimen/dp_10"
+                                android:background="@drawable/shape_round_grey"
+                                android:text="15623356029" />
+                    </LinearLayout>
+
+                    <LinearLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:orientation="vertical"
+                            android:paddingTop="@dimen/dp_20">
+
+                        <TextView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:textSize="@dimen/dp_20"
+                                android:textStyle="bold"
+                                android:textColor="@color/blue"
+                                android:text="所属app" />
+
+                        <EditText
+                                android:id="@+id/et_detail_app"
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:paddingVertical="@dimen/dp_10"
+                                android:background="@drawable/shape_round_grey"
+                                android:text="locker" />
+                    </LinearLayout>
+
+                    <LinearLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:orientation="vertical"
+                            android:paddingTop="@dimen/dp_20">
+
+                        <TextView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:textSize="@dimen/dp_20"
+                                android:textStyle="bold"
+                                android:textColor="@color/blue"
+                                android:text="备注" />
+
+                        <EditText
+                                android:id="@+id/et_detail_remark"
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:paddingVertical="@dimen/dp_10"
+                                android:background="@drawable/shape_round_grey"
+                                android:text="@string/locker_about_content" />
+                    </LinearLayout>
+                </LinearLayout>
+            </LinearLayout>
+        </LinearLayout>
+    </androidx.core.widget.NestedScrollView>
+</layout>

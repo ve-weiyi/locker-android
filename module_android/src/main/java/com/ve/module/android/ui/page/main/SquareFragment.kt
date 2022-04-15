@@ -8,7 +8,7 @@ import com.ve.module.android.repository.model.Article
 import com.ve.module.android.ui.page.activity.ArticleDetailActivity
 import com.ve.module.android.ui.adapter.ArticleAdapter
 import com.ve.module.android.ui.viewmodel.SquareViewModel
-import com.ve.lib.common.base.view.listview.BaseVmListFragment
+import com.ve.lib.common.base.view.list.BaseVmListFragment
 
 
 /**

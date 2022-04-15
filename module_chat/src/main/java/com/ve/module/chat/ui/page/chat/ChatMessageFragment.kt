@@ -1,7 +1,7 @@
 package com.ve.module.chat.ui.page.chat
 
 import android.os.Bundle
-import com.ve.lib.common.base.view.vmview.BaseVmFragment
+import com.ve.lib.common.base.view.vm.BaseVmFragment
 import com.ve.module.chat.databinding.FragmentImchatMessageBinding
 import com.ve.module.chat.ui.state.ImChatViewModel
 

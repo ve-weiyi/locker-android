@@ -10,10 +10,15 @@ import kotlinx.coroutines.withContext
  * @Author  weiyi
  * @Date 2022/4/13
  * @Description  current project locker-android
+ *
+ * Repository 获取网络数据
+ * Dao 处理本地数据库数据
  */
 open class BaseRepository {
 
-
+    /**
+     * 在仓库层处理 bean
+     */
     suspend fun <T> apiCall(call: suspend () -> BaseResponse<T>): T? {
         return withContext(Dispatchers.IO) {
             val response = call.invoke()
@@ -31,5 +36,7 @@ open class BaseRepository {
             }
         }
     }
+
+
 
 }

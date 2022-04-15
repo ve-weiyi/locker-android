@@ -11,7 +11,7 @@ import android.widget.Toast
 import androidx.core.view.GravityCompat
 import androidx.drawerlayout.widget.DrawerLayout
 import androidx.lifecycle.Observer
-import com.ve.lib.common.base.view.vmview.BaseVmActivity
+import com.ve.lib.common.base.view.vm.BaseVmActivity
 import com.ve.lib.vutils.LogUtil
 import com.ve.module.sunny.R
 import com.ve.module.sunny.databinding.ActivityWeatherBinding

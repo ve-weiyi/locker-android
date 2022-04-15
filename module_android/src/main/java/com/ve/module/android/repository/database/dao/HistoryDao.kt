@@ -7,11 +7,24 @@ import kotlinx.coroutines.flow.Flow
 import kotlinx.coroutines.flow.distinctUntilChanged
 
 /**
- * Created by yechaoa on 2020/2/4.
- * Describe :
+ * @Author  weiyi
+ * @Date 2022/4/14
+ * @Description  current project locker-android
+ * 用于展示 Room 的一些操作
+ *
+ * 有小伙伴说看不懂 LiveData、Flow、Channel，跟我走
+ * https://juejin.cn/post/7077149853876224013
+ *
+ * 实战 | 在 Room 中使用 Flow
+ * https://www.jianshu.com/p/cc0467ee12e5
  */
 @Dao
 interface HistoryDao {
+
+    /**
+     * Flow的作用,相当于liveData
+     * 当数据库中的数据有变化时，可以通知到我们: 比如新增，删除，或者是更新了数据。
+     */
 
     /**
      * @Insert：增
@@ -19,8 +32,6 @@ interface HistoryDao {
      * @Update：改
      * @Query：查，此注解需要传入SQL语句作为参数，SQL语句用来限定查询的条件，注意如果是按条件删除数据等操作，也可以使用此注解来修饰。
      */
-//Kotlin协程中使用挂起函数（Suspend函数）可以异步地返回单个计算结果，但是如果有多个计算结果希望通过协程的方式异步返回，这时可以使用Flow
-    //按类型 查询所有搜索历史，时间倒序 type类型 自己定
     @Query("SELECT * FROM t_history WHERE type=:type ORDER BY insert_time DESC")
     fun getAll(type: Int = 1): Flow<List<SearchHistory>>
 
@@ -36,7 +47,10 @@ interface HistoryDao {
     @Query("SELECT id FROM t_history WHERE name = :name")
     fun queryIdByName(name: String): Int?
 
-    //添加一条搜索历史  重复则替换@Insert(onConflict = OnConflictStrategy.REPLACE)
+    /**
+     * 如果已存在主键相同的记录，则会报错。
+     * 重复则替换请使用@Insert(onConflict = OnConflictStrategy.REPLACE)
+     */
     @Insert
     fun insert(history: SearchHistory)
 

@@ -33,7 +33,7 @@ android {
             annotationProcessorOptions {
                 arguments += [
                         "AROUTER_MODULE_NAME"  : project.getName(),
-                        "room.schemaLocation"  : "$projectDir/schemas".toString(),
+                        "room.schemaLocation"  : "$projectDir/assets/schemas".toString(),
                         "room.incremental"     : "true",
                         "room.expandProjection": "true"]
             }
@@ -98,7 +98,8 @@ dependencies {
     //    依赖公用模块
     api project(':lib_common')
     kapt rootProject.ext.libARouterCompiler
-
+    //注解 room数据库
+    kapt rootProject.ext.annotationProcessorLibs
 
 }
 

@@ -9,7 +9,7 @@ import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 
 import com.gyf.immersionbar.ImmersionBar;
-import com.ve.lib.common.base.view.vmview.BaseActivity;
+import com.ve.lib.common.base.view.vm.BaseActivity;
 import com.ve.lib.common.config.AppConfig;
 import com.ve.module.games.R;
 import com.ve.module.games.aircraftbattle.common.GlobalConstant;

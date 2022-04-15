@@ -12,8 +12,8 @@ import com.google.android.material.navigation.NavigationView
 import com.ve.module.android.R
 import com.ve.module.android.config.Constant
 import com.ve.module.android.databinding.WazFragmentDrawerBinding
-import com.ve.module.android.event.AppRecreateEvent
-import com.ve.module.android.event.LoginEvent
+import com.ve.lib.common.event.AppRecreateEvent
+import com.ve.lib.common.event.LoginEvent
 import com.ve.module.android.repository.model.UserInfoBody
 import com.ve.module.android.ui.page.activity.CommonActivity
 import com.ve.module.android.ui.page.activity.RankActivity
@@ -22,7 +22,7 @@ import com.ve.module.android.ui.page.activity.ShareActivity
 import com.ve.module.android.ui.page.setting.SettingsActivity
 import com.ve.module.android.ui.page.todo.TodoActivity
 import com.ve.module.android.ui.viewmodel.WanAndroidViewModel
-import com.ve.lib.common.base.view.vmview.BaseVmFragment
+import com.ve.lib.common.base.view.vm.BaseVmFragment
 import com.ve.lib.utils.DialogUtil
 import com.ve.lib.utils.PreferenceUtil
 import com.ve.lib.utils.SettingUtil
@@ -95,7 +95,7 @@ class UserFragment : BaseVmFragment<WazFragmentDrawerBinding, WanAndroidViewMode
         nav_header_icon?.setImageDrawable(requireActivity().getDrawable(R.drawable.tiger64))
 
         nav_username?.run {
-            text = if (!isLogin) getString(R.string.go_login) else username
+            text = if (!isLogin) "去登录" else username
             setOnClickListener {
                 LogUtil.e(mViewName+"go login")
                 if (!isLogin) {
@@ -142,7 +142,7 @@ class UserFragment : BaseVmFragment<WazFragmentDrawerBinding, WanAndroidViewMode
                 // CookieManager().clearAllCookies()
                 PreferenceUtil.clearPreference()
                 uiThread {
-                    showMsg(resources.getString(R.string.logout_success))
+                    showMsg("登录成功")
                     username = nav_username?.text.toString().trim()
                     isLogin = false
                     EventBus.getDefault().post(LoginEvent(false))
@@ -161,7 +161,7 @@ class UserFragment : BaseVmFragment<WazFragmentDrawerBinding, WanAndroidViewMode
             mViewModel.getUserInfo()
         } else {
             // 退出登录事件，重置用户信息
-            nav_username?.text = resources.getString(R.string.go_login)
+            nav_username?.text = "去登录"
             mBinding.drawerNavView.menu.findItem(R.id.nav_logout).isVisible = false
             nav_user_id?.text = "----"
             nav_user_grade?.text = "--"
@@ -221,7 +221,7 @@ class UserFragment : BaseVmFragment<WazFragmentDrawerBinding, WanAndroidViewMode
      * Logout
      */
     private fun logout() {
-        DialogUtil.getConfirmDialog(requireContext(), resources.getString(R.string.confirm_logout),
+        DialogUtil.getConfirmDialog(requireContext(),"正在登录",
             DialogInterface.OnClickListener { _, _ ->
                 mViewModel.userLogout()
             }).show()

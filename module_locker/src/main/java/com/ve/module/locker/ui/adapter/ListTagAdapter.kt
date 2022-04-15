@@ -1,11 +1,10 @@
 package com.ve.module.locker.ui.adapter
 
-import com.ve.lib.common.base.adapter.BaseBindingAdapter
 import com.ve.lib.common.base.adapter.BaseSlideBindingAdapter
 import com.ve.lib.common.base.adapter.VBViewHolder
 import com.ve.module.locker.R
 import com.ve.module.locker.databinding.LockerItemSimpleListBinding
-import com.ve.module.locker.logic.http.model.PrivacyTag
+import com.ve.module.locker.logic.database.entity.PrivacyTag
 
 
 /**

@@ -10,7 +10,7 @@ import androidx.appcompat.app.AlertDialog
 import androidx.preference.Preference
 import androidx.preference.PreferenceFragmentCompat
 import com.afollestad.materialdialogs.color.ColorChooserDialog
-import com.ve.module.android.R
+import com.ve.lib.application.R
 import com.ve.module.android.ui.page.activity.ArticleDetailActivity
 import com.ve.module.android.ui.page.activity.CommonActivity
 import com.ve.module.android.ui.page.fragment.AboutFragment
@@ -41,7 +41,7 @@ class SettingsFragment : PreferenceFragmentCompat(),
     }
 
     override fun onCreatePreferences(savedInstanceState: Bundle?, rootKey: String?) {
-        setPreferencesFromResource(R.xml.pref_settings, rootKey)
+        setPreferencesFromResource(com.ve.module.android.R.xml.pref_settings, rootKey)
 
         setHasOptionsMenu(true)
         context = activity as SettingsActivity

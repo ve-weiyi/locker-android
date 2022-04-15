@@ -7,7 +7,7 @@ import android.widget.Toast
 import androidx.core.view.GravityCompat
 import androidx.core.widget.addTextChangedListener
 import androidx.recyclerview.widget.LinearLayoutManager
-import com.ve.lib.common.base.view.vmview.BaseVmFragment
+import com.ve.lib.common.base.view.vm.BaseVmFragment
 import com.ve.lib.vutils.LogUtil
 import com.ve.module.sunny.SunnyActivity
 import com.ve.module.sunny.databinding.FragmentPlaceBinding

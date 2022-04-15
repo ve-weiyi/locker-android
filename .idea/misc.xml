@@ -23,6 +23,9 @@
         <entry key="lib_application/src/main/res/drawable/ic_search_white_24dp.xml" value="0.143" />
         <entry key="lib_application/src/main/res/drawable/ic_share_white_24dp.xml" value="0.138" />
         <entry key="lib_application/src/main/res/drawable/shape_eaeaea_oval.xml" value="0.1255" />
+        <entry key="lib_application/src/main/res/drawable/shape_oval_blue.xml" value="0.1335" />
+        <entry key="lib_application/src/main/res/drawable/shape_oval_green.xml" value="0.1335" />
+        <entry key="lib_application/src/main/res/drawable/shape_oval_red.xml" value="0.1335" />
         <entry key="lib_application/src/main/res/mipmap-anydpi-v26/ic_launcher.xml" value="0.1475" />
         <entry key="lib_common/src/main/res/drawable-v21/ic_action_browser.xml" value="0.156" />
         <entry key="lib_common/src/main/res/drawable-v21/ic_action_share.xml" value="0.156" />
@@ -41,6 +44,7 @@
         <entry key="lib_common/src/main/res/drawable/bg_upgrade_bottom.xml" value="0.1" />
         <entry key="lib_common/src/main/res/drawable/ic_launcher_background.xml" value="0.1" />
         <entry key="lib_common/src/main/res/layout-v21/captcha_view.xml" value="0.19429347826086957" />
+        <entry key="lib_common/src/main/res/layout-v21/item_sticky_header.xml" value="0.19021739130434784" />
         <entry key="lib_common/src/main/res/layout/activity_agent_web.xml" value="0.1" />
         <entry key="lib_common/src/main/res/layout/agentweb_error_page.xml" value="0.11865942028985507" />
         <entry key="lib_common/src/main/res/layout/core_toolbar.xml" value="0.15425531914893617" />
@@ -280,6 +284,7 @@
         <entry key="module_locker/src/main/res/layout/item_chat_img_send.xml" value="0.2526041666666667" />
         <entry key="module_locker/src/main/res/layout/item_chat_option.xml" value="0.2526041666666667" />
         <entry key="module_locker/src/main/res/layout/item_radio_program.xml" value="0.2526041666666667" />
+        <entry key="module_locker/src/main/res/layout/item_sticky_header.xml" value="0.19021739130434784" />
         <entry key="module_locker/src/main/res/layout/locker_activity_about.xml" value="0.12590579710144928" />
         <entry key="module_locker/src/main/res/layout/locker_activity_container.xml" value="0.16337386018237082" />
         <entry key="module_locker/src/main/res/layout/locker_activity_container_web.xml" value="0.1" />
@@ -288,28 +293,36 @@
         <entry key="module_locker/src/main/res/layout/locker_activity_main.xml" value="0.1" />
         <entry key="module_locker/src/main/res/layout/locker_activity_phone_login.xml" value="0.165" />
         <entry key="module_locker/src/main/res/layout/locker_activity_privacy_details.xml" value="0.22418478260869565" />
-        <entry key="module_locker/src/main/res/layout/locker_activity_privacy_info.xml" value="0.17798913043478262" />
+        <entry key="module_locker/src/main/res/layout/locker_activity_privacy_info.xml" value="0.25" />
         <entry key="module_locker/src/main/res/layout/locker_activity_register.xml" value="0.335" />
         <entry key="module_locker/src/main/res/layout/locker_activity_setting.xml" value="0.19293478260869565" />
         <entry key="module_locker/src/main/res/layout/locker_activity_splash.xml" value="0.24895833333333334" />
         <entry key="module_locker/src/main/res/layout/locker_container.xml" value="0.24947916666666667" />
+        <entry key="module_locker/src/main/res/layout/locker_fragment_add_card.xml" value="0.25" />
         <entry key="module_locker/src/main/res/layout/locker_fragment_card_details.xml" value="0.18489583333333334" />
+        <entry key="module_locker/src/main/res/layout/locker_fragment_card_edit.xml" value="0.25" />
+        <entry key="module_locker/src/main/res/layout/locker_fragment_card_see.xml" value="0.25" />
         <entry key="module_locker/src/main/res/layout/locker_fragment_category.xml" value="0.1" />
-        <entry key="module_locker/src/main/res/layout/locker_fragment_details_card.xml" value="0.17798913043478262" />
+        <entry key="module_locker/src/main/res/layout/locker_fragment_details_card.xml" value="0.335" />
         <entry key="module_locker/src/main/res/layout/locker_fragment_details_folder.xml" value="0.16337386018237082" />
-        <entry key="module_locker/src/main/res/layout/locker_fragment_details_pass.xml" value="0.125" />
+        <entry key="module_locker/src/main/res/layout/locker_fragment_details_pass.xml" value="0.25" />
         <entry key="module_locker/src/main/res/layout/locker_fragment_details_tag.xml" value="0.16337386018237082" />
         <entry key="module_locker/src/main/res/layout/locker_fragment_details_type.xml" value="0.16337386018237082" />
         <entry key="module_locker/src/main/res/layout/locker_fragment_drawer.xml" value="0.165" />
-        <entry key="module_locker/src/main/res/layout/locker_fragment_drawer_action.xml" value="0.25" />
+        <entry key="module_locker/src/main/res/layout/locker_fragment_drawer_action.xml" value="0.1" />
         <entry key="module_locker/src/main/res/layout/locker_fragment_drawer_header.xml" value="0.21510416666666668" />
         <entry key="module_locker/src/main/res/layout/locker_fragment_drawer_profile.xml" value="0.21510416666666668" />
+        <entry key="module_locker/src/main/res/layout/locker_fragment_list_card.xml" value="0.1381340579710145" />
+        <entry key="module_locker/src/main/res/layout/locker_fragment_list_category.xml" value="0.19021739130434784" />
+        <entry key="module_locker/src/main/res/layout/locker_fragment_list_pass.xml" value="0.165" />
         <entry key="module_locker/src/main/res/layout/locker_fragment_message.xml" value="0.2526041666666667" />
         <entry key="module_locker/src/main/res/layout/locker_fragment_pass_details.xml" value="0.18489583333333334" />
+        <entry key="module_locker/src/main/res/layout/locker_fragment_pass_edit.xml" value="0.19021739130434784" />
+        <entry key="module_locker/src/main/res/layout/locker_fragment_pass_see.xml" value="0.19021739130434784" />
         <entry key="module_locker/src/main/res/layout/locker_fragment_privacy_account.xml" value="0.19895833333333332" />
         <entry key="module_locker/src/main/res/layout/locker_fragment_privacy_card.xml" value="0.2526041666666667" />
         <entry key="module_locker/src/main/res/layout/locker_fragment_qr_code.xml" value="0.16337386018237082" />
-        <entry key="module_locker/src/main/res/layout/locker_fragment_refresh_layout.xml" value="0.2526041666666667" />
+        <entry key="module_locker/src/main/res/layout/locker_fragment_refresh_layout.xml" value="0.1" />
         <entry key="module_locker/src/main/res/layout/locker_fragment_tag.xml" value="0.16337386018237082" />
         <entry key="module_locker/src/main/res/layout/locker_item_category.xml" value="0.2526041666666667" />
         <entry key="module_locker/src/main/res/layout/locker_item_folder.xml" value="0.17798913043478262" />
@@ -321,12 +334,19 @@
         <entry key="module_locker/src/main/res/layout/locker_item_tag.xml" value="0.17798913043478262" />
         <entry key="module_locker/src/main/res/layout/locker_item_tag_test.xml" value="0.25" />
         <entry key="module_locker/src/main/res/layout/locker_item_type.xml" value="0.17798913043478262" />
+        <entry key="module_locker/src/main/res/layout/locker_layout_details_card.xml" value="0.165" />
         <entry key="module_locker/src/main/res/layout/locker_layout_drawer_userinfo.xml" value="0.25" />
+        <entry key="module_locker/src/main/res/layout/locker_layout_list_category.xml" value="0.1381340579710145" />
         <entry key="module_locker/src/main/res/layout/locker_layout_list_tag.xml" value="0.25" />
+        <entry key="module_locker/src/main/res/layout/locker_layout_privacy_header.xml" value="0.125" />
+        <entry key="module_locker/src/main/res/layout/locker_layout_privacy_info.xml" value="0.19021739130434784" />
         <entry key="module_locker/src/main/res/layout/locker_layout_tag_details.xml" value="0.17798913043478262" />
         <entry key="module_locker/src/main/res/layout/locker_toolbar.xml" value="0.1111111111111111" />
         <entry key="module_locker/src/main/res/menu/bottom_navigation_main.xml" value="0.24947916666666667" />
-        <entry key="module_locker/src/main/res/menu/locker_bottom_navigation.xml" value="0.1" />
+        <entry key="module_locker/src/main/res/menu/locker_bottom_navigation.xml" value="0.25" />
+        <entry key="module_locker/src/main/res/menu/locker_list_edit.xml" value="0.26510416666666664" />
+        <entry key="module_locker/src/main/res/menu/locker_menu_swap.xml" value="0.26510416666666664" />
+        <entry key="module_locker/src/main/res/menu/locker_privacy_edit.xml" value="0.165625" />
         <entry key="module_locker/src/main/res/menu/menu_main.xml" value="0.24947916666666667" />
         <entry key="module_locker/src/main/res/mipmap-anydpi-v26/ic_launcher_locker.xml" value="0.1" />
         <entry key="module_locker/src/main/res/xml/locker_pref_about.xml" value="0.25" />

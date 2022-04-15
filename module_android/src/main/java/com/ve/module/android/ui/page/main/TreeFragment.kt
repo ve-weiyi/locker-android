@@ -6,7 +6,7 @@ import com.ve.module.android.databinding.FragmentRefreshLayoutBinding
 import com.ve.module.android.repository.model.Tree
 import com.ve.module.android.ui.adapter.KnowledgeTreeAdapter
 import com.ve.module.android.ui.viewmodel.TreeViewModel
-import com.ve.lib.common.base.view.listview.BaseVmListFragment
+import com.ve.lib.common.base.view.list.BaseVmListFragment
 
 /**
  * @Description 6.体系

@@ -4,7 +4,7 @@ package com.ve.lib.common.exception;
 /**
  * 业务异常
  *
- * @author yezhiqiu
+ * @author weiyi
  * @date 2021/07/27
  */
 

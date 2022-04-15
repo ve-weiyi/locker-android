@@ -14,11 +14,11 @@ import com.ve.module.android.ui.page.activity.CommonActivity
 import com.ve.module.android.ui.viewmodel.TodoViewModel
 import com.ve.lib.view.widget.layout.SwipeItemLayout
 import com.ve.lib.application.BaseApplication
-import com.ve.lib.common.base.view.listview.BaseVmListFragment
+import com.ve.lib.common.base.view.list.BaseVmListFragment
 import com.ve.lib.common.event.RefreshTodoEvent
 import com.ve.lib.common.event.TodoEvent
 import com.ve.lib.common.event.TodoTypeEvent
-import com.ve.lib.common.base.view.listview.ListViewManager
+import com.ve.lib.common.base.view.list.ListViewManager
 import com.ve.lib.network.http.util.NetWorkUtil
 import com.ve.lib.utils.DialogUtil
 import com.ve.lib.vutils.LogUtil

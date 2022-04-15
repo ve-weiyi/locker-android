@@ -2,7 +2,7 @@ package com.ve.module.locker.ui.page.setting
 
 import android.os.Bundle
 
-import com.ve.lib.common.base.view.vmview.BaseFragment
+import com.ve.lib.common.base.view.vm.BaseFragment
 import com.ve.module.locker.databinding.LockerFragmentQrCodeBinding
 
 /**

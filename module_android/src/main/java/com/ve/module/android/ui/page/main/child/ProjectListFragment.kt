@@ -10,7 +10,7 @@ import com.ve.module.android.repository.model.Article
 import com.ve.module.android.ui.page.activity.ArticleDetailActivity
 import com.ve.module.android.ui.adapter.ProjectAdapter
 import com.ve.module.android.ui.viewmodel.ProjectViewModel
-import com.ve.lib.common.base.view.listview.BaseVmListFragment
+import com.ve.lib.common.base.view.list.BaseVmListFragment
 
 
 /**

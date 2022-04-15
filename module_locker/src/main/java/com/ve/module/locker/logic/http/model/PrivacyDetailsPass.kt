@@ -1,5 +1,8 @@
 package com.ve.module.locker.logic.http.model
 
+import androidx.room.ColumnInfo
+import androidx.room.PrimaryKey
+import org.litepal.crud.LitePalSupport
 import java.io.Serializable
 
 /**
@@ -11,7 +14,8 @@ import java.io.Serializable
  * @author weiyi
  * @since 2022-04-10
  */
-data class PrivacyDetailsPass(//(value = "id")
+data class PrivacyDetailsPass(
+
     var id: Int? = null,
 
     //(value = "登录账号")
@@ -33,7 +37,7 @@ data class PrivacyDetailsPass(//(value = "id")
     var remark: String? = null,
 
     //(value = "是否加密")
-    var enableEncrypt: Int? = null,) : Serializable {
+    var enableEncrypt: Int? = null,) : LitePalSupport(),Serializable {
     
 
     companion object {

@@ -1,8 +1,10 @@
 package com.ve.module.locker.ui.state
 
 import androidx.lifecycle.MutableLiveData
-import com.ve.module.locker.logic.http.respository.PrivacyPassRepository
-import com.ve.module.locker.logic.http.model.*
+import com.ve.module.locker.logic.database.dao.PrivacyInfoDao
+import com.ve.module.locker.logic.database.entity.DetailsPass
+import com.ve.module.locker.logic.database.entity.PrivacyInfoPass
+import org.litepal.LitePal
 
 /**
  * @Description hello word!
@@ -11,56 +13,82 @@ import com.ve.module.locker.logic.http.model.*
  */
 class LockerPrivacyPassViewModel : LockerViewModel() {
 
-    val privacyRepository= PrivacyPassRepository
+//    val privacyRepository = PrivacyPassRepository
 
-    val allPrivacyInfoList = MutableLiveData<MutableList<PrivacyDetailsPass>>()
-
-    val userPrivacyInfoList = MutableLiveData<MutableList<UserPrivacyInfoPassVO>>()
-
-    fun privacyInfoList() {
+    val allPrivacyInfoList = MutableLiveData<MutableList<PrivacyInfoPass>>()
+    val dao=PrivacyInfoDao
+    fun getPrivacyInfoList() {
         launch(
             block = {
-               allPrivacyInfoList.value=privacyRepository.privacyInfoList().data()
+
+            },
+            local = {
+                allPrivacyInfoList.value = LitePal.findAll(PrivacyInfoPass::class.java)
             }
         )
     }
 
-    fun privacyInfoAdd(userPrivacyInfoVO: UserPrivacyInfoPassVO) {
+    val savePrivacyInfoMsg = MutableLiveData<String>()
+    fun savePrivacyInfo(privacyInfo: PrivacyInfoPass) {
         launch(
             block = {
-                privacyRepository.privacyInfoAdd(userPrivacyInfoVO).data()
+
+
+            },
+            local = {
+                val result=privacyInfo.save()
+                if(result){
+                    savePrivacyInfoMsg.value="保存成功！"
+                }else{
+                    savePrivacyInfoMsg.value="保存失败！"
+                }
+            }
+        )
+    }
+    val deletePrivacyInfoMsg = MutableLiveData<String>()
+    fun deletePrivacyInfo(privacyInfo: PrivacyInfoPass) {
+        launch(
+            block = {
+
+
+            },
+            local = {
+                val result=privacyInfo.delete()
+                if(result>0){
+                    savePrivacyInfoMsg.value="删除成功！"+result
+                }else{
+                    savePrivacyInfoMsg.value="删除失败！"+result
+                }
             }
         )
     }
 
-    fun privacyInfoDelete(privacyInfoId: Int) {
+    val updatePrivacyInfoMsg = MutableLiveData<String>()
+    fun updatePrivacyInfo(privacyInfo: PrivacyInfoPass) {
         launch(
             block = {
-                privacyRepository.privacyInfoDelete(privacyInfoId).data()
+
+            },
+            local = {
+                val result=privacyInfo.update(privacyInfo.id)
+                if(result>0){
+                    savePrivacyInfoMsg.value="删除成功！"+result
+                }else{
+                    savePrivacyInfoMsg.value="删除失败！"+result
+                }
             }
         )
     }
 
-    fun privacyInfoUpdate(userPrivacyInfoVO: UserPrivacyInfoPassVO) {
+    val queryDetailsResult = MutableLiveData<DetailsPass>()
+    fun queryPrivacyDetails(id:Long) {
         launch(
             block = {
-                privacyRepository.privacyInfoUpdate(userPrivacyInfoVO).data()
-            }
-        )
-    }
 
-    fun privacyInfoUser() {
-        launch(
-            block = {
-                userPrivacyInfoList.value=privacyRepository.privacyInfoUser().data()
-            }
-        )
-    }
-
-    fun privacyInfoParsing(userPrivacyInfoVO: UserPrivacyInfoPassVO) {
-        launch(
-            block = {
-                privacyRepository.privacyInfoParsing(userPrivacyInfoVO).data()
+            },
+            local = {
+                val result=LitePal.find(DetailsPass::class.java,id)
+                queryDetailsResult.value=result
             }
         )
     }

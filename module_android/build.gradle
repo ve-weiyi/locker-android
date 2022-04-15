@@ -29,7 +29,6 @@ android {
 }
 
 dependencies {
-    //注解
-    kapt rootProject.ext.annotationProcessorLibs
+
 
 }
