@@ -3,7 +3,7 @@ package com.ve.module.locker.ui.adapter
 import com.ve.lib.common.base.adapter.BaseSlideBindingAdapter
 import com.ve.lib.common.base.adapter.VBViewHolder
 import com.ve.module.locker.databinding.LockerItemPrivacyAccountBinding
-import com.ve.module.locker.logic.database.entity.PrivacyInfoPass
+import com.ve.module.locker.logic.database.entity.PrivacyPassInfo
 
 /**
  * @Description hello word!
@@ -11,9 +11,9 @@ import com.ve.module.locker.logic.database.entity.PrivacyInfoPass
  * @Date 2022/4/10
  */
 class PrivacyInfoPassAdapter:
-    BaseSlideBindingAdapter<PrivacyInfoPass, LockerItemPrivacyAccountBinding>() {
+    BaseSlideBindingAdapter<PrivacyPassInfo, LockerItemPrivacyAccountBinding>() {
 
-    override fun convert(holder: VBViewHolder<LockerItemPrivacyAccountBinding>, item: PrivacyInfoPass) {
+    override fun convert(holder: VBViewHolder<LockerItemPrivacyAccountBinding>, item: PrivacyPassInfo) {
 
         mBinding.itemPrivacyInfoName.text=item.privacyName
         mBinding.itemPrivacyInfoDesc.text=item.privacyDesc

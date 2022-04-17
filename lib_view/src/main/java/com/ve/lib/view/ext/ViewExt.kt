@@ -58,7 +58,8 @@ fun View.setRoundRectBg(color: Int = Color.WHITE, radius: Float = 10f) {
  * 防止重复点击
  */
 var lastClickTime = 0L
-fun View.setOnclickNoRepeat(interval: Long = 500, onClick: (View) -> Unit) {
+var interval: Long = 500
+fun View.setOnclickNoRepeat(onClick: (View) -> Unit,) {
     this.setOnClickListener {
         val currentTime = System.currentTimeMillis()
         if (com.ve.lib.view.ext.lastClickTime != 0L && (currentTime - com.ve.lib.view.ext.lastClickTime < interval)) {
@@ -66,5 +67,16 @@ fun View.setOnclickNoRepeat(interval: Long = 500, onClick: (View) -> Unit) {
         }
         com.ve.lib.view.ext.lastClickTime = currentTime
         onClick.invoke(it)
+    }
+}
+
+fun View.setOnclickNoRepeatListener( listener:View.OnClickListener) {
+    this.setOnClickListener {
+        val currentTime = System.currentTimeMillis()
+        if (com.ve.lib.view.ext.lastClickTime != 0L && (currentTime - com.ve.lib.view.ext.lastClickTime < interval)) {
+            return@setOnClickListener
+        }
+        com.ve.lib.view.ext.lastClickTime = currentTime
+        listener.onClick(it)
     }
 }

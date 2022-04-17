@@ -6,40 +6,33 @@ import org.litepal.crud.LitePalSupport
 import java.io.Serializable
 
 /**
- *
- *
- *
- *
- *
  * @author weiyi
  * @since 2022-04-10
  */
-data class DetailsPass(
-
+data class PrivacyCardDetails(
     var id: Long = 0,
 
-    //(value = "登录账号")
-    var account: String,
+    //(value = "拥有人")
+    val owner: String,
 
-    //(value = "登录密码")
-    var password: String,
+    //(value = "卡号")
+    val number: String,
 
-    //(value = "链接")
-    var url: String? = null,
+    //(value = "密码")
+    val password: String? = null,
 
     //(value = "绑定手机号")
-    var phone: String? = null,
+    val phone: String? = null,
 
-    //(value = "所属app名")
-    var appName: String? = null,
+    //(value = "绑定地址")
+    val address: String? = null,
 
     //(value = "备注")
-    var remark: String? = null,
+    val remark: String? = "未设置备注",
 
     //(value = "是否加密")
-    var enableEncrypt: Int=0,
+    val enableEncrypt: Int = 0
 ) : LitePalSupport(), Serializable {
-
 
     companion object {
         const val serialVersionUID = 1L

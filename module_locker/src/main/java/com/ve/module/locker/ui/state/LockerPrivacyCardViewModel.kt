@@ -35,7 +35,7 @@ class LockerPrivacyCardViewModel : LockerViewModel() {
 //    }
 
 
-    val allPrivacyInfoList = MutableLiveData<MutableList<PrivacyInfoCard>>()
+    val allPrivacyInfoList = MutableLiveData<MutableList<PrivacyCardInfo>>()
     val dao=PrivacyInfoDao
     fun getPrivacyInfoList() {
         launch(
@@ -43,13 +43,13 @@ class LockerPrivacyCardViewModel : LockerViewModel() {
 
             },
             local = {
-                allPrivacyInfoList.value = LitePal.findAll(PrivacyInfoCard::class.java)
+                allPrivacyInfoList.value = LitePal.findAll(PrivacyCardInfo::class.java)
             }
         )
     }
 
     val savePrivacyInfoMsg = MutableLiveData<String>()
-    fun savePrivacyInfo(privacyInfo: PrivacyInfoCard) {
+    fun savePrivacyInfo(privacyInfo: PrivacyCardInfo) {
         launch(
             block = {
 
@@ -66,8 +66,8 @@ class LockerPrivacyCardViewModel : LockerViewModel() {
             }
         )
     }
-    val deletePrivacyInfoMsg = MutableLiveData<String>()
-    fun deletePrivacyInfo(privacyInfo: PrivacyInfoCard) {
+    val deletePrivacyInfoMsg = MutableLiveData<Int>()
+    fun deletePrivacyInfo(privacyInfo: PrivacyCardInfo) {
         launch(
             block = {
 
@@ -75,17 +75,13 @@ class LockerPrivacyCardViewModel : LockerViewModel() {
             },
             local = {
                 val result=privacyInfo.delete()
-                if(result>0){
-                    savePrivacyInfoMsg.value="删除成功！"+result
-                }else{
-                    savePrivacyInfoMsg.value="删除失败！"+result
-                }
+                deletePrivacyInfoMsg.value=result
             }
         )
     }
 
     val updatePrivacyInfoMsg = MutableLiveData<String>()
-    fun updatePrivacyInfo(privacyInfo: PrivacyInfoCard) {
+    fun updatePrivacyInfo(privacyInfo: PrivacyCardInfo) {
         launch(
             block = {
 
@@ -103,19 +99,19 @@ class LockerPrivacyCardViewModel : LockerViewModel() {
 
 
     val addPrivacyInfoMsg = MutableLiveData<String>()
-    fun addPrivacyInfo(detailsCard: DetailsCard,privacyInfo: PrivacyInfoCard) {
+    fun addPrivacyInfo(privacyInfo: PrivacyCardInfo, cardDetails: PrivacyCardDetails, folder: PrivacyFolder?=null, tags: List<PrivacyTag>?=null) {
         launch(
             block = {
 
 
             },
             local = {
-                // val result=dao.savePrivacyInfo(privacyInfo)
-                val result=detailsCard.save()
+                privacyInfo.setPrivacyDetails(cardDetails)
+                privacyInfo.setPrivacyFolder(folder)
+                privacyInfo.setPrivacyTags(tags)
+                val result=privacyInfo.save()
                 LogUtil.msg(result.toString())
                 if(result){
-                    privacyInfo.privacyDetailsId=LitePal.count(DetailsCard::class.java).toLong()
-                    privacyInfo.save()
                     addPrivacyInfoMsg.value="保存成功！"
                 }else{
                     addPrivacyInfoMsg.value="保存失败！"

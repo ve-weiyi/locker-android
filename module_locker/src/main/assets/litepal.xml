@@ -20,10 +20,10 @@
         <!--添加实体类，此处必须映射完整路径-->
         <mapping class="com.ve.module.locker.logic.database.entity.PrivacyTag" />
         <mapping class="com.ve.module.locker.logic.database.entity.PrivacyFolder" />
-        <mapping class="com.ve.module.locker.logic.database.entity.PrivacyInfoCard" />
-        <mapping class="com.ve.module.locker.logic.database.entity.PrivacyInfoPass" />
-        <mapping class="com.ve.module.locker.logic.database.entity.DetailsCard" />
-        <mapping class="com.ve.module.locker.logic.database.entity.DetailsPass" />
+        <mapping class="com.ve.module.locker.logic.database.entity.PrivacyCardInfo" />
+        <mapping class="com.ve.module.locker.logic.database.entity.PrivacyPassInfo" />
+        <mapping class="com.ve.module.locker.logic.database.entity.PrivacyCardDetails" />
+        <mapping class="com.ve.module.locker.logic.database.entity.PrivacyPassDetails" />
         <mapping class="com.ve.module.locker.logic.database.entity.TagAndCard" />
         <mapping class="com.ve.module.locker.logic.database.entity.TagAndPass" />
     </list>

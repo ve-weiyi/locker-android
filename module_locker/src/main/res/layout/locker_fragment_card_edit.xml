@@ -16,25 +16,42 @@
             <TextView
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:layout_marginVertical="@dimen/dp_5"
+                    android:layout_marginTop="@dimen/dp_10"
                     android:text="基本信息"
+                    android:textStyle="bold"
+                    android:textColor="@color/blue"
                     android:textSize="16sp"
+                    android:gravity="center_horizontal"
+                    />
+            <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="(基本信息将作为搜索时的索引)"
+                    android:textSize="12sp"
                     android:gravity="center_horizontal"
                     />
             <include
                     android:id="@+id/layout_base_info"
                     android:background="@color/white"
-                    android:layout_margin="@dimen/dp_10"
+                    android:layout_marginHorizontal="@dimen/dp_10"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     layout="@layout/locker_layout_privacy_header" />
-
             <TextView
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:layout_marginVertical="@dimen/dp_5"
-                    android:text="敏感信息(将以密文的形式存储在数据库中)"
+                    android:layout_marginTop="@dimen/dp_10"
+                    android:text="敏感信息"
+                    android:textStyle="bold"
+                    android:textColor="@color/blue"
                     android:textSize="16sp"
+                    android:gravity="center_horizontal"
+                    />
+            <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="(敏感信息将以密文的形式存储在数据库中)"
+                    android:textSize="12sp"
                     android:gravity="center_horizontal"
                     />
             <RadioGroup
@@ -61,10 +78,10 @@
             </RadioGroup>
             <include
                     android:id="@+id/layout_details_info"
-                    android:layout_margin="@dimen/dp_10"
+                    android:layout_marginHorizontal="@dimen/dp_10"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    layout="@layout/locker_layout_details_card"
+                    layout="@layout/locker_layout_details_card_edit"
                     />
         </LinearLayout>
 

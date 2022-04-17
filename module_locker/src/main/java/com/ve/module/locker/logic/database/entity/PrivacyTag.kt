@@ -3,6 +3,7 @@ package com.ve.module.locker.logic.database.entity
 import androidx.room.ColumnInfo
 import androidx.room.Entity
 import androidx.room.PrimaryKey
+import org.litepal.LitePal
 import org.litepal.annotation.Column
 import org.litepal.crud.LitePalSupport
 import java.io.Serializable
@@ -25,10 +26,10 @@ import java.io.Serializable
 data class PrivacyTag(
 
     @Column(unique = true, defaultValue = "unknown")
-    var id: Long =0,
+    var id: Long = 0,
 
-    @Column(index = true)
-    var tagName: String? = null,
+    @Column(index = true, unique = true)
+    var tagName: String,
 
     var tagCover: String? = null,
 
@@ -38,5 +39,13 @@ data class PrivacyTag(
 ) : LitePalSupport(), Serializable {
     companion object {
         const val serialVersionUID = 1L
+    }
+
+    override fun save(): Boolean {
+        return saveOrUpdate("tagName=?",tagName)
+    }
+
+    override fun saveOrUpdate(vararg conditions: String?): Boolean {
+        return super.saveOrUpdate(*conditions)
     }
 }

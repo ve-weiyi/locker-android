@@ -1,9 +1,9 @@
 <resources>
 
     <!-- Base application theme.-->
-<!--    为Android设置Material Components主题  https://www.jianshu.com/p/533b397c63f0-->
-<!--    原因分析：默认的<Button>标签其实是MaterialButton ， MaterialButton 会自动忽略<background>，.Bridge-->
-<!--    DayNight自动暗/亮主题-->
+    <!--    为Android设置Material Components主题  https://www.jianshu.com/p/533b397c63f0-->
+    <!--    原因分析：默认的<Button>标签其实是MaterialButton ， MaterialButton 会自动忽略<background>，.Bridge-->
+    <!--    DayNight自动暗/亮主题-->
     <style name="BaseAppTheme" parent="@style/Theme.MaterialComponents.DayNight">
         <!--    colorPrimary：您的应用的主要品牌颜色，主要用于主题-->
         <item name="colorPrimary">@color/colorPrimary</item>
@@ -37,13 +37,13 @@
         <item name="android:windowDisablePreview">true</item>
         <item name="android:listDivider">@drawable/bg_divider</item>
 
-<!--        开启这个导致layout遮挡toolbar-->
-<!--        <item name="android:fitsSystemWindows">true</item>-->
+        <!--        开启这个导致layout遮挡toolbar-->
+        <!--        <item name="android:fitsSystemWindows">true</item>-->
 
         <item name="textAppearanceButton">@style/AppTextAppearance.Button</item>
     </style>
 
-<!--    字体风格-->
+    <!--    字体风格-->
     <style name="AppTextAppearance.Button" parent="TextAppearance.MaterialComponents.Button">
         <item name="android:textAllCaps">false</item>
     </style>
@@ -109,6 +109,7 @@
         <item name="tabSelectedTextColor">@color/white</item>
         <item name="tabTextAppearance">@style/MyTabTextAppearance</item>
     </style>
+
     <style name="TopTabTextAppearance">
         <item name="android:textSize">@dimen/sp_14</item>
         <item name="textAllCaps">false</item>
@@ -162,4 +163,84 @@
         <item name="android:scrollbars">vertical</item>
     </style>
 
+
+    <style name="InputTextLayoutStyle">
+        <item name="android:focusable">true</item>
+        <item name="android:focusableInTouchMode">true</item>
+        <item name="background">@drawable/shape_round_grey</item>
+        <item name="boxBackgroundMode">outline</item>
+        <!--        &lt;!&ndash;        右边小眼睛&ndash;&gt;-->
+        <!--        <item name="passwordToggleEnabled">true</item>-->
+        <!--        <item name="endIconMode">clear_text</item>-->
+        <!--右边图标填充色-->
+        <!--        <item name="passwordToggleTint">@color/colorPrimary</item>-->
+        <item name="passwordToggleTintMode">src_atop</item>
+        <!--        左边图标-->
+        <!--        <item name="startIconDrawable">@drawable/fab_add</item>-->
+        <!--        长度提示-->
+        <item name="counterEnabled">false</item>
+        <item name="counterMaxLength">10</item>
+        <!--        长度超出限制时提示错误信息-->
+        <item name="errorEnabled">false</item>
+    </style>
+
+    <style name="InputTextLayoutStyle.See" parent="InputTextLayoutStyle">
+        <item name="boxBackgroundMode">outline</item>
+        <item name="passwordToggleEnabled">true</item>
+        <!--        <item name="endIconMode">password_toggle</item>-->
+        <item name="passwordToggleTint">@color/colorPrimary</item>
+        <item name="boxBackgroundColor">@color/grey100</item>
+        <item name="boxStrokeColor">@color/colorPrimary</item>
+        <item name="boxCornerRadiusTopStart">@dimen/dp_10</item>
+        <item name="boxCornerRadiusTopEnd">@dimen/dp_10</item>
+        <item name="boxCornerRadiusBottomStart">@dimen/dp_10</item>
+        <item name="boxCornerRadiusBottomEnd">@dimen/dp_10</item>
+    </style>
+
+    <style name="InputTextLayoutStyle.ClearText" parent="InputTextLayoutStyle">
+        <item name="boxBackgroundMode">outline</item>
+        <item name="passwordToggleEnabled">true</item>
+        <item name="endIconDrawable">@drawable/ic_baseline_clear_24</item>
+        <item name="endIconMode">clear_text</item>
+        <!--右边图标填充色-->
+        <item name="passwordToggleTint">@color/colorPrimary</item>
+        <item name="boxBackgroundColor">@color/grey100</item>
+        <item name="boxStrokeColor">@color/colorPrimary</item>
+        <item name="boxCornerRadiusTopStart">@dimen/dp_10</item>
+        <item name="boxCornerRadiusTopEnd">@dimen/dp_10</item>
+        <item name="boxCornerRadiusBottomStart">@dimen/dp_10</item>
+        <item name="boxCornerRadiusBottomEnd">@dimen/dp_10</item>
+    </style>
+
+    <style name="InputTextLayoutStyle.Bound" parent="InputTextLayoutStyle">
+
+        <!--右边图标填充色-->
+        <item name="passwordToggleTint">@color/colorPrimary</item>
+        <item name="boxBackgroundMode">outline</item>
+        <item name="passwordToggleEnabled">true</item>
+        <item name="boxBackgroundColor">@color/grey100</item>
+        <item name="boxStrokeColor">@color/colorPrimary</item>
+        <item name="boxCornerRadiusTopStart">@dimen/dp_10</item>
+        <item name="boxCornerRadiusTopEnd">@dimen/dp_10</item>
+        <item name="boxCornerRadiusBottomStart">@dimen/dp_10</item>
+        <item name="boxCornerRadiusBottomEnd">@dimen/dp_10</item>
+    </style>
+
+    <style name="EditText.Bound">
+        <item name="android:padding">10dp</item>
+    </style>
+
+<!--    不可以编辑-->
+    <style name="EditText.See">
+        <item name="android:focusable">false</item>
+        <item name="android:focusableInTouchMode">false</item>
+        <item name="android:padding">10dp</item>
+        <item name="android:background">@drawable/shape_round_grey</item>
+    </style>
+
+    <style name="EditText">
+        <item name="android:padding">10dp</item>
+        <item name="android:background">@drawable/shape_round_grey</item>
+<!--        <item name="android:inputType">text|textPassword</item>-->
+    </style>
 </resources>

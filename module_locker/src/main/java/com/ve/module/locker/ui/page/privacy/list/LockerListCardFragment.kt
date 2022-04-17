@@ -10,11 +10,11 @@ import com.ve.lib.common.base.view.list.BaseVmListFragment
 import com.ve.lib.vutils.LogUtil
 import com.ve.module.locker.R
 import com.ve.module.locker.databinding.LockerFragmentListPassBinding
-import com.ve.module.locker.logic.database.entity.PrivacyInfoCard
+import com.ve.module.locker.logic.database.entity.PrivacyCardInfo
 import com.ve.module.locker.ui.adapter.PrivacyInfoCardAdapter
 import com.ve.module.locker.ui.page.container.LockerContainerActivity
-import com.ve.module.locker.ui.page.privacy.details.LockerDetailsCardEditFragment
-import com.ve.module.locker.ui.page.privacy.details.LockerDetailsCardFragment
+import com.ve.module.locker.ui.page.privacy.details.LockerCardDetailsEditFragment
+import com.ve.module.locker.ui.page.privacy.details.LockerCardDetailsSeeFragment
 import com.ve.module.locker.ui.state.LockerPrivacyCardViewModel
 
 /**
@@ -23,14 +23,14 @@ import com.ve.module.locker.ui.state.LockerPrivacyCardViewModel
  * @Date 2022/4/8
  */
 class LockerListCardFragment :
-    BaseVmListFragment<LockerFragmentListPassBinding, LockerPrivacyCardViewModel, PrivacyInfoCard>() {
+    BaseVmListFragment<LockerFragmentListPassBinding, LockerPrivacyCardViewModel, PrivacyCardInfo>() {
 
     override fun attachViewBinding(): LockerFragmentListPassBinding {
         return LockerFragmentListPassBinding.inflate(layoutInflater)
     }
 
 
-    override fun attachAdapter(): BaseQuickAdapter<PrivacyInfoCard, *> {
+    override fun attachAdapter(): BaseQuickAdapter<PrivacyCardInfo, *> {
         return PrivacyInfoCardAdapter()
     }
 
@@ -93,14 +93,14 @@ class LockerListCardFragment :
             LogUtil.msg("--------")
             LockerContainerActivity.start(
                 mContext,
-                LockerDetailsCardEditFragment::class.java.name,
+                LockerCardDetailsEditFragment::class.java.name,
                 "添加卡片"
             )
         }
     }
 
     override fun onItemClickEvent(
-        datas: MutableList<PrivacyInfoCard>,
+        datas: MutableList<PrivacyCardInfo>,
         view: View,
         position: Int
     ) {
@@ -108,11 +108,11 @@ class LockerListCardFragment :
         val privacyInfo = datas[position]
         val bundle = Bundle()
 
-        bundle.putSerializable(LockerDetailsCardFragment.PRIVACY_DATA_KEY, privacyInfo)
+        bundle.putSerializable(LockerCardDetailsSeeFragment.PRIVACY_DATA_KEY, privacyInfo)
 
         LockerContainerActivity.start(
             mContext,
-            LockerDetailsCardFragment::class.java.name,
+            LockerCardDetailsSeeFragment::class.java.name,
             "查看卡片：" + privacyInfo.privacyName,
             bundle
         )

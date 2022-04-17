@@ -10,69 +10,78 @@
             android:background="@drawable/shape_round_white"
             android:orientation="vertical">
 
-        <RelativeLayout
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content">
+        <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                >
 
             <TextView
-                    android:id="@+id/tv_item_account"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_marginVertical="10dp"
                     android:textSize="16sp"
+                    android:layout_marginTop="10dp"
                     android:textColor="@color/blue"
-                    android:text="名称" />
+                    android:text="隐私信息名" />
 
             <LinearLayout
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:layout_below="@id/tv_item_account"
                     android:gravity="end"
-                    >
+                    android:orientation="horizontal">
 
-                <EditText
+                <com.google.android.material.textfield.TextInputLayout
                         android:layout_weight="1"
-                        android:id="@+id/et_privacy_name"
-                        android:layout_width="0dp"
+                        android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:padding="@dimen/dp_10"
-                        android:layout_gravity="center_vertical"
-                        android:drawableEnd="@drawable/ic_baseline_clear_24"
-                        android:background="@drawable/shape_round_grey"
-                        android:hint="这条隐私信息的名称" />
+                        style="@style/InputTextLayoutStyle.ClearText">
 
+                    <EditText
+                            android:id="@+id/et_privacy_name"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:padding="@dimen/dp_10"
+                            android:hint="如:我的QQ账号" />
+                </com.google.android.material.textfield.TextInputLayout>
 
             </LinearLayout>
-        </RelativeLayout>
+        </LinearLayout>
 
         <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:orientation="vertical">
+                android:orientation="vertical"
+                >
 
             <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:textSize="16sp"
-                    android:layout_marginVertical="10dp"
+                    android:layout_marginTop="10dp"
                     android:textColor="@color/blue"
-                    android:text="描述" />
+                    android:text="描述信息" />
 
             <LinearLayout
                     android:layout_width="match_parent"
-                    android:layout_height="match_parent"
-                    android:gravity="end">
+                    android:layout_height="wrap_content"
+                    android:gravity="end"
+                    android:orientation="horizontal">
 
-                <EditText
-                        android:id="@+id/et_privacy_desc"
+                <com.google.android.material.textfield.TextInputLayout
                         android:layout_weight="1"
-                        android:layout_width="0dp"
+                        android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:padding="@dimen/dp_10"
-                        android:layout_gravity="center_vertical"
-                        android:background="@drawable/shape_round_grey"
-                        android:hint="床前明月光，疑是地上霜。" />
+                        style="@style/InputTextLayoutStyle.ClearText">
 
+                    <EditText
+                            android:id="@+id/et_privacy_desc"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:padding="@dimen/dp_10"
+                            android:textColorHint="@color/colorPrimary"
+                            android:hint="添加一条描述信息吧ヾ(^▽^ヾ)~~"
+                            />
+                </com.google.android.material.textfield.TextInputLayout>
 
             </LinearLayout>
         </LinearLayout>
@@ -92,10 +101,13 @@
                     android:textColor="@color/blue"
                     android:text="文件夹" />
 
-            <Spinner
+            <androidx.appcompat.widget.AppCompatSpinner
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
+                    android:paddingHorizontal="@dimen/dp_10"
                     android:id="@+id/spacer_folder"
+                    android:popupBackground="@color/grey200"
+                    android:spinnerMode="dropdown"
                     android:layout_alignParentEnd="true"
                     android:layout_centerVertical="true"
                     android:textColor="@color/black"

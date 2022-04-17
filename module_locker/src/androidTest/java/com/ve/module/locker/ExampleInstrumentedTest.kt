@@ -8,13 +8,10 @@ import com.ve.lib.vutils.LogUtil
 import com.ve.lib.vutils.ToastUtil
 import com.ve.module.locker.common.config.LockerConstant
 import com.ve.module.locker.logic.database.AppDataBase
-import com.ve.module.locker.logic.database.entity.PrivacyFolder
-import com.ve.module.locker.logic.database.entity.PrivacyInfoCard
-import com.ve.module.locker.logic.database.entity.PrivacyInfoPass
+import com.ve.module.locker.logic.database.entity.*
 import com.ve.module.locker.logic.respository.AuthRepository
 import com.ve.module.locker.logic.respository.PrivacyTagRepository
 import com.ve.module.locker.logic.http.model.ConditionVO
-import com.ve.module.locker.logic.database.entity.PrivacyTag
 import com.ve.module.locker.logic.http.api.LockerApiService
 import com.ve.module.locker.utils.AESUtil
 import com.ve.module.locker.utils.RSAUtils
@@ -59,8 +56,10 @@ class ExampleInstrumentedTest {
             AppDataBase.initDataBase()
             LogUtil.msg(LitePal.findAll(PrivacyTag::class.java).toString())
             LogUtil.msg(LitePal.findAll(PrivacyFolder::class.java).toString())
-            LogUtil.msg(LitePal.findAll(PrivacyInfoCard::class.java).toString())
-            LogUtil.msg(LitePal.findAll(PrivacyInfoPass::class.java).toString())
+            LogUtil.msg(LitePal.findAll(PrivacyCardDetails::class.java).toString())
+            LogUtil.msg(LitePal.findAll(PrivacyCardInfo::class.java).toString())
+            LogUtil.msg(LitePal.findAll(PrivacyPassInfo::class.java).toString())
+
         }
     }
 

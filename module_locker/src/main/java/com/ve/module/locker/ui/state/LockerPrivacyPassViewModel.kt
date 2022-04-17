@@ -2,8 +2,8 @@ package com.ve.module.locker.ui.state
 
 import androidx.lifecycle.MutableLiveData
 import com.ve.module.locker.logic.database.dao.PrivacyInfoDao
-import com.ve.module.locker.logic.database.entity.DetailsPass
-import com.ve.module.locker.logic.database.entity.PrivacyInfoPass
+import com.ve.module.locker.logic.database.entity.PrivacyPassDetails
+import com.ve.module.locker.logic.database.entity.PrivacyPassInfo
 import org.litepal.LitePal
 
 /**
@@ -15,7 +15,7 @@ class LockerPrivacyPassViewModel : LockerViewModel() {
 
 //    val privacyRepository = PrivacyPassRepository
 
-    val allPrivacyInfoList = MutableLiveData<MutableList<PrivacyInfoPass>>()
+    val allPrivacyInfoList = MutableLiveData<MutableList<PrivacyPassInfo>>()
     val dao=PrivacyInfoDao
     fun getPrivacyInfoList() {
         launch(
@@ -23,13 +23,13 @@ class LockerPrivacyPassViewModel : LockerViewModel() {
 
             },
             local = {
-                allPrivacyInfoList.value = LitePal.findAll(PrivacyInfoPass::class.java)
+                allPrivacyInfoList.value = LitePal.findAll(PrivacyPassInfo::class.java)
             }
         )
     }
 
     val savePrivacyInfoMsg = MutableLiveData<String>()
-    fun savePrivacyInfo(privacyInfo: PrivacyInfoPass) {
+    fun savePrivacyInfo(privacyInfo: PrivacyPassInfo) {
         launch(
             block = {
 
@@ -46,7 +46,7 @@ class LockerPrivacyPassViewModel : LockerViewModel() {
         )
     }
     val deletePrivacyInfoMsg = MutableLiveData<String>()
-    fun deletePrivacyInfo(privacyInfo: PrivacyInfoPass) {
+    fun deletePrivacyInfo(privacyInfo: PrivacyPassInfo) {
         launch(
             block = {
 
@@ -64,7 +64,7 @@ class LockerPrivacyPassViewModel : LockerViewModel() {
     }
 
     val updatePrivacyInfoMsg = MutableLiveData<String>()
-    fun updatePrivacyInfo(privacyInfo: PrivacyInfoPass) {
+    fun updatePrivacyInfo(privacyInfo: PrivacyPassInfo) {
         launch(
             block = {
 
@@ -80,14 +80,14 @@ class LockerPrivacyPassViewModel : LockerViewModel() {
         )
     }
 
-    val queryDetailsResult = MutableLiveData<DetailsPass>()
+    val queryDetailsResult = MutableLiveData<PrivacyPassDetails>()
     fun queryPrivacyDetails(id:Long) {
         launch(
             block = {
 
             },
             local = {
-                val result=LitePal.find(DetailsPass::class.java,id)
+                val result=LitePal.find(PrivacyPassDetails::class.java,id)
                 queryDetailsResult.value=result
             }
         )

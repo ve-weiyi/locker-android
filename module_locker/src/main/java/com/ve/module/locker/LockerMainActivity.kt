@@ -9,10 +9,8 @@ import com.ve.lib.common.event.AppRecreateEvent
 import com.ve.lib.common.event.DrawerOpenEvent
 import com.ve.lib.common.model.FragmentPage
 import com.ve.module.locker.databinding.LockerActivityMainBinding
-import com.ve.module.locker.databinding.LockerFragmentCardEditBinding
 import com.ve.module.locker.ui.page.privacy.list.LockerCategoryFragment
 import com.ve.module.locker.ui.page.drawer.LockerDrawerFragment
-import com.ve.module.locker.ui.page.privacy.details.LockerDetailsCardEditFragment
 import com.ve.module.locker.ui.page.privacy.list.LockerListPassFragment
 import com.ve.module.locker.ui.page.privacy.list.LockerListCardFragment
 

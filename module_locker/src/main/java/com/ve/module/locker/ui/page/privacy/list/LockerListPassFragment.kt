@@ -6,7 +6,7 @@ import com.chad.library.adapter.base.BaseQuickAdapter
 import com.ve.lib.common.base.view.list.BaseVmListFragment
 import com.ve.lib.vutils.LogUtil
 import com.ve.module.locker.databinding.LockerFragmentListPassBinding
-import com.ve.module.locker.logic.database.entity.PrivacyInfoPass
+import com.ve.module.locker.logic.database.entity.PrivacyPassInfo
 import com.ve.module.locker.ui.adapter.PrivacyInfoPassAdapter
 import com.ve.module.locker.ui.page.container.LockerContainerActivity
 import com.ve.module.locker.ui.page.privacy.details.LockerDetailsPassFragment
@@ -17,14 +17,14 @@ import com.ve.module.locker.ui.state.LockerPrivacyPassViewModel
  * @Author  weiyi
  * @Date 2022/4/8
  */
-class LockerListPassFragment:BaseVmListFragment<LockerFragmentListPassBinding,LockerPrivacyPassViewModel, PrivacyInfoPass>(){
+class LockerListPassFragment:BaseVmListFragment<LockerFragmentListPassBinding,LockerPrivacyPassViewModel, PrivacyPassInfo>(){
 
     override fun attachViewBinding(): LockerFragmentListPassBinding {
         return LockerFragmentListPassBinding.inflate(layoutInflater)
     }
 
 
-    override fun attachAdapter(): BaseQuickAdapter<PrivacyInfoPass, *> {
+    override fun attachAdapter(): BaseQuickAdapter<PrivacyPassInfo, *> {
         return PrivacyInfoPassAdapter()
     }
 
@@ -58,7 +58,7 @@ class LockerListPassFragment:BaseVmListFragment<LockerFragmentListPassBinding,Lo
         }
     }
     override fun onItemClickEvent(
-        datas: MutableList<PrivacyInfoPass>,
+        datas: MutableList<PrivacyPassInfo>,
         view: View,
         position: Int
     ) {
@@ -66,7 +66,7 @@ class LockerListPassFragment:BaseVmListFragment<LockerFragmentListPassBinding,Lo
         val privacyInfo=datas[position]
         val bundle= Bundle()
 
-        bundle.putLong(LockerDetailsPassFragment.PRIVACY_DATA_KEY,privacyInfo.privacyDetailsId)
+        bundle.putLong(LockerDetailsPassFragment.PRIVACY_DATA_KEY,privacyInfo.id)
 
         LockerContainerActivity.start(mContext, LockerDetailsPassFragment::class.java.name,
             privacyInfo.privacyName, bundle)

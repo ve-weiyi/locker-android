@@ -6,7 +6,7 @@ import com.chad.library.adapter.base.module.LoadMoreModule
 import com.chad.library.adapter.base.module.UpFetchModule
 import com.chad.library.adapter.base.viewholder.BaseViewHolder
 import com.ve.module.locker.R
-import com.ve.module.locker.logic.database.entity.PrivacyInfoCard
+import com.ve.module.locker.logic.database.entity.PrivacyCardInfo
 
 /**
  * @Description hello word!
@@ -14,16 +14,16 @@ import com.ve.module.locker.logic.database.entity.PrivacyInfoCard
  * @Date 2022/4/10
  */
 class PrivacyInfoCardAdapter:
-    BaseSectionQuickAdapter<PrivacyInfoCard, BaseViewHolder>(
+    BaseSectionQuickAdapter<PrivacyCardInfo, BaseViewHolder>(
         com.ve.lib.common.R.layout.item_sticky_header,R.layout.locker_item_privacy_card)
 ,LoadMoreModule, DraggableModule, UpFetchModule {
 
-    override fun convert(holder: BaseViewHolder, item: PrivacyInfoCard) {
+    override fun convert(holder: BaseViewHolder, item: PrivacyCardInfo) {
         holder.setText(R.id.item_privacy_info_name,item.privacyName)
         holder.setText(R.id.item_privacy_info_desc,item.privacyDesc)
     }
 
-    override fun convertHeader(helper: BaseViewHolder, item: PrivacyInfoCard) {
+    override fun convertHeader(helper: BaseViewHolder, item: PrivacyCardInfo) {
         helper.setText(com.ve.lib.common.R.id.tv_header, item.privacyName)
     }
 

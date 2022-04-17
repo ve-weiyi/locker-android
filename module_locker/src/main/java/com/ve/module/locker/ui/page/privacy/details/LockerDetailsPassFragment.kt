@@ -4,8 +4,7 @@ import android.os.Bundle
 import com.ve.lib.common.base.view.vm.BaseVmFragment
 import com.ve.lib.vutils.LogUtil
 import com.ve.module.locker.databinding.LockerFragmentPassSeeBinding
-import com.ve.module.locker.logic.database.entity.DetailsPass
-import com.ve.module.locker.logic.http.model.PrivacyDetailsPass
+import com.ve.module.locker.logic.database.entity.PrivacyPassDetails
 import com.ve.module.locker.ui.state.LockerPrivacyPassViewModel
 
 /**
@@ -42,11 +41,11 @@ class LockerDetailsPassFragment:BaseVmFragment<LockerFragmentPassSeeBinding,Lock
             showPrivacyDetails(it)
         }
     }
-    private fun showPrivacyDetails(privacyDetails : DetailsPass){
+    private fun showPrivacyDetails(privacyDetails : PrivacyPassDetails){
         mBinding.apply {
             etDetailAccount.setText(privacyDetails.account)
             etDetailPassword.setText(privacyDetails.password)
-            etDetailApp.setText(privacyDetails.appName)
+            etDetailApp.setText(privacyDetails.app)
             etDetailPhone.setText(privacyDetails.phone)
             etDetailRemark.setText(privacyDetails.remark)
         }

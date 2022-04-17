@@ -9,7 +9,7 @@ import java.io.Serializable
  * @Date 2022/4/15
  * @Description  current project locker-android
  */
-data class PrivacyInfoPass(
+data class PrivacyPassInfo(
     @Column(unique = true, defaultValue = "unknown")
     var id: Long = 0,
 
@@ -27,13 +27,13 @@ data class PrivacyInfoPass(
 
     //(value = "更新时间", notes = "标签更新时间,不用填", position = 8)
     public val updateTime: String? = null,
+    //(varue = "文件夹id")
+    @Column(index = true)
+    public var privacyFolderId: Long = 1,
 
-    //(value = "文件夹id")
-    public var privacyFolderId: Long=0,
-
-    //(value = "隐私id")
-    public var privacyDetailsId: Long=0,
-
+    //(varue = "隐私id")
+    @Column(index = true)
+    public var privacyDetailsId: Long = 1,
 //    /**
 //     * 文件夹id
 //     * 多对一,外键存id
@@ -49,7 +49,7 @@ data class PrivacyInfoPass(
 //    public var privacyTags: List<PrivacyTag>? = null,
 //
 //    /**
-//     * 一对一，主键关联
+//     * 一对一，主键关联. details 表的id即是info的id
 //     */
 //    @Column(ignore = true)
 //    public val privacyDetails: DetailsPass?=null,
