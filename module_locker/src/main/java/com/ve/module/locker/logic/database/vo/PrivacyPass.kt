@@ -34,38 +34,57 @@ data class PrivacyPass(
 
     @Synchronized
     fun save(): Boolean {
-        val res1 = privacyFolder.save()
-        val res2 = privacyDetails.save()
+        val res1 = privacyFolder.saveOrUpdate("folderName=?",privacyFolder.folderName)
+        val res2 = privacyDetails.saveOrUpdate("id=?",privacyDetails.id.toString())
 
         privacyInfo.privacyFolderId = privacyFolder.id
         privacyInfo.privacyDetailsId = privacyDetails.id
-        val res3 = privacyInfo.save()
+        val res3 = privacyInfo.saveOrUpdate("id=?",privacyInfo.id.toString())
         //先删除这条隐私下的所有的标签，再添加
         val res4 = LitePal.deleteAll(TagAndPass::class.java, "privacyId=?", "${privacyInfo.id}")
         privacyTags?.forEach { privacyTag
             ->
-            val result = LitePal.where("tagName=?", privacyTag.tagName).findFirst(PrivacyTag::class.java)
-            if (result != null) {
-                //标签名不能重复
-                val tagAndPass = TagAndPass(tagId = result.id, privacyId = privacyInfo.id)
-                tagAndPass.save()
-            } else {
-                privacyTag.save()
-                val tagAndPass = TagAndPass(tagId = privacyTag.id, privacyId = privacyInfo.id)
-                tagAndPass.save()
-            }
+            privacyTag.saveOrUpdate("tagName=?",privacyTag.tagName)
+            val tagAndPass = TagAndPass(tagId = privacyTag.id, privacyId = privacyInfo.id)
+            tagAndPass.save()
+//            val result = LitePal.where("tagName=?", privacyTag.tagName).findFirst(PrivacyTag::class.java)
+//            if (result != null) {
+//                //标签名不能重复
+//                val tagAndPass = TagAndPass(tagId = result.id, privacyId = privacyInfo.id)
+//                tagAndPass.save()
+//            } else {
+//                privacyTag.save()
+//                val tagAndPass = TagAndPass(tagId = privacyTag.id, privacyId = privacyInfo.id)
+//                tagAndPass.save()
+//            }
         }
 
         return res1 && res2 && res3
     }
 
+    /**
+     * tag 和 folder 不需要修改
+     * tagAndPass 和 details info 需要删除
+     */
     @Synchronized
     fun delete(): Boolean {
-        val res1 = privacyFolder.delete()
+        val res4 = LitePal.deleteAll(TagAndPass::class.java, "privacyId=?", "${privacyInfo.id}")
         val res2 = privacyDetails.delete()
         val res3 = privacyInfo.delete()
-        val res4 = LitePal.deleteAll(TagAndPass::class.java, "privacyId=?", "${privacyInfo.id}")
-
         return true
+    }
+
+    companion object{
+        fun getAll():List<PrivacyPass>{
+            val privacyPassInfos=LitePal.findAll(PrivacyPassInfo::class.java)
+            val cards= mutableListOf<PrivacyPass>()
+            privacyPassInfos.forEach {
+                    card->
+                cards.add(
+                    PrivacyPass(card,card.getPrivacyDetails(),card.getPrivacyFolder(),card.getPrivacyTags())
+                )
+            }
+            return cards
+        }
     }
 }

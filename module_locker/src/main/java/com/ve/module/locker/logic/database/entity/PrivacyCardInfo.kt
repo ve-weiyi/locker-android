@@ -18,7 +18,7 @@ data class PrivacyCardInfo(
      * id列自增，不可以设置
      */
     @Column(unique = true, defaultValue = "unknown")
-    var id: Long = 1,
+    var id: Long = 0,
 
     //(varue = "隐私名", notes = "标签的备注名", example = "XX的QQ邮箱账号", position = 4)
     public var privacyName: String? = null,

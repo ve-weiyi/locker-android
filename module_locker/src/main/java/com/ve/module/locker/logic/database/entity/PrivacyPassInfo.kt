@@ -1,5 +1,8 @@
 package com.ve.module.locker.logic.database.entity
 
+import com.ve.lib.vutils.LogUtil
+import com.ve.lib.vutils.TimeUtil
+import org.litepal.LitePal
 import org.litepal.annotation.Column
 import org.litepal.crud.LitePalSupport
 import java.io.Serializable
@@ -22,11 +25,11 @@ data class PrivacyPassInfo(
     //(value = "隐私描述", notes = "标签描述", example = "床前明月光", position = 6)
     public val privacyDesc: String? = null,
 
-    //(value = "创建时间", notes = "标签创建时间,不用填", position = 7)
-    public val createTime: String? = null,
+    //(varue = "创建时间", notes = "标签创建时间,不用填", position = 7)
+    public var createTime: String? = TimeUtil.dateAndTime,
 
-    //(value = "更新时间", notes = "标签更新时间,不用填", position = 8)
-    public val updateTime: String? = null,
+    //(varue = "更新时间", notes = "标签更新时间,不用填", position = 8)
+    public var updateTime: String? = TimeUtil.dateAndTime,
     //(varue = "文件夹id")
     @Column(index = true)
     public var privacyFolderId: Long = 1,
@@ -55,6 +58,89 @@ data class PrivacyPassInfo(
 //    public val privacyDetails: DetailsPass?=null,
 ) : LitePalSupport(), Serializable {
 
+    /**
+     * 文件夹id
+     * 多对一,外键存id
+     */
+    fun getPrivacyFolder(): PrivacyFolder {
+        return LitePal.find(PrivacyFolder::class.java, privacyFolderId)
+    }
+
+    /**
+     * 隐私标签列表
+     * 多对多,额外表存映射
+     */
+    fun getPrivacyTags(): List<PrivacyTag> {
+        val tagAndPasss = LitePal.where("privacyId=?", "$id").find(TagAndPass::class.java)
+        val tags = mutableListOf<PrivacyTag>()
+        tagAndPasss.forEach { it ->
+            tags.add(LitePal.find(PrivacyTag::class.java, it.tagId))
+        }
+        return tags
+    }
+
+    /**
+     * 一对一，主键关联
+     */
+    public fun getPrivacyDetails(): PrivacyPassDetails {
+        LogUtil.msg(privacyDetailsId.toString())
+        return LitePal.find(PrivacyPassDetails::class.java, privacyDetailsId)
+    }
+
+
+    /**
+     * 文件夹id
+     * 多对一,外键存id
+     */
+    fun setPrivacyFolder(privacyFolder: PrivacyFolder?): Boolean {
+        privacyFolder?.apply {
+            if (!privacyFolder.isSaved) {
+                //找不到数据，添加
+                privacyFolder.save()
+                privacyFolderId = LitePal.findLast(PrivacyFolder::class.java).id
+                return false
+            } else {
+                privacyFolderId = privacyFolder.id
+                return true
+            }
+        }
+        //设置默认文件夹
+        val first = LitePal.findFirst(PrivacyFolder::class.java)
+        privacyFolderId = first.id
+        return true
+    }
+
+    /**
+     * 隐私标签列表
+     * 多对多,额外表存映射
+     */
+    fun setPrivacyTags(tags: List<PrivacyTag>?): Boolean {
+        tags?.apply {
+            LitePal.deleteAll(TagAndPass::class.java, "privacyId=?", "$id")
+            tags.forEach { tag ->
+                TagAndPass(tagId = tag.id, privacyId = id).save()
+            }
+        }
+        return true
+    }
+
+    /**
+     * 一对一，主键关联
+     */
+    public fun setPrivacyDetails(detailsPass: PrivacyPassDetails): Boolean {
+        if (!detailsPass.isSaved) {
+            //找不到数据，添加
+            detailsPass.id = this.id
+            detailsPass.save()
+            privacyDetailsId = LitePal.findLast(PrivacyPassDetails::class.java).id
+            return false
+        } else {
+
+            privacyDetailsId = detailsPass.id
+            return true
+        }
+    }
+    
     companion object {
         private const val serialVersionUID = 1L
     }

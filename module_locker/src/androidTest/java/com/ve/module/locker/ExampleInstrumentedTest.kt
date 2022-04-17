@@ -54,11 +54,7 @@ class ExampleInstrumentedTest {
         runBlocking {
 
             AppDataBase.initDataBase()
-            LogUtil.msg(LitePal.findAll(PrivacyTag::class.java).toString())
-            LogUtil.msg(LitePal.findAll(PrivacyFolder::class.java).toString())
-            LogUtil.msg(LitePal.findAll(PrivacyCardDetails::class.java).toString())
-            LogUtil.msg(LitePal.findAll(PrivacyCardInfo::class.java).toString())
-            LogUtil.msg(LitePal.findAll(PrivacyPassInfo::class.java).toString())
+
 
         }
     }

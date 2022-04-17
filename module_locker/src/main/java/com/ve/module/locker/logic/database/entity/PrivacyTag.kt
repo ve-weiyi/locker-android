@@ -35,17 +35,21 @@ data class PrivacyTag(
 
     var tagDesc: String? = null,
 
-    var ownerId: Int? = null,
+//    var ownerId: Int? = null,
 ) : LitePalSupport(), Serializable {
     companion object {
         const val serialVersionUID = 1L
     }
 
-    override fun save(): Boolean {
-        return saveOrUpdate("tagName=?",tagName)
-    }
+//    override fun save(): Boolean {
+//        return saveOrUpdate("tagName=?",tagName)
+//    }
 
     override fun saveOrUpdate(vararg conditions: String?): Boolean {
-        return super.saveOrUpdate(*conditions)
+        var res=super.saveOrUpdate(*conditions)
+        if(id==0L){
+            id=LitePal.where(*conditions).findFirst(this::class.java).id
+        }
+        return res
     }
 }

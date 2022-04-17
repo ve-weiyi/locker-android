@@ -3,6 +3,7 @@ package com.ve.module.locker.logic.database.entity
 
 import androidx.room.ColumnInfo
 import androidx.room.PrimaryKey
+import com.ve.lib.vutils.LogUtil
 import org.litepal.LitePal
 import org.litepal.annotation.Column
 import org.litepal.crud.LitePalSupport
@@ -35,12 +36,20 @@ data class PrivacyFolder(
         private const val serialVersionUID = 1L
     }
 
-    override fun save(): Boolean {
-        val folder=LitePal.where("folderName=?", folderName).findFirst(PrivacyFolder::class.java)
-        if(folder!=null){
-            this.id=folder.id
-            return this.saveOrUpdate()
+//    override fun save(): Boolean {
+//        val folder=LitePal.where("folderName=?", folderName).findFirst(PrivacyFolder::class.java)
+//        if(folder!=null){
+//            this.id=folder.id
+//            return this.saveOrUpdate()
+//        }
+//        return super.save()
+//    }
+
+    override fun saveOrUpdate(vararg conditions: String?): Boolean {
+        var res=super.saveOrUpdate(*conditions)
+        if(id==0L){
+            id=LitePal.where(*conditions).findFirst(this::class.java).id
         }
-        return super.save()
+        return res
     }
 }

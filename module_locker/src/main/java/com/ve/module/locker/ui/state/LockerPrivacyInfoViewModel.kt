@@ -21,7 +21,7 @@ class LockerPrivacyInfoViewModel : LockerViewModel() {
 
             },
             local = {
-                addPrivacyInfoResult.value=privacyCard.saveOrUpdate()
+                addPrivacyInfoResult.value=privacyCard.save()
             }
         )
     }
