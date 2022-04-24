@@ -9,6 +9,11 @@ package com.ve.module.locker.logic.http.model
  */
 
 data class ConditionVO(
-    private val id: Int? = null,
+    var id: Int? = null,
+    var folderName:String ="",
+    var tagName:String="",
+    var privacyDesc:String="",
+    val privacyName:String="",
+    var keyWords:String=""
 ) {
 }

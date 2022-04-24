@@ -4,7 +4,8 @@
     android:id="@+id/layout_splash"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@color/colorPrimary">
+    android:background="@color/white"
+        >
 
     <com.ve.lib.view.widget.view.CircleImageView
         android:id="@+id/iv_logo"
@@ -16,7 +17,7 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:srcCompat="@mipmap/hust_logo"
+        app:srcCompat="@drawable/locker_password"
         app:type="circle" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

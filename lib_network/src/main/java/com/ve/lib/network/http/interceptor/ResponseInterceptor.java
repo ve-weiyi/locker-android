@@ -60,9 +60,9 @@ public class ResponseInterceptor implements Interceptor {
 
             if (contentLength != 0) {
                 String result = buffer.clone().readString(charset);
-                LogUtil.d(TAG, " response.url: [" + response.request().url() + "]");
+                LogUtil.msg(TAG, " response.url: [" + response.request().url() + "]");
 //                LogUtil.d(TAG, " response.body: [" + result + "]");
-                LogUtil.d(TAG, " 响应时间: " + (t2 - t1) / 1e6d + "ms");
+                LogUtil.msg(TAG, " 响应时间: " + (t2 - t1) / 1e6d + "ms");
             }
         }
 

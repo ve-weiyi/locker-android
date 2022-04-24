@@ -3,16 +3,12 @@ package com.ve.module.android.ui.page.setting
 import android.content.Intent
 import android.os.Bundle
 import androidx.fragment.app.Fragment
-import com.afollestad.materialdialogs.color.ColorChooserDialog
+import com.ve.lib.common.base.view.vm.BaseActivity
 import com.ve.module.android.R
 import com.ve.module.android.databinding.ActivitySettingsBinding
-import com.ve.lib.common.base.view.vm.BaseActivity
-import com.ve.lib.common.event.ColorEvent
-import com.ve.lib.utils.SettingUtil
-import org.greenrobot.eventbus.EventBus
 
 
-class SettingsActivity : BaseActivity<ActivitySettingsBinding>(), ColorChooserDialog.ColorCallback {
+class SettingsActivity : BaseActivity<ActivitySettingsBinding>(){
 
     private val EXTRA_SHOW_FRAGMENT = "show_fragment"
     private val EXTRA_SHOW_FRAGMENT_ARGUMENTS = "show_fragment_args"
@@ -88,18 +84,18 @@ class SettingsActivity : BaseActivity<ActivitySettingsBinding>(), ColorChooserDi
         }
     }
 
-    //
-    override fun onColorChooserDismissed(dialog: ColorChooserDialog) {
-    }
-
-    //选择颜色回调
-    override fun onColorSelection(dialog: ColorChooserDialog, selectedColor: Int) {
-        if (!dialog.isAccentMode) {
-            //设置主题颜色
-            SettingUtil.setColor(selectedColor)
-        }
-        initColor()
-        EventBus.getDefault().post(ColorEvent(true))
-    }
+//    //
+//    override fun onColorChooserDismissed(dialog: ColorChooserDialog) {
+//    }
+//
+//    //选择颜色回调
+//    override fun onColorSelection(dialog: ColorChooserDialog, selectedColor: Int) {
+//        if (!dialog.isAccentMode) {
+//            //设置主题颜色
+//            SettingUtil.setColor(selectedColor)
+//        }
+//        initColor()
+//        EventBus.getDefault().post(ColorEvent(true))
+//    }
 
 }

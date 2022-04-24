@@ -2,13 +2,16 @@ package com.ve.module.locker.ui.page.setting
 
 
 import android.content.SharedPreferences
-import androidx.appcompat.app.AlertDialog
-
 import androidx.preference.Preference
-import com.afollestad.materialdialogs.color.ColorChooserDialog
+import com.afollestad.materialdialogs.MaterialDialog
+import com.afollestad.materialdialogs.color.ColorPalette
+import com.afollestad.materialdialogs.color.colorChooser
+import com.afollestad.materialdialogs.lifecycle.lifecycleOwner
+import com.ve.lib.common.event.ColorEvent
+import com.ve.lib.utils.SettingUtil
 import com.ve.lib.view.widget.preference.IconPreference
-
 import com.ve.module.locker.R
+import org.greenrobot.eventbus.EventBus
 
 /**
  * @Author  weiyi
@@ -55,14 +58,31 @@ class StyleSettingFragment :  BaseSettingFragment(){
              * 其他设置
              */
             SettingConstant.SP_KEY_THEME_COLOR -> {
-                ColorChooserDialog.Builder(mSettingActivity as LockerSettingActivity, com.ve.lib.application.R.string.choose_theme_color)
-                    .backButton(com.ve.lib.application.R.string.back)
-                    .cancelButton(com.ve.lib.application.R.string.cancel)
-                    .doneButton(com.ve.lib.application.R.string.done)
-                    .customButton(com.ve.lib.application.R.string.custom)
-                    .presetsButton(com.ve.lib.application.R.string.back)
-                    .allowUserColorInputAlpha(false)
-                    .show()
+                MaterialDialog(mContext).show {
+                    title(text = "主题颜色")
+                    colorChooser(
+                        colors = ColorPalette.Primary,
+                        subColors = ColorPalette.PrimarySub,
+                        allowCustomArgb = true,
+                        showAlphaSelector = true
+                    ) { _, selectedColor ->
+                        //设置主题颜色
+                        SettingUtil.setColor(selectedColor)
+                        EventBus.getDefault().post(ColorEvent(true))
+                    }
+                    positiveButton(text = "确认")
+                    negativeButton(text = "取消")
+
+                    lifecycleOwner(this@StyleSettingFragment)
+                }
+//                ColorChooserDialog.Builder(mSettingActivity as LockerSettingActivity, com.ve.lib.application.R.string.choose_theme_color)
+//                    .backButton(com.ve.lib.application.R.string.back)
+//                    .cancelButton(com.ve.lib.application.R.string.cancel)
+//                    .doneButton(com.ve.lib.application.R.string.done)
+//                    .customButton(com.ve.lib.application.R.string.custom)
+//                    .presetsButton(com.ve.lib.application.R.string.back)
+//                    .allowUserColorInputAlpha(false)
+//                    .show()
                 false
             }
             SettingConstant.SP_KEY_AUTO_NIGHT_MODE -> {

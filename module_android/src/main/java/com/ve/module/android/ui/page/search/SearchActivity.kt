@@ -45,9 +45,7 @@ class SearchActivity: BaseVmListActivity<ActivitySearchBinding, SearchViewModel,
     override fun attachAdapter(): BaseQuickAdapter<SearchHistory, *> {
         return SearchHistoryAdapter()
     }
-    private val hot_search_flow_layout by lazy { mBinding.hotSearchFlowLayout }
-    private val rv_history_search by lazy { mBinding.rvHistorySearch }
-    private val search_history_clear_all_tv by lazy { mBinding.searchHistoryClearAllTv }
+
 
     lateinit var mToolbar: Toolbar
     lateinit var mTitle: String

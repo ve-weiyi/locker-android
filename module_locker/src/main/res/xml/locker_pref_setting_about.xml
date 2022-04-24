@@ -10,20 +10,26 @@
         <com.ve.lib.view.widget.preference.MyPreference
                 android:key="@string/sp_key_app_version"
                 android:layout="@layout/custom_preference_layout"
-                android:title="version"
-                android:summary="1.0.0" />
+                android:title="version 1.0.0"
+                android:summary="一款简单的私密信息管理工具" />
+
+<!--        <Preference-->
+<!--                android:key="@string/sp_key_app_website"-->
+<!--                android:layout="@layout/custom_preference_layout"-->
+<!--                android:summary="@string/official_website_url"-->
+<!--                android:title="@string/official_website" />-->
+
+<!--        <Preference-->
+<!--                android:key="@string/sp_key_update_log"-->
+<!--                android:layout="@layout/custom_preference_layout"-->
+<!--                android:summary="@string/changelog_url"-->
+<!--                android:title="@string/changelog" />-->
 
         <Preference
-                android:key="@string/sp_key_app_website"
+                android:key="@string/sp_key_source_code"
                 android:layout="@layout/custom_preference_layout"
-                android:summary="@string/official_website_url"
-                android:title="@string/official_website" />
-
-        <Preference
-                android:key="@string/sp_key_update_log"
-                android:layout="@layout/custom_preference_layout"
-                android:summary="@string/changelog_url"
-                android:title="@string/changelog" />
+                android:summary="https://github.com/7914-ve/locker-android"
+                android:title="开源地址" />
 
         <Preference
                 android:key="licenses"
@@ -31,11 +37,6 @@
                 android:summary="@string/about_libraries_summary"
                 android:title="@string/about_libraries_label" />
 
-        <Preference
-                android:key="@string/sp_key_source_code"
-                android:layout="@layout/custom_preference_layout"
-                android:summary="@string/source_code_url"
-                android:title="@string/source_code" />
 
         <Preference
                 android:key="@string/sp_key_copyright"
@@ -52,13 +53,14 @@
                 android:defaultValue="false"
                 android:key="sp_key_no_declare"
                 android:layout="@layout/custom_preference_layout"
+                android:summary="欢迎一起交流技术"
                 android:title="联系开发者" />
 
         <Preference
                 android:key="@string/sp_key_about_us"
                 android:layout="@layout/custom_preference_layout"
-                android:summary=""
-                android:title="@string/about_us" />
+                android:summary="应用使用手册"
+                android:title="关于locker" />
 
     </PreferenceCategory>
 </PreferenceScreen>

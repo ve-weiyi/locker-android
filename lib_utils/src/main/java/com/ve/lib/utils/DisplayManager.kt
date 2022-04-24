@@ -2,6 +2,7 @@ package com.ve.lib.utils
 
 import android.content.Context
 import android.util.DisplayMetrics
+import com.ve.lib.vutils.AppContextUtils
 
 /**
  * Created by chenxz on 2018/4/21.
@@ -19,8 +20,8 @@ object DisplayManager {
 
     private var screenDpi: Int? = null
 
-    fun init(context: Context) {
-        displayMetrics = context.resources.displayMetrics
+    init{
+        displayMetrics = AppContextUtils.mContext.resources.displayMetrics
         screenWidth = displayMetrics?.widthPixels
         screenHeight = displayMetrics?.heightPixels
         screenDpi = displayMetrics?.densityDpi

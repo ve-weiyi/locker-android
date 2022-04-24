@@ -3,15 +3,12 @@
         xmlns:app="http://schemas.android.com/apk/res-auto"
         xmlns:tools="http://schemas.android.com/tools"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:background="@color/grey_background">
+        android:layout_height="wrap_content">
 
     <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-
-            android:orientation="vertical"
-            android:background="@color/grey_background">
+            android:orientation="vertical">
 
         <!--其他-->
         <LinearLayout
@@ -42,15 +39,6 @@
 
                     />
 
-        </LinearLayout>
-
-        <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginVertical="@dimen/dp_5"
-                android:orientation="vertical"
-                android:background="@drawable/shape_round_white">
-
             <com.ve.lib.view.widget.view.HorizontalItemView
                     android:id="@+id/action_folder"
                     android:layout_width="match_parent"
@@ -73,13 +61,22 @@
                     app:paddingRight="30dp"
                     app:tileText="标签管理" />
 
+            <com.ve.lib.view.widget.view.HorizontalItemView
+                    android:id="@+id/action_auto_fill"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    app:hIcon="@drawable/ic_edit"
+                    app:hTipVisiblity="false"
+                    app:paddingLeft="20dp"
+                    app:paddingRight="30dp"
+                    app:tileText="自动填充" />
+
         </LinearLayout>
 
         <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:orientation="vertical"
-                android:background="@color/grey_background">
+                android:orientation="vertical">
             <!--设置-->
             <LinearLayout
                     android:layout_width="match_parent"
@@ -134,6 +131,7 @@
                         app:tileText="分享给好友" />
 
                 <com.ve.lib.view.widget.view.HorizontalItemView
+                        android:id="@+id/action_feedback"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         app:hIcon="@drawable/ic_about_us_white_24dp"

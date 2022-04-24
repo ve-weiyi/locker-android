@@ -51,4 +51,9 @@
         <item>娱乐</item>
         <item>社交</item>
     </string-array>
+
+    <string-array name="tag">
+        <item>无</item>
+        <item>自定义</item>
+    </string-array>
 </resources>

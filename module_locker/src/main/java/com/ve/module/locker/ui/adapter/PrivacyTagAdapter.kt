@@ -23,14 +23,16 @@ class PrivacyTagAdapter:BaseSlideAdapter<PrivacyTag,BaseViewHolder>(R.layout.loc
 
         val tv = holder.getView(R.id.item_privacy_category_name) as TextView
 
+
         val url=item.tagCover
-        if (url != null) {
-            if(url.startsWith("http")){
-                ImageLoader.loadView(context,url,tv)
-            }else if( url.startsWith("#")){
-                val gd: GradientDrawable = tv.background as GradientDrawable
-                gd.setColor(Color.parseColor(item.tagCover))
-            }
-        }
+        ImageLoader.loadView(context,url,tv)
+//        if (url != null) {
+//            if(url.startsWith("http")){
+//                ImageLoader.loadView(context,url,tv)
+//            }else if( url.startsWith("#")){
+//                val gd: GradientDrawable = tv.background as GradientDrawable
+//                gd.setColor(Color.parseColor(item.tagCover))
+//            }
+//        }
     }
 }

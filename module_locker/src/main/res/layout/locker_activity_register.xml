@@ -1,109 +1,185 @@
 <?xml version="1.0" encoding="utf-8"?>
 <ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
-    android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    android:background="@color/viewBackground"
-    android:fitsSystemWindows="true">
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        xmlns:app="http://schemas.android.com/apk/res-auto"
+        xmlns:tools="http://schemas.android.com/tools"
+        android:background="@color/viewBackground"
+        android:fitsSystemWindows="true">
 
     <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:orientation="vertical">
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
 
         <include
                 android:id="@+id/ext_toolbar"
                 layout="@layout/locker_toolbar" />
 
         <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:orientation="vertical"
-            android:paddingLeft="@dimen/dp_24"
-            android:paddingTop="@dimen/dp_40"
-            android:paddingRight="@dimen/dp_24">
-
-            <TextView
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:text="@string/user_register"
-                android:textColor="@color/common_color"
-                android:textSize="@dimen/sp_18" />
+                android:orientation="vertical"
+                android:paddingHorizontal="40dp"
+                android:paddingTop="@dimen/dp_40"
+                >
 
             <TextView
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="@dimen/dp_6"
-                android:text="@string/register_tip"
-                android:textSize="@dimen/sp_14" />
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+
+                    android:gravity="center"
+                    android:text="注册 locker"
+                    android:textStyle="bold"
+                    android:textColor="@color/common_color"
+                    android:textSize="@dimen/sp_20" />
+
+            <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="@dimen/dp_6"
+                    android:gravity="center"
+                    android:text="当前仅支持使用邮箱账号注册"
+                    android:textSize="@dimen/sp_14" />
 
             <com.google.android.material.textfield.TextInputLayout
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="@dimen/dp_30"
-                android:layout_marginBottom="@dimen/dp_8"
-                android:focusable="true"
-                android:focusableInTouchMode="true">
-
-                <EditText
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
                     android:id="@+id/et_username"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:hint="@string/username"
-                    android:inputType="textEmailAddress" />
-            </com.google.android.material.textfield.TextInputLayout>
-
-            <com.google.android.material.textfield.TextInputLayout
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="@dimen/dp_8"
-                android:layout_marginBottom="@dimen/dp_8"
-                android:focusable="true"
-                android:focusableInTouchMode="true">
+                    android:layout_marginTop="@dimen/dp_20"
+                    style="@style/InputTextLayoutStyle.ClearText"
+                    app:errorEnabled="true"
+                    android:focusable="true"
+                    android:focusableInTouchMode="true">
 
                 <EditText
+                        android:layout_width="match_parent"
+                        android:layout_height="40dp"
+                        android:padding="@dimen/dp_10"
+                        android:hint="请输入邮箱号"
+                        android:background="@drawable/shape_round_grey_tag"
+                        android:inputType="textEmailAddress" />
+            </com.google.android.material.textfield.TextInputLayout>
+            <TextView
+                    android:id="@+id/tv_send_code"
+                    android:layout_gravity="end"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="发送验证码"/>
+            <com.google.android.material.textfield.TextInputLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    style="@style/InputTextLayoutStyle.Bound"
+                    android:focusable="true"
                     android:id="@+id/et_password"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:hint="@string/password"
-                    android:inputType="textPassword" />
+                    android:focusableInTouchMode="true">
+
+                <EditText
+
+                        android:layout_width="match_parent"
+                        android:layout_height="40dp"
+                        android:padding="@dimen/dp_10"
+                        android:hint="@string/password"
+                        android:background="@drawable/shape_round_grey_tag"
+                        android:inputType="textPassword" />
             </com.google.android.material.textfield.TextInputLayout>
 
             <com.google.android.material.textfield.TextInputLayout
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="@dimen/dp_8"
-                android:layout_marginBottom="@dimen/dp_8"
-                android:focusable="true"
-                android:focusableInTouchMode="true">
-
-                <EditText
-                    android:id="@+id/et_password2"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:hint="@string/enter_password_again"
-                    android:inputType="textPassword" />
+                    style="@style/InputTextLayoutStyle.Bound"
+                    android:focusable="true"
+                    android:id="@+id/et_password2"
+                    android:focusableInTouchMode="true">
+
+                <EditText
+
+                        android:layout_width="match_parent"
+                        android:layout_height="40dp"
+                        android:padding="@dimen/dp_10"
+                        android:hint="再次输入密码"
+                        android:background="@drawable/shape_round_grey_tag"
+                        android:inputType="textPassword" />
             </com.google.android.material.textfield.TextInputLayout>
 
-            <TextView
-                android:id="@+id/btn_register"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="@dimen/dp_24"
-                android:layout_marginBottom="@dimen/dp_24"
-                android:background="@drawable/btn_login_bg"
-                android:gravity="center"
-                android:padding="@dimen/dp_12"
-                android:text="@string/register"
-                android:textColor="@color/white" />
+            <RelativeLayout
+                    android:visibility="gone"
+                    tools:visibility="visible"
+                    android:id="@+id/layout_captcha"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="20dp">
+
+                <TextView
+                        android:id="@+id/tv_captcha_title"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginLeft="20dp"
+                        android:text="验证码已发送至"
+                        android:textColor="@color/black"
+                        android:textSize="16sp" />
+
+                <TextView
+                        android:id="@+id/tv_captcha_timer"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_alignParentRight="true"
+                        android:layout_marginTop="5dp"
+                        android:layout_marginRight="20dp"
+                        android:enabled="true"
+                        android:text="60s" />
+
+                <TextView
+                        android:id="@+id/tv_captcha_phone"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_below="@id/tv_captcha_title"
+                        android:layout_marginLeft="20dp"
+                        android:layout_marginTop="10dp"
+                        android:layout_marginBottom="10dp"
+                        android:text=' 13333' />
+
+                <com.ve.lib.view.widget.view.CaptchaView
+                        android:id="@+id/captcha_view"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_below="@id/tv_captcha_phone"
+                        android:layout_marginLeft="20dp"
+                        android:layout_marginRight="20dp" />
+
+                <ProgressBar
+                        style="@style/Widget.AppCompat.ProgressBar"
+
+                        android:layout_width="160dp"
+                        android:layout_height="wrap_content"
+                        android:layout_below="@id/captcha_view"
+                        android:layout_centerHorizontal="true"
+                        android:layout_marginTop="20dp"
+                        android:indeterminate="true"
+                        android:indeterminateTint="#ffff4b4b"
+                        android:indeterminateTintMode="src_atop" />
+
+            </RelativeLayout>
+            <com.google.android.material.button.MaterialButton
+                    android:id="@+id/btn_register"
+                    android:layout_width="match_parent"
+                    android:layout_height="40dp"
+                    android:layout_marginTop="@dimen/dp_24"
+                    android:layout_marginBottom="@dimen/dp_24"
+                    android:background="@drawable/btn_login_bg"
+                    android:gravity="center"
+
+                    android:text="@string/register"
+                    android:textColor="@color/white" />
 
             <TextView
-                android:id="@+id/tv_sign_in"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginBottom="@dimen/dp_24"
-                android:gravity="right"
-                android:text="@string/have_account"
-                android:textSize="@dimen/sp_16" />
+                    android:id="@+id/tv_sign_in"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginBottom="@dimen/dp_24"
+                    android:gravity="right"
+                    android:text="@string/have_account"
+                    android:textSize="@dimen/sp_16" />
 
         </LinearLayout>
 

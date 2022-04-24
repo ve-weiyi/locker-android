@@ -9,7 +9,7 @@ import com.ve.lib.vutils.LogUtil
 import com.ve.module.locker.databinding.LockerFragmentTagBinding
 import com.ve.module.locker.logic.database.entity.PrivacyTag
 import com.ve.module.locker.ui.adapter.PrivacyTagAdapter
-import com.ve.module.locker.ui.state.LockerPrivacyCategoryViewModel
+import com.ve.module.locker.ui.viewmodel.LockerPrivacyCategoryViewModel
 
 /**
  * @Description hello word!

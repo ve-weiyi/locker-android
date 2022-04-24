@@ -10,17 +10,21 @@ import android.text.method.LinkMovementMethod
 import android.text.style.ClickableSpan
 import android.text.style.ForegroundColorSpan
 import android.view.View
+import com.afollestad.materialdialogs.MaterialDialog
+import com.afollestad.materialdialogs.lifecycle.lifecycleOwner
 import com.ve.lib.common.base.view.vm.BaseVmActivity
 import com.ve.lib.view.ext.setOnclickNoRepeat
 import com.ve.lib.utils.DialogUtil
 import com.ve.lib.utils.PreferenceUtil
+import com.ve.lib.view.widget.passwordGenerator.PasswordGeneratorDialog
 import com.ve.lib.vutils.LogUtil
+import com.ve.module.locker.LockerMainActivity
+import com.ve.module.locker.R
 import com.ve.module.locker.common.config.LockerConstant
 import com.ve.module.locker.common.config.LockerLifecycle
 import com.ve.module.locker.common.config.LockerSharePreference
 import com.ve.module.locker.databinding.LockerActivityLoginBinding
-import com.ve.module.locker.logic.http.model.LoginVO
-import com.ve.module.locker.ui.state.LockerLoginViewModel
+import com.ve.module.locker.ui.viewmodel.LockerLoginViewModel
 
 /**
  * https://www.wanandroid.com/user/login
@@ -95,7 +99,7 @@ class LockerLoginActivity: BaseVmActivity<LockerActivityLoginBinding, LockerLogi
             LogUtil.msg(mViewName+"\n--${it.accessToken}\n--"+ LockerSharePreference.getValue(
                 LockerConstant.TOKEN_KEY,"---")!!)
             if(it!=null) {
-                loginSuccess(it)
+                loginSuccess()
             }else{
                 loginFail()
             }
@@ -118,7 +122,7 @@ class LockerLoginActivity: BaseVmActivity<LockerActivityLoginBinding, LockerLogi
         tv_sign_up.setOnclickNoRepeat {
             val intent = Intent(this, LockerRegisterActivity::class.java)
             startActivity(intent)
-            finish()
+//            finish()
             overridePendingTransition(android.R.anim.fade_in, android.R.anim.fade_out)
         }
     }
@@ -127,13 +131,20 @@ class LockerLoginActivity: BaseVmActivity<LockerActivityLoginBinding, LockerLogi
      */
     private fun login() {
         if (validate()) {
-            mViewModel.login(et_username.text.toString(), et_password.text.toString())
+            val username=et_username.text.toString()
+            val password=et_password.text.toString()
+            //本地登录，无需验证网络
+            if(username==LockerConstant.username&&password==LockerConstant.username){
+                loginSuccess()
+            }else{
+                mViewModel.login(username, password)
+            }
         }
     }
 
 
-    private fun loginSuccess(data: LoginVO) {
-        //startActivity(Intent(this, MainActivity::class.java))
+    private fun loginSuccess() {
+        startActivity(Intent(this, LockerMainActivity::class.java))
         finish()
     }
     private fun loginFail() {
@@ -163,10 +174,24 @@ class LockerLoginActivity: BaseVmActivity<LockerActivityLoginBinding, LockerLogi
         val spanBuilder = SpannableStringBuilder("同意")
         val color = mThemeColor
 
-        var span = SpannableString("服务协议")
+        var span = SpannableString("服务条款")
         span.setSpan(object : ClickableSpan() {
             override fun onClick(widget: View) {
-                showMsg("服务协议")
+                MaterialDialog(mContext).show {
+                    title(text="服务条款")
+                    message(R.string.locker_service_item) {
+                        html { showMsg("Clicked link: $it") }
+//                        lineSpacing(1.4f)
+                    }
+                    positiveButton(text = "同意"){
+                        // Do something
+                    }
+                    negativeButton(text = "取消"){
+
+                    }
+                    lifecycleOwner(this@LockerLoginActivity)
+                }
+//                LockerContainerActivity.start(mContext,LockerServiceItemFragment::class.java,"服务条款")
             }
         }, 0, span.length, Spanned.SPAN_EXCLUSIVE_EXCLUSIVE)
 
@@ -179,6 +204,8 @@ class LockerLoginActivity: BaseVmActivity<LockerActivityLoginBinding, LockerLogi
         span.setSpan(object : ClickableSpan() {
             override fun onClick(widget: View) {
                 showMsg("隐私政策")
+
+                PasswordGeneratorDialog(mContext).show()
             }
         }, 0, span.length, Spanned.SPAN_EXCLUSIVE_EXCLUSIVE)
         span.setSpan(ForegroundColorSpan(color), 0, span.length, Spanned.SPAN_EXCLUSIVE_EXCLUSIVE)

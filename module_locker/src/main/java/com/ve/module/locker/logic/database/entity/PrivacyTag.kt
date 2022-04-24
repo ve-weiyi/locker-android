@@ -3,6 +3,7 @@ package com.ve.module.locker.logic.database.entity
 import androidx.room.ColumnInfo
 import androidx.room.Entity
 import androidx.room.PrimaryKey
+import com.ve.lib.utils.CommonUtil
 import org.litepal.LitePal
 import org.litepal.annotation.Column
 import org.litepal.crud.LitePalSupport
@@ -31,7 +32,7 @@ data class PrivacyTag(
     @Column(index = true, unique = true)
     var tagName: String,
 
-    var tagCover: String? = null,
+    var tagCover: String=CommonUtil.randomColor().toString(),
 
     var tagDesc: String? = null,
 

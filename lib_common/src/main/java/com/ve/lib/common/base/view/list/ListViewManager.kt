@@ -336,7 +336,7 @@ open class ListViewManager<LD> {
             layoutManager = mLinearLayoutManager
             itemAnimator = DefaultItemAnimator()
             //添加分割线
-            addItemDecoration(mRecyclerViewItemDecoration)
+//            addItemDecoration(mRecyclerViewItemDecoration)
         }
 
         //下拉刷新

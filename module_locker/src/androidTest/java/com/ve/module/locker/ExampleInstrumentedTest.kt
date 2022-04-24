@@ -1,9 +1,18 @@
 package com.ve.module.locker
 
+import android.content.Intent
+import android.graphics.Color
+import android.hardware.biometrics.BiometricManager
+import android.hardware.biometrics.BiometricManager.Authenticators.BIOMETRIC_STRONG
+import android.hardware.biometrics.BiometricManager.Authenticators.DEVICE_CREDENTIAL
+import android.hardware.biometrics.BiometricPrompt
+import android.util.Log
+import androidx.core.hardware.fingerprint.FingerprintManagerCompat.from
 import androidx.test.platform.app.InstrumentationRegistry
 import androidx.test.ext.junit.runners.AndroidJUnit4
 import com.google.gson.JsonParseException
 import com.ve.lib.network.http.exception.ApiException
+import com.ve.lib.view.widget.passwordGenerator.PasswordGenerator
 import com.ve.lib.vutils.LogUtil
 import com.ve.lib.vutils.ToastUtil
 import com.ve.module.locker.common.config.LockerConstant
@@ -47,6 +56,18 @@ class ExampleInstrumentedTest {
         assertEquals("com.ve.module.test", appContext.packageName)
     }
 
+    @Test
+    fun simple(){
+        LogUtil.e(" androidTest是整合测试。可以运行在设备或虛拟设备上.需要编译打包为APK在设备上运行，可以实时杏看细节.\n")
+
+        var passwordGenerator = PasswordGenerator(12,                           // To specify password length
+            includeUpperCaseLetters = true,            // To include upper case Letters
+            includeLowerCaseLetters = true,           // To include lower case Letters
+            includeSymbols = true,                   // To include special symbols
+            includeNumbers = true)                  // To include numbers (0-9)
+
+        var generatedPassword = passwordGenerator.generatePassword()
+    }
     @Test
     fun appDataBaseTest() {
         LogUtil.e(" androidTest是整合测试。可以运行在设备或虛拟设备上.需要编译打包为APK在设备上运行，可以实时杏看细节.\n")

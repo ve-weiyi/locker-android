@@ -70,11 +70,11 @@ data class PrivacyCard(
      * tagAndCard 和 details info 需要删除
      */
     @Synchronized
-    fun delete(): Boolean {
-        val res4 = LitePal.deleteAll(TagAndCard::class.java, "privacyId=?", "${privacyInfo.id}")
-        val res2 = privacyDetails.delete()
-        val res3 = privacyInfo.delete()
-        return true
+    fun delete(): Int {
+        val res1 = LitePal.deleteAll(TagAndCard::class.java, "privacyId=?", "${privacyInfo.id}")
+        val res2 = LitePal.delete(PrivacyCardDetails::class.java,privacyDetails.id)
+        val res3 = LitePal.delete(PrivacyCardInfo::class.java,privacyInfo.id)
+        return res3
     }
 
     companion object{

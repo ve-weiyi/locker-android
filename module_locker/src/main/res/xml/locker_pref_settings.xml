@@ -58,7 +58,7 @@
 
         <Preference
                 android:defaultValue="false"
-                android:key="sp_key_no_declare"
+                android:key="@string/sp_key_other_setting"
                 android:layout="@layout/custom_preference_layout_line"
                 android:title="其他设置" />
 
@@ -68,74 +68,70 @@
             app:iconSpaceReserved="false"
             android:title="辅助功能"    >
 
-        <Preference
+        <SwitchPreference
                 android:defaultValue="false"
-                android:key="sp_key_no_declare"
-                android:layout="@layout/custom_preference_layout_line"
+                android:key="sp_key_biometrics"
+                android:layout="@layout/custom_preference_layout_button"
                 android:title="指纹识别"
                 />
-        <Preference
+        <SwitchPreference
                 android:defaultValue="false"
-                android:key="sp_key_no_declare"
-                android:layout="@layout/custom_preference_layout_line"
+                android:key="sp_key_long_copy"
+                android:layout="@layout/custom_preference_layout_button"
                 android:title="长按复制密码或卡号"
                 />
 
         <Preference
                 android:defaultValue="false"
-                android:key="sp_key_no_declare"
-                android:layout="@layout/custom_preference_layout_line"
-                android:title="导入/导出" />
-
-        <Preference
-                android:defaultValue="false"
-                android:key="sp_key_no_declare"
+                android:key="sp_key_auto_fill"
                 android:layout="@layout/custom_preference_layout_line"
                 android:title="自动填充"
                 />
 
+        <Preference
+                android:defaultValue="false"
+                android:key="sp_key_input"
+                android:layout="@layout/custom_preference_layout_line"
+                android:title="导入/导出" />
+
+
     </PreferenceCategory>
 
-    <PreferenceCategory
-            app:iconSpaceReserved="false"
-            android:title="授权设置"
-            >
+<!--    <PreferenceCategory-->
+<!--            app:iconSpaceReserved="false"-->
+<!--            android:title="授权设置"-->
+<!--            >-->
 
-        <Preference
-                android:defaultValue="false"
-                android:key="sp_key_no_declare"
-                android:layout="@layout/custom_preference_layout_line"
-                android:title="用户协议"
-                />
+<!--        <Preference-->
+<!--                android:defaultValue="false"-->
+<!--                android:key="sp_key_no_declare"-->
+<!--                android:layout="@layout/custom_preference_layout_line"-->
+<!--                android:title="用户协议"-->
+<!--                />-->
 
-        <Preference
-                android:defaultValue="false"
-                android:key="sp_key_no_declare"
-                android:layout="@layout/custom_preference_layout_line"
-                android:title="隐私政策" />
+<!--        <Preference-->
+<!--                android:defaultValue="false"-->
+<!--                android:key="sp_key_no_declare"-->
+<!--                android:layout="@layout/custom_preference_layout_line"-->
+<!--                android:title="隐私政策" />-->
 
-        <Preference
-                android:defaultValue="false"
-                android:key="sp_key_no_declare"
-                android:layout="@layout/custom_preference_layout_line"
-                android:title="隐私权限设置"
-                />
+<!--        <Preference-->
+<!--                android:defaultValue="false"-->
+<!--                android:key="sp_key_no_declare"-->
+<!--                android:layout="@layout/custom_preference_layout_line"-->
+<!--                android:title="隐私权限设置"-->
+<!--                />-->
 
-    </PreferenceCategory>
+<!--    </PreferenceCategory>-->
 
     <PreferenceCategory
             app:iconSpaceReserved="false"
             android:title="帮助">
-        <Preference
-                android:defaultValue="false"
-                android:key="sp_key_no_declare"
-                android:layout="@layout/custom_preference_layout_line"
-                android:title="检查更新"
-                />
+
 
         <EditTextPreference
                 android:defaultValue="false"
-                android:key="sp_key_no_declare"
+                android:key="sp_key_webdev"
                 android:layout="@layout/custom_preference_layout_line"
                 android:title="服务器迁移"
                 />
@@ -145,7 +141,12 @@
                 android:layout="@layout/custom_preference_layout_line"
                 android:title="反馈与建议"
                 />
-
+        <Preference
+                android:defaultValue="false"
+                android:key="sp_key_check_update"
+                android:layout="@layout/custom_preference_layout_line"
+                android:title="检查更新"
+                />
         <Preference
                 android:defaultValue="false"
                 android:key="@string/sp_key_about_setting"
@@ -155,7 +156,6 @@
 
         <Preference
                 android:defaultValue="false"
-                android:key="sp_key_no_declare"
                 />
     </PreferenceCategory>
 </PreferenceScreen>

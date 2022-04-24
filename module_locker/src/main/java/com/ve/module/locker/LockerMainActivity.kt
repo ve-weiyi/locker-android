@@ -14,7 +14,7 @@ import com.ve.module.locker.ui.page.drawer.LockerDrawerFragment
 import com.ve.module.locker.ui.page.privacy.list.LockerListPassFragment
 import com.ve.module.locker.ui.page.privacy.list.LockerListCardFragment
 
-import com.ve.module.locker.ui.state.LockerViewModel
+import com.ve.module.locker.ui.viewmodel.LockerViewModel
 
 import org.greenrobot.eventbus.Subscribe
 import org.greenrobot.eventbus.ThreadMode
@@ -43,7 +43,7 @@ class LockerMainActivity : BaseVmActivity<LockerActivityMainBinding, LockerViewM
     override fun initView(savedInstanceState: Bundle?) {
         initFragment()
         showFragment(mIndex)
-        initToolbar(mBinding.extToolbar.toolbar)
+        initToolbar(mBinding.extToolbar.toolbar, homeAsUpEnabled = false)
         mBinding.bottomNavigation.run {
             //导航栏文字可见;原因：底部导航栏的类别多于三个了，多于三个就会不显示，解决方案如下~~~
             labelVisibilityMode = NavigationBarView.LABEL_VISIBILITY_LABELED

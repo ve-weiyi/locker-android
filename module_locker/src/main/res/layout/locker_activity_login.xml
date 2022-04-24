@@ -19,9 +19,9 @@
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:orientation="vertical"
-                android:paddingLeft="@dimen/dp_24"
-                android:paddingTop="@dimen/dp_40"
-                android:paddingRight="@dimen/dp_24">
+                android:paddingHorizontal="40dp"
+                android:paddingTop="@dimen/dp_50"
+                >
 
             <ImageView
                     android:id="@+id/imageView6"
@@ -30,40 +30,44 @@
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintStart_toStartOf="parent"
                     android:layout_gravity="center"
-                    app:srcCompat="@mipmap/hust_logo" />
+                    app:srcCompat="@drawable/locker_password" />
 
             <TextView
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:layout_marginTop="20dp"
+                    android:layout_marginTop="40dp"
+                    android:gravity="center"
                     android:text="登录 locker"
+                    android:textStyle="bold"
                     android:textColor="@color/common_color"
-                    android:textSize="@dimen/sp_18" />
+                    android:textSize="@dimen/sp_20" />
 
             <TextView
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_marginTop="@dimen/dp_6"
+                    android:gravity="center"
                     android:text="请使用 locker 账号登录"
                     android:textSize="@dimen/sp_14" />
 
             <com.google.android.material.textfield.TextInputLayout
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:layout_marginTop="@dimen/dp_30"
+                    android:layout_marginTop="@dimen/dp_20"
                     android:layout_marginBottom="@dimen/dp_8"
                     android:focusable="true"
-                    style="@style/InputTextLayoutStyle.Bound"
+                    style="@style/InputTextLayoutStyle"
                     android:focusableInTouchMode="true">
 
-                <EditText
+                <com.google.android.material.textfield.TextInputEditText
+                        android:background="@drawable/shape_round_grey_tag"
                         android:id="@+id/et_username"
                         android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
+                        android:layout_height="40dp"
+                        android:padding="@dimen/dp_10"
                         android:hint="@string/username"
                         android:inputType="textEmailAddress" />
             </com.google.android.material.textfield.TextInputLayout>
-
             <com.google.android.material.textfield.TextInputLayout
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
@@ -74,22 +78,25 @@
                     android:focusableInTouchMode="true">
 
                 <EditText
+
                         android:id="@+id/et_password"
                         android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
+                        android:layout_height="40dp"
+                        android:padding="@dimen/dp_10"
                         android:hint="@string/password"
+                        android:background="@drawable/shape_round_grey_tag"
                         android:inputType="textPassword" />
             </com.google.android.material.textfield.TextInputLayout>
 
-            <TextView
+            <com.google.android.material.button.MaterialButton
                     android:id="@+id/btn_login"
                     android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
+                    android:layout_height="40dp"
+                    style="@style/MenuButtonsStyle"
                     android:layout_marginTop="@dimen/dp_24"
                     android:layout_marginBottom="@dimen/dp_24"
                     android:background="@drawable/btn_login_bg"
                     android:gravity="center"
-                    android:padding="@dimen/dp_12"
                     android:text="@string/login"
                     android:textColor="@color/white" />
 

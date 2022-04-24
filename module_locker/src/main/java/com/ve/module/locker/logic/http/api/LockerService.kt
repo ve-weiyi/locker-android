@@ -20,10 +20,10 @@ interface LockerService {
         /**
          * 本地测试地址 只能填服务器的地址+端口，并且以/结尾
          */
-        const val BASE_URL = "http://10.21.191.246:8084/"
+//        const val BASE_URL = "http://10.21.191.246:8084/"
 
         //模拟器连接地址
-//        const val BASE_URL = "http://10.0.2.2:8084/"
+        const val BASE_URL = "http://10.0.2.2:8084/"
     }
     //-----------------------【 登录 】----------------------
     /**
@@ -39,6 +39,24 @@ interface LockerService {
         @Field("password") password: String?,
         @Field("code") code: String?="1234",
     ): LockerBaseBean<LoginVO>
+
+    /**
+     *
+     * 注册账号
+     */
+    @POST("/locker/api/register")
+    @FormUrlEncoded
+    suspend fun registerLocker(
+        @Field("username") username: String?,
+        @Field("password") password: String?,
+        @Field("code") code: String?,
+    ): LockerBaseBean<Any>
+    /**
+     *
+     * 发送邮箱验证码
+     */
+    @GET("/locker/api/users/code")
+    suspend fun sendCode(@Query("username") username: String?): LockerBaseBean<Any>
 
 
     //-----------------------【 隐私标签 】----------------------

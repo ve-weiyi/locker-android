@@ -65,7 +65,7 @@ open class BaseViewModel :  ViewModel(), LifecycleObserver {
         return viewModelScope.launch {
             try {
                 //apiCall,返回BaseResponse
-                //block.invoke(this)
+                block.invoke(this)
                 local?.invoke(this)
             } catch (e: Exception) {
                 //处理错误

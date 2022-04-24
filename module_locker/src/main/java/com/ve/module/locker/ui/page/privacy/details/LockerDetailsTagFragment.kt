@@ -7,12 +7,13 @@ import android.widget.*
 import com.ve.lib.common.base.view.vm.BaseVmFragment
 import com.ve.lib.common.utils.ImageLoader
 import com.ve.lib.view.ext.formatCurrentDate
+import com.ve.lib.view.ext.setOnclickNoRepeatListener
 import com.ve.lib.vutils.LogUtil
 import com.ve.module.locker.common.event.RefreshDataEvent
 import com.ve.module.locker.databinding.LockerFragmentDetailsTagBinding
 import com.ve.module.locker.logic.database.entity.PrivacyTag
 import com.ve.module.locker.ui.page.privacy.list.LockerListTagFragment
-import com.ve.module.locker.ui.state.LockerPrivacyTagViewModel
+import com.ve.module.locker.ui.viewmodel.LockerPrivacyCategoryViewModel
 import java.util.*
 
 /**
@@ -21,7 +22,7 @@ import java.util.*
  * @Description  current project locker-android
  */
 class LockerDetailsTagFragment :
-    BaseVmFragment<LockerFragmentDetailsTagBinding, LockerPrivacyTagViewModel>() {
+    BaseVmFragment<LockerFragmentDetailsTagBinding, LockerPrivacyCategoryViewModel>() {
 
     companion object {
 
@@ -33,8 +34,8 @@ class LockerDetailsTagFragment :
         return LockerFragmentDetailsTagBinding.inflate(layoutInflater)
     }
 
-    override fun attachViewModelClass(): Class<LockerPrivacyTagViewModel> {
-        return LockerPrivacyTagViewModel::class.java
+    override fun attachViewModelClass(): Class<LockerPrivacyCategoryViewModel> {
+        return LockerPrivacyCategoryViewModel::class.java
     }
 
 
@@ -120,13 +121,13 @@ class LockerDetailsTagFragment :
 
     override fun initObserver() {
         super.initObserver()
-        mViewModel.savePrivacyTagMsg.observe(this){
+        mViewModel.tagAddMsg.observe(this){
             showMsg(it)
             mEventBus?.post(RefreshDataEvent(LockerListTagFragment::class.java.name))
             activity?.finish()
         }
 
-        mViewModel.updatePrivacyTagMsg.observe(this){
+        mViewModel.tagDeleteMsg.observe(this){
             showMsg(it)
             mEventBus?.post(RefreshDataEvent(LockerListTagFragment::class.java.name))
             activity?.finish()
@@ -135,7 +136,7 @@ class LockerDetailsTagFragment :
 
     override fun initListener() {
         super.initListener()
-        mBinding.btnSave.setOnClickListener {
+        mBinding.btnSave.setOnclickNoRepeatListener  {
             val tagName: String = et_title.text.toString()
             val tagCover: String = "#FF0000"
             val tagDesc = et_content.text.toString()
@@ -147,11 +148,11 @@ class LockerDetailsTagFragment :
                 EditType.EDIT_TAG_TYPE -> {
                     val tagId: Long = mData.id
                     val privacyTag = PrivacyTag(tagId, tagName, tagCover, tagDesc)
-                    mViewModel.updatePrivacyTag(privacyTag)
+                    mViewModel.tagUpdate(privacyTag)
                 }
                 EditType.ADD_TAG_TYPE -> {
                     val privacyTag = PrivacyTag(-1, tagName, tagCover, tagDesc)
-                    mViewModel.savePrivacyTag(privacyTag)
+                    mViewModel.saveTag(privacyTag)
                 }
                 else -> {
 
@@ -159,7 +160,7 @@ class LockerDetailsTagFragment :
             }
         }
 
-        mBinding.llDate.setOnClickListener{
+        mBinding.llDate.setOnclickNoRepeatListener {
             var now = Calendar.getInstance()
             val dpd = DatePickerDialog(
                 requireActivity(), { view, year, month, dayOfMonth ->

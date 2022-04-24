@@ -40,7 +40,7 @@ abstract class BaseVmListFragment<VB : ViewBinding, VM : BaseViewModel, LD : Any
         initListView()
         defaultListView(requireContext())
     }
-
+    abstract fun initListView()
     override fun getRefreshData() {
         LogUtil.e("$mViewName getRefreshData ")
         initWebData()

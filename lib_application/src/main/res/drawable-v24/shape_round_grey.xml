@@ -6,7 +6,7 @@
 
             android:radius="10dp" />
 
-    <solid android:color="@color/grey100" />
+    <solid android:color="@color/viewBackground" />
 
 <!--    边框-->
 <!--    <stroke-->

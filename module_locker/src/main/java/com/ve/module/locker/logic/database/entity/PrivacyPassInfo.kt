@@ -1,5 +1,6 @@
 package com.ve.module.locker.logic.database.entity
 
+import com.chad.library.adapter.base.entity.SectionEntity
 import com.ve.lib.vutils.LogUtil
 import com.ve.lib.vutils.TimeUtil
 import org.litepal.LitePal
@@ -16,20 +17,21 @@ data class PrivacyPassInfo(
     @Column(unique = true, defaultValue = "unknown")
     var id: Long = 0,
 
-    //(value = "隐私名", notes = "标签的备注名", example = "XX的QQ邮箱账号", position = 4)
-    public val privacyName: String? = null,
+    //(varue = "隐私名", notes = "标签的备注名", example = "XX的QQ邮箱账号", position = 4)
+    public var privacyName: String = "",
 
-    //( value = "隐私图标", notes = "标签的覆盖图标", example = "https://ve77.cn/blog/favicon.ico", position = 5 )
-    public val privacyCover: String? = null,
+    //( varue = "隐私图标", notes = "标签的覆盖图标", example = "https://ve77.cn/blog/favicon.ico", position = 5 )
+    public var privacyCover: String = "#00FF00",
 
-    //(value = "隐私描述", notes = "标签描述", example = "床前明月光", position = 6)
-    public val privacyDesc: String? = null,
+    //(varue = "隐私描述", notes = "标签描述", example = "床前明月光", position = 6)
+    public var privacyDesc: String = "",
+
 
     //(varue = "创建时间", notes = "标签创建时间,不用填", position = 7)
-    public var createTime: String? = TimeUtil.dateAndTime,
+    public var createTime: String = TimeUtil.dateAndTime,
 
     //(varue = "更新时间", notes = "标签更新时间,不用填", position = 8)
-    public var updateTime: String? = TimeUtil.dateAndTime,
+    public var updateTime: String = TimeUtil.dateAndTime,
     //(varue = "文件夹id")
     @Column(index = true)
     public var privacyFolderId: Long = 1,
@@ -37,6 +39,11 @@ data class PrivacyPassInfo(
     //(varue = "隐私id")
     @Column(index = true)
     public var privacyDetailsId: Long = 1,
+
+
+    @Column(ignore = true)
+    var headerName: String = "",
+
 //    /**
 //     * 文件夹id
 //     * 多对一,外键存id
@@ -56,8 +63,10 @@ data class PrivacyPassInfo(
 //     */
 //    @Column(ignore = true)
 //    public val privacyDetails: DetailsPass?=null,
-) : LitePalSupport(), Serializable {
+) : LitePalSupport(), Serializable,SectionEntity {
 
+    override val isHeader: Boolean
+        get() = headerName.isNotEmpty()
     /**
      * 文件夹id
      * 多对一,外键存id
@@ -70,7 +79,7 @@ data class PrivacyPassInfo(
      * 隐私标签列表
      * 多对多,额外表存映射
      */
-    fun getPrivacyTags(): List<PrivacyTag> {
+    fun getPrivacyTags(): MutableList<PrivacyTag> {
         val tagAndPasss = LitePal.where("privacyId=?", "$id").find(TagAndPass::class.java)
         val tags = mutableListOf<PrivacyTag>()
         tagAndPasss.forEach { it ->

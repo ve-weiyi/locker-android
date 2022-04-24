@@ -1,6 +1,7 @@
 package com.ve.module.locker.logic.database.entity
 
 
+import android.graphics.Color
 import androidx.room.ColumnInfo
 import androidx.room.PrimaryKey
 import com.ve.lib.vutils.LogUtil
@@ -25,7 +26,7 @@ data class PrivacyFolder(
     @Column(index = true, unique = true)
     val folderName: String,
 
-    val folderCover: String? = null,
+    val folderCover: String=Color.BLUE.toString(),
 
     val folderDesc: String? = null,
 

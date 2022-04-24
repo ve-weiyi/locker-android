@@ -11,8 +11,7 @@
         <androidx.core.widget.NestedScrollView
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:paddingBottom="60dp"
-                >
+                android:paddingBottom="60dp">
 
 
             <LinearLayout
@@ -115,13 +114,14 @@
                     </LinearLayout>
 
                     <LinearLayout
+                            android:layout_marginTop="2dp"
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
                             android:orientation="horizontal"
                             android:gravity="center"
                             android:layout_below="@id/tv_privacy_desc"
                             android:layout_centerHorizontal="true"
-                            android:padding="@dimen/dp_5">
+                            >
 
                         <TextView
                                 android:layout_width="wrap_content"
@@ -129,21 +129,33 @@
                                 android:layout_gravity="start"
                                 android:gravity="center"
                                 android:textSize="12sp"
-                                android:text="创建时间:"
-                                />
+                                android:text="创建时间:" />
 
                         <TextView
+                                android:id="@+id/tv_privacy_create_time"
                                 android:layout_marginStart="5dp"
                                 android:textSize="12sp"
-                                android:id="@+id/iv_privacy_create_time"
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
                                 android:layout_gravity="start"
                                 android:gravity="center"
                                 android:text="2022-4-12" />
 
+
+                    </LinearLayout>
+
+                    <LinearLayout
+                            android:layout_marginVertical= "2dp"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:orientation="horizontal"
+                            android:gravity="center"
+                            android:layout_below="@id/tv_privacy_desc"
+                            android:layout_centerHorizontal="true"
+                            >
+
+
                         <TextView
-                                android:layout_marginStart="10dp"
                                 android:textSize="12sp"
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
@@ -153,7 +165,7 @@
                         <TextView
                                 android:layout_marginStart="5dp"
                                 android:textSize="12sp"
-                                android:id="@+id/iv_privacy_update_time"
+                                android:id="@+id/tv_privacy_update_time"
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
                                 android:layout_gravity="start"
@@ -176,7 +188,7 @@
                     <TextView
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-                            android:layout_marginTop="10dp"
+
                             android:layout_marginStart="@dimen/dp_10"
                             android:text="详细信息"
                             android:textColor="@color/black"
@@ -200,7 +212,7 @@
                                     android:layout_width="wrap_content"
                                     android:layout_height="wrap_content"
                                     android:textSize="16sp"
-                                    android:layout_marginTop="10dp"
+
                                     android:textColor="@color/blue"
                                     android:text="持有人" />
 
@@ -215,7 +227,7 @@
                                         android:layout_weight="1"
                                         android:layout_width="match_parent"
                                         android:layout_height="wrap_content"
-                                        style="@style/InputTextLayoutStyle.See">
+                                        style="@style/InputTextLayoutStyle">
 
                                     <EditText
                                             android:id="@+id/et_detail_owner"
@@ -246,7 +258,7 @@
                                     android:layout_width="wrap_content"
                                     android:layout_height="wrap_content"
                                     android:textSize="16sp"
-                                    android:layout_marginTop="10dp"
+
                                     android:textColor="@color/blue"
                                     android:text="卡号" />
 
@@ -291,7 +303,7 @@
                                     android:layout_width="wrap_content"
                                     android:layout_height="wrap_content"
                                     android:textSize="16sp"
-                                    android:layout_marginTop="10dp"
+
                                     android:textColor="@color/blue"
                                     android:text="密码" />
 
@@ -305,6 +317,7 @@
                                         android:layout_weight="1"
                                         android:layout_width="match_parent"
                                         android:layout_height="wrap_content"
+
                                         style="@style/InputTextLayoutStyle.See">
 
                                     <EditText
@@ -336,52 +349,7 @@
                                     android:layout_width="wrap_content"
                                     android:layout_height="wrap_content"
                                     android:textSize="16sp"
-                                    android:layout_marginTop="10dp"
-                                    android:textColor="@color/blue"
-                                    android:text="链接" />
 
-                            <LinearLayout
-                                    android:layout_width="match_parent"
-                                    android:layout_height="wrap_content"
-                                    android:gravity="end"
-                                    android:orientation="horizontal">
-
-                                <com.google.android.material.textfield.TextInputLayout
-                                        android:layout_weight="1"
-                                        android:layout_width="match_parent"
-                                        android:layout_height="wrap_content"
-                                        style="@style/InputTextLayoutStyle.See">
-
-                                    <EditText
-                                            android:id="@+id/et_detail_url"
-                                            android:layout_width="match_parent"
-                                            android:layout_height="wrap_content"
-                                            style="@style/EditText.See"
-                                            tools:hint="U201814550" />
-                                </com.google.android.material.textfield.TextInputLayout>
-
-                                <TextView
-                                        android:layout_marginHorizontal="10dp"
-                                        android:id="@+id/tv_copy_url"
-                                        android:layout_width="wrap_content"
-                                        android:layout_height="wrap_content"
-                                        android:layout_gravity="center_vertical"
-                                        android:textSize="16sp"
-                                        android:textColor="@color/blue"
-                                        android:text="复制" />
-                            </LinearLayout>
-                        </LinearLayout>
-
-                        <LinearLayout
-                                android:layout_width="match_parent"
-                                android:layout_height="wrap_content"
-                                android:orientation="vertical">
-
-                            <TextView
-                                    android:layout_width="wrap_content"
-                                    android:layout_height="wrap_content"
-                                    android:textSize="16sp"
-                                    android:layout_marginTop="10dp"
                                     android:textColor="@color/blue"
                                     android:text="绑定手机号" />
 
@@ -405,8 +373,19 @@
                                             tools:hint="15623356029" />
                                 </com.google.android.material.textfield.TextInputLayout>
 
+                                <TextView
+                                        android:layout_marginHorizontal="10dp"
+                                        android:id="@+id/tv_copy_phone"
+                                        android:layout_width="wrap_content"
+                                        android:layout_height="wrap_content"
+                                        android:layout_gravity="center_vertical"
+                                        android:textSize="16sp"
+                                        android:textColor="@color/blue"
+                                        android:text="复制" />
                             </LinearLayout>
                         </LinearLayout>
+
+
 
                         <LinearLayout
                                 android:layout_width="match_parent"
@@ -417,7 +396,7 @@
                                     android:layout_width="wrap_content"
                                     android:layout_height="wrap_content"
                                     android:textSize="16sp"
-                                    android:layout_marginTop="10dp"
+
                                     android:textColor="@color/blue"
                                     android:text="地址" />
 

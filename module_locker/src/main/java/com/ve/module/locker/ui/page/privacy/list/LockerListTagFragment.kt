@@ -4,6 +4,7 @@ import android.os.Bundle
 import android.view.View
 import com.chad.library.adapter.base.BaseQuickAdapter
 import com.ve.lib.common.base.view.list.BaseVmListFragment
+import com.ve.lib.view.ext.setOnclickNoRepeatListener
 import com.ve.lib.vutils.LogUtil
 import com.ve.module.locker.R
 import com.ve.module.locker.common.event.RefreshDataEvent
@@ -13,7 +14,7 @@ import com.ve.module.locker.ui.adapter.ListTagAdapter
 import com.ve.module.locker.ui.page.container.LockerContainerActivity
 import com.ve.module.locker.ui.page.privacy.details.EditType
 import com.ve.module.locker.ui.page.privacy.details.LockerDetailsTagFragment
-import com.ve.module.locker.ui.state.LockerPrivacyCategoryViewModel
+import com.ve.module.locker.ui.viewmodel.LockerPrivacyCategoryViewModel
 import com.ve.module.locker.ui.view.TagSwipeItemLayout
 import org.greenrobot.eventbus.Subscribe
 import org.greenrobot.eventbus.ThreadMode
@@ -65,7 +66,7 @@ class LockerListTagFragment :
     override fun initListener() {
         super.initListener()
         mRecyclerView!!.addOnItemTouchListener(TagSwipeItemLayout.OnSwipeItemTouchListener(activity))
-        mBinding.floatingActionBtn.setOnClickListener {
+        mBinding.floatingActionBtn.setOnclickNoRepeatListener  {
             addPrivacyTag()
         }
     }
@@ -116,8 +117,8 @@ class LockerListTagFragment :
      */
     @Subscribe(threadMode = ThreadMode.MAIN)
     fun onRefreshDataEvent(event: RefreshDataEvent) {
-        if(this::class.java.name==event.className){
-            LogUtil.d("$mViewName receiver event "+event.className)
+        if(this::class.java.name==event.dataClassName){
+            LogUtil.d("$mViewName receiver event "+event.dataClassName)
             hasLoadData=false
         }
     }

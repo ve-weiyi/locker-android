@@ -25,7 +25,7 @@
 
 
                         android:adjustViewBounds="true"
-                        android:background="@drawable/shape_eaeaea_oval" />
+                        android:background="@drawable/shape_oval_gray_tag" />
 
         </LinearLayout>
 

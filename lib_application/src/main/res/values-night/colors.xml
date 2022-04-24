@@ -10,6 +10,7 @@
     <color name="list_divider">@color/grey600</color>
     <color name="mask_color">#111111</color>
 
+    <color name="white"> @color/grey500</color>
     <color name="common_color">@color/grey300</color>
     <color name="color_title">@color/grey300</color>
     <color name="color_author">@color/grey500</color>

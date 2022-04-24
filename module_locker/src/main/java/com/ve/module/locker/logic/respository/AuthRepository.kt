@@ -23,4 +23,16 @@ object AuthRepository : BaseLockerRepository(){
     ): LockerBaseBean<LoginVO> {
         return apiService.loginLocker(username, password, code)
     }
+
+    suspend fun registerLocker(
+        username: String?,
+        password: String?,
+        code: String? ,
+    ): LockerBaseBean<Any> {
+        return apiService.registerLocker(username, password, code)
+    }
+
+    suspend fun sendCode(username: String?):LockerBaseBean<Any> {
+        return apiService.sendCode(username)
+    }
 }

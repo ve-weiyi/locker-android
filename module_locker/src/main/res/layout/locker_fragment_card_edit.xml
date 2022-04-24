@@ -16,7 +16,7 @@
             <TextView
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:layout_marginTop="@dimen/dp_10"
+                    android:layout_marginTop="@dimen/dp_5"
                     android:text="基本信息"
                     android:textStyle="bold"
                     android:textColor="@color/blue"
@@ -76,13 +76,245 @@
                         android:text="隐藏" />
 
             </RadioGroup>
-            <include
-                    android:id="@+id/layout_details_info"
-                    android:layout_marginHorizontal="@dimen/dp_10"
+
+
+            <LinearLayout
+                    android:paddingBottom="@dimen/dp_100"
+                    android:background="@drawable/shape_round_white"
                     android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    layout="@layout/locker_layout_details_card_edit"
-                    />
+                    android:layout_height="match_parent"
+                    android:layout_marginHorizontal="@dimen/dp_10"
+                    android:paddingHorizontal="@dimen/dp_10"
+                    android:orientation="vertical">
+
+                <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:orientation="vertical">
+
+                    <TextView
+                            android:id="@+id/tv_item_owner"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:textSize="16sp"
+                            android:layout_marginTop="10dp"
+                            android:textColor="@color/blue"
+                            android:text="持有人姓名" />
+
+                    <LinearLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_below="@id/tv_item_owner"
+                            android:gravity="end"
+                            android:orientation="horizontal">
+
+                        <com.google.android.material.textfield.TextInputLayout
+                                android:layout_weight="1"
+                                android:id="@+id/et_detail_owner"
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                app:errorEnabled="false"
+                                style="@style/InputTextLayoutStyle.ClearText">
+
+                            <EditText
+
+                                    android:layout_width="match_parent"
+                                    android:layout_height="wrap_content"
+                                    android:padding="@dimen/dp_10"
+                                    android:hint="必填项"
+                                    />
+                        </com.google.android.material.textfield.TextInputLayout>
+
+                    </LinearLayout>
+                </LinearLayout>
+
+                <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:orientation="vertical">
+
+                    <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:textSize="16sp"
+                            android:layout_marginTop="10dp"
+                            android:textColor="@color/blue"
+                            android:text="卡号" />
+
+                    <LinearLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:gravity="end"
+                            android:orientation="horizontal">
+
+                        <com.google.android.material.textfield.TextInputLayout
+                                android:id="@+id/et_detail_account"
+                                android:layout_weight="1"
+                                app:errorEnabled="false"
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                style="@style/InputTextLayoutStyle.ClearText">
+
+                            <EditText
+                                    android:layout_width="match_parent"
+                                    android:layout_height="wrap_content"
+                                    android:padding="@dimen/dp_10"
+                                    android:hint="必填项"
+                                    />
+                        </com.google.android.material.textfield.TextInputLayout>
+
+
+                    </LinearLayout>
+                </LinearLayout>
+
+                <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:orientation="vertical">
+
+                    <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:textSize="16sp"
+                            android:layout_marginTop="10dp"
+                            android:textColor="@color/blue"
+                            android:text="密码" />
+
+                    <LinearLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:gravity="end"
+                            android:orientation="horizontal">
+
+                        <com.google.android.material.textfield.TextInputLayout
+                                android:layout_weight="1"
+                                android:id="@+id/et_detail_password"
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                style="@style/InputTextLayoutStyle.See">
+
+                            <EditText
+
+                                    android:layout_width="match_parent"
+                                    android:layout_height="wrap_content"
+                                    android:padding="@dimen/dp_10"
+                                    tools:hint="12312421" />
+                        </com.google.android.material.textfield.TextInputLayout>
+
+
+                    </LinearLayout>
+                </LinearLayout>
+
+
+                <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:orientation="vertical">
+
+                    <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:textSize="16sp"
+                            android:layout_marginTop="10dp"
+                            android:textColor="@color/blue"
+                            android:text="绑定手机号" />
+
+                    <LinearLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:gravity="end"
+                            android:orientation="horizontal">
+
+                        <com.google.android.material.textfield.TextInputLayout
+                                android:layout_weight="1"
+                                android:id="@+id/et_detail_phone"
+                                app:errorEnabled="false"
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                style="@style/InputTextLayoutStyle.ClearText">
+
+                            <EditText
+
+                                    android:layout_width="match_parent"
+                                    android:layout_height="wrap_content"
+                                    android:padding="@dimen/dp_10"
+                                    tools:hint="15623356029" />
+                        </com.google.android.material.textfield.TextInputLayout>
+
+                    </LinearLayout>
+                </LinearLayout>
+
+                <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:orientation="vertical">
+
+                    <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:textSize="16sp"
+                            android:layout_marginTop="10dp"
+                            android:textColor="@color/blue"
+                            android:text="地址" />
+
+                    <LinearLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:gravity="end"
+                            android:orientation="horizontal">
+
+                        <com.google.android.material.textfield.TextInputLayout
+                                android:layout_weight="1"
+                                android:id="@+id/et_detail_address"
+                                app:errorEnabled="false"
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                style="@style/InputTextLayoutStyle.ClearText">
+
+                            <EditText
+                                    app:errorEnabled="false"
+                                    android:layout_width="match_parent"
+                                    android:layout_height="wrap_content"
+                                    android:padding="@dimen/dp_10"
+                                    tools:hint="湖北省 武汉市 华中科技大学" />
+                        </com.google.android.material.textfield.TextInputLayout>
+
+                    </LinearLayout>
+                </LinearLayout>
+
+                <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:orientation="vertical"
+                        android:paddingTop="@dimen/dp_10">
+
+                    <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:textSize="@dimen/dp_16"
+                            android:layout_marginVertical="10dp"
+                            android:textColor="@color/blue"
+                            android:text="备注" />
+
+                    <com.google.android.material.textfield.TextInputLayout
+                            android:layout_weight="1"
+                            android:id="@+id/et_detail_remark"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            style="@style/InputTextLayoutStyle.ClearText">
+
+                        <com.google.android.material.textfield.TextInputEditText
+                                android:paddingHorizontal="@dimen/dp_10"
+
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:paddingTop="@dimen/dp_10"
+                                android:paddingBottom="40dp"
+                                tools:hint="@string/text_content" />
+                    </com.google.android.material.textfield.TextInputLayout>
+
+                </LinearLayout>
+            </LinearLayout>
         </LinearLayout>
 
     </androidx.core.widget.NestedScrollView>

@@ -2,6 +2,7 @@ package com.ve.module.locker.logic.database.entity
 
 import androidx.room.ColumnInfo
 import androidx.room.PrimaryKey
+import org.litepal.annotation.Encrypt
 import org.litepal.crud.LitePalSupport
 import java.io.Serializable
 
@@ -19,25 +20,29 @@ data class PrivacyPassDetails(
     var id: Long = 0,
 
     //(value = "登录账号")
+    @Encrypt(algorithm = AES)
     var account: String,
 
     //(value = "登录密码")
+    @Encrypt(algorithm = AES)
     var password: String,
 
     //(value = "链接")
+    @Encrypt(algorithm = AES)
     var url: String? = null,
 
     //(value = "绑定手机号")
+    @Encrypt(algorithm = AES)
     var phone: String? = null,
 
     //(value = "所属app名")
-    var app: String? = null,
+    @Encrypt(algorithm = AES)
+    var app: String = "unknown",
 
     //(value = "备注")
+    @Encrypt(algorithm = AES)
     var remark: String? =  "未设置备注",
 
-    //(value = "是否加密")
-    var enableEncrypt: Int=0,
 ) : LitePalSupport(), Serializable {
 
 

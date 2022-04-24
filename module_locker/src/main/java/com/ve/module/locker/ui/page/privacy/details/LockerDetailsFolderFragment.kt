@@ -7,12 +7,13 @@ import android.widget.*
 import com.ve.lib.common.base.view.vm.BaseVmFragment
 import com.ve.lib.common.utils.ImageLoader
 import com.ve.lib.view.ext.formatCurrentDate
+import com.ve.lib.view.ext.setOnclickNoRepeatListener
 import com.ve.lib.vutils.LogUtil
 import com.ve.module.locker.common.event.RefreshDataEvent
 import com.ve.module.locker.databinding.LockerFragmentDetailsFolderBinding
 import com.ve.module.locker.logic.database.entity.PrivacyFolder
 import com.ve.module.locker.ui.page.privacy.list.LockerListFolderFragment
-import com.ve.module.locker.ui.state.LockerPrivacyFolderViewModel
+import com.ve.module.locker.ui.viewmodel.LockerPrivacyCategoryViewModel
 import java.util.*
 
 /**
@@ -21,7 +22,7 @@ import java.util.*
  * @Description  current project locker-android
  */
 class LockerDetailsFolderFragment :
-    BaseVmFragment<LockerFragmentDetailsFolderBinding, LockerPrivacyFolderViewModel>() {
+    BaseVmFragment<LockerFragmentDetailsFolderBinding, LockerPrivacyCategoryViewModel>() {
 
     companion object {
 
@@ -33,8 +34,8 @@ class LockerDetailsFolderFragment :
         return LockerFragmentDetailsFolderBinding.inflate(layoutInflater)
     }
 
-    override fun attachViewModelClass(): Class<LockerPrivacyFolderViewModel> {
-        return LockerPrivacyFolderViewModel::class.java
+    override fun attachViewModelClass(): Class<LockerPrivacyCategoryViewModel> {
+        return LockerPrivacyCategoryViewModel::class.java
     }
 
 
@@ -120,13 +121,13 @@ class LockerDetailsFolderFragment :
 
     override fun initObserver() {
         super.initObserver()
-        mViewModel.savePrivacyFolderMsg.observe(this){
+        mViewModel.folderAddMsg.observe(this){
             showMsg(it)
             mEventBus?.post(RefreshDataEvent(LockerListFolderFragment::class.java.name))
             activity?.finish()
         }
 
-        mViewModel.updatePrivacyFolderMsg.observe(this){
+        mViewModel.folderUpdateMsg.observe(this){
             showMsg(it)
             mEventBus?.post(RefreshDataEvent(LockerListFolderFragment::class.java.name))
             activity?.finish()
@@ -135,7 +136,7 @@ class LockerDetailsFolderFragment :
 
     override fun initListener() {
         super.initListener()
-        mBinding.btnSave.setOnClickListener {
+        mBinding.btnSave.setOnclickNoRepeatListener  {
             val folderName: String = et_title.text.toString()
             val folderCover: String = "#FF0000"
             val folderDesc = et_content.text.toString()
@@ -147,11 +148,11 @@ class LockerDetailsFolderFragment :
                 EditType.EDIT_TAG_TYPE -> {
                     val folderId: Long = mData.id
                     val privacyFolder = PrivacyFolder(folderId, folderName, folderCover, folderDesc)
-                    mViewModel.updatePrivacyFolder(privacyFolder)
+                    mViewModel.folderUpdate(privacyFolder)
                 }
                 EditType.ADD_TAG_TYPE -> {
                     val privacyFolder = PrivacyFolder(-1, folderName, folderCover, folderDesc)
-                    mViewModel.savePrivacyFolder(privacyFolder)
+                    mViewModel.folderAdd(privacyFolder)
                 }
                 else -> {
 
@@ -159,7 +160,7 @@ class LockerDetailsFolderFragment :
             }
         }
 
-        mBinding.llDate.setOnClickListener{
+        mBinding.llDate.setOnclickNoRepeatListener {
             var now = Calendar.getInstance()
             val dpd = DatePickerDialog(
                 requireActivity(), { view, year, month, dayOfMonth ->

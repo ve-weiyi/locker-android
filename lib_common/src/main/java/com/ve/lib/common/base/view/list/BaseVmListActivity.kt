@@ -42,6 +42,7 @@ import com.ve.lib.vutils.LogUtil
         defaultListView(this)
     }
 
+    abstract fun initListView()
 
     override fun getRefreshData() {
         LogUtil.e("$mViewName getRefreshData ")

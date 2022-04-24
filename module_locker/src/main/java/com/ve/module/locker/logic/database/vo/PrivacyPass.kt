@@ -39,7 +39,9 @@ data class PrivacyPass(
 
         privacyInfo.privacyFolderId = privacyFolder.id
         privacyInfo.privacyDetailsId = privacyDetails.id
+
         val res3 = privacyInfo.saveOrUpdate("id=?",privacyInfo.id.toString())
+
         //先删除这条隐私下的所有的标签，再添加
         val res4 = LitePal.deleteAll(TagAndPass::class.java, "privacyId=?", "${privacyInfo.id}")
         privacyTags?.forEach { privacyTag
@@ -67,24 +69,24 @@ data class PrivacyPass(
      * tagAndPass 和 details info 需要删除
      */
     @Synchronized
-    fun delete(): Boolean {
-        val res4 = LitePal.deleteAll(TagAndPass::class.java, "privacyId=?", "${privacyInfo.id}")
-        val res2 = privacyDetails.delete()
-        val res3 = privacyInfo.delete()
-        return true
+    fun delete(): Int {
+        val res1 = LitePal.deleteAll(TagAndPass::class.java, "privacyId=?", "${privacyInfo.id}")
+        val res2 = LitePal.delete(PrivacyPassDetails::class.java,privacyDetails.id)
+        val res3 = LitePal.delete(PrivacyPassInfo::class.java,privacyInfo.id)
+        return res3
     }
 
     companion object{
         fun getAll():List<PrivacyPass>{
             val privacyPassInfos=LitePal.findAll(PrivacyPassInfo::class.java)
-            val cards= mutableListOf<PrivacyPass>()
+            val passs= mutableListOf<PrivacyPass>()
             privacyPassInfos.forEach {
-                    card->
-                cards.add(
-                    PrivacyPass(card,card.getPrivacyDetails(),card.getPrivacyFolder(),card.getPrivacyTags())
+                    pass->
+                passs.add(
+                    PrivacyPass(pass,pass.getPrivacyDetails(),pass.getPrivacyFolder(),pass.getPrivacyTags())
                 )
             }
-            return cards
+            return passs
         }
     }
 }

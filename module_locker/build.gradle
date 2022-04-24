@@ -1,4 +1,5 @@
 apply from: "../module.build.gradle"
+apply plugin: 'org.jetbrains.kotlin.android'
 
 android {
     defaultConfig {
@@ -31,4 +32,9 @@ android {
 dependencies {
 //    implementation  project(':module_chat')
     implementation  project(':module_sunny')
+//    implementation "androidx.biometric:biometric:1.1.0"
+    // Kotlin
+    implementation "androidx.biometric:biometric-ktx:1.2.0-alpha04"
+
+    
 }

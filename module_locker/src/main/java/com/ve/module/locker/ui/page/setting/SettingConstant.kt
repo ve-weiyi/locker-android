@@ -33,6 +33,14 @@ object SettingConstant {
     val SP_KEY_AUTO_NIGHT_START = "sp_key_auto_night_start"
     val SP_KEY_AUTO_NIGHT_END = "sp_key_auto_night_end"
 
+
+    /**
+     * 辅助功能
+     */
+    val SP_KEY_BIOMETRICS="sp_key_biometrics"
+    val SP_KEY_LONG_COPY="sp_key_long_copy"
+    val SP_KEY_AUTO_FILL="sp_key_auto_fill"
+
     /**
      * 其他设置
      */

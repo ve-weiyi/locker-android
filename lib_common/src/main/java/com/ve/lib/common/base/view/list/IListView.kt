@@ -42,8 +42,6 @@ interface IListView<LD : Any> {
         return ListViewManager(context)
     }
 
-    abstract fun initListView()
-
     /**
      * RefreshListener  下拉刷新页面
      */

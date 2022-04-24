@@ -4,6 +4,7 @@ import android.os.Bundle
 import android.view.View
 import com.ve.lib.common.base.view.vm.BaseVmFragment
 import com.ve.lib.common.utils.ImageLoader
+import com.ve.lib.view.ext.setOnclickNoRepeatListener
 import com.ve.lib.vutils.LogUtil
 import com.ve.module.locker.common.config.LockerConstant
 import com.ve.module.locker.common.config.LockerLifecycle
@@ -13,7 +14,7 @@ import com.ve.module.locker.logic.http.model.LoginVO
 import com.ve.module.locker.ui.page.auth.LockerLoginActivity
 import com.ve.module.locker.ui.page.setting.LockerSettingActivity
 import com.ve.module.locker.ui.page.setting.StyleSettingFragment
-import com.ve.module.locker.ui.state.LockerDrawerViewModel
+import com.ve.module.locker.ui.viewmodel.LockerDrawerViewModel
 
 /**
  * @Description hello word!
@@ -75,10 +76,10 @@ class LockerDrawerHeaderFragment :
     override fun initListener() {
         super.initListener()
 
-        mBinding.lockerLoginNow.setOnClickListener {
+        mBinding.lockerLoginNow.setOnclickNoRepeatListener  {
             startActivity(mContext, LockerLoginActivity::class.java)
         }
-        mBinding.iconStyleSetting.setOnClickListener {
+        mBinding.iconStyleSetting.setOnclickNoRepeatListener  {
             LockerSettingActivity.start(mContext,StyleSettingFragment::class.java.name,"个性装扮")
         }
     }

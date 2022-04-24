@@ -25,7 +25,7 @@
             <androidx.recyclerview.widget.RecyclerView
                     android:id="@+id/recyclerView"
                     style="@style/RecyclerViewStyle"
-                    tools:listitem="@layout/locker_item_privacy_account" />
+                    tools:listitem="@layout/locker_item_privacy_pass" />
 
         </androidx.swiperefreshlayout.widget.SwipeRefreshLayout>
 

@@ -99,7 +99,7 @@ abstract class BaseApiService<T> {
             //网页请求日志输出
             //  addInterceptor(httpLoggingInterceptor)
             //响应拦截器
-            .addInterceptor(responseInterceptor!!)
+            .addInterceptor(ResponseInterceptor())
             //请求报文添加Cookie
             .addInterceptor(HeaderInterceptor())
             .addInterceptor(CacheInterceptor())

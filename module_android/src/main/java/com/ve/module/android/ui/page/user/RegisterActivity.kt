@@ -52,7 +52,7 @@ class RegisterActivity : BaseVmActivity<ActivityRegisterBinding, RegisterViewMod
         DialogUtil.getWaitDialog(this, getString(R.string.register_ing))
     }
 
-    override fun showLoading(msg: String) {
+    override fun showLoading() {
         mDialog.show()
     }
 

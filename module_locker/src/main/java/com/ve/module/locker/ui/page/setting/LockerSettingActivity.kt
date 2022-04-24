@@ -4,7 +4,6 @@ import android.content.Context
 import android.content.Intent
 import android.os.Bundle
 import androidx.fragment.app.Fragment
-import com.afollestad.materialdialogs.color.ColorChooserDialog
 import com.ve.lib.common.base.view.container.BaseContainerActivity
 import com.ve.lib.common.base.view.vm.BaseActivity
 import com.ve.lib.common.event.ColorEvent
@@ -21,8 +20,7 @@ import org.greenrobot.eventbus.EventBus
  *
  * 设置页面容器
  */
-class LockerSettingActivity: BaseActivity<LockerActivitySettingBinding>(),
-    ColorChooserDialog.ColorCallback {
+class LockerSettingActivity: BaseActivity<LockerActivitySettingBinding>(){
 
     companion object {
 
@@ -82,16 +80,4 @@ class LockerSettingActivity: BaseActivity<LockerActivitySettingBinding>(),
             .commit()
     }
 
-    override fun onColorSelection(dialog: ColorChooserDialog, selectedColor: Int) {
-        if (!dialog.isAccentMode) {
-            //设置主题颜色
-            SettingUtil.setColor(selectedColor)
-        }
-        initColor()
-        EventBus.getDefault().post(ColorEvent(true))
-    }
-
-    override fun onColorChooserDismissed(dialog: ColorChooserDialog) {
-
-    }
 }

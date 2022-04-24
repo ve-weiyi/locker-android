@@ -81,7 +81,7 @@ ext {
             /* BRVAH   万能适配器BaseRecyclerViewAdapterHolder框架,需引入 maven { url "https://jitpack.io" } */
             "brvah"            : "com.github.CymChad:BaseRecyclerViewAdapterHelper:3.0.6",
             //颜色选择器
-            "material-dialogs" : "com.afollestad.material-dialogs:commons:0.9.4.4",
+//            "material-dialogs" : "com.afollestad.material-dialogs:commons:0.9.4.4",
             "gson"             : "com.google.code.gson:gson:2.8.9",
             //mmkv数据存储
             "mmkv"             : "com.tencent:mmkv-static:1.2.10",

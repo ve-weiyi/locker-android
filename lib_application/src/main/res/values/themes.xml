@@ -41,6 +41,9 @@
         <!--        <item name="android:fitsSystemWindows">true</item>-->
 
         <item name="textAppearanceButton">@style/AppTextAppearance.Button</item>
+        <item name="actionBarSize">44dp</item>
+        <item name="android:textSize">15dp</item>
+        <item name="android:windowAnimationStyle">@style/WindowAnimationFadeInOut</item>
     </style>
 
     <!--    字体风格-->
@@ -115,7 +118,7 @@
         <item name="textAllCaps">false</item>
         <item name="android:textColor">?android:textColorSecondary</item>
     </style>
-
+<!--页面切换动画 淡入淡出-->
     <style name="WindowAnimationFadeInOut">
         <item name="android:windowEnterAnimation">@anim/fade_in</item>
         <item name="android:windowExitAnimation">@anim/fade_out</item>
@@ -148,6 +151,8 @@
 
     <style name="MenuButtonsStyle">
         <item name="fab_size">mini</item>
+        <!--去掉button背景色和边框,高版本按钮会有黑色阴影框-->
+        <item name="android:outlineProvider">none</item>
         <item name="fab_showAnimation">@anim/jump_from_down</item>
         <item name="fab_hideAnimation">@anim/jump_to_down</item>
         <item name="fab_shadowColor">#444</item>
@@ -164,11 +169,12 @@
     </style>
 
 
-    <style name="InputTextLayoutStyle">
+    <style name="InputTextLayoutStyle" parent="Widget.MaterialComponents.TextInputLayout.FilledBox">
+        <item name="android:paddingTop">0dp</item>
         <item name="android:focusable">true</item>
         <item name="android:focusableInTouchMode">true</item>
         <item name="background">@drawable/shape_round_grey</item>
-        <item name="boxBackgroundMode">outline</item>
+        <item name="boxBackgroundMode">none</item>
         <!--        &lt;!&ndash;        右边小眼睛&ndash;&gt;-->
         <!--        <item name="passwordToggleEnabled">true</item>-->
         <!--        <item name="endIconMode">clear_text</item>-->
@@ -182,7 +188,13 @@
         <item name="counterMaxLength">10</item>
         <!--        长度超出限制时提示错误信息-->
         <item name="errorEnabled">false</item>
+
     </style>
+
+    <style name="InputTextLayoutStyle.FilledBox" parent="Widget.MaterialComponents.TextInputLayout.FilledBox">
+
+    </style>
+
 
     <style name="InputTextLayoutStyle.See" parent="InputTextLayoutStyle">
         <item name="boxBackgroundMode">outline</item>
@@ -198,6 +210,7 @@
     </style>
 
     <style name="InputTextLayoutStyle.ClearText" parent="InputTextLayoutStyle">
+        <item name="errorEnabled">false</item>
         <item name="boxBackgroundMode">outline</item>
         <item name="passwordToggleEnabled">true</item>
         <item name="endIconDrawable">@drawable/ic_baseline_clear_24</item>

@@ -2,6 +2,7 @@ package com.ve.module.locker.logic.database.entity
 
 import androidx.room.ColumnInfo
 import androidx.room.PrimaryKey
+import org.litepal.annotation.Encrypt
 import org.litepal.crud.LitePalSupport
 import java.io.Serializable
 
@@ -12,29 +13,34 @@ import java.io.Serializable
 data class PrivacyCardDetails(
     var id: Long = 0,
 
-    //(value = "拥有人")
-    val owner: String,
+    //(varue = "拥有人")
+    @Encrypt(algorithm = AES)
+    var owner: String,
 
-    //(value = "卡号")
-    val number: String,
+    //(varue = "卡号")
+    @Encrypt(algorithm = AES)
+    var number: String,
 
-    //(value = "密码")
-    val password: String? = null,
+    //(varue = "密码")
+    @Encrypt(algorithm = AES)
+    var password: String? = null,
 
-    //(value = "绑定手机号")
-    val phone: String? = null,
+    //(varue = "绑定手机号")
+    @Encrypt(algorithm = AES)
+    var phone: String? = null,
 
-    //(value = "绑定地址")
-    val address: String? = null,
+    //(varue = "绑定地址")
+    @Encrypt(algorithm = AES)
+    var address: String? = null,
 
-    //(value = "备注")
-    val remark: String? = "未设置备注",
+    //(varue = "备注")
+    @Encrypt(algorithm = AES)
+    var remark: String? = "未设置备注",
 
-    //(value = "是否加密")
-    val enableEncrypt: Int = 0
 ) : LitePalSupport(), Serializable {
 
     companion object {
         const val serialVersionUID = 1L
     }
+
 }

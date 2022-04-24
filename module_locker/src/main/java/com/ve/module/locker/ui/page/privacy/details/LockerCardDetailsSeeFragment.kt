@@ -1,23 +1,29 @@
 package com.ve.module.locker.ui.page.privacy.details
 
 import android.os.Bundle
+import android.text.method.PasswordTransformationMethod
 import android.view.View
 import com.ve.lib.common.base.view.vm.BaseVmFragment
 import com.ve.lib.view.ext.setOnclickNoRepeatListener
 import com.ve.lib.vutils.LogUtil
 import com.ve.module.locker.R
+import com.ve.module.locker.common.event.RefreshDataEvent
 import com.ve.module.locker.databinding.LockerFragmentCardSeeBinding
 import com.ve.module.locker.logic.database.entity.PrivacyCardDetails
 import com.ve.module.locker.logic.database.entity.PrivacyCardInfo
+import com.ve.module.locker.logic.database.vo.PrivacyCard
 import com.ve.module.locker.ui.page.container.LockerContainerActivity
-import com.ve.module.locker.ui.state.LockerPrivacyCardViewModel
+import com.ve.module.locker.ui.viewmodel.LockerPrivacyInfoViewModel
+import com.ve.module.locker.utils.StickUtils
+import org.greenrobot.eventbus.Subscribe
+import org.greenrobot.eventbus.ThreadMode
 
 /**
  * @Author  weiyi
  * @Date 2022/4/11
  * @Description  current project locker-android
  */
-class LockerCardDetailsSeeFragment:BaseVmFragment<LockerFragmentCardSeeBinding,LockerPrivacyCardViewModel>(),
+class LockerCardDetailsSeeFragment:BaseVmFragment<LockerFragmentCardSeeBinding,LockerPrivacyInfoViewModel>(),
     View.OnClickListener {
 
     companion object{
@@ -28,8 +34,8 @@ class LockerCardDetailsSeeFragment:BaseVmFragment<LockerFragmentCardSeeBinding,L
         return LockerFragmentCardSeeBinding.inflate(layoutInflater)
     }
 
-    override fun attachViewModelClass(): Class<LockerPrivacyCardViewModel> {
-        return LockerPrivacyCardViewModel::class.java
+    override fun attachViewModelClass(): Class<LockerPrivacyInfoViewModel> {
+        return LockerPrivacyInfoViewModel::class.java
     }
 
     var mPrivacyInfoCard:PrivacyCardInfo?=null
@@ -54,14 +60,19 @@ class LockerCardDetailsSeeFragment:BaseVmFragment<LockerFragmentCardSeeBinding,L
         mBinding.btnEdit.setOnclickNoRepeatListener (this)
         mBinding.btnCopy.setOnclickNoRepeatListener(this)
         mBinding.btnDelete.setOnclickNoRepeatListener(this)
+        mBinding.tvCopyOwner.setOnclickNoRepeatListener(this)
+        mBinding.tvCopyAccount.setOnclickNoRepeatListener(this)
+        mBinding.tvCopyPassword.setOnclickNoRepeatListener(this)
+        mBinding.tvCopyPhone.setOnclickNoRepeatListener(this)
     }
 
     override fun initObserver() {
         super.initObserver()
-        mViewModel.deletePrivacyInfoMsg.observe(this){
+        mViewModel.deletePrivacyCardResult.observe(this){
 
             if(it>0){
                 showMsg("删除成功！$it")
+                mEventBus?.post(RefreshDataEvent(PrivacyCardInfo::class.java.name))
                 activity?.finish()
             }else{
                 showMsg("删除失败！$it")
@@ -82,7 +93,28 @@ class LockerCardDetailsSeeFragment:BaseVmFragment<LockerFragmentCardSeeBinding,L
                 )
             }
             R.id.btn_delete->{
-                mViewModel.deletePrivacyInfo(mPrivacyInfoCard!!)
+                mViewModel.deletePrivacyCard(mPrivacyInfoCard!!)
+            }
+            R.id.btn_copy->{
+                val account=mBinding.etDetailAccount.text.toString()
+                val password=mBinding.etDetailPassword.text.toString()
+                StickUtils.copy(mContext,"账号:$account\n密码:$password")
+            }
+            R.id.tv_copy_owner->{
+                val account=mBinding.etDetailOwner.text.toString()
+                StickUtils.copy(mContext, account)
+            }
+            R.id.tv_copy_account->{
+                val account=mBinding.etDetailAccount.text.toString()
+                StickUtils.copy(mContext, account)
+            }
+            R.id.tv_copy_password->{
+                val password=mBinding.etDetailPassword.text.toString()
+                StickUtils.copy(mContext, password)
+            }
+            R.id.tv_copy_phone->{
+                val phone=mBinding.tvCopyPhone.text.toString()
+                StickUtils.copy(mContext, phone)
             }
         }
     }
@@ -90,22 +122,41 @@ class LockerCardDetailsSeeFragment:BaseVmFragment<LockerFragmentCardSeeBinding,L
         val folder=privacyInfoCard.getPrivacyFolder()
         val tags=privacyInfoCard.getPrivacyTags()
         val tagsName=tags.map { it.tagName }
+
         mBinding.apply {
             tvPrivacyName.text=privacyInfoCard.privacyName
             tvPrivacyDesc.text=privacyInfoCard.privacyDesc
             tvPrivacyFolder.text=folder.folderName
             tvPrivacyTag.text=tagsName.toString()
+            tvPrivacyCreateTime.text=privacyInfoCard.createTime
+            tvPrivacyUpdateTime.text=privacyInfoCard.updateTime
         }
     }
 
 
     private fun showPrivacyDetails(privacyDetails : PrivacyCardDetails){
         mBinding.apply {
-            etDetailAccount.setText(privacyDetails.owner)
+            etDetailOwner.setText(privacyDetails.owner)
+            etDetailAccount.setText(privacyDetails.number)
             etDetailPassword.setText(privacyDetails.password)
+            etDetailPassword.transformationMethod= PasswordTransformationMethod.getInstance()
             etDetailPhone.setText(privacyDetails.phone)
             etDetailRemark.setText(privacyDetails.remark)
         }
     }
-
+    /**
+     * Refresh Data Event
+     */
+    @Subscribe(threadMode = ThreadMode.MAIN)
+    fun onRefreshDataEvent(event: RefreshDataEvent) {
+        if(PrivacyCardInfo::class.java.name==event.dataClassName){
+            LogUtil.d("$mViewName receiver event "+event.dataClassName)
+            if(event.data is PrivacyCard){
+                mPrivacyInfoCard=event.data.privacyInfo
+                shoPrivacyInfo(mPrivacyInfoCard!!)
+                showPrivacyDetails(mPrivacyInfoCard!!.getPrivacyDetails())
+            }
+            hasLoadData=false
+        }
+    }
 }

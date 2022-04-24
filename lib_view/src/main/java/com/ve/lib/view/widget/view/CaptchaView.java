@@ -29,10 +29,14 @@ public class CaptchaView extends RelativeLayout {
 	private TextView tv_code2;
 	private TextView tv_code3;
 	private TextView tv_code4;
+	private TextView tv_code5;
+	private TextView tv_code6;
 	private View v1;
 	private View v2;
 	private View v3;
 	private View v4;
+	private View v5;
+	private View v6;
 	private EditText et_code;
 	private List<String> codes = new ArrayList<>();
 	private InputMethodManager imm;
@@ -61,11 +65,15 @@ public class CaptchaView extends RelativeLayout {
 		tv_code2 = view.findViewById(R.id.tv_code2);
 		tv_code3 = view.findViewById(R.id.tv_code3);
 		tv_code4 = view.findViewById(R.id.tv_code4);
+		tv_code5 = view.findViewById(R.id.tv_code5);
+		tv_code6 = view.findViewById(R.id.tv_code6);
 		et_code = view.findViewById(R.id.et_code);
 		v1 = view.findViewById(R.id.v1);
 		v2 = view.findViewById(R.id.v2);
 		v3 = view.findViewById(R.id.v3);
 		v4 = view.findViewById(R.id.v4);
+		v5 = view.findViewById(R.id.v5);
+		v6 = view.findViewById(R.id.v6);
 	}
 
 	private void initEvent() {
@@ -83,7 +91,7 @@ public class CaptchaView extends RelativeLayout {
 			public void afterTextChanged(Editable editable) {
 				if (editable != null && editable.length() > 0) {
 					et_code.setText("");
-					if (codes.size() < 4) {
+					if (codes.size() < 6) {
 						codes.add(editable.toString());
 						showCode();
 					}
@@ -112,6 +120,8 @@ public class CaptchaView extends RelativeLayout {
 		String code2 = "";
 		String code3 = "";
 		String code4 = "";
+		String code5 = "";
+		String code6 = "";
 		if (codes.size() >= 1) {
 			code1 = codes.get(0);
 		}
@@ -124,11 +134,18 @@ public class CaptchaView extends RelativeLayout {
 		if (codes.size() >= 4) {
 			code4 = codes.get(3);
 		}
+		if (codes.size() >= 5) {
+			code5 = codes.get(4);
+		}
+		if (codes.size() >= 6) {
+			code6 = codes.get(5);
+		}
 		tv_code1.setText(code1);
 		tv_code2.setText(code2);
 		tv_code3.setText(code3);
 		tv_code4.setText(code4);
-
+		tv_code5.setText(code5);
+		tv_code6.setText(code6);
 		setColor();//设置高亮颜色
 		callBack();//回调
 	}
@@ -143,6 +160,9 @@ public class CaptchaView extends RelativeLayout {
 		v2.setBackgroundColor(colorDefault);
 		v3.setBackgroundColor(colorDefault);
 		v4.setBackgroundColor(colorDefault);
+		v5.setBackgroundColor(colorDefault);
+		v6.setBackgroundColor(colorDefault);
+
 		if (codes.size() == 0) {
 			v1.setBackgroundColor(colorFocus);
 		}
@@ -155,6 +175,12 @@ public class CaptchaView extends RelativeLayout {
 		if (codes.size() >= 3) {
 			v4.setBackgroundColor(colorFocus);
 		}
+		if (codes.size() >= 4) {
+			v5.setBackgroundColor(colorFocus);
+		}
+		if (codes.size() >= 5) {
+			v6.setBackgroundColor(colorFocus);
+		}
 	}
 
 	/**
@@ -164,7 +190,7 @@ public class CaptchaView extends RelativeLayout {
 		if (onInputListener == null) {
 			return;
 		}
-		if (codes.size() == 4) {
+		if (codes.size() == 6) {
 			onInputListener.onSucess(getPhoneCode());
 		}
 	}

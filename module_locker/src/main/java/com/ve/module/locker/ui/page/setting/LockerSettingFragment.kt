@@ -1,22 +1,12 @@
 package com.ve.module.locker.ui.page.setting
 
 import android.content.SharedPreferences
-import android.os.Bundle
 import android.os.Handler
 import android.os.Looper
-import android.os.Message
-import androidx.appcompat.app.AlertDialog
 import androidx.preference.Preference
-import androidx.preference.PreferenceFragmentCompat
-import com.afollestad.materialdialogs.color.ColorChooserDialog
 import com.ve.lib.common.event.RefreshHomeEvent
-import com.ve.lib.utils.CacheDataUtil
-import com.ve.lib.view.ext.showSnackMsg
 import com.ve.lib.view.widget.preference.IconPreference
 import com.ve.lib.vutils.LogUtil
-import com.ve.lib.application.R
-import com.ve.module.locker.ui.page.about.LockerAboutActivity
-import com.ve.module.locker.ui.page.container.LockerContainerActivity
 import org.greenrobot.eventbus.EventBus
 
 /**

@@ -1,0 +1,143 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+        xmlns:app="http://schemas.android.com/apk/res-auto"
+        xmlns:tools="http://schemas.android.com/tools">
+
+    <androidx.cardview.widget.CardView
+            android:id="@+id/cardView"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:clickable="true"
+            android:focusable="true"
+            android:layout_marginVertical="@dimen/dp_2"
+            android:layout_marginHorizontal="@dimen/dp_10"
+            android:foreground="?attr/selectableItemBackground"
+            app:cardCornerRadius="@dimen/dp_6"
+            app:cardElevation="@dimen/dp_1">
+
+        <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:paddingVertical="@dimen/dp_10"
+                android:paddingLeft="10dp">
+
+
+            <CheckBox
+                    android:id="@+id/check_button"
+                    android:layout_width="25dp"
+                    android:layout_height="25dp"
+                    android:layout_alignParentEnd="true"
+                    android:layout_centerVertical="true"
+                    android:layout_marginEnd="20dp"
+                    android:focusable="true"
+                    android:visibility="visible"
+                    tools:visibility="visible"
+                    android:src="@drawable/ic_more_gray" />
+
+
+            <TextView
+                    android:visibility="gone"
+                    android:id="@+id/tv_privacy_folder"
+                    android:layout_width="40dp"
+                    android:layout_height="40dp"
+                    android:layout_marginStart="2dp"
+                    android:layout_centerVertical="true"
+                    android:gravity="center"
+                    android:text="1"
+                    android:backgroundTint="@color/light_blue"
+                    android:backgroundTintMode="src_atop"
+                    android:background="@drawable/ic_baseline_folder_24"
+                    android:textColor="@color/white"
+                    android:textSize="14sp" />
+            <LinearLayout
+                    android:id="@+id/layout_privacy_name"
+                    android:layout_marginEnd="35dp"
+                    android:layout_marginStart="8dp"
+                    android:layout_marginTop="5dp"
+                    android:layout_toEndOf="@id/tv_privacy_folder"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content">
+                <TextView
+                        android:id="@+id/tv_privacy_info_nickname"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:ellipsize="end"
+                        android:maxLines="1"
+                        android:singleLine="true"
+                        android:text="我的邮箱账号"
+                        android:textColor="@color/listTextColor"
+                        android:textSize="15sp" />
+
+                <TextView
+                        android:id="@+id/tv_privacy_info_phone"
+                        android:layout_weight="1"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="10dp"
+                        android:ellipsize="end"
+                        android:maxLines="1"
+                        android:text="一个私密的邮箱账号，请不要告诉其他人哦"
+                        android:textSize="10sp" />
+            </LinearLayout>
+
+
+            <LinearLayout
+                    android:layout_marginEnd="35dp"
+                    android:layout_marginTop="5dp"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_alignStart="@+id/layout_privacy_name"
+                    android:layout_below="@+id/layout_privacy_name">
+
+                <TextView
+                        android:layout_weight="1"
+                        android:id="@+id/tv_privacy_info_name"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_alignStart="@+id/tv_privacy_info_name"
+                        android:layout_below="@+id/tv_privacy_info_name"
+                        android:ellipsize="end"
+                        android:maxLines="1"
+                        android:text="791422171@qq.com"
+                        android:textSize="10sp" />
+
+                <ImageView
+                        android:layout_width="11dp"
+                        android:layout_height="11dp"
+                        android:layout_gravity="center_vertical"
+                        android:src="@drawable/ic_baseline_person_pin_24" />
+
+
+                <TextView
+                        android:id="@+id/tv_privacy_info_qq"
+                        android:layout_width="70dp"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="3dp"
+                        android:maxLength="20"
+                        android:singleLine="true"
+                        android:text="2022-01-11"
+                        android:textSize="10sp" />
+
+                <ImageView
+                        android:layout_width="11dp"
+                        android:layout_height="11dp"
+                        android:layout_gravity="center_vertical"
+                        android:src="@drawable/ic_baseline_email_24" />
+
+                <TextView
+                        android:id="@+id/tv_privacy_info_email"
+                        android:layout_width="70dp"
+                        android:layout_height="match_parent"
+                        android:layout_marginStart="3dp"
+
+                        android:maxLength="20"
+                        android:singleLine="true"
+                        android:text="2022-01-11"
+                        android:textSize="10sp" />
+            </LinearLayout>
+
+
+        </RelativeLayout>
+    </androidx.cardview.widget.CardView>
+</layout>

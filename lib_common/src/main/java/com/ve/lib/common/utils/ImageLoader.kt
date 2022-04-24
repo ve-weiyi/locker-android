@@ -1,10 +1,14 @@
 package com.ve.lib.common.utils
 
 import android.content.Context
+import android.content.res.ColorStateList
 import android.graphics.Bitmap
 import android.graphics.Color
+import android.graphics.ColorFilter
+import android.graphics.LightingColorFilter
 import android.graphics.drawable.BitmapDrawable
 import android.graphics.drawable.Drawable
+import android.graphics.drawable.GradientDrawable
 import android.view.View
 import android.widget.ImageView
 import com.bumptech.glide.Glide
@@ -99,14 +103,34 @@ object ImageLoader {
 
             } else if (url.startsWith("#")) {
                 try {
-                    view.setBackgroundColor(Color.parseColor(url))
+
+                    val colorInt=Color.parseColor(url)
+                    val colorStateList= ColorStateList.valueOf(colorInt)
+                    view.backgroundTintList=colorStateList
+
+//                    val gd: GradientDrawable = view.background as GradientDrawable
+//                    gd.setColor(Color.parseColor(url))
+//                    view.setBackgroundColor(Color.parseColor(url))
                 }catch (e:Exception){
                     LogUtil.d(e.message!!)
                     e.printStackTrace()
                 }
 
-//                val gd: GradientDrawable = view.background as GradientDrawable
-//                gd.setColor(Color.parseColor(url))
+            }else{
+                try {
+                    val colorInt=url.toInt()
+                    val colorStateList= ColorStateList.valueOf(colorInt)
+                    view.backgroundTintList=colorStateList
+//                    val gd: GradientDrawable = view.background as GradientDrawable
+//                    gd.setColor(colorInt)
+//                    gd.colorFilter=LightingColorFilter(Color.WHITE,colorInt)
+//                    gd.setTint(colorInt)
+//                    view.background.setTint(colorInt)
+//                    view.setBackgroundColor(Color.parseColor(colorInt.toString(16).replace("-","#")))
+                }catch (e:Exception){
+                    LogUtil.d(e.message!!)
+                    e.printStackTrace()
+                }
             }
         }
 

@@ -3,6 +3,7 @@ package com.ve.module.locker.ui.page.container
 import android.content.Context
 import android.content.Intent
 import android.os.Bundle
+import android.view.View
 import androidx.fragment.app.Fragment
 import com.ve.lib.common.base.view.vm.BaseActivity
 import com.ve.lib.vutils.LogUtil
@@ -68,16 +69,21 @@ class LockerContainerActivity :BaseActivity<LockerActivityContainerBinding>(){
     override fun initialize(saveInstanceState: Bundle?) {
 
         //从bundle中取出数据
-        fragmentTitle  = intent.getStringExtra(FRAGMENT_TITLE_KEY) ?: "标题"
+        fragmentTitle  = intent.getStringExtra(FRAGMENT_TITLE_KEY) ?: ""
         fragmentClassName = intent.getStringExtra(FRAGMENT_CLASS_NAME_KEY) ?: ""
         fragmentArguments = intent.getBundleExtra(FRAGMENT_ARGUMENTS_KEY) ?: Bundle()
+
 
         if(fragmentClassName.isEmpty()){
             LogUtil.msg("fragment class name is null")
         }else{
             transactionFragment(fragmentClassName,fragmentArguments)
         }
-        initToolbar(mBinding.extToolbar.toolbar,fragmentTitle)
+        if(fragmentTitle.isEmpty()){
+            mBinding.extToolbar.appBarLayout.visibility=View.GONE
+        }else{
+            initToolbar(mBinding.extToolbar.toolbar,fragmentTitle)
+        }
     }
 
     /**
