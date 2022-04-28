@@ -6,15 +6,15 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:fitsSystemWindows="true"
-        android:theme="@style/AppTheme.AppBarOverlay"
+
         app:elevation="0dp">
 
     <androidx.appcompat.widget.Toolbar
             android:id="@+id/toolbar"
             android:layout_width="match_parent"
             android:layout_height="?attr/actionBarSize"
-            app:popupTheme="@style/AppTheme.PopupOverlay"
-            app:titleTextAppearance="@style/Toolbar.TitleText">
+            app:titleTextColor="@color/white"
+            >
 
         <TextView
                 android:id="@+id/tv_title"

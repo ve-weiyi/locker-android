@@ -16,14 +16,8 @@
             <option value="$PROJECT_DIR$/lib_network" />
             <option value="$PROJECT_DIR$/lib_utils" />
             <option value="$PROJECT_DIR$/lib_view" />
-            <option value="$PROJECT_DIR$/main" />
-            <option value="$PROJECT_DIR$/module_android" />
-            <option value="$PROJECT_DIR$/module_chat" />
-            <option value="$PROJECT_DIR$/module_games" />
             <option value="$PROJECT_DIR$/module_locker" />
-            <option value="$PROJECT_DIR$/module_music" />
             <option value="$PROJECT_DIR$/module_sunny" />
-            <option value="$PROJECT_DIR$/module_test" />
           </set>
         </option>
         <option name="resolveModulePerSourceSet" value="false" />

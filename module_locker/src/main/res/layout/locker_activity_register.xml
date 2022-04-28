@@ -4,7 +4,7 @@
         android:layout_height="match_parent"
         xmlns:app="http://schemas.android.com/apk/res-auto"
         xmlns:tools="http://schemas.android.com/tools"
-        android:background="@color/viewBackground"
+        android:background="@color/colorBackground"
         android:fitsSystemWindows="true">
 
     <LinearLayout
@@ -31,7 +31,7 @@
                     android:gravity="center"
                     android:text="注册 locker"
                     android:textStyle="bold"
-                    android:textColor="@color/common_color"
+                    android:textColor="@color/color_title"
                     android:textSize="@dimen/sp_20" />
 
             <TextView

@@ -4,7 +4,7 @@
     <!--    为Android设置Material Components主题  https://www.jianshu.com/p/533b397c63f0-->
     <!--    原因分析：默认的<Button>标签其实是MaterialButton ， MaterialButton 会自动忽略<background>，.Bridge-->
     <!--    DayNight自动暗/亮主题-->
-    <style name="BaseAppTheme" parent="@style/Theme.MaterialComponents.DayNight">
+    <style name="BaseAppTheme" parent="@style/Theme.MaterialComponents.DayNight.NoActionBar">
         <!--    colorPrimary：您的应用的主要品牌颜色，主要用于主题-->
         <item name="colorPrimary">@color/colorPrimary</item>
         <!--    colorPrimaryVariant：您的主要品牌颜色的较浅/较暗变体，在主题中很少使用-->
@@ -21,18 +21,19 @@
         <item name="colorError">@color/colorError</item>
         <!--    colorOnError：用于显示在错误颜色顶部的元素的颜色-->
         <item name="colorOnError">@color/colorOnError</item>
-        <!--    colorSurface：用于表面的颜色（即材料“纸张”）-->
+        <!--    colorSurface：(夜间模式标题栏颜色)用于表面的颜色（即材料“纸张”）-->
         <item name="colorSurface">@color/colorSurface</item>
         <!--    colorOnSurface：用于显示在表面颜色顶部的元素的颜色-->
         <item name="colorOnSurface">@color/colorOnSurface</item>
-        <!--    android:colorBackground：所有其他屏幕内容后面的颜色-->
+        <!--    android:colorBackground：(view默认背景颜色)所有其他屏幕内容后面的颜色-->
         <item name="android:colorBackground">@color/colorBackground</item>
         <!--    colorOnBackground：用于显示在背景色上方的元素的颜色-->
         <item name="colorOnBackground">@color/colorOnBackground</item>
+
+
         <item name="colorPrimaryDark">@color/colorPrimaryDark</item>
+        <!--        图标颜色-->
         <item name="colorAccent">@color/colorAccent</item>
-        <item name="textColorPrimary">@color/textColorPrimary</item>
-        <item name="viewBackground">@color/viewBackground</item>
         <!--关闭启动窗口-->
         <item name="android:windowDisablePreview">true</item>
         <item name="android:listDivider">@drawable/bg_divider</item>
@@ -42,7 +43,7 @@
 
         <item name="textAppearanceButton">@style/AppTextAppearance.Button</item>
         <item name="actionBarSize">44dp</item>
-        <item name="android:textSize">15dp</item>
+        <item name="android:textSize">16sp</item>
         <item name="android:windowAnimationStyle">@style/WindowAnimationFadeInOut</item>
     </style>
 
@@ -52,15 +53,6 @@
     </style>
 
     <style name="AppTheme" parent="BaseAppTheme.NoActionBar"></style>
-
-    <style name="AppTheme.FullScreen" parent="@style/AppTheme">
-        <item name="windowNoTitle">true</item>
-        <item name="windowActionBar">false</item>
-        <item name="android:windowFullscreen">true</item>
-        <item name="android:windowContentOverlay">@null</item>
-        <item name="android:windowBackground">@null</item>
-        <item name="android:windowDisablePreview">true</item>
-    </style>
 
     <style name="SplashTheme" parent="BaseAppTheme.NoActionBar">
         <item name="android:windowFullscreen">true</item>
@@ -75,11 +67,6 @@
     <style name="BaseAppTheme.NoActionBar">
         <item name="windowActionBar">false</item>
         <item name="windowNoTitle">true</item>
-    </style>
-
-    <style name="BaseAppTheme.NoActionBar.Slidable" parent="BaseAppTheme.NoActionBar">
-        <item name="android:windowIsTranslucent">true</item>
-        <item name="android:windowBackground">@android:color/transparent</item>
     </style>
 
     <style name="AppTheme.AppBarOverlay" parent="ThemeOverlay.MaterialComponents.Dark.ActionBar" />
@@ -118,22 +105,22 @@
         <item name="textAllCaps">false</item>
         <item name="android:textColor">?android:textColorSecondary</item>
     </style>
-<!--页面切换动画 淡入淡出-->
+    <!--页面切换动画 淡入淡出-->
     <style name="WindowAnimationFadeInOut">
         <item name="android:windowEnterAnimation">@anim/fade_in</item>
         <item name="android:windowExitAnimation">@anim/fade_out</item>
     </style>
 
-    <style name="ToolbarStyle" parent="AppTheme">
-        <item name="android:textColorSecondary">@android:color/white</item>
-        <item name="searchHintIcon">@null</item>
-    </style>
+    <!--    <style name="ToolbarStyle" parent="AppTheme">-->
+    <!--        <item name="android:textColorSecondary">@android:color/white</item>-->
+    <!--        <item name="searchHintIcon">@null</item>-->
+    <!--    </style>-->
 
 
-    <!-- 设置Toolbar标题字体的大小 -->
-    <style name="Toolbar.TitleText" parent="TextAppearance.Widget.AppCompat.Toolbar.Title">
-        <item name="android:textSize">@dimen/sp_18</item>
-    </style>
+    <!--    &lt;!&ndash; 设置Toolbar标题字体的大小 &ndash;&gt;-->
+    <!--    <style name="Toolbar.TitleText" parent="TextAppearance.Widget.AppCompat.Toolbar.Title">-->
+    <!--        <item name="android:textSize">@dimen/sp_18</item>-->
+    <!--    </style>-->
 
     <!-- 浮动窗口动画 -->
     <style name="anim_float_view">
@@ -243,7 +230,7 @@
         <item name="android:padding">10dp</item>
     </style>
 
-<!--    不可以编辑-->
+    <!--    不可以编辑-->
     <style name="EditText.See">
         <item name="android:focusable">false</item>
         <item name="android:focusableInTouchMode">false</item>
@@ -254,6 +241,6 @@
     <style name="EditText">
         <item name="android:padding">10dp</item>
         <item name="android:background">@drawable/shape_round_grey</item>
-<!--        <item name="android:inputType">text|textPassword</item>-->
+        <!--        <item name="android:inputType">text|textPassword</item>-->
     </style>
 </resources>

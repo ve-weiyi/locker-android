@@ -16,6 +16,6 @@
         android:layout_height="wrap_content"
         android:layout_marginTop="@dimen/dp_10"
         android:text="@string/data_error"
-        android:textColor="@color/common_color" />
+        android:textColor="@color/color_title" />
 
 </LinearLayout>

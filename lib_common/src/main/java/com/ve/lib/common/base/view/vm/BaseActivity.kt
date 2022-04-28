@@ -91,6 +91,7 @@ abstract class BaseActivity<VB : ViewBinding> : AppCompatActivity(), IView<VB> {
 
     open fun initColor() {
         mThemeColor = if (!SettingUtil.getIsNightMode()) {
+            //非夜间模式
             SettingUtil.getColor()
         } else {
             resources.getColor(com.ve.lib.application.R.color.colorPrimary)

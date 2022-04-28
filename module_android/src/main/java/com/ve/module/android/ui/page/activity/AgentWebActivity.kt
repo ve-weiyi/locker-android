@@ -1,4 +1,4 @@
-package com.ve.lib.common.ui.activity
+package com.ve.module.android.ui.page.activity
 
 import android.annotation.SuppressLint
 import android.content.Context

@@ -18,8 +18,7 @@
         <include
                 android:id="@+id/layout_userinfo"
                 layout="@layout/locker_layout_drawer_userinfo"
-                android:visibility="gone"
-                />
+                android:visibility="gone" />
 
         <!--用户未登录-->
         <LinearLayout
@@ -111,7 +110,6 @@
                 app:tipText="1"
                 app:tipTextColor="@color/white"
                 app:tipTextSize="7sp" />
-
 
 
         <com.ve.lib.view.widget.view.VerticalItemView
