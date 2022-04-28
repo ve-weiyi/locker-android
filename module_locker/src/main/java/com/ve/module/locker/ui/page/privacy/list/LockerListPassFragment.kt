@@ -16,6 +16,7 @@ import com.ve.module.locker.logic.database.entity.PrivacyFolder
 import com.ve.module.locker.ui.adapter.PrivacyInfoPassAdapter
 import com.ve.module.locker.ui.page.container.LockerContainerActivity
 import com.ve.module.locker.ui.page.privacy.details.LockerPassDetailsEditFragment
+import com.ve.module.locker.ui.page.search.LockerListPassSearchFragment
 import com.ve.module.locker.ui.viewmodel.LockerPrivacyInfoViewModel
 import org.greenrobot.eventbus.Subscribe
 import org.greenrobot.eventbus.ThreadMode
@@ -71,7 +72,8 @@ class LockerListPassFragment :
             )
         }
         mBinding.tvSearchText.setOnClickListener{
-            LockerContainerActivity.start(mContext,LockerListPassSearchFragment::class.java,null,null)
+            LockerContainerActivity.start(mContext,
+                LockerListPassSearchFragment::class.java,null,null)
         }
     }
     override fun initObserver() {

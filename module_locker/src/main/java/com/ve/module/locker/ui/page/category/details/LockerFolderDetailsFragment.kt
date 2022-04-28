@@ -1,4 +1,4 @@
-package com.ve.module.locker.ui.page.privacy.details
+package com.ve.module.locker.ui.page.category.details
 
 import android.app.DatePickerDialog
 import android.os.Bundle
@@ -12,7 +12,8 @@ import com.ve.lib.vutils.LogUtil
 import com.ve.module.locker.common.event.RefreshDataEvent
 import com.ve.module.locker.databinding.LockerFragmentDetailsFolderBinding
 import com.ve.module.locker.logic.database.entity.PrivacyFolder
-import com.ve.module.locker.ui.page.privacy.list.LockerListFolderFragment
+import com.ve.module.locker.ui.page.category.LockerListFolderFragment
+import com.ve.module.locker.ui.page.privacy.details.EditType
 import com.ve.module.locker.ui.viewmodel.LockerPrivacyCategoryViewModel
 import java.util.*
 
@@ -21,7 +22,7 @@ import java.util.*
  * @Date 2022/4/12
  * @Description  current project locker-android
  */
-class LockerDetailsFolderFragment :
+class LockerFolderDetailsFragment :
     BaseVmFragment<LockerFragmentDetailsFolderBinding, LockerPrivacyCategoryViewModel>() {
 
     companion object {

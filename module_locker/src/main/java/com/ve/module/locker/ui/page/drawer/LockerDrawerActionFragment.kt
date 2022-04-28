@@ -20,8 +20,8 @@ import com.ve.module.locker.ui.page.about.LockerAboutActivity
 import com.ve.module.locker.ui.page.container.LockerContainerActivity
 import com.ve.module.locker.ui.page.container.LockerWebContainerActivity
 import com.ve.module.locker.ui.page.feedback.LockerFeedBackActivity
-import com.ve.module.locker.ui.page.privacy.list.LockerListFolderFragment
-import com.ve.module.locker.ui.page.privacy.list.LockerListTagFragment
+import com.ve.module.locker.ui.page.category.LockerListFolderFragment
+import com.ve.module.locker.ui.page.category.LockerListTagFragment
 import com.ve.module.locker.ui.page.setting.LockerSettingActivity
 import com.ve.module.locker.ui.viewmodel.LockerDrawerViewModel
 import org.greenrobot.eventbus.EventBus

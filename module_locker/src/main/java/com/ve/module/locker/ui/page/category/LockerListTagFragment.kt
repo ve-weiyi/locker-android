@@ -1,4 +1,4 @@
-package com.ve.module.locker.ui.page.privacy.list
+package com.ve.module.locker.ui.page.category
 
 import android.os.Bundle
 import android.view.View
@@ -11,9 +11,9 @@ import com.ve.module.locker.common.event.RefreshDataEvent
 import com.ve.module.locker.databinding.LockerFragmentListCategoryBinding
 import com.ve.module.locker.logic.database.entity.PrivacyTag
 import com.ve.module.locker.ui.adapter.ListTagAdapter
+import com.ve.module.locker.ui.page.category.details.LockerTagDetailsFragment
 import com.ve.module.locker.ui.page.container.LockerContainerActivity
 import com.ve.module.locker.ui.page.privacy.details.EditType
-import com.ve.module.locker.ui.page.privacy.details.LockerDetailsTagFragment
 import com.ve.module.locker.ui.viewmodel.LockerPrivacyCategoryViewModel
 import com.ve.module.locker.ui.view.TagSwipeItemLayout
 import org.greenrobot.eventbus.Subscribe
@@ -85,17 +85,17 @@ class LockerListTagFragment :
         when (view.id) {
             R.id.item_layout_content -> {
                 val bundle = Bundle()
-                bundle.putInt(LockerDetailsTagFragment.FRAGMENT_TYPE_KEY, EditType.SEE_TAG_TYPE)
-                bundle.putSerializable(LockerDetailsTagFragment.FRAGMENT_DATA_KEY, item)
-                LockerContainerActivity.start(mContext, LockerDetailsTagFragment::class.java.name, "查看标签 "+item.tagName,bundle )
+                bundle.putInt(LockerTagDetailsFragment.FRAGMENT_TYPE_KEY, EditType.SEE_TAG_TYPE)
+                bundle.putSerializable(LockerTagDetailsFragment.FRAGMENT_DATA_KEY, item)
+                LockerContainerActivity.start(mContext, LockerTagDetailsFragment::class.java.name, "查看标签 "+item.tagName,bundle )
 
                 showMsg("查看")
             }
             R.id.item_btn_edit -> {
                 val bundle = Bundle()
-                bundle.putInt(LockerDetailsTagFragment.FRAGMENT_TYPE_KEY, EditType.EDIT_TAG_TYPE)
-                bundle.putSerializable(LockerDetailsTagFragment.FRAGMENT_DATA_KEY, item)
-                LockerContainerActivity.start(mContext, LockerDetailsTagFragment::class.java.name, "编辑标签 "+item.tagName, bundle)
+                bundle.putInt(LockerTagDetailsFragment.FRAGMENT_TYPE_KEY, EditType.EDIT_TAG_TYPE)
+                bundle.putSerializable(LockerTagDetailsFragment.FRAGMENT_DATA_KEY, item)
+                LockerContainerActivity.start(mContext, LockerTagDetailsFragment::class.java.name, "编辑标签 "+item.tagName, bundle)
                 showMsg("编辑")
             }
             R.id.item_btn_delete -> {
@@ -107,8 +107,8 @@ class LockerListTagFragment :
 
     private fun addPrivacyTag() {
         val bundle = Bundle()
-        bundle.putInt(LockerDetailsTagFragment.FRAGMENT_TYPE_KEY, EditType.ADD_TAG_TYPE)
-        LockerContainerActivity.start(mContext, LockerDetailsTagFragment::class.java.name, "添加标签",bundle)
+        bundle.putInt(LockerTagDetailsFragment.FRAGMENT_TYPE_KEY, EditType.ADD_TAG_TYPE)
+        LockerContainerActivity.start(mContext, LockerTagDetailsFragment::class.java.name, "添加标签",bundle)
         showMsg("添加")
     }
 

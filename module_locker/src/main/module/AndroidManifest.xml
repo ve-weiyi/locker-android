@@ -19,7 +19,7 @@
                 android:name=".ui.page.auth.LockerAuthActivity"
                 android:exported="false" />
         <activity
-                android:name=".ui.page.auth.LockerSplashActivity"
+                android:name=".ui.page.splash.LockerSplashActivity"
                 android:exported="true"
                 android:theme="@style/SplashTheme">
             <intent-filter>

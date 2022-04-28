@@ -1,4 +1,4 @@
-package com.ve.module.locker.ui.page.privacy.list
+package com.ve.module.locker.ui.page.category
 
 import android.content.Context
 import androidx.recyclerview.widget.GridLayoutManager

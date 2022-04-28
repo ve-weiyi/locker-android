@@ -311,6 +311,7 @@
         <entry key="module_locker/src/main/res/layout/locker_activity_container_web.xml" value="0.1" />
         <entry key="module_locker/src/main/res/layout/locker_activity_details_privacy.xml" value="0.16337386018237082" />
         <entry key="module_locker/src/main/res/layout/locker_activity_feedback.xml" value="0.165" />
+        <entry key="module_locker/src/main/res/layout/locker_activity_list_search.xml" value="0.335" />
         <entry key="module_locker/src/main/res/layout/locker_activity_login.xml" value="0.335" />
         <entry key="module_locker/src/main/res/layout/locker_activity_main.xml" value="0.1" />
         <entry key="module_locker/src/main/res/layout/locker_activity_phone_login.xml" value="0.335" />

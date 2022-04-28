@@ -1,4 +1,4 @@
-package com.ve.module.locker.ui.page.privacy.list
+package com.ve.module.locker.ui.page.search
 
 import android.text.Editable
 import android.text.TextWatcher

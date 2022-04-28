@@ -1,4 +1,4 @@
-package com.ve.module.locker.ui.page.auth
+package com.ve.module.locker.ui.page.splash
 
 import android.content.Intent
 import android.os.Bundle
@@ -9,6 +9,8 @@ import com.ve.lib.vutils.LogUtil
 import com.ve.module.locker.LockerMainActivity
 import com.ve.module.locker.common.config.LockerSharePreference
 import com.ve.module.locker.databinding.LockerActivitySplashBinding
+import com.ve.module.locker.ui.page.auth.LockerAuthActivity
+import com.ve.module.locker.ui.page.auth.LockerLoginActivity
 
 
 class LockerSplashActivity : BaseActivity<LockerActivitySplashBinding>() {

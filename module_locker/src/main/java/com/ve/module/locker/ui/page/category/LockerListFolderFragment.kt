@@ -1,4 +1,4 @@
-package com.ve.module.locker.ui.page.privacy.list
+package com.ve.module.locker.ui.page.category
 
 import android.os.Bundle
 import android.view.View
@@ -11,9 +11,9 @@ import com.ve.module.locker.common.event.RefreshDataEvent
 import com.ve.module.locker.databinding.LockerFragmentListCategoryBinding
 import com.ve.module.locker.logic.database.entity.PrivacyFolder
 import com.ve.module.locker.ui.adapter.ListFolderAdapter
+import com.ve.module.locker.ui.page.category.details.LockerFolderDetailsFragment
 import com.ve.module.locker.ui.page.container.LockerContainerActivity
 import com.ve.module.locker.ui.page.privacy.details.EditType
-import com.ve.module.locker.ui.page.privacy.details.LockerDetailsFolderFragment
 import com.ve.module.locker.ui.viewmodel.LockerPrivacyCategoryViewModel
 import com.ve.module.locker.ui.view.TagSwipeItemLayout
 import org.greenrobot.eventbus.Subscribe
@@ -82,17 +82,17 @@ class LockerListFolderFragment :
         when (view.id) {
             R.id.item_layout_content -> {
                 val bundle = Bundle()
-                bundle.putInt(LockerDetailsFolderFragment.FRAGMENT_TYPE_KEY, EditType.SEE_TAG_TYPE)
-                bundle.putSerializable(LockerDetailsFolderFragment.FRAGMENT_DATA_KEY, item)
-                LockerContainerActivity.start(mContext, LockerDetailsFolderFragment::class.java.name, "查看文件夹 "+item.folderName,bundle )
+                bundle.putInt(LockerFolderDetailsFragment.FRAGMENT_TYPE_KEY, EditType.SEE_TAG_TYPE)
+                bundle.putSerializable(LockerFolderDetailsFragment.FRAGMENT_DATA_KEY, item)
+                LockerContainerActivity.start(mContext, LockerFolderDetailsFragment::class.java.name, "查看文件夹 "+item.folderName,bundle )
 
                 showMsg("查看")
             }
             R.id.item_btn_edit -> {
                 val bundle = Bundle()
-                bundle.putInt(LockerDetailsFolderFragment.FRAGMENT_TYPE_KEY, EditType.EDIT_TAG_TYPE)
-                bundle.putSerializable(LockerDetailsFolderFragment.FRAGMENT_DATA_KEY, item)
-                LockerContainerActivity.start(mContext, LockerDetailsFolderFragment::class.java.name, "编辑文件夹 "+item.folderName, bundle)
+                bundle.putInt(LockerFolderDetailsFragment.FRAGMENT_TYPE_KEY, EditType.EDIT_TAG_TYPE)
+                bundle.putSerializable(LockerFolderDetailsFragment.FRAGMENT_DATA_KEY, item)
+                LockerContainerActivity.start(mContext, LockerFolderDetailsFragment::class.java.name, "编辑文件夹 "+item.folderName, bundle)
                 showMsg("编辑")
             }
             R.id.item_btn_delete -> {
@@ -104,8 +104,8 @@ class LockerListFolderFragment :
 
     private fun addPrivacyFolder() {
         val bundle = Bundle()
-        bundle.putInt(LockerDetailsFolderFragment.FRAGMENT_TYPE_KEY, EditType.ADD_TAG_TYPE)
-        LockerContainerActivity.start(mContext, LockerDetailsFolderFragment::class.java.name, "添加文件夹",bundle)
+        bundle.putInt(LockerFolderDetailsFragment.FRAGMENT_TYPE_KEY, EditType.ADD_TAG_TYPE)
+        LockerContainerActivity.start(mContext, LockerFolderDetailsFragment::class.java.name, "添加文件夹",bundle)
         showMsg("添加")
     }
 
