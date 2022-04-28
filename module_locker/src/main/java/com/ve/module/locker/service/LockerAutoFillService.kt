@@ -1,8 +1,6 @@
 package com.ve.module.locker.service
 
 import android.app.assist.AssistStructure
-import android.app.assist.AssistStructure.ViewNode
-import android.app.assist.AssistStructure.WindowNode
 import android.os.Build
 import android.os.Bundle
 import android.service.autofill.*
@@ -14,7 +12,7 @@ import android.view.inputmethod.EditorInfo
 import android.widget.RemoteViews
 import com.ve.lib.vutils.LogUtil
 import com.ve.module.locker.R
-import com.ve.module.locker.logic.database.entity.PrivacyPassDetails
+import com.ve.module.locker.model.database.entity.PrivacyPassDetails
 import com.ve.module.locker.service.model.ParsedStructure
 import com.ve.module.locker.service.model.SimpleUserData
 import com.ve.module.locker.utils.AndroidUtil

@@ -65,7 +65,7 @@
         android:paddingStart="@dimen/dp_16"
         android:paddingEnd="@dimen/dp_20"
         android:text="@string/share_article_tip"
-        android:textColor="@color/color_desc"
+        android:textColor="@color/color_text_gray_light"
         android:textSize="@dimen/sp_12" />
 
 </RelativeLayout>

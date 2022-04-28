@@ -16,6 +16,6 @@
         android:layout_height="wrap_content"
         android:layout_marginTop="@dimen/dp_10"
         android:text="@string/no_data"
-        android:textColor="@color/color_title" />
+        android:textColor="@color/color_text_normal" />
 
 </LinearLayout>

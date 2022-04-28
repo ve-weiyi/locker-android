@@ -1,36 +1,36 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
+    <!-- 自定义主题颜色 -->
 
-
-<!--    colorPrimary：您的应用的主要品牌颜色，主要用于主题-->
+    <!--    colorPrimary：您的应用的主要品牌颜色，主要用于主题-->
     <color name="colorPrimary">@color/blue</color>
-<!--    colorPrimaryVariant：您的主要品牌颜色的较浅/较暗变体，在主题中很少使用-->
+    <!--    colorPrimaryVariant：您的主要品牌颜色的较浅/较暗变体，在主题中很少使用-->
     <color name="colorPrimaryVariant">#512DA8</color>
-<!--colorOnPrimary：用于显示在原色上方的元素的颜色（例如，文本和图标，根据可访问性，通常为白色或半透明的黑色）-->
+    <!--colorOnPrimary：用于显示在原色上方的元素的颜色（例如，文本和图标，根据可访问性，通常为白色或半透明的黑色）-->
     <color name="colorOnPrimary">@color/white</color>
-<!--    colorSecondary：您应用程式的次要品牌色彩，主要用于强调某些需要突出的小部件-->
+    <!--    colorSecondary：您应用程式的次要品牌色彩，主要用于强调某些需要突出的小部件-->
     <color name="colorSecondary">@color/light_blue</color>
-<!--    colorSecondaryVariant：您的次要品牌颜色的较浅/较深变体，在主题中很少使用-->
+    <!--    colorSecondaryVariant：您的次要品牌颜色的较浅/较深变体，在主题中很少使用-->
     <color name="colorSecondaryVariant">#0039CB</color>
-<!--    colorOnSecondary：用于显示在辅助颜色顶部的元素的颜色-->
+    <!--    colorOnSecondary：用于显示在辅助颜色顶部的元素的颜色-->
     <color name="colorOnSecondary">@color/white</color>
-<!--    colorError：用于错误的颜色（通常为红色阴影）-->
+    <!--    colorError：用于错误的颜色（通常为红色阴影）-->
     <color name="colorError">#F44336</color>
-<!--    colorOnError：用于显示在错误颜色顶部的元素的颜色-->
+    <!--    colorOnError：用于显示在错误颜色顶部的元素的颜色-->
     <color name="colorOnError">#FFFFFF</color>
-<!--    colorSurface：(夜间模式标题栏颜色)用于表面的颜色（即材料“纸张”）-->
+    <!--    colorSurface：(夜间模式标题栏颜色)用于表面的颜色（即材料“纸张”）-->
     <color name="colorSurface">@color/black</color>
-<!--    colorOnSurface：用于显示在表面颜色顶部的元素的颜色-->
+    <!--    colorOnSurface：用于显示在表面颜色顶部的元素的颜色-->
     <color name="colorOnSurface">#212121</color>
-<!--    android:colorBackground：所有其他屏幕内容后面的颜色(view默认背景颜色)-->
+    <!--    android:colorBackground：所有其他屏幕内容后面的颜色(view默认背景颜色)-->
     <color name="colorBackground">@color/grey100</color>
-<!--    colorOnBackground：用于显示在背景色上方的元素的颜色()-->
-    <color name="colorOnBackground">#212121</color>
+    <!--    colorOnBackground：用于显示在背景色上方的元素的颜色()-->
+    <color name="colorOnBackground">@color/white</color>
 
 
     <color name="colorPrimaryDark">#512DA8</color>
     <color name="colorAccent">#7C4DFF</color>
-<!--    比背景色深一点-->
+    <!--    比背景色深一点-->
     <color name="windowColorBackground">@color/grey200</color>
     <color name="textColorPrimary">#616161</color>
 
@@ -38,66 +38,15 @@
     <color name="list_divider">@color/grey400</color>
     <color name="mask_color">#f5f5f5</color>
 
-    <color name="listSubTextColor">#ff888888</color>
-    <color name="text_collect">#FE3A3C</color>
-
-    <color name="color_999999">#11784F4F</color>
-    <color name="app_background">#1111</color>
-    <color name="color_F71816">#F71816</color>
 
     <!-- color -->
-    <color name="color_title">#19191b</color>
-    <color name="color_author">@color/grey700</color>
-    <color name="color_desc">@color/grey600</color>
-    <color name="color_time">@color/grey600</color>
-    <color name="color_date">@color/grey600</color>
-    <color name="color_chapter">@color/grey600</color>
+    <color name="color_text_normal">#111111</color>
+    <color name="color_text_gray">@color/grey700</color>
+    <color name="color_text_gray_light">@color/grey600</color>
     <color name="color_tag_tv">#ffFFFFFF</color>
-    <color name="color_nav_color_tv">#19191b</color>
     <color name="color_title_bg">#ccFFFFFF</color>
-    <color name="color_about_tv">@color/grey600</color>
-    <color name="transparent_75">#ba000000</color>
-    <color name="vertical_tab_layout_bg">@color/grey100</color>
-    <color name="vertical_tab_layout_indicator_color">@color/white</color>
     <color name="color_flow_layout_bg">@color/grey200</color>
-    <color name="arrow_color">@color/grey700</color>
-    <color name="sticky_header_bg">@color/grey100</color>
-
-    <color name="light_red">#e26d2e</color>
-    <color name="deep_red">#dc3b1f</color>
-    <color name="while_most_color">#e4e4e4</color>
-    <color name="title_black">#222222</color>
-    <color name="grey_search">#FF999999</color>
-
-
-
-    <color name="black">#FF000000</color>
-    <color name="black30">#B2000000</color>
-    <color name="white">#FFFFFFFF</color>
-    <color name="white30">#B2FFFFFF</color>
-    <color name="transparent">#00000000</color>
-
-    <color name="red">#ff0000</color>
-    <color name="gray">#757575</color>
-    <color name="red_f44336">#f44336</color>
-    <color name="pink">#e91e63</color>
-    <color name="purple">#9c27b0</color>
-    <color name="deep_purple">#673ab7</color>
-    <color name="indigo">#3f51b5</color>
-    <color name="blue">#2196f3</color>
-    <color name="light_blue">#59C6F6</color>
-    <color name="cyan">#00bcd4</color>
-    <color name="real">#009688</color>
-    <color name="green">#4caf50</color>
-    <color name="light_green">#8bc34a</color>
-    <color name="lime">#cddc39</color>
-    <color name="Yellow">#ffeb3b</color>
-    <color name="amber">#ffc107</color>
-    <color name="orange">#ff9800</color>
-    <color name="deep_orange">#ff5722</color>
-    <color name="brown">#795548</color>
-    <color name="grey">#9e9e9e</color>
-    <color name="blue_grey">#607d8b</color>
+    <color name="bg_day_night_gray">@color/grey100</color>
 
 
 
@@ -110,6 +59,5 @@
     <color name="grey600">#757575</color>
     <color name="grey700">#616161</color>
     <color name="grey800">#424242</color>
-    <color name="grey900">#212121</color>
-
+    <color name="grey900">#ff2C2C2C</color>
 </resources>

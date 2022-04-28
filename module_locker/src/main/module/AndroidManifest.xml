@@ -17,7 +17,9 @@
             tools:targetApi="n">
         <activity
                 android:name=".ui.page.auth.LockerAuthActivity"
-                android:exported="false" />
+                android:exported="false"
+                />
+
         <activity
                 android:name=".ui.page.splash.LockerSplashActivity"
                 android:exported="true"

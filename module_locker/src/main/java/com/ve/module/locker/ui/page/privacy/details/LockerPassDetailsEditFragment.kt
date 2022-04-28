@@ -26,8 +26,8 @@ import com.ve.lib.vutils.TimeUtil
 import com.ve.module.locker.R
 import com.ve.module.locker.common.event.RefreshDataEvent
 import com.ve.module.locker.databinding.LockerFragmentPassEditBinding
-import com.ve.module.locker.logic.database.entity.*
-import com.ve.module.locker.logic.database.vo.PrivacyPass
+import com.ve.module.locker.model.database.entity.*
+import com.ve.module.locker.model.database.vo.PrivacyPass
 import com.ve.module.locker.ui.adapter.FlowTagAdapter
 import com.ve.module.locker.ui.viewmodel.LockerPrivacyInfoViewModel
 import com.ve.module.locker.utils.PasswordUtils

@@ -48,7 +48,7 @@
                     android:paddingLeft="@dimen/dp_16"
                     android:paddingRight="@dimen/dp_16"
                     android:text="标题"
-                    android:textColor="@color/color_title"
+                    android:textColor="@color/color_text_normal"
                     android:textSize="@dimen/sp_20" />
 
             <TextView
@@ -65,7 +65,7 @@
                     android:lines="1"
                     android:maxLines="3"
                     android:ellipsize="end"
-                    android:textColor="@color/color_desc"
+                    android:textColor="@color/color_text_gray_light"
                     android:textSize="@dimen/item_tv_content" />
 
         </RelativeLayout>

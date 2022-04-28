@@ -76,7 +76,7 @@
             android:layout_alignBaseline="@+id/tv_article_top"
             android:layout_marginLeft="@dimen/dp_10"
             android:layout_toRightOf="@+id/tv_article_tag"
-            android:textColor="@color/color_author"
+            android:textColor="@color/color_text_gray"
             android:textSize="@dimen/item_tv_author"
             tools:text="@string/app_name" />
 
@@ -112,7 +112,7 @@
             android:lineSpacingExtra="2dp"
             android:maxLines="2"
             android:paddingBottom="@dimen/dp_6"
-            android:textColor="@color/color_title"
+            android:textColor="@color/color_text_normal"
             android:textSize="@dimen/item_tv_title" />
 
         <TextView

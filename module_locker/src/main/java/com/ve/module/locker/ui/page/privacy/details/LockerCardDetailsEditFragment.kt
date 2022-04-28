@@ -1,6 +1,5 @@
 package com.ve.module.locker.ui.page.privacy.details
 
-import android.annotation.SuppressLint
 import android.content.res.ColorStateList
 import android.os.Bundle
 import android.text.Editable
@@ -27,11 +26,11 @@ import com.ve.lib.vutils.TimeUtil
 import com.ve.module.locker.R
 import com.ve.module.locker.common.event.RefreshDataEvent
 import com.ve.module.locker.databinding.LockerFragmentCardEditBinding
-import com.ve.module.locker.logic.database.entity.PrivacyCardDetails
-import com.ve.module.locker.logic.database.entity.PrivacyFolder
-import com.ve.module.locker.logic.database.entity.PrivacyCardInfo
-import com.ve.module.locker.logic.database.entity.PrivacyTag
-import com.ve.module.locker.logic.database.vo.PrivacyCard
+import com.ve.module.locker.model.database.entity.PrivacyCardDetails
+import com.ve.module.locker.model.database.entity.PrivacyFolder
+import com.ve.module.locker.model.database.entity.PrivacyCardInfo
+import com.ve.module.locker.model.database.entity.PrivacyTag
+import com.ve.module.locker.model.database.vo.PrivacyCard
 import com.ve.module.locker.ui.adapter.FlowTagAdapter
 import com.ve.module.locker.ui.viewmodel.LockerPrivacyInfoViewModel
 import com.ve.module.locker.utils.PasswordUtils

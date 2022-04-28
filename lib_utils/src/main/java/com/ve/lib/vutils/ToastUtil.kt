@@ -16,18 +16,27 @@ object ToastUtil {
     private var toast: Toast? = null
 
     /**
-     * showToast 底部显示（默认）
+     * showToast
      *
      * @param msg 需要显示的参数
      */
     fun show(msg: String) {
+        showCenter(msg)
+    }
+
+
+    /**
+     * showToast 底部显示（默认）
+     *
+     * @param msg 需要显示的参数
+     */
+    fun showBottom(msg: String) {
         if (Looper.getMainLooper() == Looper.myLooper()) {
             createToast(msg)
         } else {
             ActivityUtil.currentActivity?.runOnUiThread { createToast(msg) }
         }
     }
-
     /**
      * createToast
      *
@@ -48,15 +57,6 @@ object ToastUtil {
      *
      * @param msg 需要显示的参数
      */
-    @Deprecated("简化调用，使用showCenter(msg)即可", ReplaceWith("ToastUtil.showCenter(msg)"))
-    fun showCenterToast(msg: String) {
-        if (Looper.getMainLooper() == Looper.myLooper()) {
-            createCenterToast(msg)
-        } else {
-            ActivityUtil.currentActivity?.runOnUiThread { createCenterToast(msg) }
-        }
-    }
-
     fun showCenter(msg: String) {
         if (Looper.getMainLooper() == Looper.myLooper()) {
             createCenterToast(msg)

@@ -119,11 +119,11 @@ class LockerLoginActivity: BaseVmActivity<LockerActivityLoginBinding, LockerLogi
             setBackgroundColor(mThemeColor)
         }
 
-        tv_sign_up.setOnclickNoRepeat {
+        tv_sign_up.setOnClickListener{
             val intent = Intent(this, LockerRegisterActivity::class.java)
             startActivity(intent)
 //            finish()
-            overridePendingTransition(android.R.anim.fade_in, android.R.anim.fade_out)
+//            overridePendingTransition(android.R.anim.fade_in, android.R.anim.fade_out)
         }
     }
     /**

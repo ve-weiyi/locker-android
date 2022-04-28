@@ -18,14 +18,14 @@
     <!--映射模型-->
     <list>
         <!--添加实体类，此处必须映射完整路径-->
-        <mapping class="com.ve.module.locker.logic.database.entity.PrivacyTag" />
-        <mapping class="com.ve.module.locker.logic.database.entity.PrivacyFolder" />
-        <mapping class="com.ve.module.locker.logic.database.entity.PrivacyCardInfo" />
-        <mapping class="com.ve.module.locker.logic.database.entity.PrivacyPassInfo" />
-        <mapping class="com.ve.module.locker.logic.database.entity.PrivacyCardDetails" />
-        <mapping class="com.ve.module.locker.logic.database.entity.PrivacyPassDetails" />
-        <mapping class="com.ve.module.locker.logic.database.entity.TagAndCard" />
-        <mapping class="com.ve.module.locker.logic.database.entity.TagAndPass" />
+        <mapping class="com.ve.module.locker.model.database.entity.PrivacyTag" />
+        <mapping class="com.ve.module.locker.model.database.entity.PrivacyFolder" />
+        <mapping class="com.ve.module.locker.model.database.entity.PrivacyCardInfo" />
+        <mapping class="com.ve.module.locker.model.database.entity.PrivacyPassInfo" />
+        <mapping class="com.ve.module.locker.model.database.entity.PrivacyCardDetails" />
+        <mapping class="com.ve.module.locker.model.database.entity.PrivacyPassDetails" />
+        <mapping class="com.ve.module.locker.model.database.entity.TagAndCard" />
+        <mapping class="com.ve.module.locker.model.database.entity.TagAndPass" />
     </list>
     <!--数据库存储位置
 

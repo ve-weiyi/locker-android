@@ -16,7 +16,7 @@ dependencyResolutionManagement {
 }
 rootProject.name = "locker-android"
 
-include ':app'
+//include ':app'
 include ':lib_network'
 include ':lib_view'
 include ':lib_utils'

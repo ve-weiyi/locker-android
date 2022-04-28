@@ -7,6 +7,7 @@ import androidx.lifecycle.viewModelScope
 import com.google.gson.Gson
 import com.google.gson.JsonParseException
 import com.ve.lib.network.http.exception.ApiException
+import com.ve.lib.network.http.util.NetWorkUtil
 import com.ve.lib.vutils.LogUtil
 import com.ve.lib.vutils.ToastUtil
 import kotlinx.coroutines.*
@@ -22,17 +23,17 @@ import java.net.UnknownHostException
  * @date 2019/11/1
  * @desc BaseViewModel
  * 1、数据持久化
-    我们知道在屏幕旋转的 时候 会经历 activity 的销毁与重新创建，这里就涉及到数据保存的问题，显然重新请求或加载数据是不友好的。在 ViewModel 出现之前我们可以用 activity 的onSaveInstanceState()机制保存和恢复数据，但缺点很明显，onSaveInstanceState只适合保存少量的可以被序列化、反序列化的数据，假如我们需要保存是一个比较大的 bitmap list ，这种机制明显不合适。
-    由于 ViewModel 的特殊设计，可以解决此痛点。
+我们知道在屏幕旋转的 时候 会经历 activity 的销毁与重新创建，这里就涉及到数据保存的问题，显然重新请求或加载数据是不友好的。在 ViewModel 出现之前我们可以用 activity 的onSaveInstanceState()机制保存和恢复数据，但缺点很明显，onSaveInstanceState只适合保存少量的可以被序列化、反序列化的数据，假如我们需要保存是一个比较大的 bitmap list ，这种机制明显不合适。
+由于 ViewModel 的特殊设计，可以解决此痛点。
 
-    作者：以帅服人的珂哥
-    链接：https://www.jianshu.com/p/35d143e84d42
-    来源：简书
-    著作权归作者所有。商业转载请联系作者获得授权，非商业转载请注明出处。
+作者：以帅服人的珂哥
+链接：https://www.jianshu.com/p/35d143e84d42
+来源：简书
+著作权归作者所有。商业转载请联系作者获得授权，非商业转载请注明出处。
  * (activity 与其内部的 fragment 可以共用一个ViewModel)
  */
-open class BaseViewModel :  ViewModel(), LifecycleObserver {
-    
+open class BaseViewModel : ViewModel(), LifecycleObserver {
+
 
     private val mViewModelName by lazy { javaClass.simpleName }
 
@@ -57,16 +58,20 @@ open class BaseViewModel :  ViewModel(), LifecycleObserver {
      */
     protected fun launch(
         block: suspend CoroutineScope.() -> Unit,
-        local: (suspend CoroutineScope.() -> Unit)?=null,
-        error: (suspend (Exception) -> Unit)? =null,
-        cancel: (suspend (Exception) -> Unit)? =null,
+        local: (suspend CoroutineScope.() -> Unit)? = null,
+        error: (suspend (Exception) -> Unit)? = null,
+        cancel: (suspend (Exception) -> Unit)? = null,
         showErrorToast: Boolean = true
     ): Job {
         return viewModelScope.launch {
             try {
+                LogUtil.msg("--------")
                 //apiCall,返回BaseResponse
-                block.invoke(this)
-                local?.invoke(this)
+                if (NetWorkUtil.isConnected()) {
+                    block.invoke(this)
+                }else{
+                    throw ApiException(404,"请检查当前网络状态再重试！")
+                }
             } catch (e: Exception) {
                 //处理错误
                 when (e) {
@@ -78,17 +83,20 @@ open class BaseViewModel :  ViewModel(), LifecycleObserver {
                         error?.invoke(e)
                     }
                 }
+            }finally {
+                local?.invoke(this)
             }
         }
     }
+
     /**
      * 运行在主线程，主要进行ui操作
      * Room 不允许在主线程进行数据库存在
      * */
     protected fun launchMain(
         block: suspend CoroutineScope.() -> Unit,
-        error: (suspend (Exception) -> Unit)? =null,
-        cancel: (suspend (Exception) -> Unit)? =null,
+        error: (suspend (Exception) -> Unit)? = null,
+        cancel: (suspend (Exception) -> Unit)? = null,
         showErrorToast: Boolean = true
     ): Job {
         return MainScope().launch(Dispatchers.IO) {
@@ -152,12 +160,12 @@ open class BaseViewModel :  ViewModel(), LifecycleObserver {
             // 网络请求失败
             is ConnectException, is SocketTimeoutException, is UnknownHostException, is retrofit2.HttpException -> {
                 if (showErrorToast) ToastUtil.show(" 网络请求失败")
-                ToastUtil.show(mViewModelName+" 网络请求失败" + e.message)
+                ToastUtil.show(mViewModelName + " 网络请求失败" + e.message)
             }
             // 数据解析错误
             is JsonParseException -> {
                 if (showErrorToast) ToastUtil.show(" 数据解析错误")
-                ToastUtil.show(mViewModelName+" 数据解析错误" + e.message)
+                ToastUtil.show(mViewModelName + " 数据解析错误" + e.message)
             }
             // 其他错误
             else -> {
@@ -167,6 +175,7 @@ open class BaseViewModel :  ViewModel(), LifecycleObserver {
 
         }
     }
+
     /**
      * json提交 转RequestBody （表单提交 @FieldMap）
      */

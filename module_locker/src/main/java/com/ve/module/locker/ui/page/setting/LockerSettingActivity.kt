@@ -56,7 +56,7 @@ class LockerSettingActivity: BaseActivity<LockerActivitySettingBinding>(){
 
     override fun initialize(saveInstanceState: Bundle?) {
         //从bundle中取出数据
-        fragmentTitle  = intent.getStringExtra(BaseContainerActivity.FRAGMENT_TITLE_KEY) ?: "标题"
+        fragmentTitle  = intent.getStringExtra(BaseContainerActivity.FRAGMENT_TITLE_KEY) ?: "设置"
         fragmentClassName = intent.getStringExtra(BaseContainerActivity.FRAGMENT_CLASS_NAME_KEY) ?: ""
         fragmentArguments = intent.getBundleExtra(BaseContainerActivity.FRAGMENT_ARGUMENTS_KEY) ?: Bundle()
 

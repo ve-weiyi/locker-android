@@ -8,7 +8,7 @@ import com.ve.module.locker.R
 import com.ve.module.locker.common.config.LockerLifecycle
 import com.ve.module.locker.ui.viewmodel.LockerViewModel
 import com.ve.module.locker.databinding.LockerFragmentDrawerBinding
-import com.ve.module.locker.logic.http.model.LoginVO
+import com.ve.module.locker.model.http.model.LoginVO
 
 /**
  * @Description hello word!

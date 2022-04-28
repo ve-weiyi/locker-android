@@ -7,7 +7,7 @@ import com.ve.lib.application.BuildConfig
 import com.ve.lib.utils.SettingUtil
 import com.ve.lib.vutils.AppContextUtils
 import com.ve.lib.vutils.LogUtil
-import com.ve.module.locker.logic.database.AppDataBase
+import com.ve.module.locker.model.database.AppDataBase
 import org.litepal.LitePal
 import java.util.*
 

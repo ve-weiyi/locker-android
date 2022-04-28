@@ -1,13 +1,5 @@
 package com.ve.module.locker
 
-import android.content.Intent
-import android.graphics.Color
-import android.hardware.biometrics.BiometricManager
-import android.hardware.biometrics.BiometricManager.Authenticators.BIOMETRIC_STRONG
-import android.hardware.biometrics.BiometricManager.Authenticators.DEVICE_CREDENTIAL
-import android.hardware.biometrics.BiometricPrompt
-import android.util.Log
-import androidx.core.hardware.fingerprint.FingerprintManagerCompat.from
 import androidx.test.platform.app.InstrumentationRegistry
 import androidx.test.ext.junit.runners.AndroidJUnit4
 import com.google.gson.JsonParseException
@@ -16,12 +8,12 @@ import com.ve.lib.view.widget.passwordGenerator.PasswordGenerator
 import com.ve.lib.vutils.LogUtil
 import com.ve.lib.vutils.ToastUtil
 import com.ve.module.locker.common.config.LockerConstant
-import com.ve.module.locker.logic.database.AppDataBase
-import com.ve.module.locker.logic.database.entity.*
-import com.ve.module.locker.logic.respository.AuthRepository
-import com.ve.module.locker.logic.respository.PrivacyTagRepository
-import com.ve.module.locker.logic.http.model.ConditionVO
-import com.ve.module.locker.logic.http.api.LockerApiService
+import com.ve.module.locker.model.database.AppDataBase
+import com.ve.module.locker.model.database.entity.*
+import com.ve.module.locker.model.respository.AuthRepository
+import com.ve.module.locker.model.respository.PrivacyTagRepository
+import com.ve.module.locker.model.http.model.ConditionVO
+import com.ve.module.locker.model.http.api.LockerApiService
 import com.ve.module.locker.utils.AESUtil
 import com.ve.module.locker.utils.RSAUtils
 import kotlinx.coroutines.*

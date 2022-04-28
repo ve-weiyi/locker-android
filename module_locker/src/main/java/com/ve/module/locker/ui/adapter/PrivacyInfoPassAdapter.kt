@@ -4,9 +4,7 @@ import android.os.Bundle
 import android.view.View
 import android.widget.CheckBox
 import android.widget.TextView
-import com.chad.library.adapter.base.BaseQuickAdapter
 import com.chad.library.adapter.base.BaseSectionQuickAdapter
-import com.chad.library.adapter.base.listener.OnItemLongClickListener
 import com.chad.library.adapter.base.module.DraggableModule
 import com.chad.library.adapter.base.module.LoadMoreModule
 import com.chad.library.adapter.base.module.UpFetchModule
@@ -16,9 +14,10 @@ import com.ve.lib.view.ext.spanText
 import com.ve.lib.vutils.LogUtil
 import com.ve.lib.vutils.ToastUtil
 import com.ve.module.locker.R
-import com.ve.module.locker.logic.database.entity.PrivacyPassInfo
+import com.ve.module.locker.model.database.entity.PrivacyPassInfo
 import com.ve.module.locker.ui.page.container.LockerContainerActivity
 import com.ve.module.locker.ui.page.privacy.details.LockerPassDetailsSeeFragment
+import com.ve.module.locker.utils.PasswordUtils
 import com.ve.module.locker.utils.StickUtils
 
 /**
@@ -55,7 +54,8 @@ class PrivacyInfoPassAdapter :
         tvFolder.text = item.getPrivacyFolder().folderName
         ImageLoader.loadView(context, item.getPrivacyFolder().folderCover, tvFolder)
 
-        holder.setText(R.id.tv_privacy_info_account, item.getPrivacyDetails().account)
+        val account=item.getPrivacyDetails().account
+        holder.setText(R.id.tv_privacy_info_account, account)
         holder.setText(R.id.tv_privacy_info_name, item.privacyName)
         holder.setText(R.id.tv_privacy_info_desc, item.privacyDesc)
         holder.setText(R.id.tv_privacy_info_create_time, item.createTime)

@@ -1,7 +1,7 @@
 package com.ve.module.locker.common.config
 
 import com.ve.lib.utils.BaseSharePreference
-import com.ve.module.locker.logic.http.model.LoginVO
+import com.ve.module.locker.model.http.model.LoginVO
 
 /**
  * @Description hello word!

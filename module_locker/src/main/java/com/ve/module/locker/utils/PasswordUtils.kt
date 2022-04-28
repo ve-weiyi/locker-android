@@ -10,9 +10,30 @@ import java.util.regex.Pattern
 object PasswordUtils {
 
 
+
+
+    fun hidePassword(start:Int,end :Int,password: String):String{
+        val pre=start
+        val last=password.length-end
+        val mid=password.length-pre-last
+
+        return password.replace("(\\w{$pre})\\w{$mid}(\\w{$last})".toRegex(), "$1****$2")
+    }
+
+    /**
+     * 隐藏中间 显示前后1/4
+     */
+    fun hidePassword(password: String):String{
+        val weight=4
+        val start=password.length/weight
+        val end=password.length-start
+        return hidePassword(start,end, password)
+    }
     /**
      * 检测邮箱是否合法
-     *
+     * \w 匹配任何字类字符，包括下划线。与"[A-Za-z0-9_]"等效。
+     * \s 匹配任何空白字符，包括空格、制表符、换页符等。与 [ \f\n\r\t\v] 等效。
+     * \d 数字字符匹配。等效于 [0-9]。
      * @param username 用户名
      * @return 合法状态
      */

@@ -1,10 +1,10 @@
 package com.ve.module.locker.ui.viewmodel
 
 import androidx.lifecycle.MutableLiveData
-import com.ve.module.locker.logic.respository.PrivacyFolderRepository
-import com.ve.module.locker.logic.respository.PrivacyTagRepository
-import com.ve.module.locker.logic.database.entity.PrivacyFolder
-import com.ve.module.locker.logic.database.entity.PrivacyTag
+import com.ve.module.locker.model.respository.PrivacyFolderRepository
+import com.ve.module.locker.model.respository.PrivacyTagRepository
+import com.ve.module.locker.model.database.entity.PrivacyFolder
+import com.ve.module.locker.model.database.entity.PrivacyTag
 import org.litepal.LitePal
 
 /**

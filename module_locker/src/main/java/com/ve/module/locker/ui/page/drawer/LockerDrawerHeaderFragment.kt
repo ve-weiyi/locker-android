@@ -10,7 +10,7 @@ import com.ve.module.locker.common.config.LockerConstant
 import com.ve.module.locker.common.config.LockerLifecycle
 import com.ve.module.locker.common.config.LockerSharePreference
 import com.ve.module.locker.databinding.LockerFragmentDrawerHeaderBinding
-import com.ve.module.locker.logic.http.model.LoginVO
+import com.ve.module.locker.model.http.model.LoginVO
 import com.ve.module.locker.ui.page.auth.LockerLoginActivity
 import com.ve.module.locker.ui.page.setting.LockerSettingActivity
 import com.ve.module.locker.ui.page.setting.StyleSettingFragment

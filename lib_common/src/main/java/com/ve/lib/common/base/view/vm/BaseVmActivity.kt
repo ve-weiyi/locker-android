@@ -13,6 +13,7 @@ import com.ve.lib.common.R
 import com.ve.lib.common.base.viewmodel.BaseViewModel
 import com.ve.lib.common.config.AppConfig
 import com.ve.lib.common.event.NetworkChangeEvent
+import com.ve.lib.network.http.util.NetWorkUtil
 import com.ve.lib.view.widget.multipleview.MultipleStatusView
 import com.ve.lib.utils.PreferenceUtil
 import com.ve.lib.vutils.ToastUtil
@@ -37,7 +38,7 @@ abstract class BaseVmActivity<VB : ViewBinding, VM : BaseViewModel> : BaseActivi
     /**
      * 提示View
      */
-    protected lateinit var mTipView: View
+    protected var mTipView: View ?=null
     protected lateinit var mWindowManager: WindowManager
     protected lateinit var mLayoutParams: WindowManager.LayoutParams
 
@@ -49,13 +50,14 @@ abstract class BaseVmActivity<VB : ViewBinding, VM : BaseViewModel> : BaseActivi
 
     override fun initialize(saveInstanceState: Bundle?) {
         mViewModel = ViewModelProvider(this).get(attachViewModelClass())
-        initTipView()
 
+        initTipView()
         initObserver()
         initViewData()
         initView(saveInstanceState)
         initListener()
         mLayoutStatusView?.setOnClickListener(mRetryClickListener)
+        checkNetwork(NetWorkUtil.isConnected())
     }
 
     open val mRetryClickListener: View.OnClickListener = View.OnClickListener {
@@ -137,11 +139,11 @@ abstract class BaseVmActivity<VB : ViewBinding, VM : BaseViewModel> : BaseActivi
         if (enableNetworkTip()) {
             if (isConnected) {
                 doReConnected()
-                if (mTipView != null && mTipView.parent != null) {
+                if (mTipView != null && mTipView?.parent != null) {
                     mWindowManager.removeView(mTipView)
                 }
             } else {
-                if (mTipView.parent == null) {
+                if (mTipView?.parent == null) {
                     mWindowManager.addView(mTipView, mLayoutParams)
                 }
             }

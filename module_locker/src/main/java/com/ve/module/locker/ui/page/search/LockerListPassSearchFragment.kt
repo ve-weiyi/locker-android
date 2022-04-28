@@ -6,8 +6,8 @@ import com.chad.library.adapter.base.BaseQuickAdapter
 import com.ve.lib.common.base.view.list.BaseVmListFragment
 import com.ve.lib.vutils.LogUtil
 import com.ve.module.locker.databinding.LockerFragmentListPassSearchBinding
-import com.ve.module.locker.logic.database.entity.PrivacyPassInfo
-import com.ve.module.locker.logic.http.model.ConditionVO
+import com.ve.module.locker.model.database.entity.PrivacyPassInfo
+import com.ve.module.locker.model.http.model.ConditionVO
 import com.ve.module.locker.ui.adapter.PrivacyInfoPassAdapter
 import com.ve.module.locker.ui.viewmodel.LockerPrivacyInfoViewModel
 

@@ -55,8 +55,11 @@ class LockerSplashActivity : BaseActivity<LockerActivitySplashBinding>() {
     }
 
     override fun initialize(saveInstanceState: Bundle?) {
-        val isLogin=LockerSharePreference.getLoginState()
+        var isLogin=LockerSharePreference.getLoginState()
         val data=LockerSharePreference.getLoginData()
+
+        isLogin=true
+
         LogUtil.msg("isLogin $isLogin")
         LogUtil.msg(data.toString())
         alphaAnimation = AlphaAnimation(0.3F, 1.0F)
@@ -67,12 +70,12 @@ class LockerSplashActivity : BaseActivity<LockerActivitySplashBinding>() {
                 }
 
                 override fun onAnimationEnd(p0: Animation?) {
-                    jumpToMain()
-//                    if(isLogin){
-//                        jumpToAuth()
-//                    }else{
-//                        jumpToLogin()
-//                    }
+//                    jumpToMain()
+                    if(isLogin){
+                        jumpToAuth()
+                    }else{
+                        jumpToLogin()
+                    }
 
                 }
 

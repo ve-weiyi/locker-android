@@ -3,8 +3,8 @@ package com.ve.module.locker.ui.viewmodel
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import com.ve.lib.network.http.exception.ApiException
-import com.ve.module.locker.logic.respository.AuthRepository
-import com.ve.module.locker.logic.http.model.LoginVO
+import com.ve.module.locker.model.respository.AuthRepository
+import com.ve.module.locker.model.http.model.LoginVO
 
 /**
  * @Description hello word!

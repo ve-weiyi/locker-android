@@ -2,9 +2,8 @@ package com.ve.module.locker.ui.adapter
 
 import android.content.Context
 import android.widget.ArrayAdapter
-import android.widget.SpinnerAdapter
 import com.ve.module.locker.R
-import com.ve.module.locker.logic.database.entity.PrivacyFolder
+import com.ve.module.locker.model.database.entity.PrivacyFolder
 
 /**
  * @Author  weiyi

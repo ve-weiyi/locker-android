@@ -22,11 +22,24 @@
         <entry key="lib_application/src/main/res/drawable-v24/shape_round_grey_tag.xml" value="0.1075" />
         <entry key="lib_application/src/main/res/drawable-v24/shape_round_primary.xml" value="0.1" />
         <entry key="lib_application/src/main/res/drawable-v24/shape_round_white.xml" value="0.1" />
+        <entry key="lib_application/src/main/res/drawable/bg_delete.xml" value="0.154" />
         <entry key="lib_application/src/main/res/drawable/bg_divider.xml" value="0.1" />
+        <entry key="lib_application/src/main/res/drawable/bg_fresh.xml" value="0.154" />
+        <entry key="lib_application/src/main/res/drawable/bg_grey_16dp.xml" value="0.2585" />
+        <entry key="lib_application/src/main/res/drawable/bg_logo.xml" value="0.154" />
         <entry key="lib_application/src/main/res/drawable/bg_tag.xml" value="0.1475" />
+        <entry key="lib_application/src/main/res/drawable/bg_tag_one.xml" value="0.154" />
+        <entry key="lib_application/src/main/res/drawable/bg_toast_custom.xml" value="0.1265" />
+        <entry key="lib_application/src/main/res/drawable/bg_white_12dp.xml" value="0.189" />
+        <entry key="lib_application/src/main/res/drawable/btn_login_bg.xml" value="0.154" />
         <entry key="lib_application/src/main/res/drawable/fab_label_background.xml" value="0.1" />
         <entry key="lib_application/src/main/res/drawable/ic_about_us_white_24dp.xml" value="0.138" />
+        <entry key="lib_application/src/main/res/drawable/ic_action_browser.xml" value="0.154" />
         <entry key="lib_application/src/main/res/drawable/ic_action_share.xml" value="0.138" />
+        <entry key="lib_application/src/main/res/drawable/ic_add_24dp.xml" value="0.154" />
+        <entry key="lib_application/src/main/res/drawable/ic_apps_black_24dp.xml" value="0.154" />
+        <entry key="lib_application/src/main/res/drawable/ic_arrow_right_24dp.xml" value="0.113" />
+        <entry key="lib_application/src/main/res/drawable/ic_arrow_upward_white_24dp.xml" value="0.154" />
         <entry key="lib_application/src/main/res/drawable/ic_like.xml" value="0.147" />
         <entry key="lib_application/src/main/res/drawable/ic_like_checked.xml" value="0.147" />
         <entry key="lib_application/src/main/res/drawable/ic_like_normal.xml" value="0.147" />
@@ -38,6 +51,7 @@
         <entry key="lib_application/src/main/res/drawable/locker_password.xml" value="0.1515" />
         <entry key="lib_application/src/main/res/drawable/shape_eaeaea_oval.xml" value="0.1255" />
         <entry key="lib_application/src/main/res/drawable/shape_oval_blue.xml" value="0.1335" />
+        <entry key="lib_application/src/main/res/drawable/shape_oval_gray_tag.xml" value="0.154" />
         <entry key="lib_application/src/main/res/drawable/shape_oval_green.xml" value="0.1335" />
         <entry key="lib_application/src/main/res/drawable/shape_oval_red.xml" value="0.1335" />
         <entry key="lib_application/src/main/res/mipmap-anydpi-v26/ic_launcher.xml" value="0.1475" />
@@ -282,6 +296,7 @@
         <entry key="module_locker/src/main/res/drawable/ic_crown.xml" value="0.1255" />
         <entry key="module_locker/src/main/res/drawable/ic_edit.xml" value="0.1255" />
         <entry key="module_locker/src/main/res/drawable/ic_launcher_background.xml" value="0.1" />
+        <entry key="module_locker/src/main/res/drawable/ic_time.xml" value="0.2155" />
         <entry key="module_locker/src/main/res/drawable/ic_vip_crown.xml" value="0.1345" />
         <entry key="module_locker/src/main/res/drawable/list_create_playlist.xml" value="0.1345" />
         <entry key="module_locker/src/main/res/drawable/list_loading.xml" value="0.1345" />
@@ -317,7 +332,7 @@
         <entry key="module_locker/src/main/res/layout/locker_activity_phone_login.xml" value="0.335" />
         <entry key="module_locker/src/main/res/layout/locker_activity_privacy_details.xml" value="0.22418478260869565" />
         <entry key="module_locker/src/main/res/layout/locker_activity_privacy_info.xml" value="0.25" />
-        <entry key="module_locker/src/main/res/layout/locker_activity_register.xml" value="0.25" />
+        <entry key="module_locker/src/main/res/layout/locker_activity_register.xml" value="0.2" />
         <entry key="module_locker/src/main/res/layout/locker_activity_setting.xml" value="0.19293478260869565" />
         <entry key="module_locker/src/main/res/layout/locker_activity_splash.xml" value="0.24895833333333334" />
         <entry key="module_locker/src/main/res/layout/locker_container.xml" value="0.24947916666666667" />
@@ -363,9 +378,9 @@
         <entry key="module_locker/src/main/res/layout/locker_item_info.xml" value="0.165" />
         <entry key="module_locker/src/main/res/layout/locker_item_message.xml" value="0.2526041666666667" />
         <entry key="module_locker/src/main/res/layout/locker_item_privacy_account.xml" value="0.1" />
-        <entry key="module_locker/src/main/res/layout/locker_item_privacy_card.xml" value="0.25" />
+        <entry key="module_locker/src/main/res/layout/locker_item_privacy_card.xml" value="0.45" />
         <entry key="module_locker/src/main/res/layout/locker_item_privacy_friends.xml" value="0.24739583333333334" />
-        <entry key="module_locker/src/main/res/layout/locker_item_privacy_pass.xml" value="0.165" />
+        <entry key="module_locker/src/main/res/layout/locker_item_privacy_pass.xml" value="0.375" />
         <entry key="module_locker/src/main/res/layout/locker_item_simple_list.xml" value="0.165" />
         <entry key="module_locker/src/main/res/layout/locker_item_tag.xml" value="0.17798913043478262" />
         <entry key="module_locker/src/main/res/layout/locker_item_tag_test.xml" value="0.25" />

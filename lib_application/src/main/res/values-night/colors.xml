@@ -24,7 +24,7 @@
     <!--    android:colorBackground：所有其他屏幕内容后面的颜色(view默认背景颜色)-->
     <color name="colorBackground">@color/grey800</color>
     <!--    colorOnBackground：用于显示在背景色上方的元素的颜色()-->
-    <color name="colorOnBackground">#212121</color>
+    <color name="colorOnBackground">@color/grey900</color>
 
 
     <color name="colorPrimaryDark">#212a2f</color>
@@ -37,17 +37,12 @@
     <color name="list_divider">@color/grey600</color>
     <color name="mask_color">#111111</color>
 
-    <color name="color_title">@color/grey300</color>
-    <color name="color_author">@color/grey500</color>
-    <color name="color_desc">@color/grey500</color>
-    <color name="color_time">@color/grey500</color>
-    <color name="color_date">@color/grey500</color>
-    <color name="color_chapter">@color/grey500</color>
-    <color name="color_nav_color_tv">@color/grey500</color>
-    <color name="vertical_tab_layout_bg">@color/grey800</color>
-    <color name="vertical_tab_layout_indicator_color">@color/grey600</color>
+
+    <color name="color_text_normal">@color/grey200</color>
+    <color name="color_text_gray">@color/grey500</color>
+    <color name="color_text_gray_light">@color/grey500</color>
     <color name="color_flow_layout_bg">@color/grey700</color>
-    <color name="arrow_color">@color/grey400</color>
-    <color name="sticky_header_bg">#515151</color>
+
+    <color name="bg_day_night_gray">@color/grey400</color>
 
 </resources>

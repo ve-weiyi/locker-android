@@ -1,13 +1,11 @@
 package com.ve.module.locker.ui.adapter
 
-import android.graphics.Color
-import android.graphics.drawable.GradientDrawable
 import android.widget.TextView
 import com.chad.library.adapter.base.viewholder.BaseViewHolder
 import com.ve.lib.common.utils.ImageLoader
 import com.ve.lib.common.base.adapter.BaseSlideAdapter
 import com.ve.module.locker.R
-import com.ve.module.locker.logic.database.entity.PrivacyTag
+import com.ve.module.locker.model.database.entity.PrivacyTag
 
 
 /**

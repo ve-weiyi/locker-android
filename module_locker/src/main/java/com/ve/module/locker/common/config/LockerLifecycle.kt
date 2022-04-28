@@ -1,7 +1,7 @@
 package com.ve.module.locker.common.config
 
 import androidx.lifecycle.MutableLiveData
-import com.ve.module.locker.logic.http.model.LoginVO
+import com.ve.module.locker.model.http.model.LoginVO
 
 /**
  * @Description hello word!

@@ -11,8 +11,8 @@ import com.ve.lib.vutils.LogUtil
 import com.ve.module.locker.R
 import com.ve.module.locker.common.event.RefreshDataEvent
 import com.ve.module.locker.databinding.LockerFragmentListPassBinding
-import com.ve.module.locker.logic.database.entity.PrivacyPassInfo
-import com.ve.module.locker.logic.database.entity.PrivacyFolder
+import com.ve.module.locker.model.database.entity.PrivacyPassInfo
+import com.ve.module.locker.model.database.entity.PrivacyFolder
 import com.ve.module.locker.ui.adapter.PrivacyInfoPassAdapter
 import com.ve.module.locker.ui.page.container.LockerContainerActivity
 import com.ve.module.locker.ui.page.privacy.details.LockerPassDetailsEditFragment

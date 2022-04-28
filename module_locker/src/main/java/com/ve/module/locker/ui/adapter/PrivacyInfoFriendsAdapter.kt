@@ -7,7 +7,7 @@ import com.chad.library.adapter.base.module.UpFetchModule
 import com.chad.library.adapter.base.viewholder.BaseViewHolder
 import com.ve.lib.vutils.LogUtil
 import com.ve.module.locker.R
-import com.ve.module.locker.logic.database.entity.PrivacyFriends
+import com.ve.module.locker.model.database.entity.PrivacyFriends
 
 /**
  * @Description hello word!

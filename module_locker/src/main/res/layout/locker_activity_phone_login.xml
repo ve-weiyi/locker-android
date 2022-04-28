@@ -76,7 +76,7 @@
                     android:layout_marginLeft="20dp"
                     android:layout_marginTop="10dp"
                     android:layout_marginRight="20dp"
-                    android:background="@color/app_background" />
+                    android:background="@color/windowColorBackground" />
 
             <TextView
                     android:id="@+id/tv_login_next"
@@ -137,7 +137,7 @@
                     android:layout_marginLeft="20dp"
                     android:layout_marginTop="10dp"
                     android:layout_marginRight="20dp"
-                    android:background="@color/app_background" />
+                    android:background="@color/windowColorBackground" />
 
 
             <ProgressBar

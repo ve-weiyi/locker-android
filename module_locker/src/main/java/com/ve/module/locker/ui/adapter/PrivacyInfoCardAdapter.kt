@@ -12,11 +12,13 @@ import com.chad.library.adapter.base.viewholder.BaseViewHolder
 import com.ve.lib.common.utils.ImageLoader
 import com.ve.lib.view.ext.spanText
 import com.ve.lib.vutils.LogUtil
+import com.ve.lib.vutils.TimeUtil
 import com.ve.lib.vutils.ToastUtil
 import com.ve.module.locker.R
-import com.ve.module.locker.logic.database.entity.PrivacyCardInfo
+import com.ve.module.locker.model.database.entity.PrivacyCardInfo
 import com.ve.module.locker.ui.page.container.LockerContainerActivity
 import com.ve.module.locker.ui.page.privacy.details.LockerCardDetailsSeeFragment
+import com.ve.module.locker.utils.PasswordUtils
 import com.ve.module.locker.utils.StickUtils
 
 /**
@@ -54,10 +56,11 @@ class PrivacyInfoCardAdapter :
 
         ImageLoader.loadView(context,item.getPrivacyFolder().folderCover,holder.getView<TextView>(R.id.cardView))
 
-        holder.setText(R.id.tv_privacy_info_account, item.getPrivacyDetails().number)
+        val account=item.getPrivacyDetails().number
+        holder.setText(R.id.tv_privacy_info_account, PasswordUtils.hidePassword(account))
         holder.setText(R.id.tv_privacy_info_name, item.privacyName)
         holder.setText(R.id.tv_privacy_info_desc, item.privacyDesc)
-        holder.setText(R.id.tv_privacy_info_create_time, item.createTime)
+        holder.setText(R.id.tv_privacy_info_create_time, TimeUtil.formatDate(item.createTime))
         holder.setText(R.id.tv_privacy_info_update_time, item.updateTime)
 
         val checkBox = holder.getView<CheckBox>(R.id.check_button)
