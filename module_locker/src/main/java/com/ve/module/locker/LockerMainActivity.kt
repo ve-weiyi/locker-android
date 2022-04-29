@@ -28,7 +28,7 @@ class LockerMainActivity : BaseVmActivity<LockerActivityMainBinding, LockerViewM
     private fun initFragment() {
         var pageCount=0
         mFragmentPageList= mutableListOf(
-            FragmentPage(pageCount++,"消息", LockerListCardFragment::class.java),
+            FragmentPage(pageCount++,"消息", LockerListPassFragment::class.java),
             FragmentPage(pageCount++,"密码", LockerListPassFragment::class.java),
             FragmentPage(pageCount++,"卡片",LockerListCardFragment::class.java),
             FragmentPage(pageCount++,"分类", LockerCategoryFragment::class.java),

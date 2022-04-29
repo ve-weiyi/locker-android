@@ -1,6 +1,7 @@
 package com.ve.module.locker.ui.page.drawer
 
 import android.content.Intent
+import android.location.Location
 import android.net.Uri
 import android.os.Bundle
 import android.provider.Settings
@@ -10,6 +11,7 @@ import androidx.activity.result.contract.ActivityResultContracts
 import androidx.appcompat.app.AppCompatDelegate
 import com.ve.lib.common.base.view.vm.BaseVmFragment
 import com.ve.lib.common.event.AppRecreateEvent
+import com.ve.lib.utils.LocationUtil
 import com.ve.lib.utils.SettingUtil
 import com.ve.lib.view.ext.setOnclickNoRepeatListener
 import com.ve.lib.vutils.LogUtil
@@ -24,6 +26,9 @@ import com.ve.module.locker.ui.page.category.LockerListFolderFragment
 import com.ve.module.locker.ui.page.category.LockerListTagFragment
 import com.ve.module.locker.ui.page.setting.LockerSettingActivity
 import com.ve.module.locker.ui.viewmodel.LockerDrawerViewModel
+import com.ve.module.sunny.ui.weather.WeatherActivity
+import com.ve.module.sunny.util.SkyUtil
+import com.ve.module.sunny.util.SunnyConstant
 import org.greenrobot.eventbus.EventBus
 
 
@@ -45,6 +50,8 @@ class LockerDrawerActionFragment :
     }
 
     private lateinit var startActivitylaunch: ActivityResultLauncher<Intent>
+    lateinit var location: Location
+    lateinit var placeName:String
     override fun initView(savedInstanceState: Bundle?) {
 
         mBinding.actionTag.setOnclickNoRepeatListener(this)
@@ -57,10 +64,30 @@ class LockerDrawerActionFragment :
         mBinding.actionGithub.setOnclickNoRepeatListener(this)
         mBinding.actionAbout.setOnclickNoRepeatListener(this)
         mBinding.actionAutoFill.setOnclickNoRepeatListener(this)
+//        mBinding.actionTodayWeather.setOnclickNoRepeatListener(this)
         startActivitylaunch =
             registerForActivityResult(ActivityResultContracts.StartActivityForResult()) { result ->
                 LogUtil.msg(result.toString())
             }
+
+        LocationUtil.init(this)
+        location= LocationUtil.getLocation()!!
+        val address= LocationUtil.getAddress(location)
+        placeName=address!![0].featureName
+    }
+
+    override fun initObserver() {
+        super.initObserver()
+        mViewModel.weatherLiveData.observe(this){
+            LogUtil.e(it.daily.toString())
+            LogUtil.e(it.realtime.toString())
+            mBinding.actionTodayWeather.rightTextView.text="${it.realtime.temperature} °C"
+            mBinding.actionTodayWeather.rightImageView.setImageResource(SkyUtil.getSky(it.realtime.skycon).icon)
+        }
+    }
+    override fun initWebData() {
+        super.initWebData()
+        mViewModel.refreshWeather(location.longitude.toString(),location.latitude.toString())
     }
 
     override fun onClick(v: View?) {
@@ -110,6 +137,15 @@ class LockerDrawerActionFragment :
                     AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_YES)
                 }
                 EventBus.getDefault().post(AppRecreateEvent())
+            }
+            R.id.action_today_weather->{
+                LogUtil.e("---"+location.longitude+"---"+location.latitude+"---"+placeName)
+                val intent = Intent(requireContext(), WeatherActivity::class.java).apply {
+                    putExtra(SunnyConstant.KEY_LOCATION_LNG, location.longitude.toString())
+                    putExtra(SunnyConstant.KEY_LOCATION_LAT, location.latitude.toString())
+                    putExtra(SunnyConstant.KEY_PLACE_NAME, placeName)
+                }
+                startActivity(intent)
             }
         }
     }

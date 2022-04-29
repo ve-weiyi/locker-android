@@ -17,7 +17,7 @@ dependencies {
     implementation  project(':module_android')
     implementation  project(':module_games')
     implementation  project(':module_sunny')
-    implementation  project(':module_music')
+//    implementation  project(':module_music')
     implementation  project(':module_locker')
 
     implementation 'androidx.navigation:navigation-fragment-ktx:2.3.5'

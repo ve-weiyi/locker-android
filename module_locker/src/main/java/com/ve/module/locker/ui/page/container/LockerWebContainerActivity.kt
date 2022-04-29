@@ -80,6 +80,7 @@ class LockerWebContainerActivity : BaseActivity<LockerActivityContainerWebBindin
         
         //设置标题栏之后才能修改菜单
         mBinding.extToolbar.toolbar.run {
+            title=""
             setSupportActionBar(this)
             //需要先设置设置toolbar
             supportActionBar?.setHomeButtonEnabled(true)
