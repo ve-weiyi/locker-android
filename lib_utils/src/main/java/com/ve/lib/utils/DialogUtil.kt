@@ -1,5 +1,6 @@
 package com.ve.lib.utils
 
+import android.app.Dialog
 import android.app.ProgressDialog
 import android.content.Context
 import android.content.DialogInterface
@@ -57,21 +58,11 @@ object DialogUtil {
     }
 
     fun getConfirmDialog(
-        context: Context, message: String,
-        onClickListener: DialogInterface.OnClickListener
-    ): AlertDialog.Builder {
-        val builder = getDialog(context)
-        builder.setMessage(message)
-        builder.setPositiveButton("确定", onClickListener)
-        builder.setNegativeButton("取消", null)
-        return builder
-    }
-
-    fun getConfirmDialog(
         context: Context,
         message: String,
         onOKClickListener: DialogInterface.OnClickListener,
-        onCancelClickListener: DialogInterface.OnClickListener
+//        onOKClickListener: (dialog:DialogInterface, which:Int) -> Unit,
+        onCancelClickListener: DialogInterface.OnClickListener? = null
     ): AlertDialog.Builder {
         val builder = getDialog(context)
         builder.setMessage(message)
@@ -147,8 +138,11 @@ object DialogUtil {
     }
 
     fun getSingleChoiceDialog(
-        context: Context, arrays: Array<String>, selectIndex: Int,
-        onClickListener: DialogInterface.OnClickListener, onOKClickListener: DialogInterface.OnClickListener,
+        context: Context,
+        arrays: Array<String>,
+        selectIndex: Int,
+        onClickListener: DialogInterface.OnClickListener,
+        onOKClickListener: DialogInterface.OnClickListener,
         onCancelClickListener: DialogInterface.OnClickListener
     ): AlertDialog.Builder {
         return getSingleChoiceDialog(

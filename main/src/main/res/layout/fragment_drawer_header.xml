@@ -8,7 +8,7 @@
 
 
     <RelativeLayout
-            android:background="@drawable/shape_round_white"
+            android:background="@drawable/bg_round_white"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginTop="@dimen/dp_10"
@@ -135,7 +135,7 @@
             android:layout_height="wrap_content"
             android:orientation="horizontal"
             android:layout_marginVertical="10dp"
-            android:background="@drawable/shape_round_white"
+            android:background="@drawable/bg_round_white"
             android:padding="@dimen/dp_5"
             >
 

@@ -28,6 +28,15 @@ object CacheDataUtil {
         }
     }
 
+    @Throws(Exception::class)
+    fun getTotalFilesSize(context: Context): String {
+        var filesSize = getFolderSize(context.getExternalFilesDir(Environment.DIRECTORY_DOCUMENTS))
+        return getFormatSize(filesSize.toDouble())
+    }
+    fun clearAllFiles(context: Context) {
+        deleteDir(context.getExternalFilesDir(Environment.DIRECTORY_DOCUMENTS))
+    }
+
     private fun deleteDir(dir: File?): Boolean {
 
         if (dir != null && dir.isDirectory) {

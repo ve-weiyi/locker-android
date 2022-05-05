@@ -8,7 +8,7 @@ import com.ve.lib.view.ext.setOnclickNoRepeatListener
 import com.ve.lib.vutils.LogUtil
 import com.ve.module.locker.R
 import com.ve.module.locker.common.event.RefreshDataEvent
-import com.ve.module.locker.databinding.LockerFragmentCardSeeBinding
+import com.ve.module.locker.databinding.LockerFragmentSeeCardBinding
 import com.ve.module.locker.model.database.entity.PrivacyCardDetails
 import com.ve.module.locker.model.database.entity.PrivacyCardInfo
 import com.ve.module.locker.model.database.vo.PrivacyCard
@@ -23,15 +23,15 @@ import org.greenrobot.eventbus.ThreadMode
  * @Date 2022/4/11
  * @Description  current project locker-android
  */
-class LockerCardDetailsSeeFragment:BaseVmFragment<LockerFragmentCardSeeBinding,LockerPrivacyInfoViewModel>(),
+class LockerCardDetailsSeeFragment:BaseVmFragment<LockerFragmentSeeCardBinding,LockerPrivacyInfoViewModel>(),
     View.OnClickListener {
 
     companion object{
         const val PRIVACY_DATA_KEY="DetailsCard"
 
     }
-    override fun attachViewBinding(): LockerFragmentCardSeeBinding {
-        return LockerFragmentCardSeeBinding.inflate(layoutInflater)
+    override fun attachViewBinding(): LockerFragmentSeeCardBinding {
+        return LockerFragmentSeeCardBinding.inflate(layoutInflater)
     }
 
     override fun attachViewModelClass(): Class<LockerPrivacyInfoViewModel> {

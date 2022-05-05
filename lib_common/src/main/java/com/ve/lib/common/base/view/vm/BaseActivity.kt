@@ -94,8 +94,9 @@ abstract class BaseActivity<VB : ViewBinding> : AppCompatActivity(), IView<VB> {
             //非夜间模式
             SettingUtil.getColor()
         } else {
-            resources.getColor(com.ve.lib.application.R.color.colorPrimary)
+            resources.getColor(com.ve.lib.application.R.color.colorPrimary,null)
         }
+        application
         //沉浸式状态栏
         StatusBarUtil.setColor(this, mThemeColor, 0)
         //标题栏

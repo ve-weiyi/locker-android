@@ -65,7 +65,6 @@ open class BaseViewModel : ViewModel(), LifecycleObserver {
     ): Job {
         return viewModelScope.launch {
             try {
-                LogUtil.msg("--------")
                 //apiCall,返回BaseResponse
                 if (NetWorkUtil.isConnected()) {
                     block.invoke(this)

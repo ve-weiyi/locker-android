@@ -7,7 +7,7 @@ import com.chad.library.adapter.base.module.UpFetchModule
 import com.chad.library.adapter.base.viewholder.BaseViewHolder
 import com.ve.lib.vutils.LogUtil
 import com.ve.module.locker.R
-import com.ve.module.locker.model.database.entity.PrivacyFriends
+import com.ve.module.locker.model.database.entity.PrivacyFriendsInfo
 
 /**
  * @Description hello word!
@@ -15,7 +15,7 @@ import com.ve.module.locker.model.database.entity.PrivacyFriends
  * @Date 2022/4/10
  */
 class PrivacyInfoFriendsAdapter :
-    BaseSectionQuickAdapter<PrivacyFriends, BaseViewHolder>(
+    BaseSectionQuickAdapter<PrivacyFriendsInfo, BaseViewHolder>(
         com.ve.lib.common.R.layout.item_sticky_header, R.layout.locker_item_privacy_pass
     ), LoadMoreModule, DraggableModule, UpFetchModule {
 
@@ -24,7 +24,7 @@ class PrivacyInfoFriendsAdapter :
 //    }
 
 
-    override fun convert(holder: BaseViewHolder, item: PrivacyFriends) {
+    override fun convert(holder: BaseViewHolder, item: PrivacyFriendsInfo) {
 
         holder.setText(R.id.tv_privacy_info_nickname, item.nickname)
         holder.setText(R.id.tv_privacy_info_name, item.name)
@@ -34,7 +34,7 @@ class PrivacyInfoFriendsAdapter :
     }
 
 
-    override fun convertHeader(helper: BaseViewHolder, item: PrivacyFriends) {
+    override fun convertHeader(helper: BaseViewHolder, item: PrivacyFriendsInfo) {
         LogUtil.msg("head " + item.headerName)
         helper.setText(com.ve.lib.common.R.id.tv_header, item.headerName)
         helper.setEnabled(com.ve.lib.common.R.id.tv_header, false)

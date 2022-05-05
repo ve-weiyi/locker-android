@@ -10,7 +10,7 @@ import java.io.Serializable
  * @author weiyi
  * @since 2022-04-10
  */
-data class PrivacyFriends(
+data class PrivacyFriendsInfo(
     var id: Long = 0,
 
     @Encrypt(algorithm = AES)

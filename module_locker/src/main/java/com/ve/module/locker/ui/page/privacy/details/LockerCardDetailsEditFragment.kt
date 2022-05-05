@@ -25,7 +25,7 @@ import com.ve.lib.vutils.LogUtil
 import com.ve.lib.vutils.TimeUtil
 import com.ve.module.locker.R
 import com.ve.module.locker.common.event.RefreshDataEvent
-import com.ve.module.locker.databinding.LockerFragmentCardEditBinding
+import com.ve.module.locker.databinding.LockerFragmentEditCardBinding
 import com.ve.module.locker.model.database.entity.PrivacyCardDetails
 import com.ve.module.locker.model.database.entity.PrivacyFolder
 import com.ve.module.locker.model.database.entity.PrivacyCardInfo
@@ -42,9 +42,9 @@ import org.litepal.LitePal
  * @Description  current project locker-android
  */
 class LockerCardDetailsEditFragment :
-    BaseVmFragment<LockerFragmentCardEditBinding, LockerPrivacyInfoViewModel>() {
-    override fun attachViewBinding(): LockerFragmentCardEditBinding {
-        return LockerFragmentCardEditBinding.inflate(layoutInflater)
+    BaseVmFragment<LockerFragmentEditCardBinding, LockerPrivacyInfoViewModel>() {
+    override fun attachViewBinding(): LockerFragmentEditCardBinding {
+        return LockerFragmentEditCardBinding.inflate(layoutInflater)
     }
 
     override fun attachViewModelClass(): Class<LockerPrivacyInfoViewModel> {

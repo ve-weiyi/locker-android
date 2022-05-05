@@ -13,7 +13,7 @@
     <color name="color_gray">#808080</color>
     <color name="color_black">#000000</color>
 
-    <!--红橙黄绿青蓝紫-->
+    <!--红橙黄绿青蓝紫  -->
     <color name="color_red">#FF0000</color>
     <color name="color_orange">#FFA500</color>
     <color name="color_yellow">#FFFF00</color>
@@ -39,8 +39,10 @@
     <color name="deep_purple">#673ab7</color>
     <color name="deep_black">#FF000000</color>
     <color name="deep_orange">#ff5722</color>
+    <color name="deep_blue">#0288D1</color>
 
 
+    <!--常用颜色 material600 -->
     <color name="black">#111111</color>
     <color name="white">#FFFFFFFF</color>
     <color name="gray">#757575</color>

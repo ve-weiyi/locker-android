@@ -25,7 +25,7 @@ import com.ve.lib.vutils.LogUtil
 import com.ve.lib.vutils.TimeUtil
 import com.ve.module.locker.R
 import com.ve.module.locker.common.event.RefreshDataEvent
-import com.ve.module.locker.databinding.LockerFragmentPassEditBinding
+import com.ve.module.locker.databinding.LockerFragmentEditPassBinding
 import com.ve.module.locker.model.database.entity.*
 import com.ve.module.locker.model.database.vo.PrivacyPass
 import com.ve.module.locker.ui.adapter.FlowTagAdapter
@@ -39,9 +39,9 @@ import org.litepal.LitePal
  * @Description  current project locker-android
  */
 class LockerPassDetailsEditFragment :
-    BaseVmFragment<LockerFragmentPassEditBinding, LockerPrivacyInfoViewModel>() {
-    override fun attachViewBinding(): LockerFragmentPassEditBinding {
-        return LockerFragmentPassEditBinding.inflate(layoutInflater)
+    BaseVmFragment<LockerFragmentEditPassBinding, LockerPrivacyInfoViewModel>() {
+    override fun attachViewBinding(): LockerFragmentEditPassBinding {
+        return LockerFragmentEditPassBinding.inflate(layoutInflater)
     }
 
     override fun attachViewModelClass(): Class<LockerPrivacyInfoViewModel> {

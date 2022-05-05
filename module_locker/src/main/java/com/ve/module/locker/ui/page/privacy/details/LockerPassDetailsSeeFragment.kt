@@ -8,7 +8,7 @@ import com.ve.lib.view.ext.setOnclickNoRepeatListener
 import com.ve.lib.vutils.LogUtil
 import com.ve.module.locker.R
 import com.ve.module.locker.common.event.RefreshDataEvent
-import com.ve.module.locker.databinding.LockerFragmentPassSeeBinding
+import com.ve.module.locker.databinding.LockerFragmentSeePassBinding
 import com.ve.module.locker.model.database.entity.PrivacyPassDetails
 import com.ve.module.locker.model.database.entity.PrivacyPassInfo
 import com.ve.module.locker.model.database.vo.PrivacyPass
@@ -23,15 +23,15 @@ import org.greenrobot.eventbus.ThreadMode
  * @Date 2022/4/11
  * @Description  current project locker-android
  */
-class LockerPassDetailsSeeFragment:BaseVmFragment<LockerFragmentPassSeeBinding,LockerPrivacyInfoViewModel>(),
+class LockerPassDetailsSeeFragment:BaseVmFragment<LockerFragmentSeePassBinding,LockerPrivacyInfoViewModel>(),
     View.OnClickListener {
 
     companion object{
         const val PRIVACY_DATA_KEY="DetailsPass"
 
     }
-    override fun attachViewBinding(): LockerFragmentPassSeeBinding {
-        return LockerFragmentPassSeeBinding.inflate(layoutInflater)
+    override fun attachViewBinding(): LockerFragmentSeePassBinding {
+        return LockerFragmentSeePassBinding.inflate(layoutInflater)
     }
 
     override fun attachViewModelClass(): Class<LockerPrivacyInfoViewModel> {

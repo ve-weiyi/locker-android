@@ -26,13 +26,14 @@
     <color name="colorBackground">@color/grey100</color>
     <!--    colorOnBackground：用于显示在背景色上方的元素的颜色()-->
     <color name="colorOnBackground">@color/white</color>
+    <!--    顶部标题栏颜色-->
+    <color name="colorPrimaryDark">@color/deep_blue</color>
+    <!--    图标填充颜色  check box按钮填充色-->
+    <color name="colorAccent">@color/colorPrimary</color>
 
-
-    <color name="colorPrimaryDark">#512DA8</color>
-    <color name="colorAccent">#7C4DFF</color>
     <!--    比背景色深一点-->
     <color name="windowColorBackground">@color/grey200</color>
-    <color name="textColorPrimary">#616161</color>
+    <color name="textColorPrimary">@color/color_text_normal</color>
 
     <color name="line_divider">@color/grey300</color>
     <color name="list_divider">@color/grey400</color>
@@ -47,7 +48,6 @@
     <color name="color_title_bg">#ccFFFFFF</color>
     <color name="color_flow_layout_bg">@color/grey200</color>
     <color name="bg_day_night_gray">@color/grey100</color>
-
 
 
     <color name="grey50">#FaFaFa</color>

@@ -16,7 +16,7 @@
             <TextView
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:layout_marginTop="@dimen/dp_10"
+                    android:layout_marginTop="@dimen/dp_5"
                     android:text="基本信息"
                     android:textStyle="bold"
                     android:textColor="@color/blue"
@@ -77,16 +77,56 @@
 
             </RadioGroup>
 
+
             <LinearLayout
-                    android:layout_marginHorizontal="@dimen/dp_10"
                     android:paddingBottom="@dimen/dp_100"
-                    android:background="@drawable/shape_round_white"
+                    android:background="@drawable/bg_round_white"
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
+                    android:layout_marginHorizontal="@dimen/dp_10"
                     android:paddingHorizontal="@dimen/dp_10"
                     android:orientation="vertical">
 
+                <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:orientation="vertical">
 
+                    <TextView
+                            android:id="@+id/tv_item_owner"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:textSize="16sp"
+                            android:layout_marginTop="10dp"
+                            android:textColor="@color/blue"
+                            android:text="持有人姓名" />
+
+                    <LinearLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_below="@id/tv_item_owner"
+                            android:gravity="end"
+                            android:orientation="horizontal">
+
+                        <com.google.android.material.textfield.TextInputLayout
+                                android:layout_weight="1"
+                                android:id="@+id/et_detail_owner"
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                app:errorEnabled="false"
+                                style="@style/InputTextLayoutStyle.ClearText">
+
+                            <EditText
+
+                                    android:layout_width="match_parent"
+                                    android:layout_height="wrap_content"
+                                    android:padding="@dimen/dp_10"
+                                    android:hint="必填项"
+                                    />
+                        </com.google.android.material.textfield.TextInputLayout>
+
+                    </LinearLayout>
+                </LinearLayout>
 
                 <LinearLayout
                         android:layout_width="match_parent"
@@ -99,7 +139,7 @@
                             android:textSize="16sp"
                             android:layout_marginTop="10dp"
                             android:textColor="@color/blue"
-                            android:text="账号" />
+                            android:text="卡号" />
 
                     <LinearLayout
                             android:layout_width="match_parent"
@@ -110,12 +150,12 @@
                         <com.google.android.material.textfield.TextInputLayout
                                 android:id="@+id/et_detail_account"
                                 android:layout_weight="1"
+                                app:errorEnabled="false"
                                 android:layout_width="match_parent"
                                 android:layout_height="wrap_content"
                                 style="@style/InputTextLayoutStyle.ClearText">
 
                             <EditText
-
                                     android:layout_width="match_parent"
                                     android:layout_height="wrap_content"
                                     android:padding="@dimen/dp_10"
@@ -165,45 +205,6 @@
                     </LinearLayout>
                 </LinearLayout>
 
-                <LinearLayout
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:orientation="vertical">
-
-                    <TextView
-                            android:id="@+id/tv_item_url"
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:textSize="16sp"
-                            android:layout_marginTop="10dp"
-                            android:textColor="@color/blue"
-                            android:text="链接" />
-
-                    <LinearLayout
-                            android:layout_width="match_parent"
-                            android:layout_height="wrap_content"
-                            android:layout_below="@id/tv_item_owner"
-                            android:gravity="end"
-                            android:orientation="horizontal">
-
-                        <com.google.android.material.textfield.TextInputLayout
-                                android:layout_weight="1"
-                                android:id="@+id/et_detail_url"
-                                android:layout_width="match_parent"
-                                android:layout_height="wrap_content"
-                                style="@style/InputTextLayoutStyle.ClearText">
-
-                            <EditText
-
-                                    android:layout_width="match_parent"
-                                    android:layout_height="wrap_content"
-                                    android:padding="@dimen/dp_10"
-                                    android:hint="必填项"
-                                    />
-                        </com.google.android.material.textfield.TextInputLayout>
-
-                    </LinearLayout>
-                </LinearLayout>
 
                 <LinearLayout
                         android:layout_width="match_parent"
@@ -227,6 +228,7 @@
                         <com.google.android.material.textfield.TextInputLayout
                                 android:layout_weight="1"
                                 android:id="@+id/et_detail_phone"
+                                app:errorEnabled="false"
                                 android:layout_width="match_parent"
                                 android:layout_height="wrap_content"
                                 style="@style/InputTextLayoutStyle.ClearText">
@@ -253,7 +255,7 @@
                             android:textSize="16sp"
                             android:layout_marginTop="10dp"
                             android:textColor="@color/blue"
-                            android:text="所属app" />
+                            android:text="地址" />
 
                     <LinearLayout
                             android:layout_width="match_parent"
@@ -263,13 +265,14 @@
 
                         <com.google.android.material.textfield.TextInputLayout
                                 android:layout_weight="1"
-                                android:id="@+id/et_detail_app"
+                                android:id="@+id/et_detail_address"
+                                app:errorEnabled="false"
                                 android:layout_width="match_parent"
                                 android:layout_height="wrap_content"
                                 style="@style/InputTextLayoutStyle.ClearText">
 
                             <EditText
-
+                                    app:errorEnabled="false"
                                     android:layout_width="match_parent"
                                     android:layout_height="wrap_content"
                                     android:padding="@dimen/dp_10"

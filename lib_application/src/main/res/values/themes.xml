@@ -5,11 +5,30 @@
     <!--    原因分析：默认的<Button>标签其实是MaterialButton ， MaterialButton 会自动忽略<background>，.Bridge-->
     <!--    DayNight自动暗/亮主题-->
     <style name="BaseAppTheme" parent="@style/Theme.MaterialComponents.DayNight.NoActionBar">
-        <!--    colorPrimary：您的应用的主要品牌颜色，主要用于主题-->
+
+        <!--Appbar背景色-->
         <item name="colorPrimary">@color/colorPrimary</item>
-        <!--    colorPrimaryVariant：您的主要品牌颜色的较浅/较暗变体，在主题中很少使用-->
+        <!--状态栏颜色-->
+        <item name="colorPrimaryDark">@color/colorPrimaryDark</item>
+        <!--(checkbox 填充)控制各个控件被选中时的颜色-->
+        <item name="colorAccent">@color/colorAccent</item>
+        <!--底部导航栏颜色-->
+        <item name="android:navigationBarColor">@color/light_blue</item>
+        <!--ToolBar上的Title颜色-->
+        <item name="android:textColorPrimary">@color/textColorPrimary</item>
+        <!--(checkbox 边框) 各个控制控件的默认颜色-->
+        <item name="android:colorControlNormal">@color/grey700</item>
+        <!--(页面背景色) colorBackground不仅影响主窗口的背景，而且影响所有组件的背景，例如除非您在组件布局中覆盖它。-->
+        <item name="android:colorBackground">@color/colorBackground</item>
+        <!--(页面背景色) windowBackground只影响主窗口的背景,优先级比colorBackground高。-->
+        <item name="android:windowBackground">@color/colorBackground</item>
+
+
+        <!--    colorPrimary：(Appbar背景色)您的应用的主要品牌颜色，主要用于主题 -->
+<!--        <item name="colorPrimary">@color/colorPrimary</item>-->
+<!--            colorPrimaryVariant：您的主要品牌颜色的较浅/较暗变体，在主题中很少使用-->
         <item name="colorPrimaryVariant">@color/colorPrimaryVariant</item>
-        <!--colorOnPrimary：用于显示在原色上方的元素的颜色（例如，文本和图标，根据可访问性，通常为白色或半透明的黑色）-->
+        <!--    colorOnPrimary：用于显示在原色上方的元素的颜色（例如，文本和图标，根据可访问性，通常为白色或半透明的黑色）-->
         <item name="colorOnPrimary">@color/colorOnPrimary</item>
         <!--    colorSecondary：您应用程式的次要品牌色彩，主要用于强调某些需要突出的小部件-->
         <item name="colorSecondary">@color/colorSecondary</item>
@@ -25,22 +44,13 @@
         <item name="colorSurface">@color/colorSurface</item>
         <!--    colorOnSurface：用于显示在表面颜色顶部的元素的颜色-->
         <item name="colorOnSurface">@color/colorOnSurface</item>
-        <!--    android:colorBackground：(view默认背景颜色)所有其他屏幕内容后面的颜色-->
-        <item name="android:colorBackground">@color/colorBackground</item>
         <!--    colorOnBackground：用于显示在背景色上方的元素的颜色-->
         <item name="colorOnBackground">@color/colorOnBackground</item>
 
 
-        <item name="colorPrimaryDark">@color/colorPrimaryDark</item>
-        <!--        图标颜色-->
-        <item name="colorAccent">@color/colorAccent</item>
         <!--关闭启动窗口-->
         <item name="android:windowDisablePreview">true</item>
         <item name="android:listDivider">@drawable/bg_divider</item>
-
-        <!--        开启这个导致layout遮挡toolbar-->
-        <!--        <item name="android:fitsSystemWindows">true</item>-->
-
         <item name="textAppearanceButton">@style/AppTextAppearance.Button</item>
         <item name="actionBarSize">44dp</item>
         <item name="android:textSize">16sp</item>

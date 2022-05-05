@@ -26,7 +26,7 @@
                         android:layout_height="wrap_content"
                         android:layout_marginVertical="@dimen/dp_10"
                         android:layout_marginHorizontal="20dp"
-                        android:background="@drawable/shape_round_white"
+                        android:background="@drawable/bg_round_white"
                         android:orientation="vertical">
 
                     <LinearLayout
@@ -39,7 +39,7 @@
                         <LinearLayout
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
-                                android:background="@drawable/shape_round_white"
+                                android:background="@drawable/bg_round_white"
                                 android:orientation="horizontal">
 
                             <TextView
@@ -120,7 +120,8 @@
                             android:orientation="horizontal"
                             android:gravity="center"
                             android:layout_below="@id/tv_privacy_desc"
-                            android:layout_centerHorizontal="true">
+                            android:layout_centerHorizontal="true"
+                            >
 
                         <TextView
                                 android:layout_width="wrap_content"
@@ -144,13 +145,14 @@
                     </LinearLayout>
 
                     <LinearLayout
-                            android:layout_marginVertical="2dp"
+                            android:layout_marginVertical= "2dp"
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
                             android:orientation="horizontal"
                             android:gravity="center"
                             android:layout_below="@id/tv_privacy_desc"
-                            android:layout_centerHorizontal="true">
+                            android:layout_centerHorizontal="true"
+                            >
 
 
                         <TextView
@@ -180,7 +182,7 @@
                         android:layout_marginVertical="@dimen/dp_10"
                         android:layout_marginHorizontal="20dp"
                         android:paddingHorizontal="10dp"
-                        android:background="@drawable/shape_round_white"
+                        android:background="@drawable/bg_round_white"
                         android:orientation="vertical">
 
                     <TextView
@@ -194,12 +196,58 @@
                             android:textStyle="bold" />
 
                     <LinearLayout
-                            android:background="@drawable/shape_round_white"
+                            android:background="@drawable/bg_round_white"
                             android:layout_width="match_parent"
                             android:layout_height="match_parent"
                             android:paddingHorizontal="@dimen/dp_10"
                             android:orientation="vertical">
 
+                        <LinearLayout
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:orientation="vertical">
+
+                            <TextView
+                                    android:id="@+id/tv_item_owner"
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:textSize="16sp"
+
+                                    android:textColor="@color/blue"
+                                    android:text="持有人" />
+
+                            <LinearLayout
+                                    android:layout_width="match_parent"
+                                    android:layout_height="wrap_content"
+                                    android:layout_below="@id/tv_item_owner"
+                                    android:gravity="end"
+                                    android:orientation="horizontal">
+
+                                <com.google.android.material.textfield.TextInputLayout
+                                        android:layout_weight="1"
+                                        android:layout_width="match_parent"
+                                        android:layout_height="wrap_content"
+                                        style="@style/InputTextLayoutStyle">
+
+                                    <EditText
+                                            android:id="@+id/et_detail_owner"
+                                            android:layout_width="match_parent"
+                                            android:layout_height="wrap_content"
+                                            style="@style/EditText.See"
+                                            tools:hint="weiyi" />
+                                </com.google.android.material.textfield.TextInputLayout>
+
+                                <TextView
+                                        android:layout_marginHorizontal="10dp"
+                                        android:id="@+id/tv_copy_owner"
+                                        android:layout_width="wrap_content"
+                                        android:layout_height="wrap_content"
+                                        android:layout_gravity="center_vertical"
+                                        android:textSize="16sp"
+                                        android:textColor="@color/blue"
+                                        android:text="复制" />
+                            </LinearLayout>
+                        </LinearLayout>
 
                         <LinearLayout
                                 android:layout_width="match_parent"
@@ -212,7 +260,7 @@
                                     android:textSize="16sp"
 
                                     android:textColor="@color/blue"
-                                    android:text="账号" />
+                                    android:text="卡号" />
 
                             <LinearLayout
                                     android:layout_width="match_parent"
@@ -303,89 +351,6 @@
                                     android:textSize="16sp"
 
                                     android:textColor="@color/blue"
-                                    android:text="链接" />
-
-                            <LinearLayout
-                                    android:layout_width="match_parent"
-                                    android:layout_height="wrap_content"
-                                    android:gravity="end"
-                                    android:orientation="horizontal">
-
-                                <com.google.android.material.textfield.TextInputLayout
-                                        android:layout_weight="1"
-                                        android:layout_width="match_parent"
-                                        android:layout_height="wrap_content"
-                                        style="@style/InputTextLayoutStyle">
-
-                                    <EditText
-                                            android:id="@+id/et_detail_url"
-                                            android:layout_width="match_parent"
-                                            android:layout_height="wrap_content"
-                                            style="@style/EditText.See"
-                                            tools:hint="U201814550" />
-                                </com.google.android.material.textfield.TextInputLayout>
-
-                                <TextView
-                                        android:layout_marginHorizontal="10dp"
-                                        android:id="@+id/tv_copy_url"
-                                        android:layout_width="wrap_content"
-                                        android:layout_height="wrap_content"
-                                        android:layout_gravity="center_vertical"
-                                        android:textSize="16sp"
-                                        android:textColor="@color/blue"
-                                        android:text="复制" />
-                            </LinearLayout>
-                        </LinearLayout>
-
-                        <LinearLayout
-                                android:layout_width="match_parent"
-                                android:layout_height="wrap_content"
-                                android:orientation="vertical">
-
-                            <TextView
-                                    android:id="@+id/tv_item_owner"
-                                    android:layout_width="wrap_content"
-                                    android:layout_height="wrap_content"
-                                    android:textSize="16sp"
-
-                                    android:textColor="@color/blue"
-                                    android:text="所属app" />
-
-                            <LinearLayout
-                                    android:layout_width="match_parent"
-                                    android:layout_height="wrap_content"
-                                    android:layout_below="@id/tv_item_owner"
-                                    android:gravity="end"
-                                    android:orientation="horizontal">
-
-                                <com.google.android.material.textfield.TextInputLayout
-                                        android:layout_weight="1"
-                                        android:layout_width="match_parent"
-                                        android:layout_height="wrap_content"
-                                        style="@style/InputTextLayoutStyle">
-
-                                    <EditText
-                                            android:id="@+id/et_detail_owner"
-                                            android:layout_width="match_parent"
-                                            android:layout_height="wrap_content"
-                                            style="@style/EditText.See"
-                                            tools:hint="locker" />
-                                </com.google.android.material.textfield.TextInputLayout>
-
-                            </LinearLayout>
-                        </LinearLayout>
-
-                        <LinearLayout
-                                android:layout_width="match_parent"
-                                android:layout_height="wrap_content"
-                                android:orientation="vertical">
-
-                            <TextView
-                                    android:layout_width="wrap_content"
-                                    android:layout_height="wrap_content"
-                                    android:textSize="16sp"
-
-                                    android:textColor="@color/blue"
                                     android:text="绑定手机号" />
 
                             <LinearLayout
@@ -406,6 +371,53 @@
                                             android:layout_height="wrap_content"
                                             style="@style/EditText.See"
                                             tools:hint="15623356029" />
+                                </com.google.android.material.textfield.TextInputLayout>
+
+                                <TextView
+                                        android:layout_marginHorizontal="10dp"
+                                        android:id="@+id/tv_copy_phone"
+                                        android:layout_width="wrap_content"
+                                        android:layout_height="wrap_content"
+                                        android:layout_gravity="center_vertical"
+                                        android:textSize="16sp"
+                                        android:textColor="@color/blue"
+                                        android:text="复制" />
+                            </LinearLayout>
+                        </LinearLayout>
+
+
+
+                        <LinearLayout
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:orientation="vertical">
+
+                            <TextView
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:textSize="16sp"
+
+                                    android:textColor="@color/blue"
+                                    android:text="地址" />
+
+                            <LinearLayout
+                                    android:layout_width="match_parent"
+                                    android:layout_height="wrap_content"
+                                    android:gravity="end"
+                                    android:orientation="horizontal">
+
+                                <com.google.android.material.textfield.TextInputLayout
+                                        android:layout_weight="1"
+                                        android:layout_width="match_parent"
+                                        android:layout_height="wrap_content"
+                                        style="@style/InputTextLayoutStyle">
+
+                                    <EditText
+                                            android:id="@+id/et_detail_address"
+                                            android:layout_width="match_parent"
+                                            android:layout_height="wrap_content"
+                                            style="@style/EditText.See"
+                                            tools:hint="湖北省 武汉市 华中科技大学" />
                                 </com.google.android.material.textfield.TextInputLayout>
 
                             </LinearLayout>

@@ -11,7 +11,7 @@ import androidx.activity.result.contract.ActivityResultContracts
 import androidx.appcompat.app.AppCompatDelegate
 import com.ve.lib.common.base.view.vm.BaseVmFragment
 import com.ve.lib.common.event.AppRecreateEvent
-import com.ve.lib.utils.LocationUtil
+
 import com.ve.lib.utils.SettingUtil
 import com.ve.lib.view.ext.setOnclickNoRepeatListener
 import com.ve.lib.vutils.LogUtil
@@ -70,10 +70,7 @@ class LockerDrawerActionFragment :
                 LogUtil.msg(result.toString())
             }
 
-        LocationUtil.init(this)
-        location= LocationUtil.getLocation()!!
-        val address= LocationUtil.getAddress(location)
-        placeName=address!![0].featureName
+
     }
 
     override fun initObserver() {
@@ -87,7 +84,7 @@ class LockerDrawerActionFragment :
     }
     override fun initWebData() {
         super.initWebData()
-        mViewModel.refreshWeather(location.longitude.toString(),location.latitude.toString())
+//        mViewModel.refreshWeather(location.longitude.toString(),location.latitude.toString())
     }
 
     override fun onClick(v: View?) {
