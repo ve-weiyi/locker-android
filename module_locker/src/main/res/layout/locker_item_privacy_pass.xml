@@ -13,7 +13,7 @@
             android:layout_marginHorizontal="@dimen/list_padding_normal_h"
             android:paddingHorizontal="@dimen/dp_16"
             android:paddingVertical="@dimen/dp_8"
-            android:background="@drawable/bg_round_white">
+            android:background="@drawable/bg_round_white_8dp">
 
         <TextView
                 app:layout_constraintStart_toStartOf="parent"

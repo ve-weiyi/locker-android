@@ -1,4 +1,4 @@
-package com.ve.module.locker.model.http.api
+package com.ve.module.locker.api
 
 import com.ve.module.locker.model.database.entity.*
 import com.ve.module.locker.model.database.entity.PrivacyTag
@@ -20,10 +20,10 @@ interface LockerService {
         /**
          * 本地测试地址 只能填服务器的地址+端口，并且以/结尾
          */
-//        const val BASE_URL = "http://10.21.191.246:8084/"
+        const val BASE_URL = "http://10.21.191.246:8084/"
 
         //模拟器连接地址
-        const val BASE_URL = "http://10.0.2.2:8084/"
+//        const val BASE_URL = "http://10.0.2.2:8084/"
     }
     //-----------------------【 登录 】----------------------
     /**

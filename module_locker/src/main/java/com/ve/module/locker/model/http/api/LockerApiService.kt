@@ -1,6 +1,7 @@
 package com.ve.module.locker.model.http.api
 
 import com.ve.lib.network.http.base.BaseApiService
+import com.ve.module.locker.api.LockerService
 import okhttp3.OkHttpClient
 
 /**

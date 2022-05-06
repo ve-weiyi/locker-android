@@ -70,12 +70,12 @@ class LockerSplashActivity : BaseActivity<LockerActivitySplashBinding>() {
                 }
 
                 override fun onAnimationEnd(p0: Animation?) {
-//                    jumpToMain()
-                    if(isLogin){
-                        jumpToAuth()
-                    }else{
-                        jumpToLogin()
-                    }
+                    jumpToMain()
+//                    if(isLogin){
+//                        jumpToAuth()
+//                    }else{
+//                        jumpToLogin()
+//                    }
 
                 }
 

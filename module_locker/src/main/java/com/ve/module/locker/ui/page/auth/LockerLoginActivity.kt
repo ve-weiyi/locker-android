@@ -189,6 +189,9 @@ class LockerLoginActivity: BaseVmActivity<LockerActivityLoginBinding, LockerLogi
                     negativeButton(text = "取消"){
 
                     }
+                    neutralButton(text = "确定"){
+
+                    }
                     lifecycleOwner(this@LockerLoginActivity)
                 }
 //                LockerContainerActivity.start(mContext,LockerServiceItemFragment::class.java,"服务条款")

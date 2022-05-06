@@ -2,6 +2,7 @@ package com.ve.module.locker
 
 import android.os.Bundle
 import android.view.Gravity
+import androidx.core.view.get
 import androidx.fragment.app.FragmentTransaction
 import com.google.android.material.navigation.NavigationBarView
 import com.ve.lib.common.base.view.vm.BaseVmActivity
@@ -13,6 +14,7 @@ import com.ve.module.locker.ui.page.category.LockerCategoryFragment
 import com.ve.module.locker.ui.page.drawer.LockerDrawerFragment
 import com.ve.module.locker.ui.page.privacy.list.LockerListPassFragment
 import com.ve.module.locker.ui.page.privacy.list.LockerListCardFragment
+import com.ve.module.locker.ui.page.privacy.list.LockerListFriendsFragment
 
 import com.ve.module.locker.ui.viewmodel.LockerViewModel
 
@@ -28,9 +30,9 @@ class LockerMainActivity : BaseVmActivity<LockerActivityMainBinding, LockerViewM
     private fun initFragment() {
         var pageCount=0
         mFragmentPageList= mutableListOf(
-            FragmentPage(pageCount++,"消息", LockerListPassFragment::class.java),
             FragmentPage(pageCount++,"密码", LockerListPassFragment::class.java),
             FragmentPage(pageCount++,"卡片",LockerListCardFragment::class.java),
+            FragmentPage(pageCount++,"好友", LockerListFriendsFragment::class.java),
             FragmentPage(pageCount++,"分类", LockerCategoryFragment::class.java),
             FragmentPage(pageCount++,"设置",LockerDrawerFragment::class.java),
         )
@@ -81,6 +83,7 @@ class LockerMainActivity : BaseVmActivity<LockerActivityMainBinding, LockerViewM
         toolbar.title = mFragmentPage.mFragmentTitle
 
         if (mFragmentPage.mFragment == null) {
+            mBinding.bottomNavigation.menu[index].title=mFragmentPage.mFragmentTitle
             mFragmentPage.mFragment=mFragmentPage.getFragment()
             transaction.add(R.id.ext_container, mFragmentPage.mFragment!!, mFragmentPage.mFragmentTitle)
         } else {

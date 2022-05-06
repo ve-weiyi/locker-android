@@ -16,7 +16,7 @@
                 android:layout_height="wrap_content"
                 android:layout_marginVertical="@dimen/dp_5"
                 android:orientation="vertical"
-                android:background="@drawable/bg_round_white">
+                android:background="@drawable/bg_round_white_8dp">
 
 
             <com.ve.lib.view.widget.view.HorizontalItemView
@@ -83,7 +83,7 @@
                     android:layout_height="wrap_content"
                     android:layout_marginTop="@dimen/dp_10"
                     android:orientation="vertical"
-                    android:background="@drawable/bg_round_white">
+                    android:background="@drawable/bg_round_white_8dp">
 
                 <TextView
                         android:layout_width="match_parent"
@@ -159,7 +159,7 @@
                     android:layout_height="wrap_content"
                     android:layout_marginTop="@dimen/dp_10"
                     android:orientation="vertical"
-                    android:background="@drawable/bg_round_white">
+                    android:background="@drawable/bg_round_white_8dp">
 
                 <TextView
                         android:layout_width="match_parent"

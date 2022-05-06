@@ -92,7 +92,6 @@ data class PrivacyPassInfo(
      * 一对一，主键关联
      */
     public fun getPrivacyDetails(): PrivacyPassDetails {
-        LogUtil.msg(privacyDetailsId.toString())
         return LitePal.find(PrivacyPassDetails::class.java, privacyDetailsId)
     }
 

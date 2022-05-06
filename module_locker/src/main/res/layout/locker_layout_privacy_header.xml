@@ -6,8 +6,8 @@
     <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:paddingHorizontal="10dp"
-            android:background="@drawable/bg_round_white"
+            android:paddingHorizontal="20dp"
+            android:background="@drawable/bg_round_white_8dp"
             android:orientation="vertical">
 
         <LinearLayout
@@ -32,7 +32,6 @@
                 <com.google.android.material.textfield.TextInputLayout
                         android:layout_weight="1"
                         android:id="@+id/et_privacy_name"
-                        app:errorEnabled="false"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         style="@style/InputTextLayoutStyle.ClearText">
@@ -41,6 +40,7 @@
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
                             android:padding="@dimen/dp_10"
+                            style="@style/EditText"
                             android:hint="如:我的QQ账号" />
                 </com.google.android.material.textfield.TextInputLayout>
 
@@ -78,7 +78,7 @@
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
                             android:padding="@dimen/dp_10"
-                            android:textColorHint="@color/colorPrimary"
+                            style="@style/EditText"
                             android:hint="添加一条描述信息吧ヾ(^▽^ヾ)~~" />
                 </com.google.android.material.textfield.TextInputLayout>
 
@@ -89,14 +89,13 @@
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:orientation="horizontal"
-
+                android:paddingVertical="@dimen/dp_8"
                 >
 
             <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:textSize="16sp"
-                    android:paddingVertical="@dimen/dp_8"
                     android:textColor="@color/blue"
                     android:text="文件夹" />
 
@@ -114,12 +113,13 @@
         </RelativeLayout>
 
         <RelativeLayout
+                android:paddingVertical="@dimen/dp_8"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:orientation="horizontal">
 
             <TextView
-                    android:paddingVertical="@dimen/dp_8"
+
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:textSize="16sp"
@@ -135,19 +135,7 @@
                     android:layout_alignParentEnd="true"
                     android:layout_centerVertical="true"
                     android:layout_marginHorizontal="@dimen/dp_10"
-                    android:paddingHorizontal="10dp"
-                    />
-            <!--            <androidx.appcompat.widget.AppCompatSpinner-->
-            <!--                    android:layout_width="wrap_content"-->
-            <!--                    android:layout_height="wrap_content"-->
-            <!--                    android:paddingHorizontal="@dimen/dp_10"-->
-            <!--                    android:id="@+id/spinner_tag"-->
-            <!--                    android:popupBackground="@color/grey200"-->
-            <!--                    android:spinnerMode="dropdown"-->
-            <!--                    android:layout_alignParentEnd="true"-->
-            <!--                    android:layout_centerVertical="true"-->
-            <!--                    android:textColor="@color/black"-->
-            <!--                    android:entries="@array/tag" />-->
+                    android:paddingHorizontal="10dp" />
 
         </RelativeLayout>
 
@@ -156,6 +144,9 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 app:max_select="0" />
+
+
+
     </LinearLayout>
 
 </layout>

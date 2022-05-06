@@ -84,7 +84,7 @@ public class LockerAutoFillService : AutofillService() {
             val fillResponseBuilder = FillResponse.Builder()
             val clientState = Bundle()
             suggestions.forEach { it ->
-                val name = it.app
+                val name = it.appPackageName
                 val username = it.account
                 val password = it.password
                 if (username.isNotEmpty() || password.isNotEmpty()) {

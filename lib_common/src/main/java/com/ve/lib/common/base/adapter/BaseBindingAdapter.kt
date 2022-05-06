@@ -22,8 +22,7 @@ abstract class BaseBindingAdapter<T,VB : ViewBinding>(data: MutableList<T>? = nu
             ViewGroup::class.java,
             Boolean::class.java
         )
-        mBinding =
-            inflate.invoke(null, LayoutInflater.from(parent.context), parent, false) as VB
+        mBinding = inflate.invoke(null, LayoutInflater.from(parent.context), parent, false) as VB
         return VBViewHolder(mBinding, mBinding.root)
     }
 }

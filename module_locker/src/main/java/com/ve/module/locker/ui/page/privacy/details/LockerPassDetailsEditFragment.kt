@@ -1,5 +1,6 @@
 package com.ve.module.locker.ui.page.privacy.details
 
+import android.annotation.SuppressLint
 import android.content.res.ColorStateList
 import android.os.Bundle
 import android.text.Editable
@@ -14,10 +15,13 @@ import android.view.View
 import android.widget.AdapterView
 import android.widget.ArrayAdapter
 import androidx.appcompat.widget.AppCompatSpinner
+import androidx.recyclerview.widget.LinearLayoutManager
 import com.afollestad.materialdialogs.MaterialDialog
 import com.afollestad.materialdialogs.input.input
 import com.afollestad.materialdialogs.lifecycle.lifecycleOwner
+import com.afollestad.materialdialogs.list.customListAdapter
 import com.afollestad.materialdialogs.list.listItems
+import com.afollestad.materialdialogs.list.listItemsSingleChoice
 import com.ve.lib.common.base.view.vm.BaseVmFragment
 import com.ve.lib.utils.DialogUtil
 import com.ve.lib.view.widget.passwordGenerator.PasswordGeneratorDialog
@@ -28,9 +32,15 @@ import com.ve.module.locker.common.event.RefreshDataEvent
 import com.ve.module.locker.databinding.LockerFragmentEditPassBinding
 import com.ve.module.locker.model.database.entity.*
 import com.ve.module.locker.model.database.vo.PrivacyPass
+import com.ve.module.locker.ui.adapter.AppAdapter
 import com.ve.module.locker.ui.adapter.FlowTagAdapter
 import com.ve.module.locker.ui.viewmodel.LockerPrivacyInfoViewModel
+import com.ve.module.locker.utils.AndroidUtil
 import com.ve.module.locker.utils.PasswordUtils
+import kotlinx.coroutines.GlobalScope
+import kotlinx.coroutines.MainScope
+import kotlinx.coroutines.launch
+import org.jetbrains.anko.backgroundDrawable
 import org.litepal.LitePal
 
 /**
@@ -72,7 +82,12 @@ class LockerPassDetailsEditFragment :
     private lateinit var mTagList: MutableList<PrivacyTag>
     private lateinit var mTagName: List<String>
     private lateinit var mTagAdapter: FlowTagAdapter
-    
+
+    private lateinit var mAppAdapter: AppAdapter
+    private var mCheckAppInfo:AndroidUtil.AppInfo?=null
+    private val mAppInfoList by lazy { AndroidUtil.getAllAppInfo(mContext) }
+    private val mAppDialog by lazy { MaterialDialog(mContext) }
+
     override fun initView(savedInstanceState: Bundle?) {
         setHasOptionsMenu(true)
 
@@ -80,11 +95,12 @@ class LockerPassDetailsEditFragment :
 
         mFolderList = LitePal.findAll(PrivacyFolder::class.java)
         mFolderName = mFolderList.map { it.folderName }
-        mTagList=LitePal.findAll(PrivacyTag::class.java)
-        mTagName=mTagList.map { it.tagName }
+        mTagList = LitePal.findAll(PrivacyTag::class.java)
+        mTagName = mTagList.map { it.tagName }
 
         arguments?.let {
-            mType = it.getInt(LockerPassDetailsEditFragment.FRAGMENT_TYPE_KEY, EditType.ADD_TAG_TYPE)
+            mType =
+                it.getInt(LockerPassDetailsEditFragment.FRAGMENT_TYPE_KEY, EditType.ADD_TAG_TYPE)
             val data = it.getSerializable(LockerPassDetailsEditFragment.FRAGMENT_DATA_KEY)
 
             if (data is PrivacyPassInfo) {
@@ -100,19 +116,26 @@ class LockerPassDetailsEditFragment :
             }
         }
 
-
         mTagAdapter = FlowTagAdapter(mPrivacyTagList)
-        mBinding.layoutBaseInfo.privacyTagFlowLayout.adapter=mTagAdapter
+        mBinding.layoutBaseInfo.privacyTagFlowLayout.adapter = mTagAdapter
+
+        mAppAdapter = AppAdapter()
+        mCheckAppInfo=AndroidUtil.getAppByPackageName(mContext,mPrivacyPassDetails.appPackageName)
+        LogUtil.msg(mCheckAppInfo.toString())
+        mBinding.tvAppName.text = mCheckAppInfo?.name
+        mBinding.ivAppIcon.backgroundDrawable=mCheckAppInfo?.icon
     }
 
     override fun initWebData() {
         super.initWebData()
     }
 
+
+    @SuppressLint("CheckResult")
     override fun initListener() {
         super.initListener()
         mBinding.etDetailPassword.editText!!.addTextChangedListener(textWatcher)
-        mBinding.layoutBaseInfo.ivAddTag.setOnClickListener{
+        mBinding.layoutBaseInfo.ivAddTag.setOnClickListener {
             MaterialDialog(mContext).show {
                 title(text = "添加标签")
                 message(text = "请选择合适的标签")
@@ -121,13 +144,18 @@ class LockerPassDetailsEditFragment :
                     LogUtil.msg(mTagList[index].toString())
                     mPrivacyTagList?.add(mTagList[index])
                     mTagAdapter = FlowTagAdapter(mPrivacyTagList)
-                    mBinding.layoutBaseInfo.privacyTagFlowLayout.adapter=mTagAdapter
+                    mBinding.layoutBaseInfo.privacyTagFlowLayout.adapter = mTagAdapter
                     dismiss()
                 }
-                positiveButton(text = "确定"){
+
+                positiveButton(text = "确定") {
 
                 }
-                negativeButton(text = "自定义"){
+
+                negativeButton(text = "取消") {
+
+                }
+                neutralButton(text = "自定义") {
                     MaterialDialog(mContext).show {
                         title(text = "输入标签名")
                         input(
@@ -137,7 +165,7 @@ class LockerPassDetailsEditFragment :
                             showMsg("Input: $text")
                             mPrivacyTagList?.add(PrivacyTag(tagName = text.toString()))
                             mTagAdapter = FlowTagAdapter(mPrivacyTagList)
-                            mBinding.layoutBaseInfo.privacyTagFlowLayout.adapter=mTagAdapter
+                            mBinding.layoutBaseInfo.privacyTagFlowLayout.adapter = mTagAdapter
                         }
                         positiveButton(text = "确定")
                         negativeButton(text = "取消")
@@ -146,7 +174,31 @@ class LockerPassDetailsEditFragment :
                 lifecycleOwner(activity)
             }
         }
+
+        mBinding.ivAppIcon.setOnClickListener {
+            mAppAdapter.setList(mAppInfoList)
+            mAppAdapter.setOnItemClickListener { adapter, view, position ->
+                mCheckAppInfo=adapter.data[position] as AndroidUtil.AppInfo
+                LogUtil.msg(mCheckAppInfo.toString())
+                mAppDialog.message(text = "已选中 "+mCheckAppInfo!!.name)
+            }
+
+            mAppDialog.show {
+                title(text = "app列表")
+                message(text = "已安装的app")
+                customListAdapter(mAppAdapter, LinearLayoutManager(mContext))
+                positiveButton(text = "确定") {
+                    mBinding.tvAppName.text=mCheckAppInfo?.name
+                    mBinding.ivAppIcon.background=mCheckAppInfo?.icon
+                }
+                negativeButton(text = "取消") {
+
+                }
+                lifecycleOwner(activity)
+            }
+        }
     }
+
     private val textWatcher = object : TextWatcher {
         override fun beforeTextChanged(s: CharSequence?, start: Int, count: Int, after: Int) {
             LogUtil.msg("before " + s.toString())
@@ -159,18 +211,19 @@ class LockerPassDetailsEditFragment :
         override fun afterTextChanged(s: Editable?) {
             LogUtil.msg("after " + s.toString())
             val level = PasswordUtils.checkPasswordLevel(s.toString())
-            val colorStateList= ColorStateList.valueOf(level.colorInt)
+            val colorStateList = ColorStateList.valueOf(level.colorInt)
 
             mBinding.etDetailPassword.apply {
                 setErrorIconOnClickListener {
-                    if(editText!!.transformationMethod is HideReturnsTransformationMethod){
-                        editText!!.transformationMethod= PasswordTransformationMethod.getInstance()
-                    }else{
-                        editText!!.transformationMethod= HideReturnsTransformationMethod.getInstance()
+                    if (editText!!.transformationMethod is HideReturnsTransformationMethod) {
+                        editText!!.transformationMethod = PasswordTransformationMethod.getInstance()
+                    } else {
+                        editText!!.transformationMethod =
+                            HideReturnsTransformationMethod.getInstance()
                     }
                 }
                 error = level.desc
-                boxStrokeErrorColor=colorStateList
+                boxStrokeErrorColor = colorStateList
                 setErrorTextColor(colorStateList)
                 setErrorIconTintList(colorStateList)
                 setBoxStrokeColorStateList(colorStateList)
@@ -178,6 +231,7 @@ class LockerPassDetailsEditFragment :
             LogUtil.msg("level " + level.toString())
         }
     }
+
     override fun onCreateOptionsMenu(menu: Menu, inflater: MenuInflater) {
         inflater.inflate(R.menu.locker_privacy_edit, menu)
         super.onCreateOptionsMenu(menu, inflater)
@@ -228,6 +282,7 @@ class LockerPassDetailsEditFragment :
         }
         return super.onOptionsItemSelected(item)
     }
+
     override fun initObserver() {
         super.initObserver()
         mViewModel.addPrivacyPassResult.observe(this) {
@@ -240,17 +295,17 @@ class LockerPassDetailsEditFragment :
             showMsg(it)
 //            activity?.finish()
         }
-    }
 
+    }
 
     private fun checkValid(): Boolean {
         mBinding.apply {
-            
+
             val account = etDetailAccount.editText!!.text.toString()
             var password = etDetailPassword.editText!!.text.toString()
             val url = etDetailUrl.editText!!.text.toString()
             val phone = etDetailPhone.editText!!.text.toString()
-            val app = etDetailApp.editText!!.text.toString()
+            val app = ""
             val remark = etDetailRemark.editText!!.text.toString()
 
 
@@ -264,7 +319,7 @@ class LockerPassDetailsEditFragment :
                 desc = account + "的密码 " + TimeUtil.date
             }
             mPrivacyPassDetails.apply {
-                this.app = app
+                this.appPackageName = app
                 this.account = account
                 this.password = password
                 this.phone = phone
@@ -285,6 +340,8 @@ class LockerPassDetailsEditFragment :
                 mPrivacyFolder,
                 mPrivacyTagList
             )
+
+            mPrivacyPassDetails.appPackageName=mCheckAppInfo!!.packageName
             return true
         }
     }
@@ -323,7 +380,7 @@ class LockerPassDetailsEditFragment :
         }
 
         mBinding.apply {
-            etDetailApp.editText!!.setText(mPrivacyPassDetails.app)
+//            etDetailApp.editText!!.setText(mPrivacyPassDetails.app)
             etDetailAccount.editText!!.setText(mPrivacyPassDetails.account)
             etDetailPassword.editText!!.setText(mPrivacyPassDetails.password)
             etDetailUrl.editText!!.setText(mPrivacyPassDetails.url)

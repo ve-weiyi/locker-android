@@ -1,5 +1,6 @@
 package com.ve.module.locker.model.database.entity
 
+import com.ve.module.locker.LockerApplication
 import org.litepal.annotation.Encrypt
 import org.litepal.crud.LitePalSupport
 import java.io.Serializable
@@ -33,15 +34,15 @@ data class PrivacyPassDetails(
     @Encrypt(algorithm = AES)
     var phone: String? = null,
 
-    //(value = "所属app名")
+    //(value = "所属app包名")
     @Encrypt(algorithm = AES)
-    var app: String = "unknown",
+    var appPackageName: String = LockerApplication.context.packageName,
 
     //(value = "备注")
     @Encrypt(algorithm = AES)
     var remark: String? =  "未设置备注",
 
-) : LitePalSupport(), Serializable {
+    ) : LitePalSupport(), Serializable {
 
 
     companion object {

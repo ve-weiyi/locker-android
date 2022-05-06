@@ -68,7 +68,7 @@ class LockerListPassFragment :
             LockerContainerActivity.start(
                 mContext,
                 LockerPassDetailsEditFragment::class.java.name,
-                "添加卡片"
+                "添加账号"
             )
         }
         mBinding.tvSearchText.setOnClickListener{

@@ -4,6 +4,7 @@ import android.os.Bundle
 import android.text.method.PasswordTransformationMethod
 import android.view.View
 import com.ve.lib.common.base.view.vm.BaseVmFragment
+import com.ve.lib.utils.DialogUtil
 import com.ve.lib.view.ext.setOnclickNoRepeatListener
 import com.ve.lib.vutils.LogUtil
 import com.ve.module.locker.R
@@ -80,6 +81,9 @@ class LockerCardDetailsSeeFragment:BaseVmFragment<LockerFragmentSeeCardBinding,L
         }
     }
     override fun onClick(v: View?) {
+        val account=mBinding.etDetailAccount.text.toString()
+        val password=mBinding.etDetailPassword.text.toString()
+        val phone=mBinding.tvCopyPhone.text.toString()
         when(v?.id){
             R.id.btn_edit->{
                 val bundle=Bundle()
@@ -93,27 +97,30 @@ class LockerCardDetailsSeeFragment:BaseVmFragment<LockerFragmentSeeCardBinding,L
                 )
             }
             R.id.btn_delete->{
-                mViewModel.deletePrivacyCard(mPrivacyInfoCard!!)
+                DialogUtil.getConfirmDialog(
+                    mContext,
+                    "确定要删除卡片:$account",
+                    onOKClickListener = { d, w ->
+                        mViewModel.deletePrivacyCard(mPrivacyInfoCard!!)
+                    },
+                    onCancelClickListener = { d, w ->
+                        showMsg("取消删除")
+                    }
+                ).show()
             }
             R.id.btn_copy->{
-                val account=mBinding.etDetailAccount.text.toString()
-                val password=mBinding.etDetailPassword.text.toString()
                 StickUtils.copy(mContext,"账号:$account\n密码:$password")
             }
             R.id.tv_copy_owner->{
-                val account=mBinding.etDetailOwner.text.toString()
                 StickUtils.copy(mContext, account)
             }
             R.id.tv_copy_account->{
-                val account=mBinding.etDetailAccount.text.toString()
                 StickUtils.copy(mContext, account)
             }
             R.id.tv_copy_password->{
-                val password=mBinding.etDetailPassword.text.toString()
                 StickUtils.copy(mContext, password)
             }
             R.id.tv_copy_phone->{
-                val phone=mBinding.tvCopyPhone.text.toString()
                 StickUtils.copy(mContext, phone)
             }
         }

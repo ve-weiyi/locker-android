@@ -18,7 +18,7 @@ abstract class BaseSlideBindingAdapter<T, VB : ViewBinding>(data: MutableList<T>
         setEmptyView(R.layout.empty_view)
         //开启加载动画,设置为 缩放显示
         animationEnable = true
-        setAnimationWithDefault(AnimationType.SlideInLeft)
+        setAnimationWithDefault(AnimationType.AlphaIn)
 
     }
 

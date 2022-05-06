@@ -40,7 +40,7 @@
         <item name="colorError">@color/colorError</item>
         <!--    colorOnError：用于显示在错误颜色顶部的元素的颜色-->
         <item name="colorOnError">@color/colorOnError</item>
-        <!--    colorSurface：(夜间模式标题栏颜色)用于表面的颜色（即材料“纸张”）-->
+        <!--    colorSurface：(夜间模式标题栏颜色、菜单栏背景色)用于表面的颜色（即材料“纸张”）-->
         <item name="colorSurface">@color/colorSurface</item>
         <!--    colorOnSurface：用于显示在表面颜色顶部的元素的颜色-->
         <item name="colorOnSurface">@color/colorOnSurface</item>

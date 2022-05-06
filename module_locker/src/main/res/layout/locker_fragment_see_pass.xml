@@ -3,21 +3,27 @@
         xmlns:app="http://schemas.android.com/apk/res-auto"
         xmlns:tools="http://schemas.android.com/tools">
 
-    <FrameLayout
+    <RelativeLayout
             android:layout_width="match_parent"
-            android:layout_height="wrap_content">
+            android:layout_height="match_parent"
+            >
 
 
         <androidx.core.widget.NestedScrollView
+                android:layout_above="@id/layout_edit"
+                android:id="@+id/layout_nestedScrollView"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                app:layout_constraintBottom_toTopOf="@id/layout_edit"
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:paddingBottom="60dp">
+                android:layout_height="match_parent"
+                >
 
 
             <LinearLayout
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
-                    android:background="@color/windowColorBackground"
                     android:orientation="vertical">
 
                 <LinearLayout
@@ -26,7 +32,7 @@
                         android:layout_height="wrap_content"
                         android:layout_marginVertical="@dimen/dp_10"
                         android:layout_marginHorizontal="20dp"
-                        android:background="@drawable/bg_round_white"
+                        android:background="@drawable/bg_round_white_8dp"
                         android:orientation="vertical">
 
                     <LinearLayout
@@ -39,7 +45,7 @@
                         <LinearLayout
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
-                                android:background="@drawable/bg_round_white"
+                                android:background="@drawable/bg_round_white_8dp"
                                 android:orientation="horizontal">
 
                             <TextView
@@ -180,24 +186,14 @@
                         android:layout_marginVertical="@dimen/dp_10"
                         android:layout_marginHorizontal="20dp"
                         android:paddingHorizontal="10dp"
-                        android:background="@drawable/bg_round_white"
+                        android:background="@drawable/bg_round_white_8dp"
                         android:orientation="vertical">
 
-                    <TextView
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-
-                            android:layout_marginStart="@dimen/dp_10"
-                            android:text="详细信息"
-                            android:textColor="@color/black"
-                            android:textSize="17sp"
-                            android:textStyle="bold" />
-
                     <LinearLayout
-                            android:background="@drawable/bg_round_white"
+                            android:background="@drawable/bg_round_white_8dp"
                             android:layout_width="match_parent"
                             android:layout_height="match_parent"
-                            android:paddingHorizontal="@dimen/dp_10"
+                            android:padding="@dimen/dp_10"
                             android:orientation="vertical">
 
 
@@ -228,8 +224,6 @@
 
                                     <EditText
                                             android:id="@+id/et_detail_account"
-                                            android:layout_width="match_parent"
-                                            android:layout_height="wrap_content"
                                             style="@style/EditText.See"
                                             tools:hint="U201814550" />
                                 </com.google.android.material.textfield.TextInputLayout>
@@ -274,8 +268,6 @@
 
                                     <EditText
                                             android:id="@+id/et_detail_password"
-                                            android:layout_width="match_parent"
-                                            android:layout_height="wrap_content"
                                             style="@style/EditText.See"
                                             tools:hint="U201814550" />
                                 </com.google.android.material.textfield.TextInputLayout>
@@ -319,8 +311,6 @@
 
                                     <EditText
                                             android:id="@+id/et_detail_url"
-                                            android:layout_width="match_parent"
-                                            android:layout_height="wrap_content"
                                             style="@style/EditText.See"
                                             tools:hint="U201814550" />
                                 </com.google.android.material.textfield.TextInputLayout>
@@ -366,10 +356,9 @@
 
                                     <EditText
                                             android:id="@+id/et_detail_owner"
-                                            android:layout_width="match_parent"
-                                            android:layout_height="wrap_content"
                                             style="@style/EditText.See"
-                                            tools:hint="locker" />
+                                            tools:hint="locker"
+                                            android:layout_height="match_parent" />
                                 </com.google.android.material.textfield.TextInputLayout>
 
                             </LinearLayout>
@@ -402,8 +391,6 @@
 
                                     <EditText
                                             android:id="@+id/et_detail_phone"
-                                            android:layout_width="match_parent"
-                                            android:layout_height="wrap_content"
                                             style="@style/EditText.See"
                                             tools:hint="15623356029" />
                                 </com.google.android.material.textfield.TextInputLayout>
@@ -412,7 +399,7 @@
                         </LinearLayout>
 
                         <LinearLayout
-                                android:paddingBottom="60dp"
+                                android:paddingBottom="20dp"
                                 android:layout_width="match_parent"
                                 android:layout_height="wrap_content"
                                 android:orientation="vertical"
@@ -422,7 +409,6 @@
                                     android:layout_width="wrap_content"
                                     android:layout_height="wrap_content"
                                     android:textSize="@dimen/dp_16"
-                                    android:layout_marginVertical="10dp"
                                     android:textColor="@color/blue"
                                     android:text="备注" />
 
@@ -434,7 +420,6 @@
                                     android:layout_width="match_parent"
                                     android:layout_height="wrap_content"
                                     android:paddingTop="@dimen/dp_10"
-                                    android:paddingBottom="60dp"
                                     android:background="@drawable/shape_round_grey"
                                     tools:hint="@string/text_content" />
                         </LinearLayout>
@@ -442,15 +427,22 @@
                 </LinearLayout>
             </LinearLayout>
 
-
         </androidx.core.widget.NestedScrollView>
 
         <LinearLayout
-                android:layout_width="wrap_content"
+                android:id="@+id/layout_edit"
+                app:layout_constraintTop_toBottomOf="@id/layout_nestedScrollView"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                android:gravity="center"
+                android:layout_alignParentBottom="true"
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:paddingHorizontal="60dp"
-                android:layout_marginBottom="10dp"
-                android:layout_gravity="bottom|center_horizontal">
+                android:paddingVertical="10dp"
+                android:layout_gravity="bottom|center_horizontal"
+                >
 
             <ImageView
                     android:id="@+id/btn_edit"
@@ -479,5 +471,5 @@
                     android:src="@drawable/ic_baseline_delete_24"
                     android:background="@drawable/bg_circle_red" />
         </LinearLayout>
-    </FrameLayout>
+    </RelativeLayout>
 </layout>

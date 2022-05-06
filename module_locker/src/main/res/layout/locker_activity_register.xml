@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="utf-8"?>
 <ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
         xmlns:app="http://schemas.android.com/apk/res-auto"
         xmlns:tools="http://schemas.android.com/tools"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
         android:background="@color/colorBackground"
         android:fitsSystemWindows="true">
 
@@ -20,14 +20,12 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:orientation="vertical"
-                android:paddingHorizontal="40dp"
-                android:paddingTop="@dimen/dp_40"
-                >
+                android:paddingHorizontal="40dp">
 
             <TextView
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-
+                    android:layout_marginTop="@dimen/dp_50"
                     android:gravity="center"
                     android:text="注册 locker"
                     android:textStyle="bold"
@@ -37,7 +35,7 @@
             <TextView
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:layout_marginTop="@dimen/dp_6"
+                    android:layout_marginTop="@dimen/dp_8"
                     android:gravity="center"
                     android:text="当前仅支持使用邮箱账号注册"
                     android:textSize="@dimen/sp_14" />
@@ -48,7 +46,7 @@
                     android:id="@+id/et_username"
                     android:layout_marginTop="@dimen/dp_20"
                     style="@style/InputTextLayoutStyle.ClearText"
-                    app:errorEnabled="true"
+
                     android:focusable="true"
                     android:focusableInTouchMode="true">
 
@@ -60,17 +58,20 @@
                         android:background="@drawable/shape_round_grey_tag"
                         android:inputType="textEmailAddress" />
             </com.google.android.material.textfield.TextInputLayout>
+
             <TextView
                     android:id="@+id/tv_send_code"
                     android:layout_gravity="end"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="发送验证码"/>
+                    android:text="发送验证码" />
+
             <com.google.android.material.textfield.TextInputLayout
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     style="@style/InputTextLayoutStyle.Bound"
                     android:focusable="true"
+                    android:layout_marginTop="@dimen/dp_16"
                     android:id="@+id/et_password"
                     android:focusableInTouchMode="true">
 
@@ -89,6 +90,7 @@
                     android:layout_height="wrap_content"
                     style="@style/InputTextLayoutStyle.Bound"
                     android:focusable="true"
+                    android:layout_marginTop="@dimen/dp_16"
                     android:id="@+id/et_password2"
                     android:focusableInTouchMode="true">
 
@@ -101,6 +103,19 @@
                         android:background="@drawable/shape_round_grey_tag"
                         android:inputType="textPassword" />
             </com.google.android.material.textfield.TextInputLayout>
+
+
+            <com.google.android.material.button.MaterialButton
+                    android:id="@+id/btn_register"
+                    android:layout_width="match_parent"
+                    android:layout_height="40dp"
+                    android:layout_marginTop="@dimen/dp_24"
+                    android:layout_marginBottom="@dimen/dp_24"
+                    android:background="@drawable/btn_login_bg"
+                    android:gravity="center"
+
+                    android:text="@string/register"
+                    android:textColor="@color/white" />
 
             <RelativeLayout
                     android:visibility="gone"
@@ -156,8 +171,8 @@
                         android:layout_marginTop="@dimen/dp_8"
                         android:text="请输入验证码"
                         android:textSize="24dp"
-                        android:textStyle="bold"
-                        />
+                        android:textStyle="bold" />
+
                 <ProgressBar
                         android:visibility="gone"
                         style="@style/Widget.AppCompat.ProgressBar"
@@ -172,19 +187,9 @@
                         android:indeterminateTintMode="src_atop" />
 
             </RelativeLayout>
-            <com.google.android.material.button.MaterialButton
-                    android:id="@+id/btn_register"
-                    android:layout_width="match_parent"
-                    android:layout_height="40dp"
-                    android:layout_marginTop="@dimen/dp_24"
-                    android:layout_marginBottom="@dimen/dp_24"
-                    android:background="@drawable/btn_login_bg"
-                    android:gravity="center"
-
-                    android:text="@string/register"
-                    android:textColor="@color/white" />
 
             <TextView
+                    android:layout_marginTop="@dimen/dp_16"
                     android:id="@+id/tv_sign_in"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"

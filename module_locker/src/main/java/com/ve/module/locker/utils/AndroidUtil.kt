@@ -1,6 +1,8 @@
 package com.ve.module.locker.utils
 
+import android.annotation.SuppressLint
 import android.content.Context
+import android.content.pm.ApplicationInfo
 import android.content.pm.PackageInfo
 import android.content.pm.PackageManager
 import android.graphics.Bitmap
@@ -9,8 +11,14 @@ import android.graphics.PixelFormat
 import android.graphics.drawable.Drawable
 import android.os.Build
 import android.util.Log
+import com.ve.lib.vutils.AppContextUtils
+import com.ve.lib.vutils.LogUtil
+import kotlinx.coroutines.DelicateCoroutinesApi
+import kotlinx.coroutines.GlobalScope
+import kotlinx.coroutines.launch
+import java.io.Serializable
 import java.security.MessageDigest
-import kotlin.collections.ArrayList
+import java.util.regex.Pattern
 import kotlin.experimental.and
 
 object AndroidUtil {
@@ -25,9 +33,19 @@ object AndroidUtil {
         }
     }
 
+    fun getAppByPackageName(context: Context, packageName: String): AppInfo {
+        val packageManager: PackageManager = context.packageManager
+        val packages = packageManager.getInstalledPackages(0)
+
+        val appInfo = context.packageManager.getApplicationInfo(packageName, PackageManager.GET_META_DATA)
+        LogUtil.msg(appInfo.packageName)
+        return AppInfo( appInfo.packageName,appInfo.loadLabel(packageManager).toString(), appInfo.loadIcon(packageManager))
+    }
+
     fun getAppName(context: Context, appId: String): String? {
         return try {
-            val appInfo = context.packageManager.getApplicationInfo(appId, PackageManager.GET_META_DATA)
+            val appInfo =
+                context.packageManager.getApplicationInfo(appId, PackageManager.GET_META_DATA)
             appInfo.loadLabel(context.packageManager).toString()
         } catch (e: Exception) {
             Log.e("getAppName", "getAppName error", e)
@@ -35,10 +53,92 @@ object AndroidUtil {
         }
     }
 
+
+    /**
+     * 根据名称查找应用（忽略大小写）
+     *
+     * @param name  应用名
+     * @param isAll 是否包含系统应用
+     * @return 符合名称的所有应用
+     */
+    fun findAppsByName(name: String?, isAll: Boolean): ArrayList<AppInfo> {
+        val result = ArrayList<AppInfo>()
+        val list = getAllAppInfo(AppContextUtils.mContext, isAll)
+        // 忽略大小写
+        val pattern = Pattern.compile(name, Pattern.CASE_INSENSITIVE)
+        for (i in list.indices) {
+            val matcher = pattern.matcher(list[i].name)
+            if (matcher.find()) {
+                result.add(list[i])
+            }
+        }
+        return result
+    }
+
+    /**
+     * 获取当前设备上安装的所有App
+     *
+     */
+
+    @SuppressLint("QueryPermissionsNeeded")
+    fun getAllAppInfo(context: Context, isSystemApp: Boolean = false): List<AppInfo> {
+
+        val packageManager: PackageManager = context.packageManager
+        val packages = packageManager.getInstalledPackages(0)
+
+        val appInfoList = mutableListOf<AppInfo>()
+
+        for (i in packages.indices) {
+            val packageInfo = packages[i]
+            val appInfo = AppInfo()
+            //获取应用名称
+            appInfo.name = packageInfo.applicationInfo.loadLabel(packageManager).toString()
+            //获取应用包名，可用于卸载和启动应用
+            appInfo.packageName = packageInfo.applicationInfo.packageName
+            //获取应用图标
+            appInfo.icon = packageInfo.applicationInfo.loadIcon(packageManager)
+
+            if (isSystemApp) {
+                // 系统应用
+                appInfoList.add(appInfo)
+            } else {
+                if (packageInfo.applicationInfo.flags and ApplicationInfo.FLAG_SYSTEM == 0) {
+                    //非系统应用
+                    appInfoList.add(appInfo)
+                }
+            }
+        }
+
+
+        return appInfoList
+    }
+
+
+    data class AppInfo(
+        /**
+         * 包名，主键
+         */
+        var packageName: String = "unknown",
+
+        /**
+         * 应用名，存储时忽略
+         */
+        var name: String = "unknown",
+
+        /**
+         * 引用对应的icon
+         */
+        var icon: Drawable? = null,
+
+        ) : Serializable {
+
+    }
+
     fun getCertificatesHash(context: Context, packageName: String): String {
         val pm: PackageManager = context.packageManager
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.P) {
-            val info: PackageInfo = pm.getPackageInfo(packageName, PackageManager.GET_SIGNING_CERTIFICATES)
+            val info: PackageInfo =
+                pm.getPackageInfo(packageName, PackageManager.GET_SIGNING_CERTIFICATES)
             val hashes = ArrayList<String>(info.signingInfo.apkContentsSigners.size)
             for (sig in info.signingInfo.apkContentsSigners) {
                 val cert: ByteArray = sig.toByteArray()
@@ -78,7 +178,8 @@ object AndroidUtil {
         drawable.setBounds(0, 0, width, height)
 
         // 获取drawable的颜色格式
-        val config: Bitmap.Config = if (drawable.opacity != PixelFormat.OPAQUE) Bitmap.Config.ARGB_8888 else Bitmap.Config.RGB_565
+        val config: Bitmap.Config =
+            if (drawable.opacity != PixelFormat.OPAQUE) Bitmap.Config.ARGB_8888 else Bitmap.Config.RGB_565
         // 创建bitmap
         val bitmap: Bitmap = Bitmap.createBitmap(width, height, config)
         // 创建bitmap画布
@@ -99,4 +200,6 @@ object AndroidUtil {
         }
         return String(hexChars)
     }
+
+
 }

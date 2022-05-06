@@ -80,7 +80,7 @@
 
             <LinearLayout
                     android:paddingBottom="@dimen/dp_100"
-                    android:background="@drawable/bg_round_white"
+                    android:background="@drawable/bg_round_white_8dp"
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
                     android:layout_marginHorizontal="@dimen/dp_10"
@@ -117,7 +117,7 @@
                                 style="@style/InputTextLayoutStyle.ClearText">
 
                             <EditText
-
+                                    style="@style/EditText"
                                     android:layout_width="match_parent"
                                     android:layout_height="wrap_content"
                                     android:padding="@dimen/dp_10"
@@ -156,6 +156,7 @@
                                 style="@style/InputTextLayoutStyle.ClearText">
 
                             <EditText
+                                    style="@style/EditText"
                                     android:layout_width="match_parent"
                                     android:layout_height="wrap_content"
                                     android:padding="@dimen/dp_10"
@@ -194,7 +195,7 @@
                                 style="@style/InputTextLayoutStyle.See">
 
                             <EditText
-
+                                    style="@style/EditText"
                                     android:layout_width="match_parent"
                                     android:layout_height="wrap_content"
                                     android:padding="@dimen/dp_10"
@@ -234,7 +235,7 @@
                                 style="@style/InputTextLayoutStyle.ClearText">
 
                             <EditText
-
+                                    style="@style/EditText"
                                     android:layout_width="match_parent"
                                     android:layout_height="wrap_content"
                                     android:padding="@dimen/dp_10"
@@ -272,7 +273,7 @@
                                 style="@style/InputTextLayoutStyle.ClearText">
 
                             <EditText
-                                    app:errorEnabled="false"
+                                    style="@style/EditText"
                                     android:layout_width="match_parent"
                                     android:layout_height="wrap_content"
                                     android:padding="@dimen/dp_10"
@@ -305,7 +306,7 @@
 
                         <com.google.android.material.textfield.TextInputEditText
                                 android:paddingHorizontal="@dimen/dp_10"
-
+                                style="@style/EditText"
                                 android:layout_width="match_parent"
                                 android:layout_height="wrap_content"
                                 android:paddingTop="@dimen/dp_10"

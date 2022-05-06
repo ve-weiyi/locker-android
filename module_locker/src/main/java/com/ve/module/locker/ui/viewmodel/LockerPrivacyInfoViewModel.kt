@@ -9,6 +9,7 @@ import com.ve.module.locker.model.database.entity.PrivacyTag
 import com.ve.module.locker.model.database.vo.PrivacyCard
 import com.ve.module.locker.model.database.vo.PrivacyPass
 import com.ve.module.locker.model.http.model.ConditionVO
+import com.ve.module.locker.utils.AndroidUtil
 import org.litepal.LitePal
 
 /**
@@ -17,6 +18,20 @@ import org.litepal.LitePal
  * @Date 2022/4/7
  */
 class LockerPrivacyInfoViewModel : LockerViewModel() {
+
+
+
+    var allAppInfo=MutableLiveData<MutableList<AndroidUtil.AppInfo>>()
+    fun getAppInfo(){
+        launch(
+            block = {
+
+            },
+            local = {
+//               allAppInfo.value=AndroidUtil.getAllAppInfo()
+            }
+        )
+    }
 
     val privacyCardInfoList = MutableLiveData<MutableList<PrivacyCardInfo>>()
     fun getPrivacyCardList() {

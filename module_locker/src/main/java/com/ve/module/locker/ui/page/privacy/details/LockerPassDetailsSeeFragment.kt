@@ -4,6 +4,7 @@ import android.os.Bundle
 import android.text.method.PasswordTransformationMethod
 import android.view.View
 import com.ve.lib.common.base.view.vm.BaseVmFragment
+import com.ve.lib.utils.DialogUtil
 import com.ve.lib.view.ext.setOnclickNoRepeatListener
 import com.ve.lib.vutils.LogUtil
 import com.ve.module.locker.R
@@ -23,13 +24,15 @@ import org.greenrobot.eventbus.ThreadMode
  * @Date 2022/4/11
  * @Description  current project locker-android
  */
-class LockerPassDetailsSeeFragment:BaseVmFragment<LockerFragmentSeePassBinding,LockerPrivacyInfoViewModel>(),
+class LockerPassDetailsSeeFragment :
+    BaseVmFragment<LockerFragmentSeePassBinding, LockerPrivacyInfoViewModel>(),
     View.OnClickListener {
 
-    companion object{
-        const val PRIVACY_DATA_KEY="DetailsPass"
+    companion object {
+        const val PRIVACY_DATA_KEY = "DetailsPass"
 
     }
+
     override fun attachViewBinding(): LockerFragmentSeePassBinding {
         return LockerFragmentSeePassBinding.inflate(layoutInflater)
     }
@@ -38,17 +41,17 @@ class LockerPassDetailsSeeFragment:BaseVmFragment<LockerFragmentSeePassBinding,L
         return LockerPrivacyInfoViewModel::class.java
     }
 
-    var mPrivacyInfoPass:PrivacyPassInfo?=null
+    var mPrivacyInfoPass: PrivacyPassInfo? = null
 
     override fun initView(savedInstanceState: Bundle?) {
 
-        mPrivacyInfoPass=arguments?.getSerializable(PRIVACY_DATA_KEY) as PrivacyPassInfo
+        mPrivacyInfoPass = arguments?.getSerializable(PRIVACY_DATA_KEY) as PrivacyPassInfo
         LogUtil.msg(mPrivacyInfoPass.toString())
         LogUtil.msg(mPrivacyInfoPass!!.getPrivacyTags().toString())
         LogUtil.msg(mPrivacyInfoPass!!.getPrivacyFolder().toString())
         LogUtil.msg(mPrivacyInfoPass!!.getPrivacyDetails().toString())
 
-        if(mPrivacyInfoPass!=null){
+        if (mPrivacyInfoPass != null) {
             shoPrivacyInfo(mPrivacyInfoPass!!)
             showPrivacyDetails(mPrivacyInfoPass!!.getPrivacyDetails())
         }
@@ -57,7 +60,7 @@ class LockerPassDetailsSeeFragment:BaseVmFragment<LockerFragmentSeePassBinding,L
 
     override fun initListener() {
         super.initListener()
-        mBinding.btnEdit.setOnclickNoRepeatListener (this)
+        mBinding.btnEdit.setOnclickNoRepeatListener(this)
         mBinding.btnCopy.setOnclickNoRepeatListener(this)
         mBinding.btnDelete.setOnclickNoRepeatListener(this)
         mBinding.tvCopyAccount.setOnclickNoRepeatListener(this)
@@ -67,23 +70,33 @@ class LockerPassDetailsSeeFragment:BaseVmFragment<LockerFragmentSeePassBinding,L
 
     override fun initObserver() {
         super.initObserver()
-        mViewModel.deletePrivacyPassResult.observe(this){
+        mViewModel.deletePrivacyPassResult.observe(this) {
 
-            if(it>0){
+            if (it > 0) {
                 showMsg("删除成功！$it")
                 mEventBus?.post(RefreshDataEvent(PrivacyPassInfo::class.java.name))
                 activity?.finish()
-            }else{
+            } else {
                 showMsg("删除失败！$it")
             }
         }
     }
+
     override fun onClick(v: View?) {
-        when(v?.id){
-            R.id.btn_edit->{
-                val bundle=Bundle()
-                bundle.putInt(LockerPassDetailsEditFragment.FRAGMENT_TYPE_KEY,EditType.EDIT_TAG_TYPE)
-                bundle.putSerializable(LockerPassDetailsEditFragment.FRAGMENT_DATA_KEY,mPrivacyInfoPass)
+        val account = mBinding.etDetailAccount.text.toString()
+        val password = mBinding.etDetailPassword.text.toString()
+        val url = mBinding.etDetailUrl.text.toString()
+        when (v?.id) {
+            R.id.btn_edit -> {
+                val bundle = Bundle()
+                bundle.putInt(
+                    LockerPassDetailsEditFragment.FRAGMENT_TYPE_KEY,
+                    EditType.EDIT_TAG_TYPE
+                )
+                bundle.putSerializable(
+                    LockerPassDetailsEditFragment.FRAGMENT_DATA_KEY,
+                    mPrivacyInfoPass
+                )
                 LockerContainerActivity.start(
                     mContext,
                     LockerPassDetailsEditFragment::class.java,
@@ -91,67 +104,75 @@ class LockerPassDetailsSeeFragment:BaseVmFragment<LockerFragmentSeePassBinding,L
                     bundle
                 )
             }
-            R.id.btn_delete->{
-                mViewModel.deletePrivacyPass(mPrivacyInfoPass!!)
+            R.id.btn_delete -> {
+                DialogUtil.getConfirmDialog(
+                    mContext,
+                    "确定要删除账号:$account",
+                    onOKClickListener = { d, w ->
+                        mViewModel.deletePrivacyPass(mPrivacyInfoPass!!)
+                    },
+                    onCancelClickListener = { d, w ->
+                        showMsg("取消删除")
+                    }
+                ).show()
+
             }
-            R.id.btn_copy->{
-                val account=mBinding.etDetailAccount.text.toString()
-                val password=mBinding.etDetailPassword.text.toString()
-                StickUtils.copy(mContext,"账号:$account\n密码:$password")
+            R.id.btn_copy -> {
+
+                StickUtils.copy(mContext, "账号:$account\n密码:$password")
             }
-            R.id.tv_copy_account->{
-                val account=mBinding.etDetailAccount.text.toString()
+            R.id.tv_copy_account -> {
                 StickUtils.copy(mContext, account)
             }
-            R.id.tv_copy_password->{
-                val password=mBinding.etDetailPassword.text.toString()
+            R.id.tv_copy_password -> {
                 StickUtils.copy(mContext, password)
             }
-            R.id.tv_copy_url->{
-                val url=mBinding.etDetailUrl.text.toString()
+            R.id.tv_copy_url -> {
                 StickUtils.copy(mContext, url)
             }
         }
     }
-    private fun shoPrivacyInfo(privacyInfoPass:PrivacyPassInfo){
-        val folder=privacyInfoPass.getPrivacyFolder()
-        val tags=privacyInfoPass.getPrivacyTags()
-        val tagsName=tags.map { it.tagName }
+
+    private fun shoPrivacyInfo(privacyInfoPass: PrivacyPassInfo) {
+        val folder = privacyInfoPass.getPrivacyFolder()
+        val tags = privacyInfoPass.getPrivacyTags()
+        val tagsName = tags.map { it.tagName }
 
         mBinding.apply {
-            tvPrivacyName.text=privacyInfoPass.privacyName
-            tvPrivacyDesc.text=privacyInfoPass.privacyDesc
-            tvPrivacyFolder.text=folder.folderName
-            tvPrivacyTag.text=tagsName.toString()
-            tvPrivacyCreateTime.text=privacyInfoPass.createTime
-            tvPrivacyUpdateTime.text=privacyInfoPass.updateTime
+            tvPrivacyName.text = privacyInfoPass.privacyName
+            tvPrivacyDesc.text = privacyInfoPass.privacyDesc
+            tvPrivacyFolder.text = folder.folderName
+            tvPrivacyTag.text = tagsName.toString()
+            tvPrivacyCreateTime.text = privacyInfoPass.createTime
+            tvPrivacyUpdateTime.text = privacyInfoPass.updateTime
         }
     }
 
 
-    private fun showPrivacyDetails(privacyDetails : PrivacyPassDetails){
+    private fun showPrivacyDetails(privacyDetails: PrivacyPassDetails) {
         mBinding.apply {
-            etDetailOwner.setText(privacyDetails.app)
+            etDetailOwner.setText(privacyDetails.appPackageName)
             etDetailAccount.setText(privacyDetails.account)
             etDetailPassword.setText(privacyDetails.password)
-            etDetailPassword.transformationMethod= PasswordTransformationMethod.getInstance()
+            etDetailPassword.transformationMethod = PasswordTransformationMethod.getInstance()
             etDetailPhone.setText(privacyDetails.phone)
             etDetailRemark.setText(privacyDetails.remark)
         }
     }
+
     /**
      * Refresh Data Event
      */
     @Subscribe(threadMode = ThreadMode.MAIN)
     fun onRefreshDataEvent(event: RefreshDataEvent) {
-        if(PrivacyPassInfo::class.java.name==event.dataClassName){
-            LogUtil.d("$mViewName receiver event "+event.dataClassName)
-            if(event.data is PrivacyPass){
-                mPrivacyInfoPass=event.data.privacyInfo
+        if (PrivacyPassInfo::class.java.name == event.dataClassName) {
+            LogUtil.d("$mViewName receiver event " + event.dataClassName)
+            if (event.data is PrivacyPass) {
+                mPrivacyInfoPass = event.data.privacyInfo
                 shoPrivacyInfo(mPrivacyInfoPass!!)
                 showPrivacyDetails(mPrivacyInfoPass!!.getPrivacyDetails())
             }
-            hasLoadData=false
+            hasLoadData = false
         }
     }
 }
