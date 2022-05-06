@@ -13,7 +13,8 @@
             android:layout_marginHorizontal="@dimen/list_padding_normal_h"
             android:paddingHorizontal="@dimen/dp_16"
             android:paddingVertical="@dimen/dp_8"
-            android:background="@drawable/bg_round_white_8dp">
+            android:background="@drawable/bg_round_card"
+            >
 
         <TextView
                 android:visibility="gone"
@@ -50,7 +51,7 @@
                 app:layout_constraintStart_toEndOf="@id/tv_privacy_folder"
                 app:layout_constraintEnd_toStartOf="@id/check_button"
                 app:layout_constraintTop_toTopOf="parent"
-
+                android:paddingStart="@dimen/dp_8"
                 android:id="@+id/tv_privacy_info_name"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
@@ -59,7 +60,9 @@
                 android:singleLine="true"
                 android:text="我的邮箱账号"
                 style="@style/tv_title_normal"
-                android:textColor="@color/color_text_normal" />
+                android:textColor="@color/color_text_light"
+                android:textStyle="bold"
+                />
 
 
         <TextView
@@ -74,11 +77,14 @@
                 android:maxLines="1"
                 style="@style/tv_content_second"
                 android:text="791422171@qq.com"
-
+                android:textColor="@color/color_text_light"
+                android:drawableTint="@color/windowColorBackground"
+                app:drawableStartCompat="@drawable/ic_id_card"
                 />
 
 
         <LinearLayout
+                android:id="@+id/layout_desc"
                 app:layout_constraintStart_toStartOf="@id/tv_privacy_info_name"
                 app:layout_constraintEnd_toStartOf="@id/check_button"
                 android:layout_marginVertical="@dimen/dp_4"
@@ -94,9 +100,25 @@
                     android:ellipsize="end"
                     android:maxLines="1"
                     style="@style/tv_content_second"
+                    android:textColor="@color/color_text_light"
                     android:text="一个私密的邮箱账号，请不要告诉其他人哦"
-
+                    android:drawableTint="@color/windowColorBackground"
+                    app:drawableStartCompat="@drawable/ic_baseline_description_24"
                     />
+
+
+        </LinearLayout>
+
+        <LinearLayout
+                android:visibility="gone"
+                app:layout_constraintTop_toBottomOf="@id/layout_desc"
+                app:layout_constraintStart_toStartOf="@id/layout_desc"
+                app:layout_constraintEnd_toStartOf="@id/check_button"
+                android:layout_marginVertical="@dimen/dp_4"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                >
+
 
 
             <TextView
@@ -105,22 +127,23 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     style="@style/tv_content_small"
+                    android:layout_marginEnd="@dimen/dp_10"
                     android:singleLine="true"
                     android:text="2022-01-11 00:15:07"
+                    android:textColor="@color/color_text_light"
                     app:drawableStartCompat="@drawable/ic_time" />
 
 
             <TextView
-
                     android:id="@+id/tv_privacy_info_update_time"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     style="@style/tv_content_small"
                     android:singleLine="true"
                     android:text="2022-01-11 00:15:07"
+                    android:textColor="@color/color_text_light"
                     app:drawableStartCompat="@drawable/ic_time" />
         </LinearLayout>
-
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 

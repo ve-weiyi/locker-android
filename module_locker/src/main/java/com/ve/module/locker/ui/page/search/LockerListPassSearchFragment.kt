@@ -5,11 +5,11 @@ import android.text.TextWatcher
 import com.chad.library.adapter.base.BaseQuickAdapter
 import com.ve.lib.common.base.view.list.BaseVmListFragment
 import com.ve.lib.vutils.LogUtil
-import com.ve.module.locker.databinding.LockerFragmentListPassSearchBinding
+import com.ve.module.locker.databinding.LockerFragmentListPrivacySearchBinding
 import com.ve.module.locker.model.database.entity.PrivacyPassInfo
 import com.ve.module.locker.model.http.model.ConditionVO
 import com.ve.module.locker.ui.adapter.PrivacyInfoPassAdapter
-import com.ve.module.locker.ui.viewmodel.LockerPrivacyInfoViewModel
+import com.ve.module.locker.ui.viewmodel.LockerPrivacyPassViewModel
 
 /**
  * @Author  weiyi
@@ -17,18 +17,18 @@ import com.ve.module.locker.ui.viewmodel.LockerPrivacyInfoViewModel
  * @Description  current project locker-android
  */
 class LockerListPassSearchFragment :
-    BaseVmListFragment<LockerFragmentListPassSearchBinding, LockerPrivacyInfoViewModel, PrivacyPassInfo>() {
+    BaseVmListFragment<LockerFragmentListPrivacySearchBinding, LockerPrivacyPassViewModel, PrivacyPassInfo>() {
 
     override fun attachAdapter(): BaseQuickAdapter<PrivacyPassInfo, *> {
         return PrivacyInfoPassAdapter()
     }
 
-    override fun attachViewBinding(): LockerFragmentListPassSearchBinding {
-        return LockerFragmentListPassSearchBinding.inflate(layoutInflater)
+    override fun attachViewBinding(): LockerFragmentListPrivacySearchBinding {
+        return LockerFragmentListPrivacySearchBinding.inflate(layoutInflater)
     }
 
-    override fun attachViewModelClass(): Class<LockerPrivacyInfoViewModel> {
-        return LockerPrivacyInfoViewModel::class.java
+    override fun attachViewModelClass(): Class<LockerPrivacyPassViewModel> {
+        return LockerPrivacyPassViewModel::class.java
     }
 
     override fun initListView() {

@@ -102,8 +102,8 @@ class LockerPrivacyPassViewModel : LockerViewModel() {
         )
     }
 
-    val deletePrivacyListResult = MutableLiveData<Int>()
-    fun deletePrivacyInfoList(list: MutableList<PrivacyPassInfo>) {
+    val deletePrivacyPassListResult = MutableLiveData<Int>()
+    fun deletePrivacyPassList(list: MutableList<PrivacyPassInfo>) {
         launch(
             block = {
 
@@ -120,7 +120,7 @@ class LockerPrivacyPassViewModel : LockerViewModel() {
                     )
                     result += pass.delete()
                 }
-                deletePrivacyListResult.value = result
+                deletePrivacyPassListResult.value = result
             }
         )
     }
@@ -155,15 +155,15 @@ class LockerPrivacyPassViewModel : LockerViewModel() {
             local = {
                 val result = privacyPass.save()
                 if (result) {
-                    updatePrivacyPassResult.value = "删除成功！" + result
+                    updatePrivacyPassResult.value = "操作成功！" + result
                 } else {
-                    updatePrivacyPassResult.value = "删除失败！" + result
+                    updatePrivacyPassResult.value = "操作失败！" + result
                 }
             }
         )
     }
 
-    val movePrivacyPasssResult = MutableLiveData<Int>()
+    val movePrivacyPassResult = MutableLiveData<Int>()
     fun movePrivacyPass(privacyPassInfoList: List<PrivacyPassInfo>, folder: PrivacyFolder) {
         launch(
             block = {
@@ -175,7 +175,7 @@ class LockerPrivacyPassViewModel : LockerViewModel() {
                     privacyPassInfo.privacyFolderId = folder.id
                     result += privacyPassInfo.update(privacyPassInfo.id)
                 }
-                movePrivacyPasssResult.value = result
+                movePrivacyPassResult.value = result
             }
         )
     }

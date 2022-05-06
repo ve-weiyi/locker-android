@@ -21,7 +21,6 @@ import com.afollestad.materialdialogs.input.input
 import com.afollestad.materialdialogs.lifecycle.lifecycleOwner
 import com.afollestad.materialdialogs.list.customListAdapter
 import com.afollestad.materialdialogs.list.listItems
-import com.afollestad.materialdialogs.list.listItemsSingleChoice
 import com.ve.lib.common.base.view.vm.BaseVmFragment
 import com.ve.lib.utils.DialogUtil
 import com.ve.lib.view.widget.passwordGenerator.PasswordGeneratorDialog
@@ -34,12 +33,9 @@ import com.ve.module.locker.model.database.entity.*
 import com.ve.module.locker.model.database.vo.PrivacyPass
 import com.ve.module.locker.ui.adapter.AppAdapter
 import com.ve.module.locker.ui.adapter.FlowTagAdapter
-import com.ve.module.locker.ui.viewmodel.LockerPrivacyInfoViewModel
+import com.ve.module.locker.ui.viewmodel.LockerPrivacyPassViewModel
 import com.ve.module.locker.utils.AndroidUtil
 import com.ve.module.locker.utils.PasswordUtils
-import kotlinx.coroutines.GlobalScope
-import kotlinx.coroutines.MainScope
-import kotlinx.coroutines.launch
 import org.jetbrains.anko.backgroundDrawable
 import org.litepal.LitePal
 
@@ -49,13 +45,13 @@ import org.litepal.LitePal
  * @Description  current project locker-android
  */
 class LockerPassDetailsEditFragment :
-    BaseVmFragment<LockerFragmentEditPassBinding, LockerPrivacyInfoViewModel>() {
+    BaseVmFragment<LockerFragmentEditPassBinding, LockerPrivacyPassViewModel>() {
     override fun attachViewBinding(): LockerFragmentEditPassBinding {
         return LockerFragmentEditPassBinding.inflate(layoutInflater)
     }
 
-    override fun attachViewModelClass(): Class<LockerPrivacyInfoViewModel> {
-        return LockerPrivacyInfoViewModel::class.java
+    override fun attachViewModelClass(): Class<LockerPrivacyPassViewModel> {
+        return LockerPrivacyPassViewModel::class.java
     }
 
     companion object {

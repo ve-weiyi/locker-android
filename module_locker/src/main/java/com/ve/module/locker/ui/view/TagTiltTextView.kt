@@ -6,6 +6,7 @@ import android.text.TextPaint
 import android.text.TextUtils
 import android.util.AttributeSet
 import android.view.View
+import com.ve.lib.vutils.LogUtil
 
 import com.ve.module.locker.R
 
@@ -14,7 +15,7 @@ import com.ve.module.locker.R
  * @Author weiyi
  * @Date 2022/4/7
  */
-class TagTiltTextView : View {
+class TagTiltTextView(context: Context,attrs: AttributeSet?) : View(context, attrs) {
     var TAG = " "
     private val MODE_LEFT_TOP = 0
     private val MODE_LEFT_TOP_TRIANGLE = 1
@@ -36,11 +37,12 @@ class TagTiltTextView : View {
     private var mTiltText: String? = "重要的"
     private var mMode = MODE_LEFT_TOP_TRIANGLE
 
-    constructor(context: Context?) : super(context) {}
-    constructor(context: Context?, attrs: AttributeSet?) : super(context, attrs) {}
-    constructor(context: Context, attrs: AttributeSet?, defStyleAttr: Int) :
-            super(context, attrs, defStyleAttr) {
-
+    /**
+     * 直接在xml中定义并显示，所以只实现该构造函数即可
+     * @param context
+     * @param attrs
+     */
+    init {
         val array = context.obtainStyledAttributes(attrs, R.styleable.TagTiltTextView)
         mTiltBgColor = array.getColor(R.styleable.TagTiltTextView_tagTiltBgColor, mTiltBgColor)
         mTextSize = array.getDimension(R.styleable.TagTiltTextView_tagTiltTextSize, mTextSize)
@@ -49,19 +51,10 @@ class TagTiltTextView : View {
         if (array.hasValue(R.styleable.TagTiltTextView_tagTiltText)) {
             mTiltText = array.getString(R.styleable.TagTiltTextView_tagTiltText)
         }
-        if (array.hasValue(R.styleable.TagTiltTextView_tagTiltMode)) {
-            mMode = array.getInt(R.styleable.TagTiltTextView_tagTiltMode, MODE_LEFT_TOP)
-        }
+
+        mMode = array.getInt(R.styleable.TagTiltTextView_tagTiltMode, MODE_LEFT_TOP)
+        LogUtil.msg("mMode"+mMode.toString())
         array.recycle()
-    }
-
-
-    /**
-     * 直接在xml中定义并显示，所以只实现该构造函数即可
-     * @param context
-     * @param attrs
-     */
-    init {
         init()
     }
 
@@ -138,6 +131,7 @@ class TagTiltTextView : View {
     private fun drawText(canvas: Canvas) {
         val w = (canvas.width - mTiltLength / 2).toInt()
         val h = (canvas.height - mTiltLength / 2).toInt()
+
         val xy = calculateXY(canvas, w, h)
 
         val toX = xy[0]

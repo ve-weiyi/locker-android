@@ -32,7 +32,7 @@ import com.ve.module.locker.model.database.entity.PrivacyCardInfo
 import com.ve.module.locker.model.database.entity.PrivacyTag
 import com.ve.module.locker.model.database.vo.PrivacyCard
 import com.ve.module.locker.ui.adapter.FlowTagAdapter
-import com.ve.module.locker.ui.viewmodel.LockerPrivacyInfoViewModel
+import com.ve.module.locker.ui.viewmodel.LockerPrivacyCardViewModel
 import com.ve.module.locker.utils.PasswordUtils
 import org.litepal.LitePal
 
@@ -42,13 +42,13 @@ import org.litepal.LitePal
  * @Description  current project locker-android
  */
 class LockerCardDetailsEditFragment :
-    BaseVmFragment<LockerFragmentEditCardBinding, LockerPrivacyInfoViewModel>() {
+    BaseVmFragment<LockerFragmentEditCardBinding, LockerPrivacyCardViewModel>() {
     override fun attachViewBinding(): LockerFragmentEditCardBinding {
         return LockerFragmentEditCardBinding.inflate(layoutInflater)
     }
 
-    override fun attachViewModelClass(): Class<LockerPrivacyInfoViewModel> {
-        return LockerPrivacyInfoViewModel::class.java
+    override fun attachViewModelClass(): Class<LockerPrivacyCardViewModel> {
+        return LockerPrivacyCardViewModel::class.java
     }
 
     companion object {

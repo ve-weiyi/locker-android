@@ -22,6 +22,8 @@
         <mapping class="com.ve.module.locker.model.database.entity.PrivacyFolder" />
         <mapping class="com.ve.module.locker.model.database.entity.PrivacyCardInfo" />
         <mapping class="com.ve.module.locker.model.database.entity.PrivacyPassInfo" />
+        <mapping class="com.ve.module.locker.model.database.entity.PrivacyFriendsInfo" />
+
         <mapping class="com.ve.module.locker.model.database.entity.PrivacyCardDetails" />
         <mapping class="com.ve.module.locker.model.database.entity.PrivacyPassDetails" />
         <mapping class="com.ve.module.locker.model.database.entity.TagAndCard" />

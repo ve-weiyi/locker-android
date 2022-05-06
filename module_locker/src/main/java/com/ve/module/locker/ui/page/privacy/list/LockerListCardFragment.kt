@@ -10,14 +10,14 @@ import com.ve.lib.view.ext.setOnclickNoRepeatListener
 import com.ve.lib.vutils.LogUtil
 import com.ve.module.locker.R
 import com.ve.module.locker.common.event.RefreshDataEvent
-import com.ve.module.locker.databinding.LockerFragmentListCardBinding
+import com.ve.module.locker.databinding.LockerFragmentListPrivacyBinding
 import com.ve.module.locker.model.database.entity.PrivacyCardInfo
 import com.ve.module.locker.model.database.entity.PrivacyFolder
 import com.ve.module.locker.ui.adapter.PrivacyInfoCardAdapter
 import com.ve.module.locker.ui.page.container.LockerContainerActivity
 import com.ve.module.locker.ui.page.privacy.details.LockerCardDetailsEditFragment
 import com.ve.module.locker.ui.page.search.LockerListCardSearchFragment
-import com.ve.module.locker.ui.viewmodel.LockerPrivacyInfoViewModel
+import com.ve.module.locker.ui.viewmodel.LockerPrivacyCardViewModel
 import org.greenrobot.eventbus.Subscribe
 import org.greenrobot.eventbus.ThreadMode
 import org.litepal.LitePal
@@ -28,12 +28,11 @@ import org.litepal.LitePal
  * @Date 2022/4/8
  */
 class LockerListCardFragment :
-    BaseVmListFragment<LockerFragmentListCardBinding, LockerPrivacyInfoViewModel, PrivacyCardInfo>(){
+    BaseVmListFragment<LockerFragmentListPrivacyBinding, LockerPrivacyCardViewModel, PrivacyCardInfo>(){
 
-    override fun attachViewBinding(): LockerFragmentListCardBinding {
-        return LockerFragmentListCardBinding.inflate(layoutInflater)
+    override fun attachViewBinding(): LockerFragmentListPrivacyBinding {
+        return LockerFragmentListPrivacyBinding.inflate(layoutInflater)
     }
-
 
     override fun attachAdapter(): BaseQuickAdapter<PrivacyCardInfo, *> {
         return PrivacyInfoCardAdapter()
@@ -42,8 +41,8 @@ class LockerListCardFragment :
     val mAdapter by lazy { mListAdapter as PrivacyInfoCardAdapter }
     lateinit var mFolderList: MutableList<PrivacyFolder>
 
-    override fun attachViewModelClass(): Class<LockerPrivacyInfoViewModel> {
-        return LockerPrivacyInfoViewModel::class.java
+    override fun attachViewModelClass(): Class<LockerPrivacyCardViewModel> {
+        return LockerPrivacyCardViewModel::class.java
     }
 
 

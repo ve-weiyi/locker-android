@@ -37,7 +37,7 @@
     <color name="list_divider">@color/grey600</color>
     <color name="mask_color">#111111</color>
 
-
+    <color name="color_text_light">#111111</color>
     <color name="color_text_normal">@color/grey200</color>
     <color name="color_text_gray">@color/grey500</color>
     <color name="color_text_gray_light">@color/grey500</color>

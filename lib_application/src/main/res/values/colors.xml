@@ -41,6 +41,7 @@
 
 
     <!-- color -->
+    <color name="color_text_light">@color/grey200</color>
     <color name="color_text_normal">#111111</color>
     <color name="color_text_gray">@color/grey700</color>
     <color name="color_text_gray_light">@color/grey600</color>

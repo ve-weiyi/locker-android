@@ -9,7 +9,7 @@ import com.ve.lib.vutils.LogUtil
 import com.ve.module.locker.databinding.LockerFragmentTagBinding
 import com.ve.module.locker.model.database.entity.PrivacyTag
 import com.ve.module.locker.ui.adapter.PrivacyTagAdapter
-import com.ve.module.locker.ui.viewmodel.LockerPrivacyCategoryViewModel
+import com.ve.module.locker.ui.viewmodel.LockerCategoryViewModel
 
 /**
  * @Description hello word!
@@ -17,14 +17,14 @@ import com.ve.module.locker.ui.viewmodel.LockerPrivacyCategoryViewModel
  * @Date 2022/4/8
  */
 class LockerCategoryFragment :
-    BaseVmListFragment<LockerFragmentTagBinding, LockerPrivacyCategoryViewModel, PrivacyTag>() {
+    BaseVmListFragment<LockerFragmentTagBinding, LockerCategoryViewModel, PrivacyTag>() {
 
     override fun attachViewBinding(): LockerFragmentTagBinding {
         return LockerFragmentTagBinding.inflate(layoutInflater)
     }
 
-    override fun attachViewModelClass(): Class<LockerPrivacyCategoryViewModel> {
-        return LockerPrivacyCategoryViewModel::class.java
+    override fun attachViewModelClass(): Class<LockerCategoryViewModel> {
+        return LockerCategoryViewModel::class.java
     }
 
     override fun attachAdapter(): BaseQuickAdapter<PrivacyTag, *> {

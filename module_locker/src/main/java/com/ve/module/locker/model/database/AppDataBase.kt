@@ -36,19 +36,19 @@ object AppDataBase {
             ),
             PrivacyPass(
                 PrivacyPassInfo(
-                    privacyName = "https://ve77.com/blog",
+                    privacyName = "我的博客",
                     privacyDesc = "这是我的的个人博客网站，遇到问题可以反馈。"
                 ),
-                PrivacyPassDetails(account = "test@qq.com", password = "1234567"),
+                PrivacyPassDetails(account = "test@qq.com", url = "https://ve77.com/blog", password = "1234567"),
                 PrivacyFolder(folderName = "娱乐", folderCover = CommonUtil.randomColor().toString()),
                 mutableListOf(PrivacyTag(tagName = "测试标签"), PrivacyTag(tagName = "博客"))
             ),
             PrivacyPass(
                 PrivacyPassInfo(
-                    privacyName = "https://github.com/7914-ve/locker-android",
-                    privacyDesc = "项目源码。"
+                    privacyName = "项目源码。",
+                    privacyDesc = "GitHub项目源码地址。"
                 ),
-                PrivacyPassDetails(account = "test@qq.com", password = "1234567"),
+                PrivacyPassDetails(account = "test@qq.com", url = "https://github.com/7914-ve/locker-android", password = "1234567"),
                 PrivacyFolder(folderName = "教育", folderCover = CommonUtil.randomColor().toString()),
                 mutableListOf(PrivacyTag(tagName = "测试标签"), PrivacyTag(tagName = "源码"))
             ),
@@ -85,11 +85,53 @@ object AppDataBase {
             )
         )
 
+        val privacyFriendsList= mutableListOf<PrivacyFriendsInfo>(
+            PrivacyFriendsInfo(
+                nickname = "甘老师",
+                name = "甘早斌",
+                sex = 0,
+                phone = "15623356029",
+                qq = "791422171",
+                email = "791422171@qq.com",
+                wechat = "wy791422171",
+                address = "华中科技大学",
+                department = "计算机科学与技术学院",
+                remark = "毕设老师"
+                ),
+            PrivacyFriendsInfo(
+                nickname = "甘老师1",
+                name = "甘早斌",
+                sex = 0,
+                phone = "15623356029",
+                qq = "791422171",
+                email = "791422171@qq.com",
+                wechat = "wy791422171",
+                address = "华中科技大学",
+                department = "计算机科学与技术学院",
+                remark = "毕设老师"
+            ),
+            PrivacyFriendsInfo(
+                nickname = "甘老师2",
+                name = "甘早斌",
+                sex = 0,
+                phone = "15623356029",
+                qq = "791422171",
+                email = "791422171@qq.com",
+                wechat = "wy791422171",
+                address = "华中科技大学",
+                department = "计算机科学与技术学院",
+                remark = "毕设老师"
+            )
+
+        )
         privacyPassList.forEach { pass ->
             pass.save()
         }
         privacyCardList.forEach { card ->
             card.save()
+        }
+        privacyFriendsList.forEach { friends->
+            friends.save()
         }
 
         LogUtil.msg(LitePal.findAll(PrivacyTag::class.java).toString())

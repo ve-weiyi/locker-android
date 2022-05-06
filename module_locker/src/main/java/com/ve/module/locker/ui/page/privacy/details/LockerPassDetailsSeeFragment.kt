@@ -14,10 +14,12 @@ import com.ve.module.locker.model.database.entity.PrivacyPassDetails
 import com.ve.module.locker.model.database.entity.PrivacyPassInfo
 import com.ve.module.locker.model.database.vo.PrivacyPass
 import com.ve.module.locker.ui.page.container.LockerContainerActivity
-import com.ve.module.locker.ui.viewmodel.LockerPrivacyInfoViewModel
+import com.ve.module.locker.ui.viewmodel.LockerPrivacyPassViewModel
+import com.ve.module.locker.utils.AndroidUtil
 import com.ve.module.locker.utils.StickUtils
 import org.greenrobot.eventbus.Subscribe
 import org.greenrobot.eventbus.ThreadMode
+import org.jetbrains.anko.backgroundDrawable
 
 /**
  * @Author  weiyi
@@ -25,7 +27,7 @@ import org.greenrobot.eventbus.ThreadMode
  * @Description  current project locker-android
  */
 class LockerPassDetailsSeeFragment :
-    BaseVmFragment<LockerFragmentSeePassBinding, LockerPrivacyInfoViewModel>(),
+    BaseVmFragment<LockerFragmentSeePassBinding, LockerPrivacyPassViewModel>(),
     View.OnClickListener {
 
     companion object {
@@ -37,8 +39,8 @@ class LockerPassDetailsSeeFragment :
         return LockerFragmentSeePassBinding.inflate(layoutInflater)
     }
 
-    override fun attachViewModelClass(): Class<LockerPrivacyInfoViewModel> {
-        return LockerPrivacyInfoViewModel::class.java
+    override fun attachViewModelClass(): Class<LockerPrivacyPassViewModel> {
+        return LockerPrivacyPassViewModel::class.java
     }
 
     var mPrivacyInfoPass: PrivacyPassInfo? = null
@@ -150,8 +152,12 @@ class LockerPassDetailsSeeFragment :
 
 
     private fun showPrivacyDetails(privacyDetails: PrivacyPassDetails) {
+
+        val mCheckAppInfo= AndroidUtil.getAppByPackageName(mContext,privacyDetails.appPackageName)
+        mBinding.tvAppName.text = mCheckAppInfo.name
+        mBinding.ivAppIcon.backgroundDrawable= mCheckAppInfo.icon
+
         mBinding.apply {
-            etDetailOwner.setText(privacyDetails.appPackageName)
             etDetailAccount.setText(privacyDetails.account)
             etDetailPassword.setText(privacyDetails.password)
             etDetailPassword.transformationMethod = PasswordTransformationMethod.getInstance()

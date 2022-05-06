@@ -9,7 +9,6 @@ import java.lang.reflect.ParameterizedType
 abstract class BaseBindingAdapter<T,VB : ViewBinding>(data: MutableList<T>? = null) :
     BaseQuickAdapter<T, VBViewHolder<VB>>(0, data) {
 
-    lateinit var mBinding: VB
 
     //重写返回自定义 ViewHolder
     override fun onCreateDefViewHolder(parent: ViewGroup, viewType: Int): VBViewHolder<VB> {
@@ -22,7 +21,7 @@ abstract class BaseBindingAdapter<T,VB : ViewBinding>(data: MutableList<T>? = nu
             ViewGroup::class.java,
             Boolean::class.java
         )
-        mBinding = inflate.invoke(null, LayoutInflater.from(parent.context), parent, false) as VB
+        val mBinding = inflate.invoke(null, LayoutInflater.from(parent.context), parent, false) as VB
         return VBViewHolder(mBinding, mBinding.root)
     }
 }

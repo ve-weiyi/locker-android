@@ -14,7 +14,7 @@ import com.ve.module.locker.ui.adapter.ListFolderAdapter
 import com.ve.module.locker.ui.page.category.details.LockerFolderDetailsFragment
 import com.ve.module.locker.ui.page.container.LockerContainerActivity
 import com.ve.module.locker.ui.page.privacy.details.EditType
-import com.ve.module.locker.ui.viewmodel.LockerPrivacyCategoryViewModel
+import com.ve.module.locker.ui.viewmodel.LockerCategoryViewModel
 import com.ve.module.locker.ui.view.TagSwipeItemLayout
 import org.greenrobot.eventbus.Subscribe
 import org.greenrobot.eventbus.ThreadMode
@@ -25,14 +25,14 @@ import org.greenrobot.eventbus.ThreadMode
  * @Date 2022/4/8
  */
 class LockerListFolderFragment :
-    BaseVmListFragment<LockerFragmentListCategoryBinding, LockerPrivacyCategoryViewModel, PrivacyFolder>() {
+    BaseVmListFragment<LockerFragmentListCategoryBinding, LockerCategoryViewModel, PrivacyFolder>() {
 
     override fun attachViewBinding(): LockerFragmentListCategoryBinding{
         return LockerFragmentListCategoryBinding.inflate(layoutInflater)
     }
 
-    override fun attachViewModelClass(): Class<LockerPrivacyCategoryViewModel> {
-        return LockerPrivacyCategoryViewModel::class.java
+    override fun attachViewModelClass(): Class<LockerCategoryViewModel> {
+        return LockerCategoryViewModel::class.java
     }
 
     override fun attachAdapter(): BaseQuickAdapter<PrivacyFolder, *> {

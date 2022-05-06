@@ -14,7 +14,7 @@ import com.ve.module.locker.model.database.entity.PrivacyCardDetails
 import com.ve.module.locker.model.database.entity.PrivacyCardInfo
 import com.ve.module.locker.model.database.vo.PrivacyCard
 import com.ve.module.locker.ui.page.container.LockerContainerActivity
-import com.ve.module.locker.ui.viewmodel.LockerPrivacyInfoViewModel
+import com.ve.module.locker.ui.viewmodel.LockerPrivacyCardViewModel
 import com.ve.module.locker.utils.StickUtils
 import org.greenrobot.eventbus.Subscribe
 import org.greenrobot.eventbus.ThreadMode
@@ -24,7 +24,7 @@ import org.greenrobot.eventbus.ThreadMode
  * @Date 2022/4/11
  * @Description  current project locker-android
  */
-class LockerCardDetailsSeeFragment:BaseVmFragment<LockerFragmentSeeCardBinding,LockerPrivacyInfoViewModel>(),
+class LockerCardDetailsSeeFragment:BaseVmFragment<LockerFragmentSeeCardBinding,LockerPrivacyCardViewModel>(),
     View.OnClickListener {
 
     companion object{
@@ -35,8 +35,8 @@ class LockerCardDetailsSeeFragment:BaseVmFragment<LockerFragmentSeeCardBinding,L
         return LockerFragmentSeeCardBinding.inflate(layoutInflater)
     }
 
-    override fun attachViewModelClass(): Class<LockerPrivacyInfoViewModel> {
-        return LockerPrivacyInfoViewModel::class.java
+    override fun attachViewModelClass(): Class<LockerPrivacyCardViewModel> {
+        return LockerPrivacyCardViewModel::class.java
     }
 
     var mPrivacyInfoCard:PrivacyCardInfo?=null

@@ -17,8 +17,11 @@ import com.ve.module.locker.R
 import com.ve.module.locker.model.database.entity.PrivacyPassInfo
 import com.ve.module.locker.ui.page.container.LockerContainerActivity
 import com.ve.module.locker.ui.page.privacy.details.LockerPassDetailsSeeFragment
+import com.ve.module.locker.utils.AndroidUtil
 import com.ve.module.locker.utils.PasswordUtils
 import com.ve.module.locker.utils.StickUtils
+import org.jetbrains.anko.Android
+import org.jetbrains.anko.backgroundDrawable
 
 /**
  * @Description hello word!
@@ -50,9 +53,9 @@ class PrivacyInfoPassAdapter :
             }
         }
 
-        val tvFolder = holder.getView<TextView>(R.id.tv_privacy_folder)
-        tvFolder.text = item.getPrivacyFolder().folderName
-        ImageLoader.loadView(context, item.getPrivacyFolder().folderCover, tvFolder)
+        val app=AndroidUtil.getAppByPackageName(context,item.getPrivacyDetails().appPackageName)
+        holder.setImageDrawable(R.id.iv_app_icon,app.icon)
+
 
         val account=item.getPrivacyDetails().account
         holder.setText(R.id.tv_privacy_info_account, account)
@@ -60,6 +63,7 @@ class PrivacyInfoPassAdapter :
         holder.setText(R.id.tv_privacy_info_desc, item.privacyDesc)
         holder.setText(R.id.tv_privacy_info_create_time, item.createTime)
         holder.setText(R.id.tv_privacy_info_update_time, item.updateTime)
+
 
         val checkBox = holder.getView<CheckBox>(R.id.check_button)
         checkBox.setOnClickListener {

@@ -5,11 +5,11 @@ import android.text.TextWatcher
 import com.chad.library.adapter.base.BaseQuickAdapter
 import com.ve.lib.common.base.view.list.BaseVmListFragment
 import com.ve.lib.vutils.LogUtil
-import com.ve.module.locker.databinding.LockerFragmentListCardSearchBinding
+import com.ve.module.locker.databinding.LockerFragmentListPrivacySearchBinding
 import com.ve.module.locker.model.database.entity.PrivacyCardInfo
 import com.ve.module.locker.model.http.model.ConditionVO
 import com.ve.module.locker.ui.adapter.PrivacyInfoCardAdapter
-import com.ve.module.locker.ui.viewmodel.LockerPrivacyInfoViewModel
+import com.ve.module.locker.ui.viewmodel.LockerPrivacyCardViewModel
 
 /**
  * @Author  weiyi
@@ -17,18 +17,18 @@ import com.ve.module.locker.ui.viewmodel.LockerPrivacyInfoViewModel
  * @Description  current project locker-android
  */
 class LockerListCardSearchFragment :
-    BaseVmListFragment<LockerFragmentListCardSearchBinding, LockerPrivacyInfoViewModel, PrivacyCardInfo>() {
+    BaseVmListFragment<LockerFragmentListPrivacySearchBinding, LockerPrivacyCardViewModel, PrivacyCardInfo>() {
 
     override fun attachAdapter(): BaseQuickAdapter<PrivacyCardInfo, *> {
         return PrivacyInfoCardAdapter()
     }
 
-    override fun attachViewBinding(): LockerFragmentListCardSearchBinding {
-        return LockerFragmentListCardSearchBinding.inflate(layoutInflater)
+    override fun attachViewBinding(): LockerFragmentListPrivacySearchBinding {
+        return LockerFragmentListPrivacySearchBinding.inflate(layoutInflater)
     }
 
-    override fun attachViewModelClass(): Class<LockerPrivacyInfoViewModel> {
-        return LockerPrivacyInfoViewModel::class.java
+    override fun attachViewModelClass(): Class<LockerPrivacyCardViewModel> {
+        return LockerPrivacyCardViewModel::class.java
     }
 
     override fun initListView() {

@@ -121,6 +121,7 @@ object ImageLoader {
                     val colorInt=url.toInt()
                     val colorStateList= ColorStateList.valueOf(colorInt)
                     view.backgroundTintList=colorStateList
+
 //                    val gd: GradientDrawable = view.background as GradientDrawable
 //                    gd.setColor(colorInt)
 //                    gd.colorFilter=LightingColorFilter(Color.WHITE,colorInt)

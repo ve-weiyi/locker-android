@@ -10,14 +10,14 @@ import com.ve.lib.view.ext.setOnclickNoRepeatListener
 import com.ve.lib.vutils.LogUtil
 import com.ve.module.locker.R
 import com.ve.module.locker.common.event.RefreshDataEvent
-import com.ve.module.locker.databinding.LockerFragmentListPassBinding
-import com.ve.module.locker.model.database.entity.PrivacyPassInfo
+import com.ve.module.locker.databinding.LockerFragmentListPrivacyBinding
 import com.ve.module.locker.model.database.entity.PrivacyFolder
+import com.ve.module.locker.model.database.entity.PrivacyPassInfo
 import com.ve.module.locker.ui.adapter.PrivacyInfoPassAdapter
 import com.ve.module.locker.ui.page.container.LockerContainerActivity
 import com.ve.module.locker.ui.page.privacy.details.LockerPassDetailsEditFragment
 import com.ve.module.locker.ui.page.search.LockerListPassSearchFragment
-import com.ve.module.locker.ui.viewmodel.LockerPrivacyInfoViewModel
+import com.ve.module.locker.ui.viewmodel.LockerPrivacyPassViewModel
 import org.greenrobot.eventbus.Subscribe
 import org.greenrobot.eventbus.ThreadMode
 import org.litepal.LitePal
@@ -28,10 +28,10 @@ import org.litepal.LitePal
  * @Date 2022/4/8
  */
 class LockerListPassFragment :
-    BaseVmListFragment<LockerFragmentListPassBinding, LockerPrivacyInfoViewModel, PrivacyPassInfo>(){
+    BaseVmListFragment<LockerFragmentListPrivacyBinding, LockerPrivacyPassViewModel, PrivacyPassInfo>(){
 
-    override fun attachViewBinding(): LockerFragmentListPassBinding {
-        return LockerFragmentListPassBinding.inflate(layoutInflater)
+    override fun attachViewBinding(): LockerFragmentListPrivacyBinding {
+        return LockerFragmentListPrivacyBinding.inflate(layoutInflater)
     }
 
 
@@ -42,8 +42,8 @@ class LockerListPassFragment :
     val mAdapter by lazy { mListAdapter as PrivacyInfoPassAdapter }
     lateinit var mFolderList: MutableList<PrivacyFolder>
 
-    override fun attachViewModelClass(): Class<LockerPrivacyInfoViewModel> {
-        return LockerPrivacyInfoViewModel::class.java
+    override fun attachViewModelClass(): Class<LockerPrivacyPassViewModel> {
+        return LockerPrivacyPassViewModel::class.java
     }
 
 

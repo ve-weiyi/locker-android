@@ -20,22 +20,34 @@ data class PrivacyFriendsInfo(
     var name: String,
 
     @Encrypt(algorithm = AES)
-    var phone: String? = null,
+    var sex:Int=0,
 
     @Encrypt(algorithm = AES)
-    var address: String? = null,
+    var birthday:Long=20220501,
 
     @Encrypt(algorithm = AES)
-    var department: String? = null,
+    var phone: String = "",
 
     @Encrypt(algorithm = AES)
-    var qq: String? = null,
+    var email: String = "",
 
     @Encrypt(algorithm = AES)
-    var email: String? = null,
+    var qq: String = "",
 
     @Encrypt(algorithm = AES)
-    var remark: String? = "未设置备注",
+    var wechat: String = "",
+
+
+    @Encrypt(algorithm = AES)
+    var address: String = "",
+
+    @Encrypt(algorithm = AES)
+    var department: String = "",
+
+
+    @Encrypt(algorithm = AES)
+    var remark: String? = "备注信息",
+
 
     @Column(ignore = true)
     var headerName: String = "",

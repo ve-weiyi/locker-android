@@ -12,7 +12,7 @@ import org.litepal.LitePal
  * @Author  weiyi
  * @Date 2022/4/7
  */
-class LockerPrivacyCategoryViewModel : LockerViewModel() {
+class LockerCategoryViewModel : LockerViewModel() {
 
 
 //    val localTagList= MutableLiveData<MutableList<PrivacyTag>>()

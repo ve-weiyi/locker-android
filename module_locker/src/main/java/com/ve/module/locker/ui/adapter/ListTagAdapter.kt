@@ -23,5 +23,6 @@ class ListTagAdapter : BaseSlideBindingAdapter<PrivacyTag, LockerItemSimpleListB
         holder.vb.itemId.text = item.id.toString()
         holder.vb.itemName.text = item.tagName
         holder.vb.itemDesc.text = item.tagDesc
+
     }
 }

@@ -31,9 +31,14 @@ class PrivacyInfoCardAdapter :
         com.ve.lib.common.R.layout.item_sticky_header, R.layout.locker_item_privacy_card
     ), LoadMoreModule, DraggableModule, UpFetchModule {
 
-//    init {
-//        addChildClickViewIds(R.id.check_button)
-//    }
+    init {
+        setOnItemLongClickListener { adapter, view, position ->
+            ToastUtil.showCenter("已复制卡号")
+            StickUtils.copy(context, data[position].getPrivacyDetails().number)
+            true
+        }
+    }
+
 
     var isCheckMode = false
     private var isAllCheck = false
@@ -117,14 +122,6 @@ class PrivacyInfoCardAdapter :
 
     fun getSelectData(): MutableList<PrivacyCardInfo> {
         return mSelectList
-    }
-
-    init {
-        setOnItemLongClickListener { adapter, view, position ->
-            ToastUtil.showCenter("已复制卡号")
-            StickUtils.copy(context, data[position].getPrivacyDetails().number)
-            true
-        }
     }
 
 

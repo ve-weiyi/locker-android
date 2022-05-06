@@ -26,7 +26,7 @@
                     app:tagTiltText="重要的"
                     app:tagTiltBgColor="@color/blue"
                     app:tagTiltTextSize="@dimen/sp_8"
-                    app:tagTiltTextColor="@color/green"
+                    app:tagTiltTextColor="@color/white"
                     tools:visibility="visible" />
 
             <ImageView
