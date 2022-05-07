@@ -10,10 +10,8 @@ package com.ve.module.locker.model.http.model
 
 data class ConditionVO(
     var id: Int? = null,
-    var folderName:String ="",
-    var tagName:String="",
-    var privacyDesc:String="",
-    val privacyName:String="",
+    var folderId:Long?=null,
+    var tagId:Long?=null,
     var keyWords:String=""
 ) {
 }

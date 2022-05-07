@@ -3,6 +3,7 @@ package com.ve.module.locker.ui.viewmodel
 import androidx.lifecycle.MutableLiveData
 import com.ve.lib.vutils.LogUtil
 import com.ve.module.locker.model.database.entity.PrivacyFriendsInfo
+import com.ve.module.locker.model.http.model.ConditionVO
 import org.litepal.LitePal
 
 /**
@@ -13,14 +14,22 @@ import org.litepal.LitePal
 class LockerPrivacyFriendsViewModel : LockerViewModel() {
 
     val privacyFriendsInfoList = MutableLiveData<MutableList<PrivacyFriendsInfo>>()
-    fun getPrivacyFriendsList() {
+    fun getPrivacyFriendsList(conditionVO: ConditionVO? = null) {
         launch(
             block = {
 
             },
             local = {
-                privacyFriendsInfoList.value =
-                    LitePal.findAll(PrivacyFriendsInfo::class.java)
+                if (conditionVO == null) {
+                    privacyFriendsInfoList.value = LitePal.findAll(PrivacyFriendsInfo::class.java)
+                } else {
+                    privacyFriendsInfoList.value = LitePal.where(
+                        "name like ? or nickname like ?",
+                        conditionVO.keyWords,
+                        conditionVO.keyWords
+                    ).find(PrivacyFriendsInfo::class.java)
+                }
+
             }
         )
     }
@@ -48,6 +57,22 @@ class LockerPrivacyFriendsViewModel : LockerViewModel() {
             },
             local = {
                 val result = privacyInfo.delete()
+                deletePrivacyFriendsResult.value = result
+            }
+        )
+    }
+
+    fun deletePrivacyFriends(privacyInfos: MutableList<PrivacyFriendsInfo>) {
+        launch(
+            block = {
+
+
+            },
+            local = {
+                var result: Int = 0
+                privacyInfos.forEach { privacyInfo ->
+                    result += privacyInfo.delete()
+                }
                 deletePrivacyFriendsResult.value = result
             }
         )

@@ -20,6 +20,7 @@
 
 
             <com.ve.lib.view.widget.view.HorizontalItemView
+                    android:visibility="gone"
                     android:id="@+id/action_main_account"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
@@ -36,7 +37,7 @@
                     app:paddingLeft="20dp"
                     app:paddingRight="30dp"
                     app:tileText="账号管理"
-
+                    app:tileTextColor="@color/color_text_normal"
                     />
 
             <com.ve.lib.view.widget.view.HorizontalItemView
@@ -44,19 +45,19 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     app:hIcon="@drawable/ic_night_24dp"
-                    app:hTipVisiblity="false"
-                    app:rightIcon="@color/colorPrimary"
+                    app:hTipVisiblity="true"
                     app:paddingLeft="20dp"
                     app:paddingRight="30dp"
+                    app:tileTextColor="@color/color_text_normal"
                     app:tileText="文件夹管理" />
 
             <com.ve.lib.view.widget.view.HorizontalItemView
                     android:id="@+id/action_tag"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
+                    app:tileTextColor="@color/color_text_normal"
                     app:hIcon="@drawable/ic_night_24dp"
                     app:hTipVisiblity="false"
-                    app:rightIcon="@color/colorPrimary"
                     app:paddingLeft="20dp"
                     app:paddingRight="30dp"
                     app:tileText="标签管理" />
@@ -65,6 +66,7 @@
                     android:id="@+id/action_auto_fill"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
+                    app:tileTextColor="@color/color_text_normal"
                     app:hIcon="@drawable/ic_edit"
                     app:hTipVisiblity="false"
                     app:paddingLeft="20dp"
@@ -103,6 +105,7 @@
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         app:hIcon="@drawable/ic_setting_24dp"
+                        app:tileTextColor="@color/color_text_normal"
                         app:hTipVisiblity="false"
                         app:paddingLeft="20dp"
                         app:paddingRight="30dp"
@@ -114,7 +117,7 @@
                         android:layout_height="wrap_content"
                         app:hIcon="@drawable/ic_night_24dp"
                         app:hTipVisiblity="false"
-
+                        app:tileTextColor="@color/color_text_normal"
                         app:paddingLeft="20dp"
                         app:paddingRight="30dp"
                         app:tileText="夜间模式" />
@@ -123,9 +126,10 @@
                 <com.ve.lib.view.widget.view.HorizontalItemView
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
+                        android:id="@+id/action_share"
                         app:hIcon="@drawable/ic_action_share"
                         app:hTipVisiblity="false"
-
+                        app:tileTextColor="@color/color_text_normal"
                         app:paddingLeft="20dp"
                         app:paddingRight="30dp"
                         app:tileText="分享给好友" />
@@ -135,6 +139,7 @@
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         app:hIcon="@drawable/ic_about_us_white_24dp"
+                        app:tileTextColor="@color/color_text_normal"
                         app:hTipVisiblity="false"
                         app:paddingLeft="20dp"
                         app:paddingRight="30dp"
@@ -144,6 +149,7 @@
                         android:id="@+id/action_check_update_view"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
+                        app:tileTextColor="@color/color_text_normal"
                         app:hIcon="@drawable/ic_sun"
                         app:hTipVisiblity="false"
                         app:paddingLeft="20dp"
@@ -178,6 +184,7 @@
                         android:id="@+id/action_today_weather"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
+                        app:tileTextColor="@color/color_text_normal"
                         app:hIcon="@drawable/ic_cloud"
                         app:rightText="20°C"
                         app:rightIcon="@drawable/ic_change_skin"
@@ -193,6 +200,7 @@
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         app:hIcon="@drawable/ic_alarm"
+                        app:tileTextColor="@color/color_text_normal"
                         app:hTipVisiblity="false"
                         app:paddingLeft="20dp"
                         app:paddingRight="30dp"
@@ -203,6 +211,7 @@
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         app:hIcon="@drawable/ic_free_flow"
+                        app:tileTextColor="@color/color_text_normal"
                         app:hTipVisiblity="false"
                         app:paddingLeft="20dp"
                         app:paddingRight="30dp"
@@ -212,6 +221,7 @@
                         android:id="@+id/action_about"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
+                        app:tileTextColor="@color/color_text_normal"
                         app:hIcon="@drawable/ic_cloud"
                         app:hTipVisiblity="false"
                         app:paddingLeft="20dp"

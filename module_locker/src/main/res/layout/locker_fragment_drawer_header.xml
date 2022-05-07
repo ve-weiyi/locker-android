@@ -11,7 +11,6 @@
             android:background="@drawable/bg_round_white_8dp"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginTop="@dimen/dp_10"
             android:padding="@dimen/dp_5">
 
         <!--登录用户信息-->
@@ -90,24 +89,6 @@
                 app:tipPaddingTop="2dp"
                 app:tipText="1"
 
-                app:tipTextColor="@color/white"
-                app:tipTextSize="7sp" />
-
-        <com.ve.lib.view.widget.view.VerticalItemView
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_weight="1"
-                app:icon="@drawable/ic_notification_friend"
-                app:iconHeight="23dp"
-                app:iconWidth="23dp"
-                app:infoText="我的好友"
-                app:infoTextColor="@color/colorPrimary"
-                app:infoTextMarginTop="5dp"
-                app:infoTextSize="11sp"
-                app:tipBg="@drawable/bg_circle_red"
-                app:tipPaddingRight="2dp"
-                app:tipPaddingTop="2dp"
-                app:tipText="1"
                 app:tipTextColor="@color/white"
                 app:tipTextSize="7sp" />
 

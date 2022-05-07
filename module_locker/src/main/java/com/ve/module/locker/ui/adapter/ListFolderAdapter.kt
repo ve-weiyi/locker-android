@@ -23,5 +23,6 @@ class ListFolderAdapter: BaseSlideBindingAdapter<PrivacyFolder, LockerItemSimple
         holder.vb.itemId.text = item.id.toString()
         holder.vb.itemName.text = item.folderName
         holder.vb.itemDesc.text = item.folderName
+        context
     }
 }

@@ -26,7 +26,7 @@ import com.ve.lib.common.base.view.vm.BaseVmFragment
 import com.ve.lib.utils.DialogUtil
 import com.ve.lib.view.widget.passwordGenerator.PasswordGeneratorDialog
 import com.ve.lib.vutils.LogUtil
-import com.ve.lib.vutils.TimeUtil
+import com.ve.lib.vutils.DateTimeUtil
 import com.ve.module.locker.R
 import com.ve.module.locker.common.event.RefreshDataEvent
 import com.ve.module.locker.databinding.LockerFragmentEditPassBinding
@@ -333,7 +333,7 @@ class LockerPassDetailsEditFragment :
                 name = account + "的密码 "
             }
             if (desc.isEmpty()) {
-                desc = account + "的密码 " + TimeUtil.date
+                desc = account + "的密码 " + DateTimeUtil.date
             }
             mPrivacyPassDetails.apply {
                 this.appPackageName = app
@@ -348,7 +348,7 @@ class LockerPassDetailsEditFragment :
                 privacyName = name
                 privacyDesc = desc
                 privacyCover = "#00AA00"
-                updateTime = TimeUtil.dateAndTime
+                updateTime = DateTimeUtil.dateAndTime
             }
 
             mPrivacyPass = PrivacyPass(

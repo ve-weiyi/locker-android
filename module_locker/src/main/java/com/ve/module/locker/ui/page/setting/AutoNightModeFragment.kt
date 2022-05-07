@@ -22,7 +22,7 @@ class AutoNightModeFragment : PreferenceFragmentCompat() {
     private lateinit var dayStartMinute: String
 
     override fun onCreatePreferences(savedInstanceState: Bundle?, rootKey: String?) {
-        setPreferencesFromResource(R.xml.locker_pref_autonight, rootKey)
+        setPreferencesFromResource(R.xml.locker_pref_setting_autonight, rootKey)
         setHasOptionsMenu(true)
 
         autoNight = preferenceScreen.findPreference(SettingConstant.SP_KEY_AUTO_NIGHT_START)!!

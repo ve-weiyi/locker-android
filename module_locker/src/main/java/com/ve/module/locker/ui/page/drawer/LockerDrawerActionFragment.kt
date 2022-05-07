@@ -18,12 +18,12 @@ import com.ve.lib.vutils.LogUtil
 import com.ve.module.locker.R
 import com.ve.module.locker.common.config.LockerConstant
 import com.ve.module.locker.databinding.LockerFragmentDrawerActionBinding
-import com.ve.module.locker.ui.page.about.LockerAboutActivity
 import com.ve.module.locker.ui.page.container.LockerContainerActivity
 import com.ve.module.locker.ui.page.container.LockerWebContainerActivity
 import com.ve.module.locker.ui.page.feedback.LockerFeedBackActivity
 import com.ve.module.locker.ui.page.category.LockerListFolderFragment
 import com.ve.module.locker.ui.page.category.LockerListTagFragment
+import com.ve.module.locker.ui.page.setting.AboutSettingFragment
 import com.ve.module.locker.ui.page.setting.LockerSettingActivity
 import com.ve.module.locker.ui.viewmodel.LockerDrawerViewModel
 import com.ve.module.sunny.ui.weather.WeatherActivity
@@ -49,7 +49,7 @@ class LockerDrawerActionFragment :
         return LockerDrawerViewModel::class.java
     }
 
-    private lateinit var startActivitylaunch: ActivityResultLauncher<Intent>
+    private lateinit var startActivityLaunch: ActivityResultLauncher<Intent>
     lateinit var location: Location
     lateinit var placeName:String
     override fun initView(savedInstanceState: Bundle?) {
@@ -64,8 +64,9 @@ class LockerDrawerActionFragment :
         mBinding.actionGithub.setOnclickNoRepeatListener(this)
         mBinding.actionAbout.setOnclickNoRepeatListener(this)
         mBinding.actionAutoFill.setOnclickNoRepeatListener(this)
+        mBinding.actionShare.setOnClickListener(this)
 //        mBinding.actionTodayWeather.setOnclickNoRepeatListener(this)
-        startActivitylaunch =
+        startActivityLaunch =
             registerForActivityResult(ActivityResultContracts.StartActivityForResult()) { result ->
                 LogUtil.msg(result.toString())
             }
@@ -108,7 +109,7 @@ class LockerDrawerActionFragment :
                 //打开自动填充服务设置界面
                 val intent = Intent(Settings.ACTION_REQUEST_SET_AUTOFILL_SERVICE)
                 intent.data = Uri.parse("package:com.android.settings")
-                startActivitylaunch.launch(intent)
+                startActivityLaunch.launch(intent)
             }
             R.id.action_blog -> {
                 LockerWebContainerActivity.start(mContext, "我的博客", LockerConstant.blog_url)
@@ -120,7 +121,7 @@ class LockerDrawerActionFragment :
                 startActivity(mContext, LockerFeedBackActivity::class.java)
             }
             R.id.action_about -> {
-                startActivity(mContext, LockerAboutActivity::class.java)
+                LockerSettingActivity.start(mContext, AboutSettingFragment::class.java.name,"关于")
             }
             R.id.action_system_setting -> {
                 LockerSettingActivity.start(mContext)
@@ -143,6 +144,14 @@ class LockerDrawerActionFragment :
                     putExtra(SunnyConstant.KEY_PLACE_NAME, placeName)
                 }
                 startActivity(intent)
+            }
+            R.id.action_share->{
+                Intent().run {
+                    action = Intent.ACTION_SEND
+                    putExtra(Intent.EXTRA_TEXT, "locker 一款简单的私密信息管理工具")
+                    type = "text/plain"
+                    startActivity(Intent.createChooser(this,"分享"))
+                }
             }
         }
     }

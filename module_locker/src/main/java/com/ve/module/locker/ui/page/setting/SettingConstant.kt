@@ -21,7 +21,7 @@ object SettingConstant {
     val SP_KEY_NEWS_SETTING =mContext.getString(R.string.sp_key_news_setting)
     val SP_KEY_CACHE_SETTING =mContext.getString(R.string.sp_key_cache_setting)
     val SP_KEY_OTHER_SETTING =mContext.getString(R.string.sp_key_other_setting)
-    val SP_KEY_ABOUT_SETTING=mContext.getString(R.string.sp_key_account_setting)
+    val SP_KEY_ABOUT_SETTING=mContext.getString(R.string.sp_key_about_setting)
     /**
      * 基础设置
      */

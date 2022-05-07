@@ -11,5 +11,5 @@ import com.chad.library.adapter.base.viewholder.BaseViewHolder
  * @Author  weiyi
  * @Date 2022/4/10
  */
-class VBViewHolder<VB : ViewBinding>(val vb: VB, view: View) : BaseViewHolder(view)
+open class VBViewHolder<VB : ViewBinding>(val vb: VB, view: View) : BaseViewHolder(view)
 

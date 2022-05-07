@@ -8,10 +8,9 @@ import com.chad.library.adapter.base.module.LoadMoreModule
 import com.chad.library.adapter.base.module.UpFetchModule
 import com.chad.library.adapter.base.viewholder.BaseViewHolder
 import com.ve.lib.vutils.LogUtil
+import com.ve.lib.vutils.DateTimeUtil
 import com.ve.module.locker.R
 import com.ve.module.locker.model.database.entity.PrivacyFriendsInfo
-import com.ve.module.locker.utils.StickUtils
-import org.jetbrains.anko.layoutInflater
 
 /**
  * @Description hello word!
@@ -43,7 +42,8 @@ class PrivacyInfoFriendsAdapter :
             setText(R.id.tv_friends_address,item.address)
             setText(R.id.tv_friends_department,item.department)
             setText(R.id.tv_friends_remark,item.remark)
-            setText(R.id.tv_friends_birthday,item.birthday)
+            val age=DateTimeUtil.date.substring(0,4).toInt()-item.birthday.substring(0,4).toInt()
+            setText(R.id.tv_friends_birthday,age.toString()+"岁")
 
             if(item.sex==0){
                 setBackgroundResource(R.id.iv_friends_sex,R.drawable.ic_female )

@@ -1,8 +1,9 @@
 package com.ve.module.locker.model.database.entity
 
 import com.chad.library.adapter.base.entity.SectionEntity
-import com.ve.lib.vutils.LogUtil
-import com.ve.lib.vutils.TimeUtil
+import com.ve.lib.utils.CommonUtil
+import com.ve.lib.vutils.DateTimeUtil
+import com.ve.module.locker.model.database.vo.PrivacySimpleInfo
 import org.litepal.LitePal
 import org.litepal.annotation.Column
 import org.litepal.crud.LitePalSupport
@@ -21,17 +22,16 @@ data class PrivacyPassInfo(
     public var privacyName: String = "",
 
     //( varue = "隐私图标", notes = "标签的覆盖图标", example = "https://ve77.cn/blog/favicon.ico", position = 5 )
-    public var privacyCover: String = "#00FF00",
+    public var privacyCover: String = CommonUtil.randomColor().toString(),
 
     //(varue = "隐私描述", notes = "标签描述", example = "床前明月光", position = 6)
     public var privacyDesc: String = "",
 
-
     //(varue = "创建时间", notes = "标签创建时间,不用填", position = 7)
-    public var createTime: String = TimeUtil.dateAndTime,
+    public var createTime: String = DateTimeUtil.dateAndTime,
 
     //(varue = "更新时间", notes = "标签更新时间,不用填", position = 8)
-    public var updateTime: String = TimeUtil.dateAndTime,
+    public var updateTime: String = DateTimeUtil.dateAndTime,
     //(varue = "文件夹id")
     @Column(index = true)
     public var privacyFolderId: Long = 1,
@@ -151,5 +151,9 @@ data class PrivacyPassInfo(
     
     companion object {
         private const val serialVersionUID = 1L
+    }
+
+    fun toSimpleInfo(): PrivacySimpleInfo {
+        return PrivacySimpleInfo(privacyName, privacyCover, privacyDesc, createTime, updateTime)
     }
 }

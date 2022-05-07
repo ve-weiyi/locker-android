@@ -42,7 +42,7 @@
         <activity android:name=".ui.page.container.LockerContainerActivity" />
         <activity android:name=".ui.page.container.LockerWebContainerActivity" />
         <activity android:name=".ui.page.setting.LockerSettingActivity" />
-
+        <activity android:name=".ui.page.category.LockerGroupActivity"/>
 
         <service
                 android:name=".service.LockerAutoFillService"

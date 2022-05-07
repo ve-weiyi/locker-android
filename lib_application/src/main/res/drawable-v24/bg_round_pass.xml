@@ -10,8 +10,8 @@
 
 <!--    边框-->
     <stroke
-            android:width="2dp"
-            android:color="#BBDEFB" />
+            android:width="1dp"
+            android:color="@color/white" />
 
     <!--渐变色-->
 <!--    <gradient-->

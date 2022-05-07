@@ -17,7 +17,7 @@
                 />
         <Preference
                 android:defaultValue="false"
-                android:key="sp_key_no_declare"
+                android:key="sp_key_phone"
                 android:layout="@layout/custom_preference_layout_line"
                 android:summary="15623356029"
                 android:title="手机号码"
@@ -94,7 +94,6 @@
                 android:layout="@layout/custom_preference_layout_line"
                 android:title="导入/导出" />
 
-
     </PreferenceCategory>
 
 <!--    <PreferenceCategory-->
@@ -137,7 +136,7 @@
                 />
         <Preference
                 android:defaultValue="false"
-                android:key="sp_key_no_declare"
+                android:key="sp_key_feedback"
                 android:layout="@layout/custom_preference_layout_line"
                 android:title="反馈与建议"
                 />

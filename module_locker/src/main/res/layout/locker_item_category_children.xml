@@ -15,6 +15,7 @@
             android:background="@drawable/bg_round_pass">
 
         <com.google.android.material.imageview.ShapeableImageView
+                android:visibility="gone"
                 app:shapeAppearanceOverlay="@style/roundImageView"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toTopOf="parent"
@@ -35,7 +36,7 @@
 
                 android:focusable="true"
                 android:visibility="gone"
-                tools:visibility="gone" />
+                />
 
 
         <TextView
@@ -49,13 +50,14 @@
                 android:ellipsize="end"
                 android:maxLines="1"
                 android:singleLine="true"
-                android:text="我的邮箱账号"
-                android:textStyle="bold"
+                tools:text="我的邮箱账号"
+                tools:textStyle="bold"
                 style="@style/tv_title_normal"
                 />
 
 
         <TextView
+                android:visibility="gone"
                 app:layout_constraintStart_toStartOf="@id/tv_privacy_info_name"
                 app:layout_constraintTop_toBottomOf="@id/tv_privacy_info_name"
                 android:layout_marginTop="@dimen/dp_4"
@@ -66,7 +68,7 @@
                 android:ellipsize="end"
                 android:maxLines="1"
                 style="@style/tv_content_second"
-                android:text="791422171@qq.com"
+                tools:text="791422171@qq.com"
                 app:drawableStartCompat="@drawable/ic_baseline_person_24" />
 
         <LinearLayout
@@ -86,7 +88,7 @@
                     android:ellipsize="end"
                     android:maxLines="1"
                     style="@style/tv_content_second"
-                    android:text="床前明月光，疑是地上霜。举头望明月，低头思故乡。"
+                    tools:text="床前明月光，疑是地上霜。举头望明月，低头思故乡。"
                     app:drawableStartCompat="@drawable/ic_baseline_description_24" />
 
 
@@ -94,7 +96,7 @@
 
 
         <LinearLayout
-                android:visibility="gone"
+
                 app:layout_constraintTop_toBottomOf="@id/layout_desc"
                 app:layout_constraintStart_toStartOf="@id/layout_desc"
                 app:layout_constraintEnd_toStartOf="@id/check_button"
@@ -106,14 +108,14 @@
 
 
             <TextView
-                    android:visibility="gone"
+
                     android:id="@+id/tv_privacy_info_create_time"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     style="@style/tv_content_small"
                     android:layout_marginEnd="@dimen/dp_10"
                     android:singleLine="true"
-                    android:text="2022-01-11 00:15:07"
+                    tools:text="2022-01-11 00:15:07"
                     app:drawableStartCompat="@drawable/ic_time" />
 
 
@@ -123,7 +125,7 @@
                     android:layout_height="wrap_content"
                     style="@style/tv_content_small"
                     android:singleLine="true"
-                    android:text="2022-01-11 00:15:07"
+                    tools:text="2022-01-11 00:15:07"
                     app:drawableStartCompat="@drawable/ic_time" />
         </LinearLayout>
 

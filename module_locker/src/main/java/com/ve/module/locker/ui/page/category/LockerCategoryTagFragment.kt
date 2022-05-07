@@ -1,6 +1,8 @@
 package com.ve.module.locker.ui.page.category
 
 import android.content.Context
+import android.os.Bundle
+import android.view.View
 import androidx.recyclerview.widget.GridLayoutManager
 import com.chad.library.adapter.base.BaseQuickAdapter
 import com.ve.lib.common.base.view.list.BaseVmListFragment
@@ -16,7 +18,7 @@ import com.ve.module.locker.ui.viewmodel.LockerCategoryViewModel
  * @Author  weiyi
  * @Date 2022/4/8
  */
-class LockerCategoryFragment :
+class LockerCategoryTagFragment :
     BaseVmListFragment<LockerFragmentTagBinding, LockerCategoryViewModel, PrivacyTag>() {
 
     override fun attachViewBinding(): LockerFragmentTagBinding {
@@ -54,5 +56,13 @@ class LockerCategoryFragment :
             showAtAdapter(it)
             mListAdapter.loadMoreModule.loadMoreEnd(true)
         }
+    }
+
+    override fun onItemClickEvent(datas: MutableList<PrivacyTag>, view: View, position: Int) {
+        super.onItemClickEvent(datas, view, position)
+        val tag=datas[position]
+        LockerGroupActivity.start(mContext,tag.tagName, Bundle().apply {
+            putSerializable(LockerGroupActivity.FRAGMENT_DATA_KEY,tag)
+        })
     }
 }

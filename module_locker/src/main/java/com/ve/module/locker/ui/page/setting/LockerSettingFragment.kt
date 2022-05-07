@@ -1,8 +1,13 @@
 package com.ve.module.locker.ui.page.setting
 
+import android.content.Intent
 import android.content.SharedPreferences
+import android.net.Uri
 import android.os.Handler
 import android.os.Looper
+import android.provider.Settings
+import androidx.activity.result.ActivityResultLauncher
+import androidx.activity.result.contract.ActivityResultContracts
 import androidx.preference.Preference
 import com.ve.lib.common.event.RefreshHomeEvent
 import com.ve.lib.view.widget.preference.IconPreference
@@ -21,16 +26,20 @@ class LockerSettingFragment : BaseSettingFragment() {
         return com.ve.module.locker.R.xml.locker_pref_settings
     }
 
-    val spPreferenceKeyList = mutableListOf<String>(
+    val spClickPreferenceKeyList = mutableListOf<String>(
         SettingConstant.SP_KEY_ACCOUNT_SETTING,
         SettingConstant.SP_KEY_STYLE_SETTING,
         SettingConstant.SP_KEY_CACHE_SETTING,
         SettingConstant.SP_KEY_ABOUT_SETTING,
-
+        SettingConstant.SP_KEY_AUTO_FILL
         )
 
+    private lateinit var startActivityLaunch: ActivityResultLauncher<Intent>
     override fun initPreferenceView() {
-        spPreferenceKeyList.forEach { key ->
+        startActivityLaunch = registerForActivityResult(ActivityResultContracts.StartActivityForResult()) { result ->
+            LogUtil.msg(result.toString())
+        }
+        spClickPreferenceKeyList.forEach { key ->
             run {
                 findPreference<Preference>(key)?.onPreferenceClickListener = this
             }
@@ -72,6 +81,12 @@ class LockerSettingFragment : BaseSettingFragment() {
             }
             SettingConstant.SP_KEY_ABOUT_SETTING -> {
                 LockerSettingActivity.start(mContext, AboutSettingFragment::class.java.name, "关于")
+            }
+            SettingConstant.SP_KEY_AUTO_FILL->{
+                //打开自动填充服务设置界面
+                val intent = Intent(Settings.ACTION_REQUEST_SET_AUTOFILL_SERVICE)
+                intent.data = Uri.parse("package:com.android.settings")
+                startActivityLaunch.launch(intent)
             }
             else -> {
                 showMsg("${preference?.title} 功能未实现.key=${preference?.key}")

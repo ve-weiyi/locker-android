@@ -8,11 +8,10 @@ import com.afollestad.materialdialogs.MaterialDialog
 import com.afollestad.materialdialogs.datetime.datePicker
 import com.afollestad.materialdialogs.lifecycle.lifecycleOwner
 import com.ve.lib.common.base.view.vm.BaseVmFragment
-import com.ve.lib.utils.DialogUtil
-import com.ve.lib.view.widget.passwordGenerator.PasswordGeneratorDialog
 import com.ve.lib.vutils.LogUtil
-import com.ve.lib.vutils.TimeUtil
+import com.ve.lib.vutils.DateTimeUtil
 import com.ve.module.locker.R
+import com.ve.module.locker.common.event.RefreshDataEvent
 import com.ve.module.locker.databinding.LockerFragmentEditFriendsBinding
 import com.ve.module.locker.model.database.entity.PrivacyFriendsInfo
 import com.ve.module.locker.ui.viewmodel.LockerPrivacyFriendsViewModel
@@ -67,7 +66,7 @@ class LockerFriendsEditFragment:
         mBinding.tvFriendsBirthday.setOnClickListener {
             MaterialDialog(mContext).show {
                 datePicker { dialog, datetime ->
-                    mBinding.tvFriendsBirthday.text= TimeUtil.formatDate(datetime.time)
+                    mBinding.tvFriendsBirthday.text= DateTimeUtil.formatDate(datetime.time)
                 }
                 lifecycleOwner(activity)
             }
@@ -79,7 +78,7 @@ class LockerFriendsEditFragment:
         mViewModel.reslutSaveOrUpdate.observe(this){
             if(it){
                 showMsg("保存成功")
-
+                mEventBus?.post(RefreshDataEvent(PrivacyFriendsInfo::class.java.name, mPrivacyInfo))
             }
         }
     }

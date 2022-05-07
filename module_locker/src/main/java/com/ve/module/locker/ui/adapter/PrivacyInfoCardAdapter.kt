@@ -12,7 +12,7 @@ import com.chad.library.adapter.base.viewholder.BaseViewHolder
 import com.ve.lib.common.utils.ImageLoader
 import com.ve.lib.view.ext.spanText
 import com.ve.lib.vutils.LogUtil
-import com.ve.lib.vutils.TimeUtil
+import com.ve.lib.vutils.DateTimeUtil
 import com.ve.lib.vutils.ToastUtil
 import com.ve.module.locker.R
 import com.ve.module.locker.model.database.entity.PrivacyCardInfo
@@ -65,7 +65,7 @@ class PrivacyInfoCardAdapter :
         holder.setText(R.id.tv_privacy_info_account, PasswordUtils.hidePassword(account))
         holder.setText(R.id.tv_privacy_info_name, item.privacyName)
         holder.setText(R.id.tv_privacy_info_desc, item.privacyDesc)
-        holder.setText(R.id.tv_privacy_info_create_time, TimeUtil.formatDate(item.createTime))
+        holder.setText(R.id.tv_privacy_info_create_time, DateTimeUtil.formatDate(item.createTime))
         holder.setText(R.id.tv_privacy_info_update_time, item.updateTime)
 
         val checkBox = holder.getView<CheckBox>(R.id.check_button)

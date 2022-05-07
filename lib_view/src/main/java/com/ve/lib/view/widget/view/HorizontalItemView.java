@@ -76,8 +76,8 @@ public class HorizontalItemView extends RelativeLayout {
 		TypedArray a = mContext.obtainStyledAttributes(attrs, R.styleable.HorizontalItemView);
 		mPaddingLeft = a.getLayoutDimension(R.styleable.HorizontalItemView_paddingLeft, 20);
 		mPaddingRight = a.getLayoutDimension(R.styleable.HorizontalItemView_paddingRight, 20);
-		mPaddingTop = a.getLayoutDimension(R.styleable.HorizontalItemView_paddingTop, 25);
-		mPaddingBottom = a.getLayoutDimension(R.styleable.HorizontalItemView_paddingBottom, 25);
+		mPaddingTop = a.getLayoutDimension(R.styleable.HorizontalItemView_paddingTop, 30);
+		mPaddingBottom = a.getLayoutDimension(R.styleable.HorizontalItemView_paddingBottom, 30);
 		//左边图标
 		mIconWidth = a.getLayoutDimension(R.styleable.HorizontalItemView_hIconWidth, 50);
 		mIconHeight = a.getLayoutDimension(R.styleable.HorizontalItemView_hIconHeight, 50);

@@ -33,11 +33,6 @@ class LockerAboutActivity: BaseActivity<LockerActivityAboutBinding>() {
         val versionName = packageManager?.getPackageInfo(packageName ?: "", 0)?.versionName
         val versionStr = "${getString(R.string.locker_app_name)} V${versionName}"
         about_version.text = versionStr
-        setLogoBg()
-    }
-    private fun setLogoBg() {
-        val drawable = iv_logo.background as GradientDrawable
-        drawable.setColor(SettingUtil.getColor())
-        iv_logo.setBackgroundDrawable(drawable)
+
     }
 }

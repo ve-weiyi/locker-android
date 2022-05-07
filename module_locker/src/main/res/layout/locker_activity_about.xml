@@ -34,12 +34,11 @@
                         android:layout_width="@dimen/dp_80"
                         android:layout_height="@dimen/dp_80"
                         android:layout_gravity="center_horizontal"
-                        android:background="@drawable/bg_logo"
+                        android:background="@drawable/locker_password"
                         app:layout_constraintBottom_toBottomOf="parent"
                         app:layout_constraintEnd_toEndOf="parent"
                         app:layout_constraintStart_toStartOf="parent"
                         app:layout_constraintTop_toTopOf="parent"
-                        app:srcCompat="@mipmap/hust_logo"
                         app:type="circle" />
 
                 <TextView

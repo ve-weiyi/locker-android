@@ -22,7 +22,7 @@ import com.ve.lib.common.base.view.vm.BaseVmFragment
 import com.ve.lib.utils.DialogUtil
 import com.ve.lib.view.widget.passwordGenerator.PasswordGeneratorDialog
 import com.ve.lib.vutils.LogUtil
-import com.ve.lib.vutils.TimeUtil
+import com.ve.lib.vutils.DateTimeUtil
 import com.ve.module.locker.R
 import com.ve.module.locker.common.event.RefreshDataEvent
 import com.ve.module.locker.databinding.LockerFragmentEditCardBinding
@@ -270,7 +270,7 @@ class LockerCardDetailsEditFragment :
                 name = owner + "的卡片 "
             }
             if (desc.isEmpty()) {
-                desc = owner + "的卡片 " + TimeUtil.date
+                desc = owner + "的卡片 " + DateTimeUtil.date
             }
             mPrivacyCardDetails.apply {
                 this.owner = owner
@@ -285,7 +285,7 @@ class LockerCardDetailsEditFragment :
                 privacyName = name
                 privacyDesc = desc
                 privacyCover = "#00AA00"
-                updateTime = TimeUtil.dateAndTime
+                updateTime = DateTimeUtil.dateAndTime
             }
 
             mPrivacyCard = PrivacyCard(

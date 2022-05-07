@@ -1,7 +1,8 @@
 package com.ve.module.locker.model.database.entity
 
 import com.chad.library.adapter.base.entity.SectionEntity
-import com.ve.lib.vutils.TimeUtil
+import com.ve.lib.vutils.DateTimeUtil
+import com.ve.module.locker.model.database.vo.PrivacySimpleInfo
 import org.litepal.annotation.Column
 import org.litepal.annotation.Encrypt
 import org.litepal.crud.LitePalSupport
@@ -14,10 +15,8 @@ import java.io.Serializable
 data class PrivacyFriendsInfo(
     var id: Long = 0,
 
-    @Encrypt(algorithm = AES)
     var nickname: String= "",
 
-    @Encrypt(algorithm = AES)
     var name: String= "",
 
     /**
@@ -27,7 +26,7 @@ data class PrivacyFriendsInfo(
     var sex:Int=1,
 
     @Encrypt(algorithm = AES)
-    var birthday:String=TimeUtil.date,
+    var birthday:String=DateTimeUtil.date,
 
     @Encrypt(algorithm = AES)
     var phone: String = "",
@@ -50,7 +49,7 @@ data class PrivacyFriendsInfo(
 
 
     @Encrypt(algorithm = AES)
-    var remark: String? = "备注信息",
+    var remark: String = "备注信息",
 
 
     @Column(ignore = true)
@@ -65,4 +64,7 @@ data class PrivacyFriendsInfo(
         const val serialVersionUID = 1L
     }
 
+    fun toSimpleInfo(): PrivacySimpleInfo {
+        return PrivacySimpleInfo(privacyName = name, privacyDesc = remark)
+    }
 }

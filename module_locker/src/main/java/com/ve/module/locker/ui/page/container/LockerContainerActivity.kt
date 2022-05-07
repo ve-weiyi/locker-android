@@ -51,12 +51,7 @@ class LockerContainerActivity :BaseActivity<LockerActivityContainerBinding>(){
         }
         fun start(context: Context, fragmentClass:Class<*>, title: String? = null, fragmentBundle: Bundle? = null) {
             val fragmentClassName=fragmentClass.name
-            Intent(context, LockerContainerActivity::class.java).run {
-                putExtra(FRAGMENT_TITLE_KEY, title)
-                putExtra(FRAGMENT_CLASS_NAME_KEY, fragmentClassName)
-                putExtra(FRAGMENT_ARGUMENTS_KEY,fragmentBundle)
-                context.startActivity(this, fragmentBundle)
-            }
+            start(context, fragmentClassName, title, fragmentBundle)
         }
     }
 
