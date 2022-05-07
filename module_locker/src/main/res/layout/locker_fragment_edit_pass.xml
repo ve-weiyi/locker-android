@@ -23,13 +23,17 @@
 
 
             <LinearLayout
-                    android:layout_marginTop="@dimen/dp_16"
-                    android:layout_marginHorizontal="@dimen/dp_10"
-                    android:paddingBottom="@dimen/dp_100"
+
+
                     android:background="@drawable/bg_round_white_8dp"
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
+
+                    android:layout_marginTop="@dimen/dp_16"
+                    android:layout_marginHorizontal="@dimen/dp_10"
                     android:paddingHorizontal="@dimen/dp_20"
+                    android:paddingTop="@dimen/dp_8"
+                    android:paddingBottom="@dimen/dp_100"
                     android:orientation="vertical">
 
 
@@ -42,7 +46,6 @@
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:textSize="16sp"
-                            android:layout_marginTop="10dp"
                             android:textColor="@color/blue"
                             android:text="账号" />
 

@@ -1,8 +1,8 @@
 package com.ve.module.locker.ui.viewmodel
 
 import androidx.lifecycle.MutableLiveData
+import com.ve.lib.vutils.LogUtil
 import com.ve.module.locker.model.database.entity.PrivacyFriendsInfo
-import com.ve.module.locker.model.http.model.ConditionVO
 import org.litepal.LitePal
 
 /**
@@ -13,7 +13,6 @@ import org.litepal.LitePal
 class LockerPrivacyFriendsViewModel : LockerViewModel() {
 
     val privacyFriendsInfoList = MutableLiveData<MutableList<PrivacyFriendsInfo>>()
-
     fun getPrivacyFriendsList() {
         launch(
             block = {
@@ -26,15 +25,32 @@ class LockerPrivacyFriendsViewModel : LockerViewModel() {
         )
     }
 
-
-    fun getPrivacyFriendsList(condition: ConditionVO) {
+    val reslutSaveOrUpdate = MutableLiveData<Boolean>()
+    fun saveOrUpdatePrivacyFriends(privacyFriends: PrivacyFriendsInfo) {
         launch(
             block = {
 
+
             },
             local = {
-
+                val result = privacyFriends.saveOrUpdate("id= ?", privacyFriends.id.toString())
+                reslutSaveOrUpdate.value = result
             }
         )
     }
+
+    val deletePrivacyFriendsResult = MutableLiveData<Int>()
+    fun deletePrivacyFriends(privacyInfo: PrivacyFriendsInfo) {
+        launch(
+            block = {
+
+
+            },
+            local = {
+                val result = privacyInfo.delete()
+                deletePrivacyFriendsResult.value = result
+            }
+        )
+    }
+
 }

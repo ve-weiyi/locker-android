@@ -89,7 +89,7 @@ object AppDataBase {
             PrivacyFriendsInfo(
                 nickname = "甘老师",
                 name = "甘早斌",
-                sex = 0,
+                sex = 1,
                 phone = "15623356029",
                 qq = "791422171",
                 email = "791422171@qq.com",
@@ -113,7 +113,7 @@ object AppDataBase {
             PrivacyFriendsInfo(
                 nickname = "甘老师2",
                 name = "甘早斌",
-                sex = 0,
+                sex = 1,
                 phone = "15623356029",
                 qq = "791422171",
                 email = "791422171@qq.com",

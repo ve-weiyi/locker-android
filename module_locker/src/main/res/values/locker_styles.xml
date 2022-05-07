@@ -84,7 +84,7 @@
     </style>
 
     <style name="EditText">
-        <item name="android:padding">10dp</item>
+        <item name="android:padding">8dp</item>
         <item name="android:background">@drawable/shape_round_grey</item>
         <!--        <item name="android:inputType">text|textPassword</item>-->
     </style>

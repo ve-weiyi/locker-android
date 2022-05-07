@@ -55,6 +55,7 @@ object TimeUtil {
 
     /**
      * 转换为年月日
+     * "07/10/96 4:5 PM, PDT" will be parsed into a Date that is equivalent to Date(837039900000L).
      */
     fun formatDate(mDate: String): String {
         val sdf = SimpleDateFormat("yyyy-MM-dd", Locale.getDefault())
@@ -68,7 +69,23 @@ object TimeUtil {
     }
 
 
+    /**
+     * 转换为年月日
+     */
+    fun formatDate(date: Date): String {
+        val sdf = SimpleDateFormat("yyyy-MM-dd", Locale.getDefault())
+        return sdf.format(date)
+    }
 
+    fun formatTime(date: Date): String {
+        val sdf = SimpleDateFormat("HH:mm:ss", Locale.getDefault())
+        return sdf.format(date)
+    }
+
+    fun formatDateTime(date: Date): String {
+        val sdf = SimpleDateFormat("yyyy-MM-dd HH:mm:ss", Locale.getDefault())
+        return sdf.format(date)
+    }
 
 
     fun getCurrentTimeMillis():Long{

@@ -81,7 +81,7 @@ object AndroidUtil {
      */
 
     @SuppressLint("QueryPermissionsNeeded")
-    fun getAllAppInfo(context: Context, isSystemApp: Boolean = false): List<AppInfo> {
+    fun getAllAppInfo(context: Context, isSystemApp: Boolean = false): MutableList<AppInfo> {
 
         val packageManager: PackageManager = context.packageManager
         val packages = packageManager.getInstalledPackages(0)

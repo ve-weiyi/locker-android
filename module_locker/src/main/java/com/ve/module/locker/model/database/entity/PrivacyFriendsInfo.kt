@@ -1,6 +1,7 @@
 package com.ve.module.locker.model.database.entity
 
 import com.chad.library.adapter.base.entity.SectionEntity
+import com.ve.lib.vutils.TimeUtil
 import org.litepal.annotation.Column
 import org.litepal.annotation.Encrypt
 import org.litepal.crud.LitePalSupport
@@ -14,16 +15,19 @@ data class PrivacyFriendsInfo(
     var id: Long = 0,
 
     @Encrypt(algorithm = AES)
-    var nickname: String,
+    var nickname: String= "",
 
     @Encrypt(algorithm = AES)
-    var name: String,
+    var name: String= "",
+
+    /**
+     * 性别 女 0，男 1
+     */
+    @Encrypt(algorithm = AES)
+    var sex:Int=1,
 
     @Encrypt(algorithm = AES)
-    var sex:Int=0,
-
-    @Encrypt(algorithm = AES)
-    var birthday:Long=20220501,
+    var birthday:String=TimeUtil.date,
 
     @Encrypt(algorithm = AES)
     var phone: String = "",

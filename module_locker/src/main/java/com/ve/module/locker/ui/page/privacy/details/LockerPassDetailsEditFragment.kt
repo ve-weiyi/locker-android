@@ -15,6 +15,7 @@ import android.view.View
 import android.widget.AdapterView
 import android.widget.ArrayAdapter
 import androidx.appcompat.widget.AppCompatSpinner
+import androidx.lifecycle.lifecycleScope
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.afollestad.materialdialogs.MaterialDialog
 import com.afollestad.materialdialogs.input.input
@@ -36,7 +37,12 @@ import com.ve.module.locker.ui.adapter.FlowTagAdapter
 import com.ve.module.locker.ui.viewmodel.LockerPrivacyPassViewModel
 import com.ve.module.locker.utils.AndroidUtil
 import com.ve.module.locker.utils.PasswordUtils
+import kotlinx.coroutines.Dispatchers
+import kotlinx.coroutines.launch
+import kotlinx.coroutines.suspendCancellableCoroutine
+import kotlinx.coroutines.withContext
 import org.jetbrains.anko.backgroundDrawable
+import org.jetbrains.anko.support.v4.runOnUiThread
 import org.litepal.LitePal
 
 /**
@@ -80,8 +86,8 @@ class LockerPassDetailsEditFragment :
     private lateinit var mTagAdapter: FlowTagAdapter
 
     private lateinit var mAppAdapter: AppAdapter
-    private var mCheckAppInfo:AndroidUtil.AppInfo?=null
-    private val mAppInfoList by lazy { AndroidUtil.getAllAppInfo(mContext) }
+    private var mCheckAppInfo: AndroidUtil.AppInfo? = null
+    private var mAppInfoList: MutableList<AndroidUtil.AppInfo>? = null
     private val mAppDialog by lazy { MaterialDialog(mContext) }
 
     override fun initView(savedInstanceState: Bundle?) {
@@ -116,10 +122,11 @@ class LockerPassDetailsEditFragment :
         mBinding.layoutBaseInfo.privacyTagFlowLayout.adapter = mTagAdapter
 
         mAppAdapter = AppAdapter()
-        mCheckAppInfo=AndroidUtil.getAppByPackageName(mContext,mPrivacyPassDetails.appPackageName)
+        mCheckAppInfo =
+            AndroidUtil.getAppByPackageName(mContext, mPrivacyPassDetails.appPackageName)
         LogUtil.msg(mCheckAppInfo.toString())
         mBinding.tvAppName.text = mCheckAppInfo?.name
-        mBinding.ivAppIcon.backgroundDrawable=mCheckAppInfo?.icon
+        mBinding.ivAppIcon.backgroundDrawable = mCheckAppInfo?.icon
     }
 
     override fun initWebData() {
@@ -171,12 +178,26 @@ class LockerPassDetailsEditFragment :
             }
         }
 
+        lifecycleScope.launch {
+            withContext(Dispatchers.Default) {
+                suspendCancellableCoroutine {
+                    if (mAppInfoList.isNullOrEmpty()){
+                        mAppInfoList = AndroidUtil.getAllAppInfo(mContext)
+                    }
+                    runOnUiThread {
+                        mAppAdapter.setNewInstance(mAppInfoList)
+                    }
+                }
+            }
+        }
+
         mBinding.ivAppIcon.setOnClickListener {
-            mAppAdapter.setList(mAppInfoList)
+//            mAppAdapter.setList(mAppInfoList)
+
             mAppAdapter.setOnItemClickListener { adapter, view, position ->
-                mCheckAppInfo=adapter.data[position] as AndroidUtil.AppInfo
+                mCheckAppInfo = adapter.data[position] as AndroidUtil.AppInfo
                 LogUtil.msg(mCheckAppInfo.toString())
-                mAppDialog.message(text = "已选中 "+mCheckAppInfo!!.name)
+                mAppDialog.message(text = "已选中 " + mCheckAppInfo!!.name)
             }
 
             mAppDialog.show {
@@ -184,8 +205,8 @@ class LockerPassDetailsEditFragment :
                 message(text = "已安装的app")
                 customListAdapter(mAppAdapter, LinearLayoutManager(mContext))
                 positiveButton(text = "确定") {
-                    mBinding.tvAppName.text=mCheckAppInfo?.name
-                    mBinding.ivAppIcon.background=mCheckAppInfo?.icon
+                    mBinding.tvAppName.text = mCheckAppInfo?.name
+                    mBinding.ivAppIcon.background = mCheckAppInfo?.icon
                 }
                 negativeButton(text = "取消") {
 
@@ -337,7 +358,7 @@ class LockerPassDetailsEditFragment :
                 mPrivacyTagList
             )
 
-            mPrivacyPassDetails.appPackageName=mCheckAppInfo!!.packageName
+            mPrivacyPassDetails.appPackageName = mCheckAppInfo!!.packageName
             return true
         }
     }

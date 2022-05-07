@@ -7,7 +7,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:padding="@dimen/dp_4"
-            app:sideVisibility="true"
+            app:sideVisibility="false"
             android:theme="@style/AppTheme"
             >
     <androidx.constraintlayout.widget.ConstraintLayout
@@ -48,7 +48,7 @@
                 app:layout_constraintTop_toTopOf="parent"
                 android:id="@+id/tv_friends_nickname"
                 android:paddingStart="@dimen/dp_8"
-                android:layout_width="0dp"
+                android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginStart="@dimen/dp_4"
                 android:ellipsize="end"
@@ -59,11 +59,14 @@
                 style="@style/tv_title_normal"
                 />
         <ImageView
+                android:id="@+id/iv_friends_sex"
                 app:layout_constraintStart_toEndOf="@id/tv_friends_nickname"
                 app:layout_constraintTop_toTopOf="@id/tv_friends_nickname"
-                android:layout_width="@dimen/dp_18"
-                android:layout_height="@dimen/dp_18"
-                android:src="@drawable/ic_male"
+                android:layout_marginTop="@dimen/dp_2"
+                android:layout_marginStart="@dimen/dp_2"
+                android:layout_width="@dimen/dp_16"
+                android:layout_height="@dimen/dp_16"
+                android:background="@drawable/ic_male"
                 />
 
         <TextView
@@ -81,9 +84,9 @@
                 app:drawableStartCompat="@drawable/ic_baseline_person_24" />
 
         <TextView
-                app:layout_constraintStart_toEndOf="@id/tv_friends_name"
+                app:layout_constraintEnd_toStartOf="@id/check_button"
                 app:layout_constraintTop_toTopOf="@id/tv_friends_name"
-                android:layout_marginStart="32dp"
+                android:paddingEnd="32dp"
                 android:id="@+id/tv_friends_birthday"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
@@ -91,7 +94,7 @@
                 android:maxLines="1"
                 style="@style/tv_content_second"
                 tools:text="2022-05-01"
-                app:drawableStartCompat="@drawable/ic_time" />
+                app:drawableStartCompat="@drawable/ic_birthday" />
 
 
         <LinearLayout
@@ -126,8 +129,8 @@
                     tools:text="791422171@qq.com"
                     app:drawableStartCompat="@drawable/ic_baseline_email_24" />
         </LinearLayout>
-        
-        
+
+
         <LinearLayout
                 android:visibility="gone"
                 android:id="@+id/layout_details"
@@ -243,7 +246,7 @@
 
             </LinearLayout>
         </LinearLayout>
-        
+
     </androidx.constraintlayout.widget.ConstraintLayout>
         <LinearLayout
                 android:layout_width="wrap_content"
