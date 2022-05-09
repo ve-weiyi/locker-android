@@ -2,12 +2,12 @@ package com.ve.module.locker.ui.page.setting
 
 
 import android.content.SharedPreferences
-import androidx.appcompat.app.AlertDialog
 
 import androidx.preference.Preference
 import com.ve.lib.utils.CacheDataUtil
 
 import com.ve.module.locker.R
+import com.ve.module.locker.common.config.SettingConstant
 import com.ve.module.locker.ui.page.about.LockerAboutActivity
 
 /**

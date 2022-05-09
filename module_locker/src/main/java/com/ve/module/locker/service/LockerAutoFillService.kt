@@ -75,6 +75,9 @@ public class LockerAutoFillService : AutofillService() {
                 return
             }
 
+            /**
+             * 需要填写的app id
+             */
             val appId = structure.activityComponent.packageName
             val appName = AndroidUtil.getAppName(this, appId)
             LogUtil.msg("appId $appId appName $appName")
@@ -89,7 +92,7 @@ public class LockerAutoFillService : AutofillService() {
                 val password = it.password
                 if (username.isNotEmpty() || password.isNotEmpty()) {
                     val autofillItem = Dataset.Builder()
-                    val usernamePresentation = createRemoteView(appId, name, username)
+                    val usernamePresentation = createRemoteView(name, name, username)
                     parsedStructure.usernameId?.let {
                         clientState.putParcelable(AUTOFILL_ID_USERNAME, it)
                         autofillItem.setValue(

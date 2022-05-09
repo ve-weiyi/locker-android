@@ -1,7 +1,6 @@
-package com.ve.module.locker.ui.page.setting
+package com.ve.module.locker.common.config
 
 import android.app.Application
-import android.content.Context
 import com.ve.lib.vutils.AppContextUtils
 import com.ve.module.locker.R
 
@@ -17,11 +16,11 @@ object SettingConstant {
     var mContext: Application = AppContextUtils.mContext
 
     val SP_KEY_ACCOUNT_SETTING = mContext.getString(R.string.sp_key_account_setting)
-    val SP_KEY_STYLE_SETTING =mContext.getString(R.string.sp_key_style_setting)
-    val SP_KEY_NEWS_SETTING =mContext.getString(R.string.sp_key_news_setting)
-    val SP_KEY_CACHE_SETTING =mContext.getString(R.string.sp_key_cache_setting)
-    val SP_KEY_OTHER_SETTING =mContext.getString(R.string.sp_key_other_setting)
-    val SP_KEY_ABOUT_SETTING=mContext.getString(R.string.sp_key_about_setting)
+    val SP_KEY_STYLE_SETTING = mContext.getString(R.string.sp_key_style_setting)
+    val SP_KEY_NEWS_SETTING = mContext.getString(R.string.sp_key_news_setting)
+    val SP_KEY_CACHE_SETTING = mContext.getString(R.string.sp_key_cache_setting)
+    val SP_KEY_OTHER_SETTING = mContext.getString(R.string.sp_key_other_setting)
+    val SP_KEY_ABOUT_SETTING= mContext.getString(R.string.sp_key_about_setting)
     /**
      * 基础设置
      */

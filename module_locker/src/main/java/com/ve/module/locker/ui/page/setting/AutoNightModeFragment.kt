@@ -7,6 +7,7 @@ import androidx.preference.Preference
 import androidx.preference.PreferenceFragmentCompat
 import com.ve.lib.utils.SettingUtil
 import com.ve.module.locker.R
+import com.ve.module.locker.common.config.SettingConstant
 
 /**
  * Created by chenxz on 2018/6/13.

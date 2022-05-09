@@ -9,6 +9,7 @@ import com.ve.lib.application.BuildConfig
 import com.ve.lib.utils.SettingUtil
 import com.ve.lib.vutils.AppContextUtils
 import com.ve.lib.vutils.LogUtil
+import com.ve.lib.vutils.SpUtil
 import com.ve.module.locker.model.database.AppDataBase
 import org.litepal.LitePal
 import java.util.*
@@ -47,6 +48,10 @@ class LockerApplication:BaseApplication() {
         AppContextUtils.init(this)
         initTheme()
         LogUtil.e("Application init ")
+        SpUtil.getAll().forEach{
+            map->
+            LogUtil.msg(map.toString())
+        }
         AppDataBase.initDataBase()
     }
 

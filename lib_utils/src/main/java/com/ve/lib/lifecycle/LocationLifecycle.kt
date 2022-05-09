@@ -44,6 +44,86 @@ class LocationLifecycle private constructor():LifecycleObserver{
      */
     companion object{
         val instance by lazy { LocationLifecycle() }
+
+
+        fun isPermissionEnable(context: Context): Boolean {
+            return (ActivityCompat.checkSelfPermission(context, Manifest.permission.ACCESS_FINE_LOCATION)
+                    == PackageManager.PERMISSION_GRANTED &&
+                    ActivityCompat.checkSelfPermission(context, Manifest.permission.ACCESS_COARSE_LOCATION)
+                    == PackageManager.PERMISSION_GRANTED)
+        }
+
+        fun permissionCheck(activity: FragmentActivity) {
+            //添加权限检查
+            if (!isPermissionEnable(activity)) {
+                LogUtil.e("TAG", "没有权限")
+                openLocationPermission(activity)
+            }
+
+            /**
+             * 打开位置服务
+             */
+            if (!isLocationProviderEnabled(activity)) {
+
+                DialogUtil.getConfirmDialog(activity, "这项功能需要您打开GPS定位才能正常使用",
+                    onOKClickListener = { dialog, which ->
+                        openLocationServer(activity)
+
+                    },
+                    onCancelClickListener = { dialog, which ->
+
+                    }
+                ).show()
+            }
+        }
+
+        /**
+         * 获取权限（如果没有开启权限，会弹出对话框，询问是否开启权限）
+         */
+        private fun openLocationPermission(activity: FragmentActivity){
+            //请求权限
+            PermissionX.init(activity)
+                .permissions(
+                    Manifest.permission.ACCESS_COARSE_LOCATION,
+                    Manifest.permission.ACCESS_FINE_LOCATION
+                )
+                .onExplainRequestReason { scope, deniedList ->
+                    val message = "PermissionX需要您同意以下权限才能正常使用"
+                    scope.showRequestReasonDialog(deniedList, message, "Allow", "Deny")
+                }
+                .request { allGranted, grantedList, deniedList ->
+                    if (allGranted) {
+                        Toast.makeText(activity, "所有申请的权限都已通过", Toast.LENGTH_SHORT).show()
+                    } else {
+                        Toast.makeText(activity, "您拒绝了如下权限：$deniedList", Toast.LENGTH_SHORT).show()
+                    }
+                }
+        }
+
+        /**
+         * 判断是否开启了GPS或网络定位开关
+         */
+        fun isLocationProviderEnabled(context: Context): Boolean {
+            var result = false
+            val locationManager =
+                context.getSystemService(LOCATION_SERVICE) as LocationManager
+                    ?: return false
+            if (locationManager.isProviderEnabled(LocationManager.GPS_PROVIDER)
+                || locationManager.isProviderEnabled(LocationManager.NETWORK_PROVIDER)
+            ) {
+                result = true
+            }
+            return result
+        }
+
+        /**
+         * 跳转到设置界面，引导用户开启定位服务
+         */
+        private fun openLocationServer(activity: FragmentActivity) {
+            val i = Intent()
+            i.action = Settings.ACTION_LOCATION_SOURCE_SETTINGS
+            activity.startActivity(i)
+        }
     }
 
     /**
@@ -71,22 +151,7 @@ class LocationLifecycle private constructor():LifecycleObserver{
     }
 
     @SuppressLint("MissingPermission")
-    fun setLocationListener(activity: FragmentActivity,listener: LocationListener){
-        //获取权限（如果没有开启权限，会弹出对话框，询问是否开启权限）
-        permissionCheck(activity)
-        /**
-         * 打开位置服务
-         */
-        if (!isLocationProviderEnabled()) {
-            DialogUtil.getConfirmDialog(activity, "打开GPS定位",
-                onOKClickListener = { dialog, which ->
-                    openLocationServer(activity)
-                },
-                onCancelClickListener = { dialog, which ->
-
-                }
-            )
-        }
+    fun setLocationListener(listener: LocationListener?=null){
 
         //1.获取位置管理器
         mLocationManager = context.getSystemService(LOCATION_SERVICE) as LocationManager ?: return
@@ -95,7 +160,9 @@ class LocationLifecycle private constructor():LifecycleObserver{
         //3.获取上次的位置，一般第一次运行，此值为null
         var location: Location?=mLocationManager!!.getLastKnownLocation(mLocationProvider!!)
 
-        mLocationListener=listener
+        listener?.let {
+            mLocationListener=it
+        }
         mLocationManager!!.requestLocationUpdates(
             mLocationProvider!!,
             60*1000,
@@ -107,6 +174,7 @@ class LocationLifecycle private constructor():LifecycleObserver{
 
     @OnLifecycleEvent(Lifecycle.Event.ON_CREATE)
     fun onCreate(){
+        setLocationListener()
         LogUtil.msg("onCreate")
     }
 
@@ -169,61 +237,5 @@ class LocationLifecycle private constructor():LifecycleObserver{
         return result
     }
 
-    private fun permissionCheck(activity: FragmentActivity) {
-        //添加权限检查
-        if (ActivityCompat.checkSelfPermission(
-                activity,
-                Manifest.permission.ACCESS_FINE_LOCATION
-            ) != PackageManager.PERMISSION_GRANTED
-            && ActivityCompat.checkSelfPermission(
-                activity,
-                Manifest.permission.ACCESS_COARSE_LOCATION
-            ) != PackageManager.PERMISSION_GRANTED
-        ) {
-            LogUtil.e("TAG", "没有权限")
 
-            //请求权限
-            PermissionX.init(activity)
-                .permissions(
-                    Manifest.permission.ACCESS_COARSE_LOCATION,
-                    Manifest.permission.ACCESS_FINE_LOCATION
-                )
-                .onExplainRequestReason { scope, deniedList ->
-                    val message = "PermissionX需要您同意以下权限才能正常使用"
-                    scope.showRequestReasonDialog(deniedList, message, "Allow", "Deny")
-                }
-                .request { allGranted, grantedList, deniedList ->
-                    if (allGranted) {
-                        Toast.makeText(activity, "所有申请的权限都已通过", Toast.LENGTH_SHORT).show()
-                    } else {
-                        Toast.makeText(activity, "您拒绝了如下权限：$deniedList", Toast.LENGTH_SHORT).show()
-                    }
-                }
-        }
-    }
-
-    /**
-     * 判断是否开启了GPS或网络定位开关
-     */
-    private fun isLocationProviderEnabled(): Boolean {
-        var result = false
-        val locationManager =
-            AppContextUtils.mContext.getSystemService(LOCATION_SERVICE) as LocationManager
-                ?: return false
-        if (locationManager.isProviderEnabled(LocationManager.GPS_PROVIDER)
-            || locationManager.isProviderEnabled(LocationManager.NETWORK_PROVIDER)
-        ) {
-            result = true
-        }
-        return result
-    }
-
-    /**
-     * 跳转到设置界面，引导用户开启定位服务
-     */
-    private fun openLocationServer(activity: FragmentActivity) {
-        val i = Intent()
-        i.action = Settings.ACTION_LOCATION_SOURCE_SETTINGS
-        activity.startActivity(i)
-    }
 }

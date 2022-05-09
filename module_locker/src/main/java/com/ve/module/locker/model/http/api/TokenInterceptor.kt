@@ -1,8 +1,8 @@
 package com.ve.module.locker.model.http.api
 
 import com.ve.lib.vutils.LogUtil
+import com.ve.lib.vutils.SpUtil
 import com.ve.module.locker.common.config.LockerConstant
-import com.ve.module.locker.common.config.LockerSharePreference
 import okhttp3.Interceptor
 import okhttp3.Response
 
@@ -24,7 +24,7 @@ class TokenInterceptor() : Interceptor {
         val request = chain.request()
         val builder = request.newBuilder()
 
-        mToken = LockerSharePreference.getValue(LockerConstant.TOKEN_KEY,"Authorization is null")
+        mToken = SpUtil.getValue(LockerConstant.TOKEN_KEY,"Authorization is null")
 
         LogUtil.d("mTokenName $mTokenName")
         LogUtil.d("mToken $mToken")

@@ -6,9 +6,13 @@ import android.view.animation.AlphaAnimation
 import android.view.animation.Animation
 import com.ve.lib.common.base.view.vm.BaseActivity
 import com.ve.lib.vutils.LogUtil
+import com.ve.lib.vutils.SpUtil
 import com.ve.module.locker.LockerMainActivity
-import com.ve.module.locker.common.config.LockerSharePreference
+import com.ve.module.locker.common.config.LockerConstant
+import com.ve.module.locker.common.config.SettingConstant
+
 import com.ve.module.locker.databinding.LockerActivitySplashBinding
+import com.ve.module.locker.model.http.model.LoginVO
 import com.ve.module.locker.ui.page.auth.LockerAuthActivity
 import com.ve.module.locker.ui.page.auth.LockerLoginActivity
 
@@ -55,12 +59,13 @@ class LockerSplashActivity : BaseActivity<LockerActivitySplashBinding>() {
     }
 
     override fun initialize(saveInstanceState: Bundle?) {
-        var isLogin=LockerSharePreference.getLoginState()
-        val data=LockerSharePreference.getLoginData()
+        val biometric=SpUtil.getBoolean(SettingConstant.SP_KEY_BIOMETRICS)
+        var isLogin=SpUtil.getValue(LockerConstant.LOGIN_STATE_KEY,false)
+        val data=SpUtil.getValue(LockerConstant.LOGIN_DATA_KEY,LoginVO())
 
         isLogin=true
 
-        LogUtil.msg("isLogin $isLogin")
+        LogUtil.msg("isLogin $biometric")
         LogUtil.msg(data.toString())
         alphaAnimation = AlphaAnimation(0.3F, 1.0F)
         alphaAnimation?.run {
@@ -70,12 +75,12 @@ class LockerSplashActivity : BaseActivity<LockerActivitySplashBinding>() {
                 }
 
                 override fun onAnimationEnd(p0: Animation?) {
-                    jumpToMain()
-//                    if(isLogin){
-//                        jumpToAuth()
-//                    }else{
-//                        jumpToLogin()
-//                    }
+//                    jumpToMain()
+                    if(biometric){
+                        jumpToAuth()
+                    }else{
+                        jumpToMain()
+                    }
 
                 }
 

@@ -11,6 +11,7 @@ import com.ve.lib.common.event.ColorEvent
 import com.ve.lib.utils.SettingUtil
 import com.ve.lib.view.widget.preference.IconPreference
 import com.ve.module.locker.R
+import com.ve.module.locker.common.config.SettingConstant
 import org.greenrobot.eventbus.EventBus
 
 /**

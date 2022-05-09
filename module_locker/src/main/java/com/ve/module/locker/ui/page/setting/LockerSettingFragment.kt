@@ -8,10 +8,17 @@ import android.os.Looper
 import android.provider.Settings
 import androidx.activity.result.ActivityResultLauncher
 import androidx.activity.result.contract.ActivityResultContracts
+import androidx.biometric.BiometricPrompt
+import androidx.core.content.ContextCompat
 import androidx.preference.Preference
+import androidx.preference.SwitchPreference
 import com.ve.lib.common.event.RefreshHomeEvent
 import com.ve.lib.view.widget.preference.IconPreference
 import com.ve.lib.vutils.LogUtil
+import com.ve.lib.vutils.SpUtil
+import com.ve.lib.vutils.ToastUtil
+import com.ve.module.locker.common.config.SettingConstant
+
 import org.greenrobot.eventbus.EventBus
 
 /**
@@ -60,6 +67,39 @@ class LockerSettingFragment : BaseSettingFragment() {
                     EventBus.getDefault().post(RefreshHomeEvent(true))
                 }, 100)
             }
+            SettingConstant.SP_KEY_BIOMETRICS->{
+                val switchPreference=findPreference<SwitchPreference>(key)!!
+                val executor = ContextCompat.getMainExecutor(mContext)
+                val biometricPrompt = BiometricPrompt(this, executor,
+                    object : BiometricPrompt.AuthenticationCallback() {
+                        override fun onAuthenticationError(errorCode: Int, errString: CharSequence) {
+                            super.onAuthenticationError(errorCode, errString)
+                            ToastUtil.showCenter("认证错误！\n" + "Authentication error: $errString!")
+                            switchPreference.isChecked= SpUtil.getBoolean(key)
+                        }
+
+                        override fun onAuthenticationSucceeded(result: BiometricPrompt.AuthenticationResult) {
+                            super.onAuthenticationSucceeded(result)
+                            ToastUtil.showCenter("认证成功！\nAuthentication succeeded!")
+                            SpUtil.setValue(key,switchPreference.isChecked)
+                        }
+
+                        override fun onAuthenticationFailed() {
+                            super.onAuthenticationFailed()
+                            ToastUtil.showCenter("认证失败！请重试")
+                            switchPreference.isChecked= SpUtil.getBoolean(key)
+                        }
+                    })
+
+                val promptInfo = BiometricPrompt.PromptInfo.Builder()
+                    .setTitle("Authentication required")
+                    .setSubtitle("授权登录locker")
+                    .setNegativeButtonText("取消")
+                    .build()
+
+                biometricPrompt.authenticate(promptInfo)
+            }
+
             else -> {
                 showMsg("功能未实现. key=$key  ")
             }

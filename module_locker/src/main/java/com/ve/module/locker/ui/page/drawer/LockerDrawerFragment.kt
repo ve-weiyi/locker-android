@@ -9,16 +9,19 @@ import android.view.View
 import androidx.activity.result.ActivityResultLauncher
 import androidx.activity.result.contract.ActivityResultContracts
 import androidx.appcompat.app.AppCompatDelegate
+import com.luck.picture.lib.tools.SPUtils
 import com.ve.lib.common.base.view.vm.BaseVmFragment
 import com.ve.lib.common.event.AppRecreateEvent
 import com.ve.lib.common.utils.ImageLoader
+import com.ve.lib.lifecycle.LocationLifecycle
 import com.ve.lib.utils.SettingUtil
 import com.ve.lib.view.ext.setOnclickNoRepeatListener
 import com.ve.lib.vutils.LogUtil
+import com.ve.lib.vutils.SpUtil
 import com.ve.module.locker.R
 import com.ve.module.locker.common.config.LockerConstant
 import com.ve.module.locker.common.config.LockerLifecycle
-import com.ve.module.locker.common.config.LockerSharePreference
+
 import com.ve.module.locker.ui.viewmodel.LockerViewModel
 import com.ve.module.locker.databinding.LockerFragmentDrawerBinding
 import com.ve.module.locker.model.http.model.LoginVO
@@ -51,32 +54,42 @@ class LockerDrawerFragment : BaseVmFragment<LockerFragmentDrawerBinding, LockerD
         return LockerDrawerViewModel::class.java
     }
     private lateinit var startActivityLaunch: ActivityResultLauncher<Intent>
-    lateinit var location: Location
-    lateinit var placeName:String
+    var location: Location?=null
+    var placeName:String?=null
 
     override fun initView(savedInstanceState: Bundle?) {
-        showHeather(LockerSharePreference.getLoginState())
-        showUserInfo(LockerSharePreference.getLoginData())
+        showHeather(SpUtil.getValue(LockerConstant.LOGIN_STATE_KEY,false))
+        showUserInfo(SpUtil.getValue(LockerConstant.LOGIN_DATA_KEY,LoginVO()))
 
     }
 
     override fun initWebData() {
         super.initWebData()
-//        mViewModel.refreshWeather(location.longitude.toString(),location.latitude.toString())
+        if(LocationLifecycle.isPermissionEnable(mContext) &&LocationLifecycle.isLocationProviderEnabled(mContext)){
+            val locationLifecycle=LocationLifecycle.instance
+            lifecycle.addObserver(locationLifecycle)
+            location=locationLifecycle.getLastLocation(mContext)
+            placeName= locationLifecycle.getAddress(location)?.get(0)?.featureName
+
+            location?.apply {
+                mViewModel.refreshWeather(location!!.longitude.toString(),location!!.latitude.toString())
+            }
+        }
     }
+
     override fun initObserver() {
         super.initObserver()
 
         LockerLifecycle.loginState.observe(this) {
 
-            LockerSharePreference.setValue(LockerConstant.LOGIN_STATE_KEY,it)
-            LogUtil.msg("$mViewName --$it---  "+ LockerSharePreference.getLoginState())
+            SpUtil.setValue(LockerConstant.LOGIN_STATE_KEY,it)
+            LogUtil.msg("$mViewName --$it---  "+ SpUtil.getValue(LockerConstant.LOGIN_STATE_KEY,false))
             showHeather(it)
         }
 
         LockerLifecycle.loginData.observe(this) {
-            LockerSharePreference.setValue(LockerConstant.LOGIN_DATA_KEY,it)
-            LogUtil.msg("$mViewName --\n$it---  \n"+ LockerSharePreference.getLoginData())
+            SpUtil.setValue(LockerConstant.LOGIN_DATA_KEY,it)
+            LogUtil.msg("$mViewName --\n$it---  \n"+ SpUtil.getValue(LockerConstant.LOGIN_DATA_KEY,LoginVO()))
             showUserInfo(it)
         }
 
@@ -168,13 +181,18 @@ class LockerDrawerFragment : BaseVmFragment<LockerFragmentDrawerBinding, LockerD
                 EventBus.getDefault().post(AppRecreateEvent())
             }
             R.id.action_today_weather->{
-                LogUtil.e("---"+location.longitude+"---"+location.latitude+"---"+placeName)
-                val intent = Intent(requireContext(), WeatherActivity::class.java).apply {
-                    putExtra(SunnyConstant.KEY_LOCATION_LNG, location.longitude.toString())
-                    putExtra(SunnyConstant.KEY_LOCATION_LAT, location.latitude.toString())
-                    putExtra(SunnyConstant.KEY_PLACE_NAME, placeName)
+                if(location==null){
+                    LocationLifecycle.permissionCheck(requireActivity())
+                    initViewData()
+                }else{
+                    LogUtil.e("---"+location!!.longitude+"---"+location!!.latitude+"---"+placeName)
+                    val intent = Intent(requireContext(), WeatherActivity::class.java).apply {
+                        putExtra(SunnyConstant.KEY_LOCATION_LNG, location!!.longitude.toString())
+                        putExtra(SunnyConstant.KEY_LOCATION_LAT, location!!.latitude.toString())
+                        putExtra(SunnyConstant.KEY_PLACE_NAME, placeName)
+                    }
+                    startActivity(intent)
                 }
-                startActivity(intent)
             }
             R.id.action_share->{
                 Intent().run {

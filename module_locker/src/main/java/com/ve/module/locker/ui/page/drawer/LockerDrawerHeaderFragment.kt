@@ -6,9 +6,10 @@ import com.ve.lib.common.base.view.vm.BaseVmFragment
 import com.ve.lib.common.utils.ImageLoader
 import com.ve.lib.view.ext.setOnclickNoRepeatListener
 import com.ve.lib.vutils.LogUtil
+import com.ve.lib.vutils.SpUtil
 import com.ve.module.locker.common.config.LockerConstant
 import com.ve.module.locker.common.config.LockerLifecycle
-import com.ve.module.locker.common.config.LockerSharePreference
+
 import com.ve.module.locker.databinding.LockerFragmentDrawerHeaderBinding
 import com.ve.module.locker.model.http.model.LoginVO
 import com.ve.module.locker.ui.page.auth.LockerLoginActivity
@@ -32,8 +33,8 @@ class LockerDrawerHeaderFragment :
     }
 
     override fun initView(savedInstanceState: Bundle?) {
-        showHeather(LockerSharePreference.getLoginState())
-        showUserInfo(LockerSharePreference.getLoginData())
+        showHeather(SpUtil.getValue(LockerConstant.LOGIN_STATE_KEY,false))
+        showUserInfo(SpUtil.getValue(LockerConstant.LOGIN_DATA_KEY,LoginVO()))
     }
 
     //val userInfoAdapter by lazy { UserInfoAdapter() }
@@ -61,14 +62,12 @@ class LockerDrawerHeaderFragment :
 
         LockerLifecycle.loginState.observe(this) {
 
-            LockerSharePreference.setValue(LockerConstant.LOGIN_STATE_KEY,it)
-            LogUtil.msg("$mViewName --$it---  "+ LockerSharePreference.getLoginState())
+            SpUtil.setValue(LockerConstant.LOGIN_STATE_KEY,it)
             showHeather(it)
         }
 
         LockerLifecycle.loginData.observe(this) {
-            LockerSharePreference.setValue(LockerConstant.LOGIN_DATA_KEY,it)
-            LogUtil.msg("$mViewName --\n$it---  \n"+ LockerSharePreference.getLoginData())
+            SpUtil.setValue(LockerConstant.LOGIN_DATA_KEY,it)
             showUserInfo(it)
         }
     }

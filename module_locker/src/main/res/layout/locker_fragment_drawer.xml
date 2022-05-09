@@ -65,11 +65,20 @@
                                 android:textSize="13sp" />
 
                         <TextView
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:layout_marginTop="2dp"
+                                android:gravity="center"
+                                android:text="(若您使用离线模式，locker将不会同步您的信息)"
+                                android:textColor="@color/colorPrimary"
+                                android:textSize="13sp" />
+
+                        <TextView
                                 android:id="@+id/locker_login_now"
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
                                 android:layout_gravity="center_horizontal"
-                                android:layout_marginTop="20dp"
+                                android:layout_marginTop="10dp"
                                 android:background="@drawable/bg_home_login"
                                 android:paddingStart="40dp"
                                 android:paddingTop="5dp"

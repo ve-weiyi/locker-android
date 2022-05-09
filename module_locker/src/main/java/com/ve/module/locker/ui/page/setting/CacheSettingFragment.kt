@@ -4,14 +4,13 @@ package com.ve.module.locker.ui.page.setting
 import android.content.SharedPreferences
 import android.os.Handler
 import android.os.Looper
-import androidx.appcompat.app.AlertDialog
 
 import androidx.preference.Preference
 import com.ve.lib.common.event.RefreshHomeEvent
 import com.ve.lib.utils.CacheDataUtil
-import com.ve.lib.view.ext.showSnackMsg
 
 import com.ve.module.locker.R
+import com.ve.module.locker.common.config.SettingConstant
 import org.greenrobot.eventbus.EventBus
 
 /**

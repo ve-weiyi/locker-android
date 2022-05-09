@@ -18,11 +18,12 @@ import com.ve.lib.utils.DialogUtil
 import com.ve.lib.utils.PreferenceUtil
 import com.ve.lib.view.widget.passwordGenerator.PasswordGeneratorDialog
 import com.ve.lib.vutils.LogUtil
+import com.ve.lib.vutils.SpUtil
 import com.ve.module.locker.LockerMainActivity
 import com.ve.module.locker.R
 import com.ve.module.locker.common.config.LockerConstant
 import com.ve.module.locker.common.config.LockerLifecycle
-import com.ve.module.locker.common.config.LockerSharePreference
+
 import com.ve.module.locker.databinding.LockerActivityLoginBinding
 import com.ve.module.locker.ui.viewmodel.LockerLoginViewModel
 
@@ -95,8 +96,8 @@ class LockerLoginActivity: BaseVmActivity<LockerActivityLoginBinding, LockerLogi
 
         mViewModel.loginData.observe(this) {
             LockerLifecycle.loginData.value=it
-            LockerSharePreference.setValue(LockerConstant.TOKEN_KEY,it.accessToken)
-            LogUtil.msg(mViewName+"\n--${it.accessToken}\n--"+ LockerSharePreference.getValue(
+            SpUtil.setValue(LockerConstant.TOKEN_KEY,it.accessToken)
+            LogUtil.msg(mViewName+"\n--${it.accessToken}\n--"+ SpUtil.getValue(
                 LockerConstant.TOKEN_KEY,"---")!!)
             if(it!=null) {
                 loginSuccess()

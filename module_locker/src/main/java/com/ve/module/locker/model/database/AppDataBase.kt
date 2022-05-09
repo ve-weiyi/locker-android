@@ -30,7 +30,7 @@ object AppDataBase {
             ),
             PrivacyPass(
                 PrivacyPassInfo(privacyName = "邮箱账号", privacyDesc = "这是我的的个人邮箱，遇到问题可以反馈。"),
-                PrivacyPassDetails(account = "791422171@qq.com", password = "123456789"),
+                PrivacyPassDetails(account = "791422171@qq.com", password = "123456789", appPackageName = "com.tencent.mobileqq"),
                 PrivacyFolder(folderName = "社交", folderCover = CommonUtil.randomColor().toString()),
                 mutableListOf(PrivacyTag(tagName = "测试标签"), PrivacyTag(tagName = "邮箱账号"))
             ),

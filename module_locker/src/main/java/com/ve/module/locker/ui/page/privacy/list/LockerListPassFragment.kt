@@ -62,9 +62,7 @@ class LockerListPassFragment :
 
     override fun initListener() {
         super.initListener()
-        LogUtil.msg("--------")
         mBinding.floatingActionBtn1.setOnclickNoRepeatListener {
-            LogUtil.msg("--------")
             LockerContainerActivity.start(
                 mContext,
                 LockerPassDetailsEditFragment::class.java.name,

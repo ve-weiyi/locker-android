@@ -30,7 +30,7 @@ public class StickUtils {
         //第一个参数只是一个标记，随便传入。
         //第二个参数是要复制到剪贴版的内容
         ClipData clip = ClipData.newPlainText("locker", content.trim());
-        ToastUtil.INSTANCE.showCenter("数据已复制到粘贴板\n"+content);
+        ToastUtil.INSTANCE.showCenter("已复制到粘贴板\n"+content);
         cmb.setPrimaryClip(clip);
     }
     /**
