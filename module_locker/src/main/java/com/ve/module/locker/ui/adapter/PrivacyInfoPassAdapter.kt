@@ -141,7 +141,7 @@ class PrivacyInfoPassAdapter :
             LockerContainerActivity.start(
                 context,
                 LockerPassDetailsSeeFragment::class.java.name,
-                "查看卡片：" + privacyInfo.privacyName,
+                "查看密码：" + privacyInfo.privacyName,
                 bundle
             )
         } else {

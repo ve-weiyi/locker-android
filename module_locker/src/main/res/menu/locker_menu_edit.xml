@@ -14,13 +14,13 @@
             <item
                     android:id="@+id/action_move"
                     android:enabled="true"
-                    android:icon="@drawable/ic_baseline_more_vert_24"
+                    android:icon="@drawable/ic_baseline_content_copy_white_24"
                     android:title="移动"
                     app:showAsAction="ifRoom" />
             <item
                     android:id="@+id/action_delete"
                     android:enabled="true"
-                    android:icon="@drawable/ic_baseline_help_outline_24"
+                    android:icon="@drawable/ic_baseline_delete_white_24"
                     android:title="删除"
                     app:showAsAction="ifRoom" />
         </menu>

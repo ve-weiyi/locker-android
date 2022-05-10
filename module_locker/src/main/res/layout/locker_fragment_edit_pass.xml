@@ -67,7 +67,7 @@
                                     android:layout_width="match_parent"
                                     android:layout_height="wrap_content"
                                     android:padding="@dimen/dp_10"
-                                    android:hint="必填项" />
+                                    android:hint="必须填写账号哦" />
                         </com.google.android.material.textfield.TextInputLayout>
 
 
@@ -191,7 +191,7 @@
                                     android:layout_width="match_parent"
                                     android:layout_height="wrap_content"
                                     android:padding="@dimen/dp_10"
-                                    android:hint="必填项" />
+                                    tools:hint="必填项" />
                         </com.google.android.material.textfield.TextInputLayout>
 
                     </LinearLayout>
@@ -257,7 +257,6 @@
                             style="@style/InputTextLayoutStyle.ClearText">
 
                         <com.google.android.material.textfield.TextInputEditText
-                                android:paddingHorizontal="@dimen/dp_10"
                                 style="@style/EditText"
                                 android:layout_width="match_parent"
                                 android:layout_height="wrap_content"

@@ -11,6 +11,7 @@ class FragmentPage(
     var mFragmentIndex: Int = 0,
     var mFragmentTitle: String = "",
     var mFragmentClass: Class<out Fragment>,
+    var mBottomIcon:Int?=null,
 ) {
 
     var mFragment: Fragment ? = null

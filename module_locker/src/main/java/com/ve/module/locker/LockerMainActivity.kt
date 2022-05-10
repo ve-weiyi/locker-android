@@ -45,7 +45,7 @@ class LockerMainActivity : BaseVmActivity<LockerActivityMainBinding, LockerViewM
     override fun initView(savedInstanceState: Bundle?) {
         initFragment()
         showFragment(mIndex)
-        initToolbar(mBinding.extToolbar.toolbar, homeAsUpEnabled = false)
+        initToolbar(mBinding.extToolbar.toolbar, mFragmentPageList[mIndex].mFragmentTitle,homeAsUpEnabled = false)
         mBinding.bottomNavigation.run {
             //导航栏文字可见;原因：底部导航栏的类别多于三个了，多于三个就会不显示，解决方案如下~~~
             labelVisibilityMode = NavigationBarView.LABEL_VISIBILITY_LABELED
@@ -80,8 +80,6 @@ class LockerMainActivity : BaseVmActivity<LockerActivityMainBinding, LockerViewM
 
         val toolbar = mBinding.extToolbar.toolbar
         val mFragmentPage=mFragmentPageList[index]
-        toolbar.title = mFragmentPage.mFragmentTitle
-
         if (mFragmentPage.mFragment == null) {
             mBinding.bottomNavigation.menu[index].title=mFragmentPage.mFragmentTitle
             mFragmentPage.mFragment=mFragmentPage.getFragment()
@@ -90,6 +88,7 @@ class LockerMainActivity : BaseVmActivity<LockerActivityMainBinding, LockerViewM
             transaction.show(mFragmentPage.mFragment!!)
         }
 
+        toolbar.title = mFragmentPage.mFragmentTitle
         transaction.commit()
     }
 

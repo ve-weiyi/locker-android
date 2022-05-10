@@ -13,23 +13,8 @@
                 android:layout_height="match_parent"
                 android:background="@color/colorBackground"
                 android:orientation="vertical">
-            <TextView
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_marginTop="@dimen/dp_5"
-                    android:text="基本信息"
-                    android:textStyle="bold"
-                    android:textColor="@color/blue"
-                    android:textSize="16sp"
-                    android:gravity="center_horizontal"
-                    />
-            <TextView
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:text="(基本信息将作为搜索时的索引)"
-                    android:textSize="12sp"
-                    android:gravity="center_horizontal"
-                    />
+
+
             <include
                     android:id="@+id/layout_base_info"
                     android:background="@color/white"
@@ -37,54 +22,19 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     layout="@layout/locker_layout_privacy_header" />
-            <TextView
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_marginTop="@dimen/dp_10"
-                    android:text="敏感信息"
-                    android:textStyle="bold"
-                    android:textColor="@color/blue"
-                    android:textSize="16sp"
-                    android:gravity="center_horizontal"
-                    />
-            <TextView
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:text="(敏感信息将以密文的形式存储在数据库中)"
-                    android:textSize="12sp"
-                    android:gravity="center_horizontal"
-                    />
-            <RadioGroup
-                    android:id="@+id/rg_priority"
-                    android:layout_width="wrap_content"
-                    android:layout_height="30dp"
-                    android:layout_gravity="center_horizontal"
-                    android:orientation="horizontal">
 
-                <RadioButton
-                        android:id="@+id/rb0"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_marginEnd="@dimen/dp_10"
-                        android:checked="true"
-                        android:text="显示" />
-
-                <RadioButton
-                        android:id="@+id/rb1"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:text="隐藏" />
-
-            </RadioGroup>
 
 
             <LinearLayout
-                    android:paddingBottom="@dimen/dp_100"
                     android:background="@drawable/bg_round_white_8dp"
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
+
+                    android:layout_marginTop="@dimen/dp_16"
                     android:layout_marginHorizontal="@dimen/dp_10"
-                    android:paddingHorizontal="@dimen/dp_10"
+                    android:paddingHorizontal="@dimen/dp_20"
+                    android:paddingTop="@dimen/dp_8"
+                    android:paddingBottom="@dimen/dp_100"
                     android:orientation="vertical">
 
                 <LinearLayout
@@ -121,7 +71,7 @@
                                     android:layout_width="match_parent"
                                     android:layout_height="wrap_content"
                                     android:padding="@dimen/dp_10"
-                                    android:hint="必填项"
+                                    tools:hint="姓名"
                                     />
                         </com.google.android.material.textfield.TextInputLayout>
 
@@ -160,7 +110,7 @@
                                     android:layout_width="match_parent"
                                     android:layout_height="wrap_content"
                                     android:padding="@dimen/dp_10"
-                                    android:hint="必填项"
+                                    android:hint="必须填写卡号哦"
                                     />
                         </com.google.android.material.textfield.TextInputLayout>
 
@@ -305,7 +255,6 @@
                             style="@style/InputTextLayoutStyle.ClearText">
 
                         <com.google.android.material.textfield.TextInputEditText
-                                android:paddingHorizontal="@dimen/dp_10"
                                 style="@style/EditText"
                                 android:layout_width="match_parent"
                                 android:layout_height="wrap_content"

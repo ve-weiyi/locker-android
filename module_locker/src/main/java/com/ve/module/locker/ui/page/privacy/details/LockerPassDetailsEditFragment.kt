@@ -184,16 +184,17 @@ class LockerPassDetailsEditFragment :
                     if (mAppInfoList.isNullOrEmpty()){
                         mAppInfoList = AndroidUtil.getAllAppInfo(mContext)
                     }
-                    runOnUiThread {
-                        mAppAdapter.setNewInstance(mAppInfoList)
-                    }
+
+//                    runOnUiThread {
+//                        mAppAdapter.setNewInstance(mAppInfoList)
+//                    }
                 }
             }
         }
 
         mBinding.ivAppIcon.setOnClickListener {
 //            mAppAdapter.setList(mAppInfoList)
-
+            mAppAdapter.setNewInstance(mAppInfoList)
             mAppAdapter.setOnItemClickListener { adapter, view, position ->
                 mCheckAppInfo = adapter.data[position] as AndroidUtil.AppInfo
                 LogUtil.msg(mCheckAppInfo.toString())
