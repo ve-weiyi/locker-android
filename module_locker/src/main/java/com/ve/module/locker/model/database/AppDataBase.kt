@@ -23,14 +23,22 @@ object AppDataBase {
 
         val privacyPassList = mutableListOf<PrivacyPass>(
             PrivacyPass(
-                PrivacyPassInfo(privacyName = "qq账号", privacyDesc = "这是开发者的QQ账号哦，遇到问题可以反馈。"),
-                PrivacyPassDetails(account = "791422171", password = "123456789"),
+                PrivacyPassInfo(privacyName = "qq账号", privacyDesc = "应用开发者的QQ账号。"),
+                PrivacyPassDetails(
+                    account = "791422171", password = "123456789",
+                    appPackageName = "com.tencent.mobileqq", url = "https://im.qq.com/index",
+                    phone = "15623356029", remark = "开发者QQ账号，遇到问题可以反馈。"
+                ),
                 PrivacyFolder(folderName = "默认", folderCover = CommonUtil.randomColor().toString()),
                 mutableListOf(PrivacyTag(tagName = "测试标签"), PrivacyTag(tagName = "QQ账号"))
             ),
             PrivacyPass(
                 PrivacyPassInfo(privacyName = "邮箱账号", privacyDesc = "这是我的的个人邮箱，遇到问题可以反馈。"),
-                PrivacyPassDetails(account = "791422171@qq.com", password = "123456789", appPackageName = "com.tencent.mobileqq"),
+                PrivacyPassDetails(
+                    account = "791422171@qq.com",
+                    password = "123456789",
+                    appPackageName = "com.tencent.androidqqmail"
+                ),
                 PrivacyFolder(folderName = "社交", folderCover = CommonUtil.randomColor().toString()),
                 mutableListOf(PrivacyTag(tagName = "测试标签"), PrivacyTag(tagName = "邮箱账号"))
             ),
@@ -39,7 +47,11 @@ object AppDataBase {
                     privacyName = "我的博客",
                     privacyDesc = "这是我的的个人博客网站，遇到问题可以反馈。"
                 ),
-                PrivacyPassDetails(account = "test@qq.com", url = "https://ve77.com/blog", password = "1234567"),
+                PrivacyPassDetails(
+                    account = "https://ve77.com/blog",
+                    url = "https://ve77.com/blog",
+                    password = "1234567"
+                ),
                 PrivacyFolder(folderName = "娱乐", folderCover = CommonUtil.randomColor().toString()),
                 mutableListOf(PrivacyTag(tagName = "测试标签"), PrivacyTag(tagName = "博客"))
             ),
@@ -48,7 +60,11 @@ object AppDataBase {
                     privacyName = "项目源码。",
                     privacyDesc = "GitHub项目源码地址。"
                 ),
-                PrivacyPassDetails(account = "test@qq.com", url = "https://github.com/7914-ve/locker-android", password = "1234567"),
+                PrivacyPassDetails(
+                    account = "https://github.com/7914-ve/locker-android",
+                    url = "https://github.com/7914-ve/locker-android",
+                    password = "1234567"
+                ),
                 PrivacyFolder(folderName = "教育", folderCover = CommonUtil.randomColor().toString()),
                 mutableListOf(PrivacyTag(tagName = "测试标签"), PrivacyTag(tagName = "源码"))
             ),
@@ -68,7 +84,7 @@ object AppDataBase {
                     number = "452724***********1",
                     password = "1234567"
                 ),
-                PrivacyFolder(folderName = "论坛",folderCover = CommonUtil.randomColor().toString()),
+                PrivacyFolder(folderName = "论坛", folderCover = CommonUtil.randomColor().toString()),
                 mutableListOf(PrivacyTag(tagName = "测试标签"), PrivacyTag(tagName = "身份证"))
             ),
             PrivacyCard(
@@ -85,7 +101,7 @@ object AppDataBase {
             )
         )
 
-        val privacyFriendsList= mutableListOf<PrivacyFriendsInfo>(
+        val privacyFriendsList = mutableListOf<PrivacyFriendsInfo>(
             PrivacyFriendsInfo(
                 nickname = "甘老师",
                 name = "甘早斌",
@@ -97,10 +113,10 @@ object AppDataBase {
                 address = "华中科技大学",
                 department = "计算机科学与技术学院",
                 remark = "毕设老师"
-                ),
+            ),
             PrivacyFriendsInfo(
-                nickname = "甘老师1",
-                name = "甘早斌",
+                nickname = "谭老师",
+                name = "谭志虎",
                 sex = 0,
                 phone = "15623356029",
                 qq = "791422171",
@@ -108,21 +124,8 @@ object AppDataBase {
                 wechat = "wy791422171",
                 address = "华中科技大学",
                 department = "计算机科学与技术学院",
-                remark = "毕设老师"
+                remark = "计算机学院副院长"
             ),
-            PrivacyFriendsInfo(
-                nickname = "甘老师2",
-                name = "甘早斌",
-                sex = 1,
-                phone = "15623356029",
-                qq = "791422171",
-                email = "791422171@qq.com",
-                wechat = "wy791422171",
-                address = "华中科技大学",
-                department = "计算机科学与技术学院",
-                remark = "毕设老师"
-            )
-
         )
         privacyPassList.forEach { pass ->
             pass.save()
@@ -130,7 +133,7 @@ object AppDataBase {
         privacyCardList.forEach { card ->
             card.save()
         }
-        privacyFriendsList.forEach { friends->
+        privacyFriendsList.forEach { friends ->
             friends.save()
         }
 
@@ -159,7 +162,7 @@ object AppDataBase {
         val cards = PrivacyCard.getAll()
         LogUtil.msg(cards.toString())
 
-        val passwords=PrivacyPass.getAll()
+        val passwords = PrivacyPass.getAll()
         LogUtil.msg(passwords.toString())
     }
 }

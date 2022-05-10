@@ -54,7 +54,7 @@ class LockerPassDetailsSeeFragment :
         LogUtil.msg(mPrivacyInfoPass!!.getPrivacyDetails().toString())
 
         if (mPrivacyInfoPass != null) {
-            shoPrivacyInfo(mPrivacyInfoPass!!)
+            showPrivacyInfo(mPrivacyInfoPass!!)
             showPrivacyDetails(mPrivacyInfoPass!!.getPrivacyDetails())
         }
 
@@ -135,7 +135,7 @@ class LockerPassDetailsSeeFragment :
         }
     }
 
-    private fun shoPrivacyInfo(privacyInfoPass: PrivacyPassInfo) {
+    private fun showPrivacyInfo(privacyInfoPass: PrivacyPassInfo) {
         val folder = privacyInfoPass.getPrivacyFolder()
         val tags = privacyInfoPass.getPrivacyTags()
         val tagsName = tags.map { it.tagName }
@@ -161,6 +161,7 @@ class LockerPassDetailsSeeFragment :
             etDetailAccount.setText(privacyDetails.account)
             etDetailPassword.setText(privacyDetails.password)
             etDetailPassword.transformationMethod = PasswordTransformationMethod.getInstance()
+            etDetailUrl.setText(privacyDetails.url)
             etDetailPhone.setText(privacyDetails.phone)
             etDetailRemark.setText(privacyDetails.remark)
         }
@@ -175,7 +176,7 @@ class LockerPassDetailsSeeFragment :
             LogUtil.d("$mViewName receiver event " + event.dataClassName)
             if (event.data is PrivacyPass) {
                 mPrivacyInfoPass = event.data.privacyInfo
-                shoPrivacyInfo(mPrivacyInfoPass!!)
+                showPrivacyInfo(mPrivacyInfoPass!!)
                 showPrivacyDetails(mPrivacyInfoPass!!.getPrivacyDetails())
             }
             hasLoadData = false
