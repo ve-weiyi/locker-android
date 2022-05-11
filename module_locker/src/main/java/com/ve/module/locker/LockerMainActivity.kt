@@ -26,6 +26,9 @@ class LockerMainActivity : BaseVmActivity<LockerActivityMainBinding, LockerViewM
 
     private var mIndex = 0
     private lateinit var mFragmentPageList :MutableList<FragmentPage>
+    override fun enableNetworkTip(): Boolean {
+        return false
+    }
 
     private fun initFragment() {
         var pageCount=0

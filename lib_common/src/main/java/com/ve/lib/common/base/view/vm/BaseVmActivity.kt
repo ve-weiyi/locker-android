@@ -144,6 +144,9 @@ abstract class BaseVmActivity<VB : ViewBinding, VM : BaseViewModel> : BaseActivi
                 }
             } else {
                 if (mTipView?.parent == null) {
+                    mTipView?.setOnClickListener {
+                        mTipView?.visibility=View.GONE
+                    }
                     mWindowManager.addView(mTipView, mLayoutParams)
                 }
             }

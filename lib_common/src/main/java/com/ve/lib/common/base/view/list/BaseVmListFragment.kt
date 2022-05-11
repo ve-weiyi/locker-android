@@ -41,13 +41,14 @@ abstract class BaseVmListFragment<VB : ViewBinding, VM : BaseViewModel, LD : Any
         defaultListView(requireContext())
     }
     abstract fun initListView()
+
     override fun getRefreshData() {
-        LogUtil.e("$mViewName getRefreshData ")
+        showMsg("刷新成功")
         initWebData()
     }
 
     override fun getMoreData() {
-        LogUtil.e("$mViewName getMoreData $mCurrentPage")
+        showMsg("加载成功")
         initWebData()
     }
 

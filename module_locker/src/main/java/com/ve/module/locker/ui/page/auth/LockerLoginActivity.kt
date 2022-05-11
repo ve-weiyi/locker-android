@@ -51,8 +51,6 @@ class LockerLoginActivity: BaseVmActivity<LockerActivityLoginBinding, LockerLogi
     }
     override fun useEventBus(): Boolean = false
 
-    override fun enableNetworkTip(): Boolean = false
-    
     /**
      * local username 从内存中读取
      */

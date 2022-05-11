@@ -69,7 +69,9 @@ open class BaseViewModel : ViewModel(), LifecycleObserver {
                 if (NetWorkUtil.isConnected()) {
                     block.invoke(this)
                 }else{
-                    throw ApiException(404,"请检查当前网络状态再重试！")
+                    if(local==null){
+                        throw ApiException(404,"请检查当前网络状态再重试！")
+                    }
                 }
             } catch (e: Exception) {
                 //处理错误

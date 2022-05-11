@@ -7,6 +7,7 @@ import androidx.swiperefreshlayout.widget.SwipeRefreshLayout
 import com.chad.library.adapter.base.BaseQuickAdapter
 import com.chad.library.adapter.base.viewholder.BaseViewHolder
 import com.google.android.material.floatingactionbutton.FloatingActionButton
+import com.ve.lib.vutils.LogUtil
 import com.ve.lib.vutils.ToastUtil
 
 /**
@@ -74,7 +75,7 @@ interface IListView<LD : Any> {
                     mSwipeRefreshLayout?.postDelayed({
                         mCurrentPage = 0
                         getRefreshData()
-                        ToastUtil.show("refresh page at : " + javaClass.simpleName)
+                        LogUtil.msg("refresh page at : " + javaClass.simpleName)
                     }, 1500)
                 },
 
@@ -84,7 +85,7 @@ interface IListView<LD : Any> {
                         mSwipeRefreshLayout?.isRefreshing = false
                         mCurrentPage++
                         getMoreData()
-                        ToastUtil.show("Load more at : " + javaClass.simpleName)
+                        LogUtil.msg("Load more at : " + javaClass.simpleName)
                     }, 500)
                 },
                 itemClickListener = { adapter, view, position ->
