@@ -16,8 +16,8 @@ object LockerConstant {
     const val PASSWORD_KEY = "locker_password"
     const val TOKEN_KEY = "locker_token"
 
-    const val LOGIN_STATE_KEY = "locker_login_state"
-    const val LOGIN_DATA_KEY = "locker_login_data"
+    const val SP_KEY_LOGIN_STATE_KEY = "locker_login_state"
+    const val SP_KEY_LOGIN_DATA_KEY = "locker_login_data"
 
 
 }

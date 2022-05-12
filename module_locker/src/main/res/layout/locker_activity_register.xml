@@ -197,7 +197,7 @@
                     android:paddingVertical="@dimen/dp_16"
                     android:gravity="right"
                     android:text="@string/have_account"
-                    style="@style/tv_title_normal"
+                    style="@style/tv_title_normal_gray"
                     />
 
         </LinearLayout>

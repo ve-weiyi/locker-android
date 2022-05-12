@@ -111,4 +111,12 @@
         <item name="md_color_button_text">#270E27</item>
     </style>
 
+    <style name="tv_user_left_text" parent="tv_title_normal">
+
+    </style>
+
+    <style name="tv_user_right_text" parent="tv_content_second">
+        <item name="android:textSize">@dimen/dp_16</item>
+        <item name="android:drawableEnd">@drawable/ic_arrow_right_24dp</item>
+    </style>
 </resources>

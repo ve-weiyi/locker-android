@@ -11,7 +11,7 @@
                 android:defaultValue="false"
                 android:key="@string/sp_key_account_setting"
                 android:layout="@layout/custom_preference_layout_line"
-                android:summary="@string/switch_no_photo_mode_summary"
+                tools:summary="用户名"
                 android:title="账号管理"
                 android:icon="@mipmap/hust_logo"
                 />

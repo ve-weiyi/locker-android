@@ -2,14 +2,11 @@ package com.ve.module.locker.ui.page.drawer
 
 import android.content.Intent
 import android.location.Location
-import android.net.Uri
 import android.os.Bundle
-import android.provider.Settings
 import android.view.View
 import androidx.activity.result.ActivityResultLauncher
 import androidx.activity.result.contract.ActivityResultContracts
 import androidx.appcompat.app.AppCompatDelegate
-import com.luck.picture.lib.tools.SPUtils
 import com.ve.lib.common.base.view.vm.BaseVmFragment
 import com.ve.lib.common.event.AppRecreateEvent
 import com.ve.lib.common.utils.ImageLoader
@@ -22,7 +19,6 @@ import com.ve.module.locker.R
 import com.ve.module.locker.common.config.LockerConstant
 import com.ve.module.locker.common.config.LockerLifecycle
 
-import com.ve.module.locker.ui.viewmodel.LockerViewModel
 import com.ve.module.locker.databinding.LockerFragmentDrawerBinding
 import com.ve.module.locker.model.http.model.LoginVO
 import com.ve.module.locker.ui.page.auth.LockerLoginActivity
@@ -33,7 +29,6 @@ import com.ve.module.locker.ui.page.container.LockerWebContainerActivity
 import com.ve.module.locker.ui.page.feedback.LockerFeedBackActivity
 import com.ve.module.locker.ui.page.setting.AboutSettingFragment
 import com.ve.module.locker.ui.page.setting.LockerSettingActivity
-import com.ve.module.locker.ui.page.setting.StyleSettingFragment
 import com.ve.module.locker.ui.viewmodel.LockerDrawerViewModel
 import com.ve.module.sunny.ui.weather.WeatherActivity
 import com.ve.module.sunny.util.SkyUtil
@@ -58,8 +53,8 @@ class LockerDrawerFragment : BaseVmFragment<LockerFragmentDrawerBinding, LockerD
     var placeName:String?=null
 
     override fun initView(savedInstanceState: Bundle?) {
-        showHeather(SpUtil.getValue(LockerConstant.LOGIN_STATE_KEY,false))
-        showUserInfo(SpUtil.getValue(LockerConstant.LOGIN_DATA_KEY,LoginVO()))
+        showHeather(SpUtil.getValue(LockerConstant.SP_KEY_LOGIN_STATE_KEY,false))
+        showUserInfo(SpUtil.getValue(LockerConstant.SP_KEY_LOGIN_DATA_KEY,LoginVO()))
 
     }
 
@@ -82,14 +77,14 @@ class LockerDrawerFragment : BaseVmFragment<LockerFragmentDrawerBinding, LockerD
 
         LockerLifecycle.loginState.observe(this) {
 
-            SpUtil.setValue(LockerConstant.LOGIN_STATE_KEY,it)
-            LogUtil.msg("$mViewName --$it---  "+ SpUtil.getValue(LockerConstant.LOGIN_STATE_KEY,false))
+            SpUtil.setValue(LockerConstant.SP_KEY_LOGIN_STATE_KEY,it)
+            LogUtil.msg("$mViewName --$it---  "+ SpUtil.getValue(LockerConstant.SP_KEY_LOGIN_STATE_KEY,false))
             showHeather(it)
         }
 
         LockerLifecycle.loginData.observe(this) {
-            SpUtil.setValue(LockerConstant.LOGIN_DATA_KEY,it)
-            LogUtil.msg("$mViewName --\n$it---  \n"+ SpUtil.getValue(LockerConstant.LOGIN_DATA_KEY,LoginVO()))
+            SpUtil.setValue(LockerConstant.SP_KEY_LOGIN_DATA_KEY,it)
+            LogUtil.msg("$mViewName --\n$it---  \n"+ SpUtil.getValue(LockerConstant.SP_KEY_LOGIN_DATA_KEY,LoginVO()))
             showUserInfo(it)
         }
 
@@ -219,9 +214,9 @@ class LockerDrawerFragment : BaseVmFragment<LockerFragmentDrawerBinding, LockerD
     private fun showUserInfo(it :LoginVO){
         mBinding.layoutUserinfo.apply {
             val item = it.userDetailDTO
-            ImageLoader.load(mContext, item.avatar, itemIvAvatarIcon)
-            itemTvAvatarNickname.text = item.nickname
-            itemTvUserIntro.text = item.intro
+            ImageLoader.load(mContext, item?.avatar, itemIvAvatarIcon)
+            itemTvAvatarNickname.text = item?.nickname
+            itemTvUserIntro.text = item?.intro
         }
     }
 

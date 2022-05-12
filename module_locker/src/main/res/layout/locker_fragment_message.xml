@@ -53,14 +53,5 @@
             android:layout_margin="10dp"
             android:background="#dddddd" />
 
-    <androidx.fragment.app.FragmentContainerView
-            android:id="@+id/drawer_fragment_header"
-            android:name="com.ve.module.chat.ui.page.chat.ChatMessageFragment"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:fitsSystemWindows="true"
-            android:layout_gravity="start"
-            tools:layout="@layout/fragment_imchat_message"
-            />
 
 </LinearLayout>

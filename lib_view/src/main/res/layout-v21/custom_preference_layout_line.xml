@@ -52,7 +52,7 @@
                     android:maxHeight="@dimen/dp_30"
                     android:maxWidth="@dimen/dp_30"
                     android:adjustViewBounds="true"
-
+                    android:layout_marginStart="@dimen/dp_4"
                     android:layout_toStartOf="@id/iv_arrow_right"
                     android:layout_centerVertical="true" />
 
@@ -80,8 +80,8 @@
                     android:orientation="vertical"
                     >
 
-
             </LinearLayout>
+
             <ImageView
                     android:id="@+id/iv_arrow_right"
                     android:layout_width="wrap_content"
@@ -89,8 +89,6 @@
                     android:layout_centerVertical="true"
                     android:layout_alignParentEnd="true"
                     android:src="@drawable/ic_arrow_right_24dp" />
-
-
 
         </LinearLayout>
 

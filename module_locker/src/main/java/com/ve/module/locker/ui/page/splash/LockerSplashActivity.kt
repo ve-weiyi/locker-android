@@ -60,8 +60,8 @@ class LockerSplashActivity : BaseActivity<LockerActivitySplashBinding>() {
 
     override fun initialize(saveInstanceState: Bundle?) {
         val biometric=SpUtil.getBoolean(SettingConstant.SP_KEY_BIOMETRICS)
-        var isLogin=SpUtil.getValue(LockerConstant.LOGIN_STATE_KEY,false)
-        val data=SpUtil.getValue(LockerConstant.LOGIN_DATA_KEY,LoginVO())
+        var isLogin=SpUtil.getValue(LockerConstant.SP_KEY_LOGIN_STATE_KEY,false)
+        val data=SpUtil.getValue(LockerConstant.SP_KEY_LOGIN_DATA_KEY,LoginVO())
 
         isLogin=true
 

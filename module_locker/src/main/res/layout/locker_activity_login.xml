@@ -136,7 +136,7 @@
                     android:layout_marginBottom="@dimen/dp_24"
                     android:gravity="right"
                     android:text="@string/no_account"
-                    style="@style/tv_title_normal"
+                    style="@style/tv_title_normal_gray"
                     />
 
         </LinearLayout>

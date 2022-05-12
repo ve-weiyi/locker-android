@@ -2,10 +2,16 @@ package com.ve.module.locker
 
 import android.annotation.SuppressLint
 import android.content.Context
+import android.os.Environment
 import androidx.appcompat.app.AppCompatDelegate
 import com.alibaba.android.arouter.launcher.ARouter
+import com.tencent.bugly.Bugly
+import com.tencent.bugly.beta.Beta
+import com.tencent.bugly.crashreport.CrashReport
 import com.ve.lib.application.BaseApplication
 import com.ve.lib.application.BuildConfig
+import com.ve.lib.common.config.AppConfig
+import com.ve.lib.utils.CommonUtil
 import com.ve.lib.utils.SettingUtil
 import com.ve.lib.vutils.AppContextUtils
 import com.ve.lib.vutils.LogUtil
@@ -42,11 +48,15 @@ class LockerApplication:BaseApplication() {
             ARouter.openDebug();   // 开启调试模式(如果在InstantRun模式下运行，必须开启调试模式！线上版本需要关闭,否则有安全风险)
         }
         ARouter.init(this); // 尽可能早，推荐在Application中初始化
-
         LitePal.initialize(this);
-
         AppContextUtils.init(this)
         initTheme()
+
+
+
+        Bugly.init(applicationContext, AppConfig.BUGLY_ID, false)
+
+
         LogUtil.e("Application init ")
         SpUtil.getAll().forEach{
             map->
@@ -54,7 +64,6 @@ class LockerApplication:BaseApplication() {
         }
         AppDataBase.initDataBase()
     }
-
 
     /**
      * 初始化主题

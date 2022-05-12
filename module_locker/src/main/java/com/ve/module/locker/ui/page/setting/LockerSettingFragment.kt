@@ -20,6 +20,7 @@ import com.ve.lib.vutils.SpUtil
 import com.ve.lib.vutils.ToastUtil
 import com.ve.module.locker.common.config.SettingConstant
 import com.ve.module.locker.model.database.AppDataBase
+import com.ve.module.locker.ui.page.user.LockerUserInfoActivity
 
 import org.greenrobot.eventbus.EventBus
 
@@ -132,7 +133,7 @@ class LockerSettingFragment : BaseSettingFragment() {
                 LockerSettingActivity.start(mContext, CacheSettingFragment::class.java.name, "缓存设置")
             }
             SettingConstant.SP_KEY_ACCOUNT_SETTING -> {
-                LockerSettingActivity.start(mContext, AboutSettingFragment::class.java.name, "关于")
+                startActivity(mContext,LockerUserInfoActivity::class.java)
             }
             SettingConstant.SP_KEY_ABOUT_SETTING -> {
                 LockerSettingActivity.start(mContext, AboutSettingFragment::class.java.name, "关于")

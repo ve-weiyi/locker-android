@@ -1,22 +1,15 @@
 <?xml version="1.0" encoding="utf-8"?>
-<layout xmlns:android="http://schemas.android.com/apk/res/android"
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
         xmlns:app="http://schemas.android.com/apk/res-auto"
-        xmlns:tools="http://schemas.android.com/tools">
+        xmlns:tools="http://schemas.android.com/tools"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
 
-    <data>
-
-    </data>
-
-    <FrameLayout
+    <androidx.fragment.app.FragmentContainerView
+            android:id="@+id/placeFragment"
+            android:name="com.ve.module.sunny.ui.place.PlaceFragment"
             android:layout_width="match_parent"
-            android:layout_height="match_parent">
+            android:layout_height="match_parent"
+            tools:layout="@layout/fragment_place" />
 
-        <androidx.fragment.app.FragmentContainerView
-                android:id="@+id/placeFragment"
-                android:name="com.ve.module.sunny.ui.place.PlaceFragment"
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                tools:layout="@layout/fragment_place" />
-
-    </FrameLayout>
-</layout>
+</FrameLayout>

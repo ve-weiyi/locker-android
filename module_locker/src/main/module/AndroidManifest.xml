@@ -4,6 +4,7 @@
         package="com.ve.module.locker">
 
     <permission android:name="android.permission.BIND_ACCESSIBILITY_SERVICE"/>
+
     <application
             android:name=".LockerApplication"
             android:allowBackup="true"
@@ -14,6 +15,7 @@
             android:supportsRtl="true"
             android:theme="@style/AppTheme"
             tools:replace="android:theme"
+            android:usesCleartextTraffic="true"
             tools:targetApi="n">
         <activity
                 android:name=".ui.page.auth.LockerAuthActivity"
@@ -35,6 +37,7 @@
         <activity
                 android:name=".LockerMainActivity"
                 android:launchMode="singleTask" />
+        <activity android:name=".ui.page.user.LockerUserInfoActivity"/>
         <activity android:name=".ui.page.auth.LockerLoginActivity" />
         <activity android:name=".ui.page.auth.LockerRegisterActivity" />
         <activity android:name=".ui.page.about.LockerAboutActivity" />

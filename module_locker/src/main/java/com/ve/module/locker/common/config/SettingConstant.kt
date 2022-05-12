@@ -18,6 +18,12 @@ object SettingConstant {
     val isDebug:Boolean=BuildConfig.DEBUG
 
 
+    const val SP_KEY_LOGIN_STATE_KEY = "locker_login_state"
+    const val SP_KEY_LOGIN_DATA_KEY = "locker_login_data"
+
+
+
+
     val SP_KEY_RECRATE_DATABASE="sp_key_recreate_database"
     val SP_KEY_DATABASE_INIT="sp_key_database_init"
 

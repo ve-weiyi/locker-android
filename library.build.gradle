@@ -32,9 +32,9 @@ android {
         viewBinding true
     }
     //不开启这个可能找不到viewBinding
-    dataBinding {
-        enabled = true
-    }
+//    dataBinding {
+//        enabled = true
+//    }
 }
 
 
