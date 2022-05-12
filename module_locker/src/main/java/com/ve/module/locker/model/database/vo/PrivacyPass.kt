@@ -1,5 +1,6 @@
 package com.ve.module.locker.model.database.vo
 
+import com.ve.lib.vutils.LogUtil
 import com.ve.module.locker.model.database.entity.*
 import org.litepal.LitePal
 
@@ -36,6 +37,7 @@ data class PrivacyPass(
         val res1 = privacyFolder.saveOrUpdate("folderName=?",privacyFolder.folderName)
         val res2 = privacyDetails.saveOrUpdate("id=?",privacyDetails.id.toString())
 
+        LogUtil.msg(privacyDetails.toString());
         privacyInfo.privacyFolderId = privacyFolder.id
         privacyInfo.privacyDetailsId = privacyDetails.id
 
@@ -48,16 +50,6 @@ data class PrivacyPass(
             privacyTag.saveOrUpdate("tagName=?",privacyTag.tagName)
             val tagAndPass = TagAndPass(tagId = privacyTag.id, privacyId = privacyInfo.id)
             tagAndPass.save()
-//            val result = LitePal.where("tagName=?", privacyTag.tagName).findFirst(PrivacyTag::class.java)
-//            if (result != null) {
-//                //标签名不能重复
-//                val tagAndPass = TagAndPass(tagId = result.id, privacyId = privacyInfo.id)
-//                tagAndPass.save()
-//            } else {
-//                privacyTag.save()
-//                val tagAndPass = TagAndPass(tagId = privacyTag.id, privacyId = privacyInfo.id)
-//                tagAndPass.save()
-//            }
         }
 
         return res1 && res2 && res3

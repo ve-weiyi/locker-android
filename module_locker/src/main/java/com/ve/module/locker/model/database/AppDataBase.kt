@@ -2,6 +2,8 @@ package com.ve.module.locker.model.database
 
 import com.ve.lib.utils.CommonUtil
 import com.ve.lib.vutils.LogUtil
+import com.ve.lib.vutils.SpUtil
+import com.ve.module.locker.common.config.SettingConstant
 import com.ve.module.locker.model.database.dao.PrivacyInfoDao
 import com.ve.module.locker.model.database.entity.*
 import com.ve.module.locker.model.database.vo.PrivacyCard
@@ -17,9 +19,16 @@ object AppDataBase {
 
     val dao = PrivacyInfoDao
     fun initDataBase() {
-        LitePal.deleteDatabase("locker")
-
         LitePal.aesKey("1234567890123456");
+//        LogUtil.msg(SpUtil.setValue(SettingConstant.SP_KEY_DATABASE_INIT,true))
+//        LogUtil.msg(SpUtil.getBoolean(SettingConstant.SP_KEY_DATABASE_INIT))
+
+        if(SpUtil.getValue(SettingConstant.SP_KEY_DATABASE_INIT,true)){
+            LogUtil.msg("data already init");
+            return
+        }
+
+        LitePal.deleteDatabase("locker")
 
         val privacyPassList = mutableListOf<PrivacyPass>(
             PrivacyPass(
@@ -27,7 +36,7 @@ object AppDataBase {
                 PrivacyPassDetails(
                     account = "791422171", password = "123456789",
                     appPackageName = "com.tencent.mobileqq", url = "https://im.qq.com/index",
-                    phone = "15623356029", remark = "开发者QQ账号，遇到问题可以反馈。"
+                    phone = "15623356029", remark = "开发者QQ账号，遇到问题可以反馈"
                 ),
                 PrivacyFolder(folderName = "默认", folderCover = CommonUtil.randomColor().toString()),
                 mutableListOf(PrivacyTag(tagName = "测试标签"), PrivacyTag(tagName = "QQ账号"))
@@ -164,5 +173,7 @@ object AppDataBase {
 
         val passwords = PrivacyPass.getAll()
         LogUtil.msg(passwords.toString())
+
+        SpUtil.setValue(SettingConstant.SP_KEY_DATABASE_INIT,false);
     }
 }

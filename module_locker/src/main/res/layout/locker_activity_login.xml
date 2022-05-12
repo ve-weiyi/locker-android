@@ -130,12 +130,14 @@
             <TextView
                     android:id="@+id/tv_sign_up"
                     android:layout_marginTop="50dp"
+                    android:paddingVertical="@dimen/dp_16"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_marginBottom="@dimen/dp_24"
                     android:gravity="right"
                     android:text="@string/no_account"
-                    android:textSize="@dimen/sp_16" />
+                    style="@style/tv_title_normal"
+                    />
 
         </LinearLayout>
 

@@ -7,6 +7,7 @@ import android.widget.TextView
 import com.ve.lib.common.base.view.vm.BaseVmActivity
 import com.ve.lib.utils.DialogUtil
 import com.ve.lib.view.ext.setOnclickNoRepeatListener
+import com.ve.module.locker.common.config.SettingConstant
 import com.ve.module.locker.databinding.LockerActivityRegisterBinding
 import com.ve.module.locker.ui.viewmodel.LockerRegisterViewModel
 import com.ve.module.locker.utils.PasswordUtils
@@ -33,9 +34,11 @@ class LockerRegisterActivity :
 
     override fun initView(savedInstanceState: Bundle?) {
         initToolbar(mBinding.extToolbar.toolbar, "注册")
-        mBinding.etUsername.editText!!.setText("791422171@qq.com")
-        mBinding.etPassword.editText!!.setText("1234567")
-        mBinding.etPassword2.editText!!.setText("1234567")
+        if(SettingConstant.isDebug){
+            mBinding.etUsername.editText!!.setText("791422171@qq.com")
+            mBinding.etPassword.editText!!.setText("1234567")
+            mBinding.etPassword2.editText!!.setText("1234567")
+        }
     }
 
     private lateinit var username: String

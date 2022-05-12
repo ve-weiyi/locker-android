@@ -422,9 +422,7 @@
                                     android:text="备注" />
 
                             <EditText
-
                                     style="@style/EditText.See"
-                                    android:paddingHorizontal="@dimen/dp_10"
                                     android:id="@+id/et_detail_remark"
                                     android:layout_width="match_parent"
                                     android:layout_height="wrap_content"

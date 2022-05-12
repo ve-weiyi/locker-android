@@ -54,8 +54,7 @@ class PrivacyInfoPassAdapter :
         }
 
         val app=AndroidUtil.getAppByPackageName(context,item.getPrivacyDetails().appPackageName)
-        holder.setImageDrawable(R.id.iv_app_icon,app.icon)
-
+        holder.setImageDrawable(R.id.iv_app_icon,app?.icon)
 
         val account=item.getPrivacyDetails().account
         holder.setText(R.id.tv_privacy_info_account, account)

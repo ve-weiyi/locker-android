@@ -3,6 +3,7 @@ package com.ve.module.locker.model.database.entity
 import com.chad.library.adapter.base.entity.SectionEntity
 import com.ve.lib.utils.CommonUtil
 import com.ve.lib.vutils.DateTimeUtil
+import com.ve.lib.vutils.LogUtil
 import com.ve.module.locker.model.database.vo.PrivacySimpleInfo
 import org.litepal.LitePal
 import org.litepal.annotation.Column
@@ -34,11 +35,11 @@ data class PrivacyPassInfo(
     public var updateTime: String = DateTimeUtil.dateAndTime,
     //(varue = "文件夹id")
     @Column(index = true)
-    public var privacyFolderId: Long = 1,
+    public var privacyFolderId: Long =1 ,
 
     //(varue = "隐私id")
     @Column(index = true)
-    public var privacyDetailsId: Long = 1,
+    public var privacyDetailsId: Long =1,
 
 
     @Column(ignore = true)
@@ -92,6 +93,7 @@ data class PrivacyPassInfo(
      * 一对一，主键关联
      */
     public fun getPrivacyDetails(): PrivacyPassDetails {
+        LogUtil.msg(LitePal.find(PrivacyPassDetails::class.java, privacyDetailsId).toString())
         return LitePal.find(PrivacyPassDetails::class.java, privacyDetailsId)
     }
 

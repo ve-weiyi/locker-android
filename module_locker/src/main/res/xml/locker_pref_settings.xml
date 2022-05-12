@@ -94,6 +94,12 @@
                 android:layout="@layout/custom_preference_layout_line"
                 android:title="导入/导出" />
 
+        <Preference
+                android:defaultValue="false"
+                android:key="sp_key_recreate_database"
+                android:layout="@layout/custom_preference_layout_line"
+                android:title="重置数据库" />
+
     </PreferenceCategory>
 
 <!--    <PreferenceCategory-->

@@ -53,9 +53,9 @@ object LogUtil {
     }
 
     @JvmStatic
-    fun msg(msg: String) {
+    fun msg(obj: Any) {
         logMsg(
-            msg=msg,
+            msg=obj.toString(),
             info = autoJumpLogInfo(4),
             logFun = { tag,msg,info->
                 Log.e(tag, info[1] + info[2] + " --->> " + msg)

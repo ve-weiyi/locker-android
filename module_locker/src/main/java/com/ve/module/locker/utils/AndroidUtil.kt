@@ -33,13 +33,18 @@ object AndroidUtil {
         }
     }
 
-    fun getAppByPackageName(context: Context, packageName: String): AppInfo {
+    fun getAppByPackageName(context: Context, packageName: String): AppInfo? {
+        return try {
         val packageManager: PackageManager = context.packageManager
         val packages = packageManager.getInstalledPackages(0)
 
         val appInfo = context.packageManager.getApplicationInfo(packageName, PackageManager.GET_META_DATA)
         LogUtil.msg(appInfo.packageName)
         return AppInfo( appInfo.packageName,appInfo.loadLabel(packageManager).toString(), appInfo.loadIcon(packageManager))
+        } catch (e: Exception) {
+            Log.e("getAppName", "getAppName error", e)
+            null
+        }
     }
 
     fun getAppName(context: Context, appId: String): String? {

@@ -13,11 +13,13 @@ import androidx.core.content.ContextCompat
 import androidx.preference.Preference
 import androidx.preference.SwitchPreference
 import com.ve.lib.common.event.RefreshHomeEvent
+import com.ve.lib.utils.DialogUtil
 import com.ve.lib.view.widget.preference.IconPreference
 import com.ve.lib.vutils.LogUtil
 import com.ve.lib.vutils.SpUtil
 import com.ve.lib.vutils.ToastUtil
 import com.ve.module.locker.common.config.SettingConstant
+import com.ve.module.locker.model.database.AppDataBase
 
 import org.greenrobot.eventbus.EventBus
 
@@ -38,7 +40,8 @@ class LockerSettingFragment : BaseSettingFragment() {
         SettingConstant.SP_KEY_STYLE_SETTING,
         SettingConstant.SP_KEY_CACHE_SETTING,
         SettingConstant.SP_KEY_ABOUT_SETTING,
-        SettingConstant.SP_KEY_AUTO_FILL
+        SettingConstant.SP_KEY_AUTO_FILL,
+        SettingConstant.SP_KEY_RECRATE_DATABASE
         )
 
     private lateinit var startActivityLaunch: ActivityResultLauncher<Intent>
@@ -110,6 +113,18 @@ class LockerSettingFragment : BaseSettingFragment() {
     override fun onPreferenceClick(preference: Preference?): Boolean {
         LogUtil.msg("sharedPreferences ${preference?.key}")
         when (preference?.key) {
+            SettingConstant.SP_KEY_RECRATE_DATABASE->{
+                DialogUtil.getConfirmDialog(
+                    mContext,
+                    "是否重置应用数据，该过程会删除已保存的密码和卡片。请在备份后谨慎操作。",
+                    onOKClickListener = {
+                        d,w->
+                        SpUtil.setValue(SettingConstant.SP_KEY_DATABASE_INIT,false)
+                        AppDataBase.initDataBase()
+                    },
+                    onCancelClickListener = null
+                ).show()
+            }
             SettingConstant.SP_KEY_STYLE_SETTING -> {
                 LockerSettingActivity.start(mContext, StyleSettingFragment::class.java.name, "主题设置")
             }

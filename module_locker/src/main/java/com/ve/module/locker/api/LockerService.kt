@@ -16,7 +16,7 @@ interface LockerService {
         /**
          * 服务器地址
          */
-        const val BASE_URL = "http://ve77.cn:8084/"
+        const val BASE_URL = "https://ve77.cn:8084/"
         /**
          * 本地测试地址 只能填服务器的地址+端口，并且以/结尾
          */

@@ -154,8 +154,8 @@ class LockerPassDetailsSeeFragment :
     private fun showPrivacyDetails(privacyDetails: PrivacyPassDetails) {
 
         val mCheckAppInfo= AndroidUtil.getAppByPackageName(mContext,privacyDetails.appPackageName)
-        mBinding.tvAppName.text = mCheckAppInfo.name
-        mBinding.ivAppIcon.backgroundDrawable= mCheckAppInfo.icon
+        mBinding.tvAppName.text = mCheckAppInfo?.name
+        mBinding.ivAppIcon.backgroundDrawable= mCheckAppInfo?.icon
 
         mBinding.apply {
             etDetailAccount.setText(privacyDetails.account)

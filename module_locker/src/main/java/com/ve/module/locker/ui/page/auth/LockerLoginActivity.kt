@@ -23,6 +23,7 @@ import com.ve.module.locker.LockerMainActivity
 import com.ve.module.locker.R
 import com.ve.module.locker.common.config.LockerConstant
 import com.ve.module.locker.common.config.LockerLifecycle
+import com.ve.module.locker.common.config.SettingConstant
 
 import com.ve.module.locker.databinding.LockerActivityLoginBinding
 import com.ve.module.locker.ui.viewmodel.LockerLoginViewModel
@@ -39,8 +40,10 @@ class LockerLoginActivity: BaseVmActivity<LockerActivityLoginBinding, LockerLogi
         initToolbar(mBinding.extToolbar.toolbar, "登录", true)
 
         setText()
-        et_username.setText(LockerConstant.username)
-        et_password.setText(LockerConstant.password)
+        if(SettingConstant.isDebug){
+            et_username.setText(LockerConstant.username)
+            et_password.setText(LockerConstant.password)
+        }
     }
 
     override fun attachViewBinding(): LockerActivityLoginBinding {

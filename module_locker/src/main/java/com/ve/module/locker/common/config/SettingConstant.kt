@@ -2,6 +2,7 @@ package com.ve.module.locker.common.config
 
 import android.app.Application
 import com.ve.lib.vutils.AppContextUtils
+import com.ve.module.locker.BuildConfig
 import com.ve.module.locker.R
 
 
@@ -14,6 +15,11 @@ object SettingConstant {
 
 
     var mContext: Application = AppContextUtils.mContext
+    val isDebug:Boolean=BuildConfig.DEBUG
+
+
+    val SP_KEY_RECRATE_DATABASE="sp_key_recreate_database"
+    val SP_KEY_DATABASE_INIT="sp_key_database_init"
 
     val SP_KEY_ACCOUNT_SETTING = mContext.getString(R.string.sp_key_account_setting)
     val SP_KEY_STYLE_SETTING = mContext.getString(R.string.sp_key_style_setting)
