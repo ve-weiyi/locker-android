@@ -49,6 +49,7 @@ object PasswordUtils {
 
     /**
      * 判断密码强度
+     * https://www.nowcoder.com/questionTerminal/52d382c2a7164767bca2064c1c9d5361?answerType=1&f=discussion
      */
     fun checkPasswordLevel(password:String): PasswordEnum {
         val cs: CharArray = password.toCharArray()

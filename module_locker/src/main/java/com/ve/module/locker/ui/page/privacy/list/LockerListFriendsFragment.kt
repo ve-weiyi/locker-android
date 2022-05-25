@@ -16,8 +16,8 @@ import com.ve.lib.vutils.LogUtil
 import com.ve.module.locker.R
 import com.ve.module.locker.common.event.RefreshDataEvent
 import com.ve.module.locker.databinding.LockerFragmentListPrivacyBinding
-import com.ve.module.locker.model.database.entity.PrivacyFolder
-import com.ve.module.locker.model.database.entity.PrivacyFriendsInfo
+import com.ve.module.locker.model.db.entity.PrivacyFolder
+import com.ve.module.locker.model.db.entity.PrivacyFriendsInfo
 import com.ve.module.locker.model.http.model.ConditionVO
 import com.ve.module.locker.ui.adapter.PrivacyInfoFriendsAdapter
 import com.ve.module.locker.ui.page.container.LockerContainerActivity

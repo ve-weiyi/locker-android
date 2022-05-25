@@ -1,4 +1,4 @@
-package com.ve.module.locker.model.database.entity
+package com.ve.module.locker.model.db.entity
 
 import org.litepal.annotation.Column
 import org.litepal.crud.LitePalSupport

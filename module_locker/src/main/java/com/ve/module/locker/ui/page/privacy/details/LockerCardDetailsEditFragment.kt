@@ -26,11 +26,11 @@ import com.ve.lib.vutils.DateTimeUtil
 import com.ve.module.locker.R
 import com.ve.module.locker.common.event.RefreshDataEvent
 import com.ve.module.locker.databinding.LockerFragmentEditCardBinding
-import com.ve.module.locker.model.database.entity.PrivacyCardDetails
-import com.ve.module.locker.model.database.entity.PrivacyFolder
-import com.ve.module.locker.model.database.entity.PrivacyCardInfo
-import com.ve.module.locker.model.database.entity.PrivacyTag
-import com.ve.module.locker.model.database.vo.PrivacyCard
+import com.ve.module.locker.model.db.entity.PrivacyCardDetails
+import com.ve.module.locker.model.db.entity.PrivacyFolder
+import com.ve.module.locker.model.db.entity.PrivacyCardInfo
+import com.ve.module.locker.model.db.entity.PrivacyTag
+import com.ve.module.locker.model.db.vo.PrivacyCard
 import com.ve.module.locker.ui.adapter.FlowTagAdapter
 import com.ve.module.locker.ui.viewmodel.LockerPrivacyCardViewModel
 import com.ve.module.locker.utils.PasswordUtils

@@ -1,13 +1,13 @@
-package com.ve.module.locker.model.database
+package com.ve.module.locker.model.db
 
 import com.ve.lib.utils.CommonUtil
 import com.ve.lib.vutils.LogUtil
 import com.ve.lib.vutils.SpUtil
 import com.ve.module.locker.common.config.SettingConstant
-import com.ve.module.locker.model.database.dao.PrivacyInfoDao
-import com.ve.module.locker.model.database.entity.*
-import com.ve.module.locker.model.database.vo.PrivacyCard
-import com.ve.module.locker.model.database.vo.PrivacyPass
+import com.ve.module.locker.model.db.dao.PrivacyInfoDao
+import com.ve.module.locker.model.db.entity.*
+import com.ve.module.locker.model.db.vo.PrivacyCard
+import com.ve.module.locker.model.db.vo.PrivacyPass
 import org.litepal.LitePal
 
 /**
@@ -115,6 +115,7 @@ object AppDataBase {
                 nickname = "甘老师",
                 name = "甘早斌",
                 sex = 1,
+                birthday = "2000-05-01",
                 phone = "15623356029",
                 qq = "791422171",
                 email = "791422171@qq.com",
@@ -127,6 +128,7 @@ object AppDataBase {
                 nickname = "谭老师",
                 name = "谭志虎",
                 sex = 0,
+                birthday = "2000-05-01",
                 phone = "15623356029",
                 qq = "791422171",
                 email = "791422171@qq.com",
@@ -134,6 +136,19 @@ object AppDataBase {
                 address = "华中科技大学",
                 department = "计算机科学与技术学院",
                 remark = "计算机学院副院长"
+            ),
+            PrivacyFriendsInfo(
+                nickname = "韦同学",
+                name = "韦XX",
+                sex = 1,
+                birthday = "2000-05-01",
+                phone = "15623356029",
+                qq = "791422171",
+                email = "791422171@qq.com",
+                wechat = "wy791422171",
+                address = "华中科技大学",
+                department = "计算机科学与技术学院",
+                remark = "学生"
             ),
         )
         privacyPassList.forEach { pass ->

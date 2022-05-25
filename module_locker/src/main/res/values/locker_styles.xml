@@ -89,13 +89,6 @@
         <!--        <item name="android:inputType">text|textPassword</item>-->
     </style>
 
-    <style name="roundImageView">
-        <item name="cornerFamily">rounded</item>
-        <item name="cornerSize">50%</item>
-        <item name="android:layout_width">50dp</item>
-        <item name="android:layout_height">50dp</item>
-    </style>
-
 
     <style name="customDialogBg">
         <!--        背景颜色-->

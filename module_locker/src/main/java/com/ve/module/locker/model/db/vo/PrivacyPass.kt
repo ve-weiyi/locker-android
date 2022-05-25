@@ -1,7 +1,7 @@
-package com.ve.module.locker.model.database.vo
+package com.ve.module.locker.model.db.vo
 
 import com.ve.lib.vutils.LogUtil
-import com.ve.module.locker.model.database.entity.*
+import com.ve.module.locker.model.db.entity.*
 import org.litepal.LitePal
 
 /**

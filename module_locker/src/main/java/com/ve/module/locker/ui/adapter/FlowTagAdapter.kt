@@ -5,7 +5,7 @@ import android.view.View
 import android.widget.TextView
 import com.ve.lib.utils.CommonUtil
 import com.ve.module.locker.R
-import com.ve.module.locker.model.database.entity.PrivacyTag
+import com.ve.module.locker.model.db.entity.PrivacyTag
 import com.zhy.view.flowlayout.FlowLayout
 import com.zhy.view.flowlayout.TagAdapter
 

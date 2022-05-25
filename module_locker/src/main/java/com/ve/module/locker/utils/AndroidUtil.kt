@@ -34,16 +34,17 @@ object AndroidUtil {
     }
 
     fun getAppByPackageName(context: Context, packageName: String): AppInfo? {
-        return try {
         val packageManager: PackageManager = context.packageManager
+        return try {
         val packages = packageManager.getInstalledPackages(0)
 
         val appInfo = context.packageManager.getApplicationInfo(packageName, PackageManager.GET_META_DATA)
         LogUtil.msg(appInfo.packageName)
         return AppInfo( appInfo.packageName,appInfo.loadLabel(packageManager).toString(), appInfo.loadIcon(packageManager))
         } catch (e: Exception) {
-            Log.e("getAppName", "getAppName error", e)
-            null
+            LogUtil.msg(e)
+            e.printStackTrace()
+            return AppInfo(context.applicationInfo,packageManager)
         }
     }
 
@@ -54,7 +55,7 @@ object AndroidUtil {
             appInfo.loadLabel(context.packageManager).toString()
         } catch (e: Exception) {
             Log.e("getAppName", "getAppName error", e)
-            null
+            return context.applicationInfo.name
         }
     }
 
@@ -137,7 +138,14 @@ object AndroidUtil {
 
         ) : Serializable {
 
+            constructor(applicationInfo: ApplicationInfo,packageManager: PackageManager) : this() {
+                packageName=applicationInfo.packageName
+                name=applicationInfo.loadLabel(packageManager).toString()
+                icon=applicationInfo.loadIcon(packageManager)
+            }
+
     }
+
 
     fun getCertificatesHash(context: Context, packageName: String): String {
         val pm: PackageManager = context.packageManager

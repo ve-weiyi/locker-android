@@ -9,8 +9,9 @@ import com.ve.lib.common.base.view.list.BaseVmListFragment
 import com.ve.lib.common.base.view.list.ListViewManager
 import com.ve.lib.vutils.LogUtil
 import com.ve.module.locker.databinding.LockerFragmentTagBinding
-import com.ve.module.locker.model.database.entity.PrivacyTag
+import com.ve.module.locker.model.db.entity.PrivacyTag
 import com.ve.module.locker.ui.adapter.PrivacyTagAdapter
+import com.ve.module.locker.ui.page.privacy.LockerGroupActivity
 import com.ve.module.locker.ui.viewmodel.LockerCategoryViewModel
 
 /**
@@ -18,7 +19,7 @@ import com.ve.module.locker.ui.viewmodel.LockerCategoryViewModel
  * @Author  weiyi
  * @Date 2022/4/8
  */
-class LockerCategoryTagFragment :
+class LockerTagFragment :
     BaseVmListFragment<LockerFragmentTagBinding, LockerCategoryViewModel, PrivacyTag>() {
 
     override fun attachViewBinding(): LockerFragmentTagBinding {

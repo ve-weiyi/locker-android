@@ -32,6 +32,9 @@ import java.util.Base64;
  *
  * AES加密算法原理分析
  * https://blog.csdn.net/yanhaijunyan/article/details/104037400
+ *
+ * AES 是⼀种对称算法，它使⽤相同的 128、192 或 256 位密钥进⾏加密和解密。128、192 或 256 位的密钥可以理解为分别对应
+ * 16、24和32个字节的16进制字符串密钥，AES 系统的安全性会随密钥长度呈指数增长
  * @Author weiyi
  * @Date 2022/4/10
  */

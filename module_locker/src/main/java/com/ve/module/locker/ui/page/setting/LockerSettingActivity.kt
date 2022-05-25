@@ -41,7 +41,7 @@ class LockerSettingActivity: BaseActivity<LockerActivitySettingBinding>(){
                 putExtra(FRAGMENT_ARGUMENTS_KEY,fragmentBundle)
                 //启动模式
 //                flags=Intent.FLAG_ACTIVITY_SINGLE_TOP
-                context.startActivity(this, fragmentBundle)
+                context.startActivity(this)
             }
         }
     }

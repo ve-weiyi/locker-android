@@ -11,9 +11,10 @@ import com.ve.lib.vutils.LogUtil
 import com.ve.module.locker.R
 import com.ve.module.locker.common.event.RefreshDataEvent
 import com.ve.module.locker.databinding.LockerFragmentListPrivacyBinding
-import com.ve.module.locker.model.database.entity.PrivacyFolder
-import com.ve.module.locker.model.database.entity.PrivacyPassInfo
+import com.ve.module.locker.model.db.entity.PrivacyFolder
+import com.ve.module.locker.model.db.entity.PrivacyPassInfo
 import com.ve.module.locker.ui.adapter.PrivacyInfoPassAdapter
+import com.ve.module.locker.ui.page.auth.LockerLoginActivity
 import com.ve.module.locker.ui.page.container.LockerContainerActivity
 import com.ve.module.locker.ui.page.privacy.details.LockerPassDetailsEditFragment
 import com.ve.module.locker.ui.page.search.LockerListPassSearchFragment
@@ -63,6 +64,7 @@ class LockerListPassFragment :
     override fun initListener() {
         super.initListener()
         mBinding.floatingActionBtn1.setOnclickNoRepeatListener {
+
             LockerContainerActivity.start(
                 mContext,
                 LockerPassDetailsEditFragment::class.java.name,

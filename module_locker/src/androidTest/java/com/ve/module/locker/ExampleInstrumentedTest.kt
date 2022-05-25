@@ -8,8 +8,8 @@ import com.ve.lib.view.widget.passwordGenerator.PasswordGenerator
 import com.ve.lib.vutils.LogUtil
 import com.ve.lib.vutils.ToastUtil
 import com.ve.module.locker.common.config.LockerConstant
-import com.ve.module.locker.model.database.AppDataBase
-import com.ve.module.locker.model.database.entity.*
+import com.ve.module.locker.model.db.AppDataBase
+import com.ve.module.locker.model.db.entity.*
 import com.ve.module.locker.model.respository.AuthRepository
 import com.ve.module.locker.model.respository.PrivacyTagRepository
 import com.ve.module.locker.model.http.model.ConditionVO

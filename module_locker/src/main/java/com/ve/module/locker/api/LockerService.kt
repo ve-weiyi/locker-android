@@ -1,7 +1,7 @@
 package com.ve.module.locker.api
 
-import com.ve.module.locker.model.database.entity.*
-import com.ve.module.locker.model.database.entity.PrivacyTag
+import com.ve.module.locker.model.db.entity.*
+import com.ve.module.locker.model.db.entity.PrivacyTag
 import com.ve.module.locker.model.http.model.*
 import retrofit2.http.*
 

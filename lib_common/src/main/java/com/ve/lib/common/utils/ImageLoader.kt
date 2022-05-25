@@ -4,23 +4,21 @@ import android.content.Context
 import android.content.res.ColorStateList
 import android.graphics.Bitmap
 import android.graphics.Color
-import android.graphics.ColorFilter
-import android.graphics.LightingColorFilter
 import android.graphics.drawable.BitmapDrawable
 import android.graphics.drawable.Drawable
-import android.graphics.drawable.GradientDrawable
 import android.view.View
 import android.widget.ImageView
 import com.bumptech.glide.Glide
 import com.bumptech.glide.load.engine.DiskCacheStrategy
 import com.bumptech.glide.request.RequestOptions
 import com.bumptech.glide.request.target.CustomTarget
+import com.tencent.bugly.proguard.v
 import com.ve.lib.network.http.util.NetWorkUtil
 import com.ve.lib.utils.R
 import com.ve.lib.utils.SettingUtil
 import com.ve.lib.vutils.AppContextUtils
 import com.ve.lib.vutils.LogUtil
-import java.lang.Exception
+import java.io.File
 
 
 /**
@@ -30,7 +28,7 @@ object ImageLoader {
 
     // 1.开启无图模式 2.非WiFi环境 不加载图片
     private val isLoadImage =
-        !SettingUtil.getIsNoPhotoMode() || NetWorkUtil.isWifi(AppContextUtils.mContext)
+        !SettingUtil.getIsNoPhotoMode() && NetWorkUtil.isConnected(AppContextUtils.mContext)
 
     //通过 RequestOptions 共享配置
     private val options = RequestOptions()
@@ -76,6 +74,30 @@ object ImageLoader {
         }
     }
 
+    /**
+     * 使用本地图片显示背景图的方法
+     *
+     * @param context 上下文对象
+     * @param view    要显示背景图的控件
+     * @param url     背景图的url
+     */
+    suspend fun loadPicture(context: Context, url: String?): Drawable? {
+       try {
+            var picUrl = "https://static.ve77.cn/avatar.jpg"
+            if (url != null) {
+                picUrl = url
+            }
+            val file =
+                Glide.with(context).asDrawable().load(picUrl).centerCrop().submit(100, 100).get()
+            return file
+        }catch (e: Exception) {
+           LogUtil.d(e.message!!)
+           e.printStackTrace()
+           return null
+//           return context.resources.getDrawable(R.drawable.bg_placeholder,null)
+       }
+    }
+
 
     /**
      * 使用本地图片显示背景图的方法
@@ -85,42 +107,42 @@ object ImageLoader {
      * @param url     背景图的url
      */
     fun loadView(context: Context, url: String?, view: View) {
+        if (isLoadImage) {
+            if (url != null) {
+                if (url.startsWith("http")) {
+                    Glide.with(context).asBitmap().load(url).into(object : CustomTarget<Bitmap>() {
+                        override fun onResourceReady(
+                            resource: Bitmap,
+                            transition: com.bumptech.glide.request.transition.Transition<in Bitmap>?
+                        ) {
+                            view.background = BitmapDrawable(null, resource)
+                        }
 
-        if (url != null) {
-            if (url.startsWith("http")) {
-                Glide.with(context).asBitmap().load(url).into(object : CustomTarget<Bitmap>() {
-                    override fun onResourceReady(
-                        resource: Bitmap,
-                        transition: com.bumptech.glide.request.transition.Transition<in Bitmap>?
-                    ) {
-                        view.background = BitmapDrawable(null, resource)
-                    }
+                        override fun onLoadCleared(placeholder: Drawable?) {
 
-                    override fun onLoadCleared(placeholder: Drawable?) {
+                        }
+                    })
 
-                    }
-                })
+                } else if (url.startsWith("#")) {
+                    try {
 
-            } else if (url.startsWith("#")) {
-                try {
-
-                    val colorInt=Color.parseColor(url)
-                    val colorStateList= ColorStateList.valueOf(colorInt)
-                    view.backgroundTintList=colorStateList
+                        val colorInt = Color.parseColor(url)
+                        val colorStateList = ColorStateList.valueOf(colorInt)
+                        view.backgroundTintList = colorStateList
 
 //                    val gd: GradientDrawable = view.background as GradientDrawable
 //                    gd.setColor(Color.parseColor(url))
 //                    view.setBackgroundColor(Color.parseColor(url))
-                }catch (e:Exception){
-                    LogUtil.d(e.message!!)
-                    e.printStackTrace()
-                }
+                    } catch (e: Exception) {
+                        LogUtil.d(e.message!!)
+                        e.printStackTrace()
+                    }
 
-            }else{
-                try {
-                    val colorInt=url.toInt()
-                    val colorStateList= ColorStateList.valueOf(colorInt)
-                    view.backgroundTintList=colorStateList
+                } else {
+                    try {
+                        val colorInt = url.toInt()
+                        val colorStateList = ColorStateList.valueOf(colorInt)
+                        view.backgroundTintList = colorStateList
 
 //                    val gd: GradientDrawable = view.background as GradientDrawable
 //                    gd.setColor(colorInt)
@@ -128,12 +150,13 @@ object ImageLoader {
 //                    gd.setTint(colorInt)
 //                    view.background.setTint(colorInt)
 //                    view.setBackgroundColor(Color.parseColor(colorInt.toString(16).replace("-","#")))
-                }catch (e:Exception){
-                    LogUtil.d(e.message!!)
-                    e.printStackTrace()
+                    } catch (e: Exception) {
+                        LogUtil.d(e.message!!)
+                        e.printStackTrace()
+                    }
                 }
             }
-        }
 
+        }
     }
 }

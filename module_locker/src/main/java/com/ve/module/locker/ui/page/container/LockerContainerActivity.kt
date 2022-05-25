@@ -46,7 +46,8 @@ class LockerContainerActivity :BaseActivity<LockerActivityContainerBinding>(){
 //                    putExtras(fragmentBundle)
 //                }
                 LogUtil.msg("start to "+fragmentClassName)
-                context.startActivity(this, fragmentBundle)
+                //startActivity(this,fragmentBundle) 会报错
+                context.startActivity(this,)
             }
         }
         fun start(context: Context, fragmentClass:Class<*>, title: String? = null, fragmentBundle: Bundle? = null) {

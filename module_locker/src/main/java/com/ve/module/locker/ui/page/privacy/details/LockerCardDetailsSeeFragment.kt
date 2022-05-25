@@ -10,9 +10,9 @@ import com.ve.lib.vutils.LogUtil
 import com.ve.module.locker.R
 import com.ve.module.locker.common.event.RefreshDataEvent
 import com.ve.module.locker.databinding.LockerFragmentSeeCardBinding
-import com.ve.module.locker.model.database.entity.PrivacyCardDetails
-import com.ve.module.locker.model.database.entity.PrivacyCardInfo
-import com.ve.module.locker.model.database.vo.PrivacyCard
+import com.ve.module.locker.model.db.entity.PrivacyCardDetails
+import com.ve.module.locker.model.db.entity.PrivacyCardInfo
+import com.ve.module.locker.model.db.vo.PrivacyCard
 import com.ve.module.locker.ui.page.container.LockerContainerActivity
 import com.ve.module.locker.ui.viewmodel.LockerPrivacyCardViewModel
 import com.ve.module.locker.utils.StickUtils

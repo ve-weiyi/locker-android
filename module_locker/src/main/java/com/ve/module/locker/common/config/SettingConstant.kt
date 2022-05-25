@@ -26,6 +26,7 @@ object SettingConstant {
 
     val SP_KEY_RECRATE_DATABASE="sp_key_recreate_database"
     val SP_KEY_DATABASE_INIT="sp_key_database_init"
+    val SP_KEY_KEY_MANAGER="sp_key_key_manager"
 
     val SP_KEY_ACCOUNT_SETTING = mContext.getString(R.string.sp_key_account_setting)
     val SP_KEY_STYLE_SETTING = mContext.getString(R.string.sp_key_style_setting)

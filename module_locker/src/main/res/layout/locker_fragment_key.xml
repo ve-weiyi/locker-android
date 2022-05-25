@@ -21,16 +21,39 @@
             android:layout_marginTop="@dimen/dp_10"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="locker需要一个秘钥加密您的数据"
+            android:text="locker需要一个秘钥加密您的数据 "
             style="@style/tv_content_primary" />
 
     <TextView
-            android:layout_marginTop="@dimen/dp_10"
+            android:id="@+id/tv_key_tip"
+            android:paddingHorizontal="@dimen/dp_16"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="locker需要一个秘钥加密您的数据"
+            android:text="@string/locker_key_tip"
             style="@style/tv_content_primary" />
 
+    <TextView
+            android:id="@+id/tv_key_primary"
+            android:paddingHorizontal="@dimen/dp_16"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="****** 注意 ******"
+            style="@style/tv_content_primary" />
+
+    <TextView
+            android:id="@+id/tv_key_tip_1"
+            android:paddingHorizontal="@dimen/dp_16"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/locker_key_tip_1"
+            style="@style/tv_content_primary" />
+    <TextView
+            android:paddingHorizontal="@dimen/dp_16"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_margin="@dimen/dp_8"
+            android:text="请点击下面的按钮生成秘钥"
+            style="@style/tv_content_primary" />
 
     <LinearLayout
             android:layout_width="match_parent"
@@ -54,6 +77,7 @@
     </LinearLayout>
 
     <EditText
+            android:id="@+id/et_key"
             android:layout_gravity="center"
             android:layout_marginTop="@dimen/dp_10"
             android:layout_width="wrap_content"

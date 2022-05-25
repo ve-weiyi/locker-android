@@ -1,4 +1,4 @@
-package com.ve.module.locker.model.database.vo
+package com.ve.module.locker.model.db.vo
 
 import com.ve.lib.utils.CommonUtil
 import com.ve.lib.vutils.DateTimeUtil

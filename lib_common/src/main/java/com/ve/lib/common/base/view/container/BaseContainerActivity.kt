@@ -36,7 +36,7 @@ abstract class BaseContainerActivity<VB : ViewBinding> : BaseActivity<VB>() {
 //                if (fragmentBundle != null) {
 //                    putExtras(fragmentBundle)
 //                }
-                context.startActivity(this, fragmentBundle)
+                context.startActivity(this)
             }
         }
     }

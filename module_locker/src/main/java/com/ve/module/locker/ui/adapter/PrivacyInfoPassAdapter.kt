@@ -1,5 +1,6 @@
 package com.ve.module.locker.ui.adapter
 
+import android.content.Intent
 import android.os.Bundle
 import android.view.View
 import android.widget.CheckBox
@@ -9,19 +10,20 @@ import com.chad.library.adapter.base.module.DraggableModule
 import com.chad.library.adapter.base.module.LoadMoreModule
 import com.chad.library.adapter.base.module.UpFetchModule
 import com.chad.library.adapter.base.viewholder.BaseViewHolder
-import com.ve.lib.common.utils.ImageLoader
 import com.ve.lib.view.ext.spanText
 import com.ve.lib.vutils.LogUtil
 import com.ve.lib.vutils.ToastUtil
 import com.ve.module.locker.R
-import com.ve.module.locker.model.database.entity.PrivacyPassInfo
+import com.ve.module.locker.model.db.entity.PrivacyPassInfo
+import com.ve.module.locker.ui.page.auth.LockerLoginActivity
 import com.ve.module.locker.ui.page.container.LockerContainerActivity
 import com.ve.module.locker.ui.page.privacy.details.LockerPassDetailsSeeFragment
 import com.ve.module.locker.utils.AndroidUtil
-import com.ve.module.locker.utils.PasswordUtils
 import com.ve.module.locker.utils.StickUtils
-import org.jetbrains.anko.Android
-import org.jetbrains.anko.backgroundDrawable
+import kotlinx.coroutines.CoroutineScope
+import kotlinx.coroutines.Dispatchers
+import kotlinx.coroutines.launch
+import kotlinx.coroutines.withContext
 
 /**
  * @Description hello word!
@@ -53,8 +55,17 @@ class PrivacyInfoPassAdapter :
             }
         }
 
-        val app=AndroidUtil.getAppByPackageName(context,item.getPrivacyDetails().appPackageName)
-        holder.setImageDrawable(R.id.iv_app_icon,app?.icon)
+        /**
+         * Dispatchers.Main：Android 主线程。用于调用 suspend 函数，UI 框架操作，及更新 LiveData 对象。
+         * Dispatchers.IO：非主线程。用于磁盘操作（例如，Room 操作），及网络 I/O 请求（例如，调用服务器 API）。
+         * Dispatchers.Default：非主线程，用于 CPU 密集型操作。例如，list 排序，及 JSON 解析。
+         */
+        CoroutineScope(Dispatchers.IO).launch {
+            val app=AndroidUtil.getAppByPackageName(context,item.getPrivacyDetails().appPackageName)
+            withContext(Dispatchers.Main) {
+                holder.setImageDrawable(R.id.iv_app_icon,app?.icon)
+            }
+        }
 
         val account=item.getPrivacyDetails().account
         holder.setText(R.id.tv_privacy_info_account, account)
@@ -137,6 +148,16 @@ class PrivacyInfoPassAdapter :
             val privacyInfo = data[position]
             val bundle = Bundle()
             bundle.putSerializable(LockerPassDetailsSeeFragment.PRIVACY_DATA_KEY, privacyInfo)
+//            Intent(context, LockerLoginActivity::class.java).run {
+//                context.startActivity(this)
+//            }
+//            Intent(context, LockerContainerActivity::class.java).run {
+//                putExtra(LockerContainerActivity.FRAGMENT_TITLE_KEY, "查看密码：" + privacyInfo.privacyName)
+//                putExtra(LockerContainerActivity.FRAGMENT_CLASS_NAME_KEY, LockerPassDetailsSeeFragment::class.java.name)
+//                putExtra(LockerContainerActivity.FRAGMENT_ARGUMENTS_KEY,bundle)
+//                //或者
+//                context.startActivity(this)
+//            }
             LockerContainerActivity.start(
                 context,
                 LockerPassDetailsSeeFragment::class.java.name,

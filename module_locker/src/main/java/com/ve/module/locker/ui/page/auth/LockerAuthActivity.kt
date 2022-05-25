@@ -45,16 +45,14 @@ class LockerAuthActivity : BaseActivity<LockerActivityAuthBinding>(){
 
 
         val executor = ContextCompat.getMainExecutor(this)
-        val biometricPrompt = BiometricPrompt(this, executor,
-            object : BiometricPrompt.AuthenticationCallback() {
+        val biometricPrompt = BiometricPrompt(this, executor, object : BiometricPrompt.AuthenticationCallback() {
                 override fun onAuthenticationError(errorCode: Int, errString: CharSequence) {
                     super.onAuthenticationError(errorCode, errString)
                     ToastUtil.showCenter("认证错误！\n" +
                             "Authentication error: $errString!")
                 }
 
-                override fun onAuthenticationSucceeded(
-                    result: BiometricPrompt.AuthenticationResult) {
+                override fun onAuthenticationSucceeded(result: BiometricPrompt.AuthenticationResult) {
                     super.onAuthenticationSucceeded(result)
                     ToastUtil.showCenter("认证成功！\nAuthentication succeeded!")
                     jumpToMain()
@@ -65,13 +63,11 @@ class LockerAuthActivity : BaseActivity<LockerActivityAuthBinding>(){
                     ToastUtil.showCenter("认证失败！请重试")
                 }
             })
-
         val promptInfo = BiometricPrompt.PromptInfo.Builder()
             .setTitle("Authentication required")
             .setSubtitle("授权登录locker")
             .setNegativeButtonText("取消")
             .build()
-
         biometricPrompt.authenticate(promptInfo)
         // Prompt appears when user clicks "Log in".
         // Consider integrating with the keystore to unlock cryptographic operations,

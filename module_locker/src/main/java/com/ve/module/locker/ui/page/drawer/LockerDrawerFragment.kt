@@ -22,8 +22,8 @@ import com.ve.module.locker.common.config.LockerLifecycle
 import com.ve.module.locker.databinding.LockerFragmentDrawerBinding
 import com.ve.module.locker.model.http.model.LoginVO
 import com.ve.module.locker.ui.page.auth.LockerLoginActivity
-import com.ve.module.locker.ui.page.category.LockerListFolderFragment
-import com.ve.module.locker.ui.page.category.LockerListTagFragment
+import com.ve.module.locker.ui.page.category.list.LockerListFolderFragment
+import com.ve.module.locker.ui.page.category.list.LockerListTagFragment
 import com.ve.module.locker.ui.page.container.LockerContainerActivity
 import com.ve.module.locker.ui.page.container.LockerWebContainerActivity
 import com.ve.module.locker.ui.page.feedback.LockerFeedBackActivity

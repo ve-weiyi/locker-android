@@ -30,8 +30,8 @@ import com.ve.lib.vutils.DateTimeUtil
 import com.ve.module.locker.R
 import com.ve.module.locker.common.event.RefreshDataEvent
 import com.ve.module.locker.databinding.LockerFragmentEditPassBinding
-import com.ve.module.locker.model.database.entity.*
-import com.ve.module.locker.model.database.vo.PrivacyPass
+import com.ve.module.locker.model.db.entity.*
+import com.ve.module.locker.model.db.vo.PrivacyPass
 import com.ve.module.locker.ui.adapter.AppAdapter
 import com.ve.module.locker.ui.adapter.FlowTagAdapter
 import com.ve.module.locker.ui.viewmodel.LockerPrivacyPassViewModel
@@ -42,7 +42,6 @@ import kotlinx.coroutines.launch
 import kotlinx.coroutines.suspendCancellableCoroutine
 import kotlinx.coroutines.withContext
 import org.jetbrains.anko.backgroundDrawable
-import org.jetbrains.anko.support.v4.runOnUiThread
 import org.litepal.LitePal
 
 /**

@@ -6,7 +6,7 @@ import com.chad.library.adapter.base.BaseQuickAdapter
 import com.ve.lib.common.base.view.list.BaseVmListFragment
 import com.ve.lib.vutils.LogUtil
 import com.ve.module.locker.databinding.LockerFragmentListPrivacySearchBinding
-import com.ve.module.locker.model.database.entity.PrivacyCardInfo
+import com.ve.module.locker.model.db.entity.PrivacyCardInfo
 import com.ve.module.locker.model.http.model.ConditionVO
 import com.ve.module.locker.ui.adapter.PrivacyInfoCardAdapter
 import com.ve.module.locker.ui.viewmodel.LockerPrivacyCardViewModel

@@ -13,21 +13,21 @@
     <!--数据库名称-->
     <dbname value="locker" />
     <!--数据库版本-->
-    <version value="4" />
+    <version value="5" />
 
     <!--映射模型-->
     <list>
         <!--添加实体类，此处必须映射完整路径-->
-        <mapping class="com.ve.module.locker.model.database.entity.PrivacyTag" />
-        <mapping class="com.ve.module.locker.model.database.entity.PrivacyFolder" />
-        <mapping class="com.ve.module.locker.model.database.entity.PrivacyCardInfo" />
-        <mapping class="com.ve.module.locker.model.database.entity.PrivacyPassInfo" />
-        <mapping class="com.ve.module.locker.model.database.entity.PrivacyFriendsInfo" />
+        <mapping class="com.ve.module.locker.model.db.entity.PrivacyTag" />
+        <mapping class="com.ve.module.locker.model.db.entity.PrivacyFolder" />
+        <mapping class="com.ve.module.locker.model.db.entity.PrivacyCardInfo" />
+        <mapping class="com.ve.module.locker.model.db.entity.PrivacyPassInfo" />
+        <mapping class="com.ve.module.locker.model.db.entity.PrivacyFriendsInfo" />
 
-        <mapping class="com.ve.module.locker.model.database.entity.PrivacyCardDetails" />
-        <mapping class="com.ve.module.locker.model.database.entity.PrivacyPassDetails" />
-        <mapping class="com.ve.module.locker.model.database.entity.TagAndCard" />
-        <mapping class="com.ve.module.locker.model.database.entity.TagAndPass" />
+        <mapping class="com.ve.module.locker.model.db.entity.PrivacyCardDetails" />
+        <mapping class="com.ve.module.locker.model.db.entity.PrivacyPassDetails" />
+        <mapping class="com.ve.module.locker.model.db.entity.TagAndCard" />
+        <mapping class="com.ve.module.locker.model.db.entity.TagAndPass" />
     </list>
     <!--数据库存储位置
 
@@ -37,5 +37,5 @@
     -->
 
     <!-- 直接设置这个，就表示数据库存储的位置，直接打开手机存储就可以找到 -->
-    <storage value="external" />
+    <storage value="internal" />
 </litepal>

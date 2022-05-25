@@ -2,8 +2,8 @@ package com.ve.module.locker.ui.viewmodel
 
 import androidx.lifecycle.MutableLiveData
 import com.ve.lib.vutils.LogUtil
-import com.ve.module.locker.model.database.entity.*
-import com.ve.module.locker.model.database.vo.PrivacyPass
+import com.ve.module.locker.model.db.entity.*
+import com.ve.module.locker.model.db.vo.PrivacyPass
 import com.ve.module.locker.model.http.model.ConditionVO
 import org.litepal.LitePal
 

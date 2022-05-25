@@ -1,6 +1,6 @@
 package com.ve.module.locker.model.http.model
 
-import com.ve.module.locker.model.database.entity.PrivacyFolder
+import com.ve.module.locker.model.db.entity.PrivacyFolder
 import java.io.Serializable
 
 

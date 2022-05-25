@@ -13,10 +13,10 @@ import java.io.Serializable
 data class LoginVO (
     val tokenHead: String,
     val accessToken: String,
-    val userDetailDTO: UserDetailDTO?=null,
+    val userDetailDTO: UserDetailDTO,
 ) :Serializable{
 
-    constructor() : this("","", null) {
+    constructor() : this("","", UserDetailDTO()) {
 
     }
 

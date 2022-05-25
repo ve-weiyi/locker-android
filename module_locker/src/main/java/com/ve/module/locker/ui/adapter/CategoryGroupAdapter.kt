@@ -3,7 +3,7 @@ package com.ve.module.locker.ui.adapter
 import com.ve.lib.common.utils.ImageLoader
 import com.ve.module.locker.databinding.LockerItemCategoryChildrenBinding
 import com.ve.module.locker.databinding.LockerItemCategoryGroupBinding
-import com.ve.module.locker.model.database.vo.PrivacySimpleInfo
+import com.ve.module.locker.model.db.vo.PrivacySimpleInfo
 
 /**
  * @Author  weiyi

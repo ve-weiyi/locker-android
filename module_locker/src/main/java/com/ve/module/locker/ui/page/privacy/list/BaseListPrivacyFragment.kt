@@ -3,27 +3,13 @@ package com.ve.module.locker.ui.page.privacy.list
 import android.os.Bundle
 import android.view.Menu
 import android.view.MenuInflater
-import android.view.MenuItem
 import androidx.viewbinding.ViewBinding
-import com.chad.library.adapter.base.BaseQuickAdapter
 import com.ve.lib.common.base.view.list.BaseVmListFragment
 import com.ve.lib.common.base.viewmodel.BaseViewModel
-import com.ve.lib.utils.DialogUtil
-import com.ve.lib.view.ext.setOnclickNoRepeatListener
 import com.ve.lib.vutils.LogUtil
 import com.ve.module.locker.R
-import com.ve.module.locker.common.event.RefreshDataEvent
-import com.ve.module.locker.databinding.LockerFragmentListPrivacyBinding
-import com.ve.module.locker.model.database.entity.PrivacyCardInfo
-import com.ve.module.locker.model.database.entity.PrivacyFolder
+import com.ve.module.locker.model.db.entity.PrivacyFolder
 import com.ve.module.locker.ui.adapter.PrivacyInfoCardAdapter
-import com.ve.module.locker.ui.page.container.LockerContainerActivity
-import com.ve.module.locker.ui.page.privacy.details.LockerCardDetailsEditFragment
-import com.ve.module.locker.ui.page.search.LockerListCardSearchFragment
-import com.ve.module.locker.ui.viewmodel.LockerPrivacyCardViewModel
-import org.greenrobot.eventbus.Subscribe
-import org.greenrobot.eventbus.ThreadMode
-import org.litepal.LitePal
 
 /**
  * @Description hello word!

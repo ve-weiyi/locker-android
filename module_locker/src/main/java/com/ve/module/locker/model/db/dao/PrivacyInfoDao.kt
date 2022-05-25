@@ -1,6 +1,6 @@
-package com.ve.module.locker.model.database.dao
+package com.ve.module.locker.model.db.dao
 
-import com.ve.module.locker.model.database.entity.*
+import com.ve.module.locker.model.db.entity.*
 import org.litepal.LitePal
 
 /**

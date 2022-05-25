@@ -2,7 +2,7 @@ package com.ve.module.locker.model.respository
 
 import com.ve.module.locker.base.BaseLockerRepository
 import com.ve.module.locker.model.http.model.ConditionVO
-import com.ve.module.locker.model.database.entity.PrivacyTag
+import com.ve.module.locker.model.db.entity.PrivacyTag
 import com.ve.module.locker.model.http.api.LockerApiService
 import com.ve.module.locker.model.http.model.LockerBaseBean
 

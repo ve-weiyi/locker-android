@@ -1,10 +1,10 @@
-package com.ve.module.locker.model.database.entity
+package com.ve.module.locker.model.db.entity
 
 import com.chad.library.adapter.base.entity.SectionEntity
 import com.ve.lib.utils.CommonUtil
 import com.ve.lib.vutils.DateTimeUtil
 import com.ve.lib.vutils.LogUtil
-import com.ve.module.locker.model.database.vo.PrivacySimpleInfo
+import com.ve.module.locker.model.db.vo.PrivacySimpleInfo
 import org.litepal.LitePal
 import org.litepal.annotation.Column
 import org.litepal.crud.LitePalSupport

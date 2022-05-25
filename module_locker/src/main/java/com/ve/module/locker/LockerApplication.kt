@@ -2,21 +2,17 @@ package com.ve.module.locker
 
 import android.annotation.SuppressLint
 import android.content.Context
-import android.os.Environment
 import androidx.appcompat.app.AppCompatDelegate
 import com.alibaba.android.arouter.launcher.ARouter
 import com.tencent.bugly.Bugly
-import com.tencent.bugly.beta.Beta
-import com.tencent.bugly.crashreport.CrashReport
 import com.ve.lib.application.BaseApplication
 import com.ve.lib.application.BuildConfig
 import com.ve.lib.common.config.AppConfig
-import com.ve.lib.utils.CommonUtil
 import com.ve.lib.utils.SettingUtil
 import com.ve.lib.vutils.AppContextUtils
 import com.ve.lib.vutils.LogUtil
 import com.ve.lib.vutils.SpUtil
-import com.ve.module.locker.model.database.AppDataBase
+import com.ve.module.locker.model.db.AppDataBase
 import org.litepal.LitePal
 import java.util.*
 
@@ -51,8 +47,6 @@ class LockerApplication:BaseApplication() {
         LitePal.initialize(this);
         AppContextUtils.init(this)
         initTheme()
-
-
 
         Bugly.init(applicationContext, AppConfig.BUGLY_ID, false)
 

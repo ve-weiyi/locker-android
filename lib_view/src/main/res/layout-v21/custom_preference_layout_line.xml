@@ -3,6 +3,7 @@
         xmlns:tools="http://schemas.android.com/tools"
         android:layout_width="match_parent"
         android:layout_height="@dimen/dp_40"
+        xmlns:app="http://schemas.android.com/apk/res-auto"
         android:gravity="center_vertical"
         android:paddingTop="0.5dp"
         android:maxHeight="@dimen/dp_30"
@@ -44,17 +45,20 @@
                     tools:text="@string/text_content"
                     android:textAppearance="?android:attr/textAppearanceSmall" />
 
-            <com.ve.lib.view.widget.view.CircleImageView
+            <com.google.android.material.imageview.ShapeableImageView
+                    app:shapeAppearanceOverlay="@style/roundImageView"
                     android:id="@android:id/icon"
-                    android:layout_weight="1"
-                    android:layout_width="0dp"
+                    android:layout_width="wrap_content"
                     android:layout_height="match_parent"
                     android:maxHeight="@dimen/dp_30"
                     android:maxWidth="@dimen/dp_30"
                     android:adjustViewBounds="true"
                     android:layout_marginStart="@dimen/dp_4"
                     android:layout_toStartOf="@id/iv_arrow_right"
-                    android:layout_centerVertical="true" />
+                    android:layout_centerVertical="true"
+                    tools:src="@tools:sample/avatars"
+                    android:visibility="gone"
+                    />
 
             <ImageView
                     android:id="@android:id/icon1"

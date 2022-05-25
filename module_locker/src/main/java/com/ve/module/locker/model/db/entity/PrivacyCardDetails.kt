@@ -1,4 +1,4 @@
-package com.ve.module.locker.model.database.entity
+package com.ve.module.locker.model.db.entity
 
 import org.litepal.annotation.Encrypt
 import org.litepal.crud.LitePalSupport
@@ -19,7 +19,6 @@ data class PrivacyCardDetails(
     @Encrypt(algorithm = AES)
     var number: String,
 
-    //(varue = "密码")
     @Encrypt(algorithm = AES)
     var password: String? = null,
 

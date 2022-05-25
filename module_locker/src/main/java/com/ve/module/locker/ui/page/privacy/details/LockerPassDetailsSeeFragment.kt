@@ -10,9 +10,9 @@ import com.ve.lib.vutils.LogUtil
 import com.ve.module.locker.R
 import com.ve.module.locker.common.event.RefreshDataEvent
 import com.ve.module.locker.databinding.LockerFragmentSeePassBinding
-import com.ve.module.locker.model.database.entity.PrivacyPassDetails
-import com.ve.module.locker.model.database.entity.PrivacyPassInfo
-import com.ve.module.locker.model.database.vo.PrivacyPass
+import com.ve.module.locker.model.db.entity.PrivacyPassDetails
+import com.ve.module.locker.model.db.entity.PrivacyPassInfo
+import com.ve.module.locker.model.db.vo.PrivacyPass
 import com.ve.module.locker.ui.page.container.LockerContainerActivity
 import com.ve.module.locker.ui.viewmodel.LockerPrivacyPassViewModel
 import com.ve.module.locker.utils.AndroidUtil

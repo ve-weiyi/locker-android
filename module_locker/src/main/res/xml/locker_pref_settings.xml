@@ -15,18 +15,18 @@
                 android:title="账号管理"
                 android:icon="@mipmap/hust_logo"
                 />
-        <Preference
-                android:defaultValue="false"
-                android:key="sp_key_phone"
-                android:layout="@layout/custom_preference_layout_line"
-                android:summary="15623356029"
-                android:title="手机号码"
-                />
 <!--        <Preference-->
 <!--                android:defaultValue="false"-->
-<!--                android:key="sp_key_no_declare"-->
+<!--                android:key="sp_key_phone"-->
 <!--                android:layout="@layout/custom_preference_layout_line"-->
-<!--                android:title="安全隐私" />-->
+<!--                android:summary="15623356029"-->
+<!--                android:title="手机号码"-->
+<!--                />-->
+        <Preference
+                android:defaultValue="false"
+                android:key="sp_key_key_manager"
+                android:layout="@layout/custom_preference_layout_line"
+                android:title="秘钥管理" />
     </PreferenceCategory>
 
 
@@ -45,7 +45,7 @@
         <Preference
                 android:defaultValue="false"
                 android:key="@string/sp_key_style_setting"
-                android:summary="可以开启自动切换夜间模式哦"
+                android:summary="开启自动切换夜间模式哦"
                 android:layout="@layout/custom_preference_layout_line"
                 android:title="个性设置"
                 />
@@ -133,13 +133,12 @@
             app:iconSpaceReserved="false"
             android:title="帮助">
 
-
-        <EditTextPreference
-                android:defaultValue="false"
-                android:key="sp_key_webdev"
-                android:layout="@layout/custom_preference_layout_line"
-                android:title="服务器迁移"
-                />
+<!--        <EditTextPreference-->
+<!--                android:defaultValue="false"-->
+<!--                android:key="sp_key_webdev"-->
+<!--                android:layout="@layout/custom_preference_layout_line"-->
+<!--                android:title="服务器迁移"-->
+<!--                />-->
         <Preference
                 android:defaultValue="false"
                 android:key="sp_key_feedback"

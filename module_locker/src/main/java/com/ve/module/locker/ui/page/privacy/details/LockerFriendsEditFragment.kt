@@ -13,7 +13,7 @@ import com.ve.lib.vutils.DateTimeUtil
 import com.ve.module.locker.R
 import com.ve.module.locker.common.event.RefreshDataEvent
 import com.ve.module.locker.databinding.LockerFragmentEditFriendsBinding
-import com.ve.module.locker.model.database.entity.PrivacyFriendsInfo
+import com.ve.module.locker.model.db.entity.PrivacyFriendsInfo
 import com.ve.module.locker.ui.viewmodel.LockerPrivacyFriendsViewModel
 
 /**

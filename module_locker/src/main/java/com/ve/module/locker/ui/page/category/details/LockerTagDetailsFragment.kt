@@ -11,8 +11,8 @@ import com.ve.lib.view.ext.setOnclickNoRepeatListener
 import com.ve.lib.vutils.LogUtil
 import com.ve.module.locker.common.event.RefreshDataEvent
 import com.ve.module.locker.databinding.LockerFragmentDetailsTagBinding
-import com.ve.module.locker.model.database.entity.PrivacyTag
-import com.ve.module.locker.ui.page.category.LockerListTagFragment
+import com.ve.module.locker.model.db.entity.PrivacyTag
+import com.ve.module.locker.ui.page.category.list.LockerListTagFragment
 import com.ve.module.locker.ui.page.privacy.details.EditType
 import com.ve.module.locker.ui.viewmodel.LockerCategoryViewModel
 import java.util.*

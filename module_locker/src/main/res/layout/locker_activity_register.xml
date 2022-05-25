@@ -71,7 +71,7 @@
                     android:layout_height="wrap_content"
                     style="@style/InputTextLayoutStyle.Bound"
                     android:focusable="true"
-                    android:layout_marginTop="@dimen/dp_16"
+                    android:layout_marginTop="@dimen/dp_8"
                     android:id="@+id/et_password"
                     android:focusableInTouchMode="true">
 
@@ -105,17 +105,6 @@
             </com.google.android.material.textfield.TextInputLayout>
 
 
-            <com.google.android.material.button.MaterialButton
-                    android:id="@+id/btn_register"
-                    android:layout_width="match_parent"
-                    android:layout_height="40dp"
-                    android:layout_marginTop="@dimen/dp_24"
-                    android:layout_marginBottom="@dimen/dp_24"
-                    android:background="@drawable/btn_login_bg"
-                    android:gravity="center"
-
-                    android:text="@string/register"
-                    android:textColor="@color/white" />
 
             <RelativeLayout
                     android:visibility="gone"
@@ -188,12 +177,25 @@
 
             </RelativeLayout>
 
+            <com.google.android.material.button.MaterialButton
+                    android:id="@+id/btn_register"
+                    android:layout_width="match_parent"
+                    android:layout_height="40dp"
+                    android:layout_marginTop="@dimen/dp_20"
+                    android:layout_marginBottom="@dimen/dp_20"
+                    android:background="@drawable/btn_login_bg"
+                    android:gravity="center"
+
+                    android:text="@string/register"
+                    android:textColor="@color/white" />
+
+
             <TextView
-                    android:layout_marginTop="@dimen/dp_16"
+
                     android:id="@+id/tv_sign_in"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:layout_marginBottom="@dimen/dp_24"
+
                     android:paddingVertical="@dimen/dp_16"
                     android:gravity="right"
                     android:text="@string/have_account"

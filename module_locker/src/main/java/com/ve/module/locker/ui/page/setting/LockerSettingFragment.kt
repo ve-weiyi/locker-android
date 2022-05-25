@@ -10,17 +10,28 @@ import androidx.activity.result.ActivityResultLauncher
 import androidx.activity.result.contract.ActivityResultContracts
 import androidx.biometric.BiometricPrompt
 import androidx.core.content.ContextCompat
+import androidx.lifecycle.lifecycleScope
 import androidx.preference.Preference
 import androidx.preference.SwitchPreference
 import com.ve.lib.common.event.RefreshHomeEvent
+import com.ve.lib.common.utils.ImageLoader
 import com.ve.lib.utils.DialogUtil
 import com.ve.lib.view.widget.preference.IconPreference
 import com.ve.lib.vutils.LogUtil
 import com.ve.lib.vutils.SpUtil
 import com.ve.lib.vutils.ToastUtil
+import com.ve.module.locker.R
 import com.ve.module.locker.common.config.SettingConstant
-import com.ve.module.locker.model.database.AppDataBase
+import com.ve.module.locker.model.db.AppDataBase
+import com.ve.module.locker.model.http.model.LoginVO
+import com.ve.module.locker.ui.page.container.LockerContainerActivity
+import com.ve.module.locker.ui.page.key.LockerKeyFragment
 import com.ve.module.locker.ui.page.user.LockerUserInfoActivity
+import com.ve.module.locker.utils.AndroidUtil
+import kotlinx.coroutines.CoroutineScope
+import kotlinx.coroutines.Dispatchers
+import kotlinx.coroutines.launch
+import kotlinx.coroutines.withContext
 
 import org.greenrobot.eventbus.EventBus
 
@@ -42,7 +53,8 @@ class LockerSettingFragment : BaseSettingFragment() {
         SettingConstant.SP_KEY_CACHE_SETTING,
         SettingConstant.SP_KEY_ABOUT_SETTING,
         SettingConstant.SP_KEY_AUTO_FILL,
-        SettingConstant.SP_KEY_RECRATE_DATABASE
+        SettingConstant.SP_KEY_RECRATE_DATABASE,
+        SettingConstant.SP_KEY_KEY_MANAGER
         )
 
     private lateinit var startActivityLaunch: ActivityResultLauncher<Intent>
@@ -55,10 +67,27 @@ class LockerSettingFragment : BaseSettingFragment() {
                 findPreference<Preference>(key)?.onPreferenceClickListener = this
             }
         }
+        val userinfo=SpUtil.getValue(SettingConstant.SP_KEY_LOGIN_DATA_KEY, LoginVO())
+
+        findPreference<Preference>(SettingConstant.SP_KEY_ACCOUNT_SETTING)?.apply {
+
+            CoroutineScope(Dispatchers.IO).launch {
+                val avatar=ImageLoader.loadPicture(mContext,userinfo.userDetailDTO.avatar)
+                withContext(Dispatchers.Main) {
+                    icon=avatar
+                }
+            }
+
+//            lifecycleScope.launch{
+//                withContext(Dispatchers.Main){
+//                    icon=ImageLoader.loadPicture(mContext,userinfo.userDetailDTO.avatar)
+//                }
+//            }
+            summary=userinfo.userDetailDTO.nickname
+        }
     }
 
     private lateinit var colorPreview: IconPreference
-
 
     override fun onSharedPreferenceChanged(sharedPreferences: SharedPreferences?, key: String?) {
         LogUtil.msg("sharedPreferences $key")
@@ -114,6 +143,9 @@ class LockerSettingFragment : BaseSettingFragment() {
     override fun onPreferenceClick(preference: Preference?): Boolean {
         LogUtil.msg("sharedPreferences ${preference?.key}")
         when (preference?.key) {
+            SettingConstant.SP_KEY_KEY_MANAGER->{
+                LockerContainerActivity.start(mContext,LockerKeyFragment::class.java,"秘钥管理")
+            }
             SettingConstant.SP_KEY_RECRATE_DATABASE->{
                 DialogUtil.getConfirmDialog(
                     mContext,

@@ -1,4 +1,4 @@
-package com.ve.module.locker.ui.page.category
+package com.ve.module.locker.ui.page.privacy
 
 import android.content.Context
 import android.content.Intent
@@ -6,12 +6,11 @@ import android.os.Bundle
 import com.ve.lib.common.base.view.vm.BaseVmActivity
 import com.ve.lib.vutils.LogUtil
 import com.ve.module.locker.databinding.LockerActivityCategoryDetailsBinding
-import com.ve.module.locker.model.database.entity.PrivacyFolder
-import com.ve.module.locker.model.database.entity.PrivacyTag
+import com.ve.module.locker.model.db.entity.PrivacyFolder
+import com.ve.module.locker.model.db.entity.PrivacyTag
 import com.ve.module.locker.model.http.model.ConditionVO
 import com.ve.module.locker.ui.adapter.CategoryGroupAdapter
 import com.ve.module.locker.ui.viewmodel.LockerCategoryViewModel
-import org.jetbrains.anko.expandableListView
 import java.io.Serializable
 
 /**
@@ -38,7 +37,7 @@ class LockerGroupActivity:
             Intent(context, LockerGroupActivity::class.java).run {
                 putExtra(FRAGMENT_TITLE_KEY, title)
                 putExtra(FRAGMENT_ARGUMENTS_KEY,fragmentBundle)
-                context.startActivity(this, fragmentBundle)
+                context.startActivity(this)
             }
         }
     }
